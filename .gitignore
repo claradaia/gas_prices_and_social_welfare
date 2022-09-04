@@ -31,9 +31,28 @@ vignettes/*.pdf
 *_cache/
 /cache/
 
-# Temporary files created by R markdown
+# Temporary files
 *.utf8.md
 *.knit.md
+*.swp
 
 # R Environment Variables
 .Renviron
+
+# tex processing files
+*.synctex.gz
+
+# most tex files
+*.tex
+
+# Stata stuff
+*.smcl
+
+# Transformed data files
+aaaMUN/SUPERVISION/2022/Clara/Data/Dados_20210304/*.dta
+aaaMUN/SUPERVISION/2022/Clara/Data/Dados_20210304/*.txt
+
+# Other generated files
+*.pdf
+*.eps
+morepricelengthsummarymeasures.txt
