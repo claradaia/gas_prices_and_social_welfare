@@ -272,9 +272,10 @@ Another one \citep{AbdallaandDrohan10}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Methodology and Data}\label{methods}
-\section{The Economic Model}
 
-You describe your methodology. The description of the methodology should be sufficiently detailed so as to allow reproduction of the research by the reader. However, you should consider relegating lengthy technical details to appendices.  
+\section{Household Equivalence Scales}
+
+One of the things that allows us to perform interpersonal comparisons of well-being.
 
 \section{Study Variables}\label{variablessection}
 
@@ -284,7 +285,7 @@ You describe your methodology. The description of the methodology should be suff
 
 \subsection {Data Source}
 
-The Family Budget Survey (Pesquisa de Orçamentos Familiares -- POF) run by the Brazilian Institute of Geography and Statistics (IBGE) \citep{ibgePOF}, provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{cohort_attributes}.
+The Family Budget Survey (Pesquisa de Orçamentos Familiares -- POF) run by the Brazilian Institute of Geography and Statistics (IBGE) \citep{ibgePOF}, provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{cohort_attributes}. We have data from 2002, 2009 and 2017.
 
 
 
@@ -302,6 +303,28 @@ Remember to include a self-explanatory combination of caption (title) and legend
 tex*/
 
 texdoc stlog, nolog
+
+// Open household demographic information
+use "Data\Dados_20210304\MORADOR.dta"
+
+// Household identification is UPA + domicilio + unidade consumidora
+// Total households surveyed are total unique combinations of these
+unique COD_UPA NUM_DOM NUM_UC
+local household_count = r(unique)
+
+// Var name is very unclear, rename it
+// 1 == urban, 2 == rural
+rename TIPO_SITUACAO_REG urban_or_rural
+
+keep COD_UPA NUM_DOM NUM_UC urban_or_rural
+
+// Count total number of people in the household
+// UPA = Unidade Primária de Amostragem = "Primary Sampling Unit"
+// DOM = Domicílio = "House"
+// UC = Unidade Consumidora = "Household"
+bysort COD_UPA NUM_DOM NUM_UC: gen n_people=_N
+
+
 webuse auto 
 
 
