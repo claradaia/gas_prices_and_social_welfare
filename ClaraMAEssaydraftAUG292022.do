@@ -259,6 +259,7 @@ keep COD_UPA NUM_DOM NUM_UC urban_or_rural
 // DOM = Domicílio = "House"
 // UC = Unidade Consumidora = "Household"
 bysort COD_UPA NUM_DOM NUM_UC: gen n_people=_N
+texdoc stlog close
 
 
 /*tex
