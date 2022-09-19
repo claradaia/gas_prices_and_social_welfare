@@ -158,7 +158,7 @@ The Informatics Department of UFPR Faculty.
 
 \chapter{Introduction}\label{intro}
 
-According to an official survey run in 2017 and 2018, transportation was on average the second largest group of expenses for Brazilian families, corresponding to 18,1\% of their monthly budget \citep{ibge2019}. The demand for gasoline in Brazil is generally estimated to be price-inelastic \citep{Cardoso2019}, especially in the short run \citep{Bastos2016}.
+According to the 2017-2018 Family Budget Survey (\ac{POF}) run by the Brazilian Institute of Geography and Statistics (\ac{IBGE}) \citep{ibgePOF}, transportation was on average the second largest group of expenses for Brazilian families, corresponding to 18,1\% of their monthly budget \citep{ibge2019}. The demand for gasoline in Brazil is generally estimated to be price-inelastic \citep{Cardoso2019}, especially in the short run \citep{Bastos2016}.
 
 Having a low price-elasticity of demand and representing a large share of expenditure means the impact of gasoline price fluctuations is severe on consumers' well-being. Reflecting that relevance, in the past two decades the pricing of petroleum and its products in Brazil has been the target of several important policy interventions. Section \ref{gas_policy_history} provides a brief history of these interventions.
 
@@ -191,10 +191,31 @@ For comparison. IBGE uses its own deflators.
 
 
 \chapter{Methodology and Data}\label{methods}
-Following \cite{Jorgenson1990}, I assume households behave as individuals when it comes to maximizing utility, and that households with the same attributes have the same utility function, of the \textit{transcendental logarithm} form:
+Following \cite{Jorgenson1990}, I assume households behave as individuals when it comes to maximizing utility, and that households with the same attributes have a utility function of the \textit{transcendental logarithm} form \cite{JorgensonChristensenLau1975}:
 
-Differences in preferences are captured by \textit{commodity-specific household equivalence scales}.
+\begin{equation}
+- \ln U = \alpha_0 + \sum \alpha_i \ln X_i + \frac{\sum{\sum{B_{ij} \ln X_i \ln X_j}}}{2}
+\end{equation}
 
+Where $i$ and $j$ identify available goods and $X_i$ represents the quantities consumed. By maximizing this utility function and incorporating differences related to demographic characteristics of households, we obtain an indirect utility function \citep{JorgensonSlesnick1987}:
+
+\begin{equation}
+\ln V_k = \ln \left( \frac{p}{M_k} \right) \alpha_p + \frac{1}{2} \ln \left( \frac{p}{M_k} \right)B_{pp} \ln \left( \frac{p}{M_k} \right) + \ln \left( \frac{p}{M_k} \right)B_{pA}A_k
+\end{equation}
+
+Where
+\begin{itemize}
+	\item $k$ identifies a household,
+	\item $A_k$ is the vector of attributes of household $k$,
+	\item $\alpha_p$, $B_pp$ characterize general preferences and
+	\item $B_{pA}$ characterize preferences according to observed attributes.
+\end{itemize}
+
+Differences in preferences are captured by \textit{commodity-specific household equivalence scales}:
+
+\begin{equation}
+\ln m(A_k) = B_{pp}^{-1}B_{pA}A_k
+\end{equation}
 
 \section{Study Variables}\label{variablessection}
 \subsection{Cohort Attributes} \label{cohort_attributes}
@@ -245,7 +266,7 @@ Where
 
 \subsection {Data Source}
 
-The Family Budget Survey (\ac{POF}) run by the Brazilian Institute of Geography and Statistics (\ac{IBGE}) \citep{ibgePOF}, provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{cohort_attributes}. For the cross-sectional estimation of the utility parameters I used the most recent survey, run between 2017 and 2018.
+The \ac{POF} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{cohort_attributes}. For the cross-sectional estimation of the utility parameters I used the most recent survey, run between 2017 and 2018.
 
 The National Accounts provide the time-series aggregate data on consumption and prices.
 (In the event this data turns out to not be enough, I can potentially aggregate the expenditures from earlier \acp{POF} and use that as the time-series component, but this will probably mean low significance.)
