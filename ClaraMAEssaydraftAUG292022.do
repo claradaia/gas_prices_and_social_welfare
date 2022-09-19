@@ -180,7 +180,7 @@ In 2002, the anti-trust ...
 In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{ICMS}) on fuels, to a maximum of 18%. This was part of a series of attempts to keep inflation under control.
 
 
-\section{IBGE's Quality of Life Loss Index}
+\section{\ac{IBGE}'s Quality of Life Loss Index}
 For comparison. IBGE uses its own deflators.
 
 \section{Estimating Social Welfare from Aggregate Consumer Behaviour}
@@ -195,15 +195,35 @@ Following \cite{Jorgenson1990}, I assume households behave as individuals when i
 
 Differences in preferences are captured by \textit{commodity-specific household equivalence scales}.
 
-\section{Household Equivalence Scales}
-
-One of the things that allows us to perform interpersonal comparisons of well-being.
 
 \section{Study Variables}\label{variablessection}
 \subsection{Cohort Attributes} \label{cohort_attributes}
-\cite{Jorgenson1990} and \cite{Slesnick2000}
+Following \cite{Slesnick2000}, I use the following attributes to characterize cohorts:
+
+\begin{enumerate}
+	\item Household Size
+	\item Age of Head of the Household
+	\item Region of Residence
+	\item Race of Head of the Household
+	\item Type of Residence \footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{POF} classifies households as ``urban or rural'', so I use this classification.}
+	\item Gender of Head of the Household
+\end{enumerate}
+
+See table \ref{attribute_vars} for the variables from the dataset used to extract each of these attributes.
+
 
 \subsection{Commodity Groups} \label{commodity_groups}
+\cite{Jorgenson1990} and \cite{Slesnick2000} use the following commodity groups:
+\begin{enumerate}
+ \item Energy
+ \item Food
+ \item Consumer Goods
+ \item Capital Services
+ \item Consumer Services
+\end{enumerate}
+
+In order to isolate the effect of gasoline prices, I subdivide the ``energy'' group into ``gasoline'' and ``others'', and the ``consumer services'' group into ``public transportation'' and ``others''.
+
 
 \section {Econometric Model}
 The model for individual expenditure shares is given by:
@@ -248,19 +268,37 @@ use "Data\Dados_20210304\MORADOR.dta", clear
 unique COD_UPA NUM_DOM NUM_UC
 local household_count = r(unique)
 
-// Var name is unclear
+// Type of residence
 // 1 == urban, 2 == rural
 rename TIPO_SITUACAO_REG urban_or_rural
 
-keep COD_UPA NUM_DOM NUM_UC urban_or_rural
+// Gender
+// 1 == male, 2 == female
+rename V0404 gender
+
+// Race
+// 1 == white
+// 2 == black
+// 3 == yellow
+// 4 == "brown"
+// 5 == indigenous
+rename V0405 race
+
+
+// Age
+rename V0403 age
+// tbd: age groups
 
 // Count total number of people in the household
 // UPA = Unidade Primária de Amostragem = "Primary Sampling Unit"
 // DOM = Domicílio = "House"
 // UC = Unidade Consumidora = "Household"
+keep COD_UPA NUM_DOM NUM_UC urban_or_rural
 bysort COD_UPA NUM_DOM NUM_UC: gen n_people=_N
-texdoc stlog close
+// still need to find out how to append this to the dataset
 
+
+texdoc stlog close
 
 /*tex
 
@@ -277,16 +315,8 @@ It would be nice to have an annual survey of family expenditures in Brazil, so w
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\appendix
-
-\chapter{Title of Appendix A}
-
-
+%% appendix placeholder
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\chapter{Title of Appendix B}
 
 \end{document}
 
