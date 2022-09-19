@@ -14,6 +14,8 @@ Edit the `Dropbox.ado` file and replace the path with the repository path. Copy 
 
 ## Running
 
+Run the `convert_datasets_to_dta.R` file. I used RStudio. This should generate .dta files inside the `aaaMUN/SUPERVISION/2022/Clara/Data/Dados_20210304` directory.
+
 Type 
 ```
 cd "path/to/do/file"
