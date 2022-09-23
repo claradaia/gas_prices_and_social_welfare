@@ -59,6 +59,8 @@ texdoc init "ClaraMAEssaydraft`today'.tex", replace
 \usepackage{acronym}
 \usepackage[title]{appendix}
 \usepackage{bookmark}
+\usepackage{tabularx}
+\usepackage{booktabs}
 
 
 \Title{Clara's MA Essay texdoc template for ECON6999} %% it shall not include LaTeX macros
@@ -232,6 +234,25 @@ Following \cite{Slesnick2000}, I use the following attributes to characterize co
 
 See table \ref{attribute_vars} for the variables from the dataset used to extract each of these attributes.
 
+\setlength{\extrarowheight}{3pt}
+\begin{table}[]
+\begin{tabular}{p{0.25\textwidth}p{0.75\textwidth}}
+\toprule
+\textbf{Attribute}                       & \textbf{Source}                                                                                                                                          \\ \midrule
+Household Size                  & The dataset \verb|MORADOR| contains one row per household member, I count the rows in each household and use 7 or more as the upper limit.                               \\
+Age of Head of the Household    & Variable \verb|V0403| in the \verb|MORADOR| dataset contains the age of each member. I grouped the ages into 5 buckets using frequencies (?).                            \\
+Region of Residence             & Variable \verb|UF| in \verb|MORADOR| contains the state where the household is located. I mapped the states into their official regions of Brazil, namely Centro-Oeste, Nordeste, Norte, Sudeste e Sul. \\
+Race of Head of the Household   & Variable \verb|V0405| in \verb|MORADOR| classifies the head of the household as ``white'', ``black'', ``asian'', ``mixed'' or ``indigenous''. \\
+Type of Residence               & Variable \verb|TIPO\_SITUACAO\_REG| in \verb|MORADOR| classifies households as ``urban'' or ``rural''.                                        \\
+Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classifies the head of the household as ``male'' or ``female''.                             \\
+
+\bottomrule
+\end{tabular}
+\caption{Source variables of household attributes} \label{attribute_vars}
+\end{table}
+
+
+
 
 \subsection{Commodity Groups} \label{commodity_groups}
 \cite{Jorgenson1990} and \cite{Slesnick2000} use the following commodity groups:
@@ -283,6 +304,16 @@ texdoc stlog, nolog
 
 // Open household demographic information
 use "Data\Dados_20210304\MORADOR.dta", clear
+
+// Obtain regions from states
+// Norte: 11 - Rondônia, 12 - Acre, 13 - Amazonas, 14 - Roraima, 15 - Pará, 16 - Amapá, 17 - Tocantins,
+// Nordeste: 21 - Maranhão, 22 - Piauí, 23 - Ceará, 24 - Rio Grande do Norte, 25 - Paraíba, 26 - Pernambuco, 27 - Alagoas, 28 - Sergipe, 29 - Bahia
+// Sudeste: 31 - Minas Gerais, 32 - Espírito Santo, 33 - Rio de Janeiro, 35 - São Paulo
+// Sul: 41 - Paraná, 42 - Santa Catarina, 43 - Rio Grande do Sul
+// Centro-Oeste: 50 - Mato Grosso do Sul, 51 - Mato Grosso, 52 - Goiás, 53 - Distrito Federal
+gen region = floor(UF/10)
+label define brazil_regions 1 "Norte" 2 "Nordeste" 3 "Sudeste" 4 "Sul" 5 "Centro-Oeste"
+label values region brazil_regions
 
 // Household identification is UPA + domicilio + unidade consumidora
 // Total households surveyed are total unique combinations of these
