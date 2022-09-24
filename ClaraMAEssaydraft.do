@@ -346,11 +346,17 @@ label values race races
 rename V0403 age
 // tbd: age groups
 
-// Count total number of people in the household
+// Count number of people in the household
 // UPA = Unidade Primária de Amostragem = "Primary Sampling Unit"
 // DOM = Domicílio = "House"
 // UC = Unidade Consumidora = "Household"
 bysort COD_UPA NUM_DOM NUM_UC: gen n_people=_N
+
+// 7 is code for "7 or more"
+replace n_people = 7 if n_people >= 7
+
+// keep only person of reference in the household (aka "head")
+keep if V0306 == 1
 
 
 texdoc stlog close
