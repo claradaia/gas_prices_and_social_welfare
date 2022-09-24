@@ -193,6 +193,7 @@ For comparison. IBGE uses its own deflators.
 
 
 \chapter{Methodology and Data}\label{methods}
+We want to characterize the differences in the demand for gasoline across households of different compositions and attributes.
 Following \cite{Jorgenson1990}, I assume households behave as individuals when it comes to maximizing utility, and that households with the same attributes have a utility function of the \textit{transcendental logarithm} form \cite{JorgensonChristensenLau1975}:
 
 \begin{equation}
@@ -327,14 +328,18 @@ rename TIPO_SITUACAO_REG urban_or_rural
 // Gender
 // 1 == male, 2 == female
 rename V0404 gender
+label define genders 1 "male" 2 "female"
+label values gender genders
 
 // Race
 // 1 == white
 // 2 == black
-// 3 == yellow
-// 4 == "brown"
+// 3 == asian
+// 4 == mixed
 // 5 == indigenous
 rename V0405 race
+label define races 1 "white" 2 "black" 3 "asian" 4 "mixed" 5 "indigenous"
+label values race races
 
 
 // Age
@@ -345,9 +350,7 @@ rename V0403 age
 // UPA = Unidade Primária de Amostragem = "Primary Sampling Unit"
 // DOM = Domicílio = "House"
 // UC = Unidade Consumidora = "Household"
-keep COD_UPA NUM_DOM NUM_UC urban_or_rural
 bysort COD_UPA NUM_DOM NUM_UC: gen n_people=_N
-// still need to find out how to append this to the dataset
 
 
 texdoc stlog close
