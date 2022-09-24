@@ -243,7 +243,7 @@ See table \ref{attribute_vars} for the variables from the dataset used to extrac
 Household Size                  & The dataset \verb|MORADOR| contains one row per household member, I count the rows in each household and use 7 or more as the upper limit.                               \\
 Age of Head of the Household    & Variable \verb|V0403| in the \verb|MORADOR| dataset contains the age of each member. I grouped the ages into 5 buckets using frequencies (?).                            \\
 Region of Residence             & Variable \verb|UF| in \verb|MORADOR| contains the state where the household is located. I mapped the states into their official regions of Brazil, namely Centro-Oeste, Nordeste, Norte, Sudeste e Sul. \\
-Race of Head of the Household   & Variable \verb|V0405| in \verb|MORADOR| classifies the head of the household as ``white'', ``black'', ``asian'', ``mixed'' or ``indigenous''. \\
+Race of Head of the Household   & Variable \verb|V0405| in \verb|MORADOR| classifies the head of the household as ``white'', ``black'', ``asian'', ``mixed'', ``indigenous'' or ``undeclared''. \\
 Type of Residence               & Variable \verb|TIPO\_SITUACAO\_REG| in \verb|MORADOR| classifies households as ``urban'' or ``rural''.                                        \\
 Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classifies the head of the household as ``male'' or ``female''.                             \\
 
@@ -338,7 +338,7 @@ label values gender genders
 // 4 == mixed
 // 5 == indigenous
 rename V0405 race
-label define races 1 "white" 2 "black" 3 "asian" 4 "mixed" 5 "indigenous"
+label define races 1 "white" 2 "black" 3 "asian" 4 "mixed" 5 "indigenous" 9 "undeclared"
 label values race races
 
 
