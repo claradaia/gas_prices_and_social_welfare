@@ -10,11 +10,11 @@ I used the `pdfathesis` package provided by the MUN Math department, see [MUN - 
 
 ## Setting up the paths
 
-Edit the `Dropbox.ado` file and replace the path with the repository path. Copy this file into the .ado source you use for Stata ("C:/Users/<your user>/ado/plus/" should work).
+Edit the `Dropbox.ado` file and replace the path with the repository path. Copy this file into the .ado source you use for Stata ("C:/Users/\<your user\>/ado/plus/" should work).
 
 ## Running
 
-Run the `convert_datasets_to_dta.R` file. I used RStudio. This should generate .dta files inside the `aaaMUN/SUPERVISION/2022/Clara/Data/Dados_20210304` directory.
+Run the `aaaMUN/SUPERVISION/2022/Clara/convert_datasets_to_dta.R` script. I used RStudio. This should generate .dta files inside the `aaaMUN/SUPERVISION/2022/Clara/Data/Dados_20210304` directory.
 
 Type 
 ```
