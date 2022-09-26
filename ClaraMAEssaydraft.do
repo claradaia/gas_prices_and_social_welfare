@@ -13,13 +13,10 @@ cd "aaaMUN\SUPERVISION\2022\Clara"
 
 capture log close
 
-// date macro for filenames
-local today: display %tdDDMonCCYY date(c(current_date), "DMY")
-														
-log using "ClaraMAEssaydraft`today'.smcl", replace
+log using "ClaraMAEssaydraft.smcl", replace
 set more off
-						
-texdoc init "ClaraMAEssaydraft`today'.tex", replace
+
+texdoc init "ClaraMAEssaydraft.tex", replace
 
 /*tex
 \documentclass[12pt]{pdfathesis}
@@ -155,20 +152,83 @@ The Informatics Department of UFPR Faculty.
 \todo[inline, color=green!80]{Remember that all traces of notes can be made to disappear from the pdf produced by changing one line, so do not actually delete notes, keep them in the do file and tex file}
 
 
+
+\todo[inline]{We need the acronyms translated into English. Then you can use footnotes or the bib reference to include the original name in Portuguese}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%A few shortcuts for todonotes and text colouring
+
+\newcommand{\td}{\todo}
+\newcommand{\tdFL}{\todo[fancyline]}
+\newcommand{\tdIL}{\todo[inline]}
+\newcommand{\tdILR}{\todo[inline, color=red!80]}
+
+
+\newcommand{\tr}{\textcolor{red}}
+\newcommand{\tde}{\todo{ENW}}
+\newcommand{\tdeFL}{\todo[fancyline]{ENW}}
+\newcommand{\tdeIL}{\todo[inline]{ENW}}
+
+\newcommand{\tdp}{\todo{PNW}}
+\newcommand{\tdpFL}{\todo[fancyline]{PNW}}
+
+\td{these are just macros and their checks to save Rober some typing, please ignore}
+
+
+%checking:
+\tr{checking red}
+\tde
+\tdeFL
+\tdIL{this in line}
+\tdILR{this in line red}
+
+
+\tdpFL
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\todo[inline,color=yellow,size=\huge]{This version: \today}
+
+
+
+
+\pagebreak
+
 
 
 \chapter{Introduction}\label{intro}
 
+\tdIL{Rober suggests italicizing the original Portuguese, curently missing a special c or a z or something in the acronym definition, translating it here into English and creating the acronym for FBS instead or POF. Same with IBGE}
+
+\tdIL{checkspelling in bib entries, remember the accents in \TeX: Estatística will yield a missing vowel, use Estat\'{i}stica. }
+
+\tdIL{Also consider using the acronyms in the author field of your bib file, so it looks more tidy. That is, use ``{I}nstituto {B}rasileiro de {G}eografia e {E}statística'' in a ``note'' but only IBGE in the ``author'' field }
+
+
 According to the 2017-2018 Family Budget Survey (\ac{POF}) run by the Brazilian Institute of Geography and Statistics (\ac{IBGE}) \citep{ibgePOF}, transportation was on average the second largest group of expenses for Brazilian families, corresponding to 18,1\% of their monthly budget \citep{ibge2019}. The demand for gasoline in Brazil is generally estimated to be price-inelastic \citep{Cardoso2019}, especially in the short run \citep{Bastos2016}.
+
+\tdIL{Obviously all these paragraphs will need a lot of rewriting as you go in order to thread a story together...}
 
 Having a low price-elasticity of demand and representing a large share of expenditure means the impact of gasoline price fluctuations is severe on consumers' well-being. Reflecting that relevance, in the past two decades the pricing of petroleum and its products in Brazil has been the target of several important policy interventions. Section \ref{gas_policy_history} provides a brief history of these interventions.
 
-In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower for national distributors \citep{Ramalho2021}. The \ac{IPP} policy  \footnote{Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil, which resulted in more volatile prices of gasoline to consumers. 
+\tdIL{perhaps also add that the price of oil can fluctuate a lot?}
 
-From the methodological standpoint, I find that previous work on the welfare impact of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate effects on specific regions rather than a nation-wide study.
+In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower \tdFL{tha what?} for national distributors \citep{Ramalho2021}. The \ac{IPP} policy \tdFL{big extra space here: fix} \footnote{\tr{The} Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil, which resulted in more volatile prices of gasoline to consumers.
 
-There are also political aspects of interest in analysing the effect of gas price changes. Politicians often use gas price regulations as a popularity tool, especially near elections. For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. Better understanding of demand for gasoline and welfare effect of price changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the expected benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
+From the \tdFL{ENW: English needs work} methodological standpoint, I find that previous work on the welfare \tdFL{ENW: avoid the Saxon genitiv for inanimate subjects: ``the impact on welfare'' is better} impact of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate effects on specific regions rather than a nation-wide study.
+
+\tdIL{We will need a few references to back this up}
+
+There are also political aspects of interest in analysing the effect of gas price changes. Politicians often use gas price regulations as a popularity tool, especially near elections.\tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. Better understanding of demand \tde for gasoline and welfare effect of price changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the expected benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
+
+\tdIL{THis makes it sound that the governmnet revenue and the profits are NOT somehow part of social welfare BUT they are: rethink and reword. The government is not a person, so you may want to measure those gains in goverment revenue in terms of the saved tax distortion in other markets but the stock oweners are indivudals with standing.}
 
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -179,7 +239,7 @@ There are also political aspects of interest in analysing the effect of gas pric
 \section{Gas prices interventions}\label{gas_policy_history}
 In 2002, the anti-trust ...
 
-In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{ICMS}) on fuels, to a maximum of 18%. This was part of a series of attempts to keep inflation under control.
+In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{ICMS}) \tdFL{You will have to work out the special characters in your acronym descriptions too} on fuels, to a maximum of 18%. This was part of a series of attempts to keep inflation under control.
 
 
 \section{\ac{IBGE}'s Quality of Life Loss Index}
@@ -194,7 +254,7 @@ For comparison. IBGE uses its own deflators.
 
 \chapter{Methodology and Data}\label{methods}
 We want to characterize the differences in the demand for gasoline across households of different compositions and attributes.
-Following \cite{Jorgenson1990}, I assume households behave as individuals when it comes to maximizing utility, and that households with the same attributes have a utility function of the \textit{transcendental logarithm} form \cite{JorgensonChristensenLau1975}:
+Following \cite{Jorgenson1990}, I assume \tr{that} households behave as individuals when it comes to maximizing utility, and that households with the same attributes have a utility function of the \textit{transcendental logarithm} form \cite{JorgensonChristensenLau1975}:
 
 \begin{equation}
 - \ln U = \alpha_0 + \sum \alpha_i \ln X_i + \frac{\sum{\sum{B_{ij} \ln X_i \ln X_j}}}{2}
@@ -229,11 +289,11 @@ Following \cite{Slesnick2000}, I use the following attributes to characterize co
 	\item Age of Head of the Household
 	\item Region of Residence
 	\item Race of Head of the Household
-	\item Type of Residence \footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{POF} classifies households as ``urban or rural'', so I use this classification.}
+	\item Type of Residence \tdFL{fix spacing} \footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{POF} classifies households as ``urban or rural'', so I use this classification.}
 	\item Gender of Head of the Household
 \end{enumerate}
 
-See table \ref{attribute_vars} for the variables from the dataset used to extract each of these attributes.
+See table \ref{attribute_vars} \tdFL{Table X, Figure Y, etc. with capitals} for the variables from the dataset used to extract each of these attributes. \tdFL{Was this table supposed to exist? i would like to see a table liks this. You do have data...}
 
 \setlength{\extrarowheight}{3pt}
 \begin{table}[]
@@ -275,13 +335,13 @@ The model for individual expenditure shares is given by:
 - w_k = \omega_p - B_{pp}i \ln M_k + B_{pA}A_k + \mu_k
 \end{equation}
 
-Where
+Where \tdFL{, where}
 \begin{itemize}
-	\item $w_k$ is the vector of expenditure shares for each commodity group for the $k$th household;
+	\item $w_k$ is the vector of expenditure shares for each commodity group for the $k$th \tdFL{FNW: fix subscript format} household;
 	\item $M_k$ is the household income;
 	\item $A_k$ is the vector of household attributes described in Section \ref{cohort_attributes};
 	\item $\mu_k$ is the stochastic component for the $k$th household;
-	\item $\omega_p$, $B_{pp}i$ and $B_{pA}$ are the parameters we want to estimate.
+	\item $\omega_p$, $B_{pp}i$ \tdFL{FNW check the formatting of subscripts} and $B_{pA}$ are the parameters we want to estimate.
 \end{itemize}
 
 \section {Data}\label{datasection}
@@ -293,6 +353,11 @@ The \ac{POF} provides detailed data on individual household expenditure on parti
 The National Accounts provide the time-series aggregate data on consumption and prices.
 (In the event this data turns out to not be enough, I can potentially aggregate the expenditures from earlier \acp{POF} and use that as the time-series component, but this will probably mean low significance.)
 
+\tdIL{I am a bit confused, you are going to use to runs of the survey, so that will NOT be a time-series approach correct?}
+
+\tdIL{Rober SEPT 19: you do not name a variable "urban\_or\_rural" (also because the underscores tend to be a nuisance in \LaTeX), since that is not going to help: name it EITHER urban OR rural and lable the 0 and 1 values accordingly. Same with "gender" "marital status" etc. Use male (or female, or additional binary indicators) and "married", "single", "divorced", etc. }
+
+\tdIL{so can we start seeing tables of descriptives of whatever data you already have, you do have some data.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -303,7 +368,16 @@ tex*/
 
 texdoc stlog, nolog
 
-// Open household demographic information
+***Rober SEPT 19 This would go to the data subfolderand unzips the big compressed file:
+*** cd aaaMUN\SUPERVISION\2022\Clara\Data
+*** unzipfile DataCLARA, replace
+
+*BUT that uncompressed folder is WAYYY too big for Rober's Dropbox, so he just unzipped one dataset for now, as needed below
+
+***Rober SEPT 19: Then the next command should "use" that individual dataset without trouble
+
+
+ // Open household demographic information
 use "Data\Dados_20210304\MORADOR.dta", clear
 
 // Obtain regions from states
