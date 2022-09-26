@@ -359,6 +359,10 @@ replace n_people = 7 if n_people >= 7
 keep if V0306 == 1
 
 
+
+// Open income data
+use "Data\Dados_20210304\RENDIMENTO_TRABALHO.dta", clear
+
 texdoc stlog close
 
 /*tex
