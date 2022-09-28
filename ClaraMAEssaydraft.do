@@ -131,10 +131,10 @@ The Informatics Department of UFPR Faculty.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{acronym}
-\acro{IBGE}{Instituto Brasileiro de Geografia e Estatística}
+\acro{IBGE}{Instituto Brasileiro de Geografia e Estat\'{i}stica}
 \acro{IPP} {Import Parity Price}
-\acro{POF}{Pesquisa de Orçamentos Familiares}
-\acro{ICMS}{Imposto sobre Circulação de Mercadorias e Serviços}
+\acro{POF}{Pesquisa de Or\c{c}amentos Familiares}
+\acro{ICMS}{Imposto sobre Circula\c{c}\~{a}o de Mercadorias e Servi\c{c}os}
 
 \end{acronym}
 
@@ -157,11 +157,7 @@ The Informatics Department of UFPR Faculty.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%A few shortcuts for todonotes and text colouring
+% A few shortcuts for todonotes and text colouring
 
 \newcommand{\td}{\todo}
 \newcommand{\tdFL}{\todo[fancyline]}
@@ -190,17 +186,16 @@ The Informatics Department of UFPR Faculty.
 
 \tdpFL
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \todo[inline,color=yellow,size=\huge]{This version: \today}
 
-
-
-
 \pagebreak
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{Introduction}\label{intro}
@@ -220,13 +215,13 @@ Having a low price-elasticity of demand and representing a large share of expend
 
 \tdIL{perhaps also add that the price of oil can fluctuate a lot?}
 
-In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower \tdFL{tha what?} for national distributors \citep{Ramalho2021}. The \ac{IPP} policy \tdFL{big extra space here: fix} \footnote{\tr{The} Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil, which resulted in more volatile prices of gasoline to consumers.
+In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower \tdFL{tha what?} for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy \tdFL{big extra space here: fix} \footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil, which resulted in more volatile prices of gasoline to consumers.
 
-From the \tdFL{ENW: English needs work} methodological standpoint, I find that previous work on the welfare \tdFL{ENW: avoid the Saxon genitiv for inanimate subjects: ``the impact on welfare'' is better} impact of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate effects on specific regions rather than a nation-wide study.
+From the \tdFL{ENW: English needs work} methodological standpoint, I find that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate effects on specific regions rather than a nation-wide study.
 
 \tdIL{We will need a few references to back this up}
 
-There are also political aspects of interest in analysing the effect of gas price changes. Politicians often use gas price regulations as a popularity tool, especially near elections.\tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. Better understanding of demand \tde for gasoline and welfare effect of price changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the expected benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
+There are also political aspects of interest in analysing the effect of gas price changes. Politicians often use gas price regulations as a popularity tool, especially near elections.\tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. Better understanding of demand \tde for gasoline and welfare effect of price changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
 
 \tdIL{THis makes it sound that the governmnet revenue and the profits are NOT somehow part of social welfare BUT they are: rethink and reword. The government is not a person, so you may want to measure those gains in goverment revenue in terms of the saved tax distortion in other markets but the stock oweners are indivudals with standing.}
 
@@ -239,7 +234,7 @@ There are also political aspects of interest in analysing the effect of gas pric
 \section{Gas prices interventions}\label{gas_policy_history}
 In 2002, the anti-trust ...
 
-In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{ICMS}) \tdFL{You will have to work out the special characters in your acronym descriptions too} on fuels, to a maximum of 18%. This was part of a series of attempts to keep inflation under control.
+In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{ICMS}) on fuels, to a maximum of 18\%. This was part of a series of attempts to keep inflation under control.
 
 
 \section{\ac{IBGE}'s Quality of Life Loss Index}
@@ -293,7 +288,7 @@ Following \cite{Slesnick2000}, I use the following attributes to characterize co
 	\item Gender of Head of the Household
 \end{enumerate}
 
-See table \ref{attribute_vars} \tdFL{Table X, Figure Y, etc. with capitals} for the variables from the dataset used to extract each of these attributes. \tdFL{Was this table supposed to exist? i would like to see a table liks this. You do have data...}
+See Table \ref{attribute_vars} for the variables from the dataset used to extract each of these attributes.
 
 \setlength{\extrarowheight}{3pt}
 \begin{table}[]
@@ -335,7 +330,7 @@ The model for individual expenditure shares is given by:
 - w_k = \omega_p - B_{pp}i \ln M_k + B_{pA}A_k + \mu_k
 \end{equation}
 
-Where \tdFL{, where}
+, where
 \begin{itemize}
 	\item $w_k$ is the vector of expenditure shares for each commodity group for the $k$th \tdFL{FNW: fix subscript format} household;
 	\item $M_k$ is the household income;
@@ -397,7 +392,7 @@ local household_count = r(unique)
 
 // Type of residence
 // 1 == urban, 2 == rural
-rename TIPO_SITUACAO_REG urban_or_rural
+rename TIPO_SITUACAO_REG residence_type
 
 // Gender
 // 1 == male, 2 == female
