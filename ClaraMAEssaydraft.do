@@ -382,6 +382,7 @@ use "Data\Dados_20210304\MORADOR.dta", clear
 // Sul: 41 - Paraná, 42 - Santa Catarina, 43 - Rio Grande do Sul
 // Centro-Oeste: 50 - Mato Grosso do Sul, 51 - Mato Grosso, 52 - Goiás, 53 - Distrito Federal
 gen region = floor(UF/10)
+label variable region region
 label define brazil_regions 1 "Norte" 2 "Nordeste" 3 "Sudeste" 4 "Sul" 5 "Centro-Oeste"
 label values region brazil_regions
 
@@ -393,10 +394,14 @@ local household_count = r(unique)
 // Type of residence
 // 1 == urban, 2 == rural
 rename TIPO_SITUACAO_REG residence_type
+label variable residence_type residence_type
+label define residence_types 1 "urban" 2 "rural"
+label values residence_type residence_types
 
 // Gender
 // 1 == male, 2 == female
 rename V0404 gender
+label variable gender gender
 label define genders 1 "male" 2 "female"
 label values gender genders
 
@@ -407,12 +412,14 @@ label values gender genders
 // 4 == mixed
 // 5 == indigenous
 rename V0405 race
+label variable race race
 label define races 1 "white" 2 "black" 3 "asian" 4 "mixed" 5 "indigenous" 9 "undeclared"
 label values race races
 
 
 // Age
 rename V0403 age
+label variable age age
 // tbd: age groups
 
 // Count number of people in the household
