@@ -275,6 +275,23 @@ Differences in preferences are captured by \textit{commodity-specific household 
 \ln m(A_k) = B_{pp}^{-1}B_{pA}A_k
 \end{equation}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Assumptions on consumer preferences}
+
+\subsection{Separability}
+Why aggregate goods into groups?
+1. The number of goods consumed observed by the \ac{POF} is very large relative to the number of observations in the 2017-2018 survey. Aggregating goods into groups improves the statistical power of the model.
+2. It makes sense intuitively: instead of making purchase decisions with full information all the time, families may allocate income into groups like ``food'', ``housing'' and ``transportation'' and treat each as a separate optimization problem.
+
+Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \cite{DeatonMuellbauer1980}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \section{Study Variables}\label{variablessection}
 \subsection{Cohort Attributes} \label{cohort_attributes}
 Following \cite{Slesnick2000}, I use the following attributes to characterize cohorts:
@@ -308,8 +325,6 @@ Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classi
 \end{table}
 
 
-
-
 \subsection{Commodity Groups} \label{commodity_groups}
 \cite{Jorgenson1990} and \cite{Slesnick2000} use the following commodity groups:
 \begin{enumerate}
@@ -321,6 +336,9 @@ Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classi
 \end{enumerate}
 
 In order to isolate the effect of gasoline prices, I subdivide the ``energy'' group into ``gasoline'' and ``others'', and the ``consumer services'' group into ``public transportation'' and ``others''.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section {Econometric Model}
@@ -338,6 +356,10 @@ The model for individual expenditure shares is given by:
 	\item $\mu_k$ is the stochastic component for the $k$th household;
 	\item $\omega_p$, $B_{pp}i$ \tdFL{FNW check the formatting of subscripts} and $B_{pA}$ are the parameters we want to estimate.
 \end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section {Data}\label{datasection}
 
