@@ -374,10 +374,20 @@ The National Accounts provide the time-series aggregate data on consumption and 
 
 \tdIL{Rober SEPT 19: you do not name a variable "urban\_or\_rural" (also because the underscores tend to be a nuisance in \LaTeX), since that is not going to help: name it EITHER urban OR rural and lable the 0 and 1 values accordingly. Same with "gender" "marital status" etc. Use male (or female, or additional binary indicators) and "married", "single", "divorced", etc. }
 
-\tdIL{so can we start seeing tables of descriptives of whatever data you already have, you do have some data.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\tdIL{so can we start seeing tables of descriptives of whatever data you already have, you do have some data.}
+
+\section{Population sample description}
+Table \ref{demographic_frequencies} shows how observations are distributed by gender of household head, residence type and race. Overall, the majority of the sampled households are headed by men, self-declares as ``mixed race'' and lives in urban areas.
+
+\input{demographic_summary_table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \chapter{Results}\label{resultssection}
 
@@ -404,7 +414,7 @@ use "Data\Dados_20210304\MORADOR.dta", clear
 // Sul: 41 - Paraná, 42 - Santa Catarina, 43 - Rio Grande do Sul
 // Centro-Oeste: 50 - Mato Grosso do Sul, 51 - Mato Grosso, 52 - Goiás, 53 - Distrito Federal
 gen region = floor(UF/10)
-label variable region region
+label variable region "Region"
 label define brazil_regions 1 "Norte" 2 "Nordeste" 3 "Sudeste" 4 "Sul" 5 "Centro-Oeste"
 label values region brazil_regions
 
@@ -414,34 +424,27 @@ unique COD_UPA NUM_DOM NUM_UC
 local household_count = r(unique)
 
 // Type of residence
-// 1 == urban, 2 == rural
 rename TIPO_SITUACAO_REG residence_type
-label variable residence_type residence_type
-label define residence_types 1 "urban" 2 "rural"
+label variable residence_type "Type of residence"
+label define residence_types 1 "Urban" 2 "Rural"
 label values residence_type residence_types
 
 // Gender
-// 1 == male, 2 == female
 rename V0404 gender
-label variable gender gender
-label define genders 1 "male" 2 "female"
+label variable gender "Gender"
+label define genders 1 "Male" 2 "Female"
 label values gender genders
 
 // Race
-// 1 == white
-// 2 == black
-// 3 == asian
-// 4 == mixed
-// 5 == indigenous
 rename V0405 race
-label variable race race
-label define races 1 "white" 2 "black" 3 "asian" 4 "mixed" 5 "indigenous" 9 "undeclared"
+label variable race "Race"
+label define races 1 "White" 2 "Black" 3 "Asian" 4 "Mixed" 5 "Indigenous" 9 "Undeclared"
 label values race races
 
 
 // Age
 rename V0403 age
-label variable age age
+label variable age "Age"
 // tbd: age groups
 
 // Count number of people in the household
@@ -456,6 +459,21 @@ replace n_people = 7 if n_people >= 7
 // keep only person of reference in the household (aka "head")
 keep if V0306 == 1
 
+
+// Tentative summary table
+// The desired output looks like
+// table gender residence_type race, nototals
+// But Stata can't make three way tables with tabulate!
+// So we need to work around
+// Make 3 two-way tabs, saving them with eststo
+eststo col0: estpost tab race residence_type if gender==1
+eststo col1: estpost tab race residence_type if gender==2
+
+// make it latex, add header and title
+estout col0 col1 using demographic_summary_table.tex, style(tex) replace unstack /// setup
+    mlabels("Male" "Female", span prefix(\multicolumn{@span}{c}{) suffix(})  erepeat(\cline{@span})) eqlabels(,lhs("Race")) collabels(none) /// labels for columns
+    title("Frequency by gender, type of residence and race") ///
+    prehead("\begin{table}[htbp]\centering" "\caption{@title}\label{demographic_frequencies}" "\begin{tabular}{l*{6}{c}}" "\toprule" "& \multicolumn{6}{c}{Gender and type of residence} \\") posthead(\midrule) prefoot(\bottomrule) postfoot("\end{tabular}" "\end{table}") // latex setup and last column header
 
 
 // Open income data
