@@ -446,10 +446,8 @@ rename V0403 age
 label variable age "Age"
 
 // Age groups (tentative)
-recode age 0/25=0 26/40=1 41/55=2 56/70=3 71/85=4 86/max=5 , gen(age_group)
+recode age (0/25=0 "<= 25")  (26/40=1 "26-40") (41/55=2 "41-55") (56/70=3 "56-70") (71/85=4 "71-85") (86/max=5 ">= 86"), gen(age_group)
 label variable age_group "Age group"
-label define age_groups 0 "<= 25" 1 "26-40" 2 "41-55" 3 "56-70" 4 "71-85" 5 ">= 86"
-label values age_group age_groups
 
 
 // Number of people in the household
@@ -460,6 +458,9 @@ bysort COD_UPA NUM_DOM NUM_UC: gen n_people=_N
 
 // 7 is code for "7 or more"
 replace n_people = 7 if n_people >= 7
+label variable n_people "Number of people"
+label define n_people_with_cutoff 7 ">= 7"
+label values n_people n_people_with_cutoff
 
 // keep only person of reference in the household (aka "head")
 keep if V0306 == 1
