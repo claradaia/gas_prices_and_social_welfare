@@ -441,13 +441,18 @@ label variable race "Race"
 label define races 1 "White" 2 "Black" 3 "Asian" 4 "Mixed" 5 "Indigenous" 9 "Undeclared"
 label values race races
 
-
 // Age
 rename V0403 age
 label variable age "Age"
-// tbd: age groups
 
-// Count number of people in the household
+// Age groups (tentative)
+recode age 0/25=0 26/40=1 41/55=2 56/70=3 71/85=4 86/max=5 , gen(age_group)
+label variable age_group "Age group"
+label define age_groups 0 "<= 25" 1 "26-40" 2 "41-55" 3 "56-70" 4 "71-85" 5 ">= 86"
+label values age_group age_groups
+
+
+// Number of people in the household
 // UPA = Unidade Primária de Amostragem = "Primary Sampling Unit"
 // DOM = Domicílio = "House"
 // UC = Unidade Consumidora = "Household"
