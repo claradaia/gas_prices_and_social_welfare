@@ -58,6 +58,8 @@ texdoc init "ClaraMAEssaydraft.tex", replace
 \usepackage{bookmark}
 \usepackage{tabularx}
 \usepackage{booktabs}
+\usepackage{changepage}
+\usepackage{multirow}
 
 
 \Title{Clara's MA Essay texdoc template for ECON6999} %% it shall not include LaTeX macros
@@ -131,9 +133,10 @@ The Informatics Department of UFPR Faculty.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{acronym}
-\acro{IBGE}{Instituto Brasileiro de Geografia e Estat\'{i}stica}
-\acro{IPP} {Import Parity Price}
-\acro{POF}{Pesquisa de Or\c{c}amentos Familiares}
+\acro{BIGS}{Brazilian Institute of Geography and Statistics}
+\acro{IPP}{Import Parity Price}
+\acro{FBS}{Family Budgets Survey}
+\acro{PSU}{Primary Sampling Unit}
 \acro{ICMS}{Imposto sobre Circula\c{c}\~{a}o de Mercadorias e Servi\c{c}os}
 
 \end{acronym}
@@ -163,6 +166,8 @@ The Informatics Department of UFPR Faculty.
 \newcommand{\tdFL}{\todo[fancyline]}
 \newcommand{\tdIL}{\todo[inline]}
 \newcommand{\tdILR}{\todo[inline, color=red!80]}
+\newcommand{\tdILY}{\todo[inline, color=yellow]}
+\newcommand{\tdILB}{\todo[inline, color=cyan]}
 
 
 \newcommand{\tr}{\textcolor{red}}
@@ -207,7 +212,7 @@ The Informatics Department of UFPR Faculty.
 \tdIL{Also consider using the acronyms in the author field of your bib file, so it looks more tidy. That is, use ``{I}nstituto {B}rasileiro de {G}eografia e {E}statística'' in a ``note'' but only IBGE in the ``author'' field }
 
 
-According to the 2017-2018 Family Budget Survey (\ac{POF}) run by the Brazilian Institute of Geography and Statistics (\ac{IBGE}) \citep{ibgePOF}, transportation was on average the second largest group of expenses for Brazilian families, corresponding to 18,1\% of their monthly budget \citep{ibge2019}. The demand for gasoline in Brazil is generally estimated to be price-inelastic \citep{Cardoso2019}, especially in the short run \citep{Bastos2016}.
+According to the 2017-2018 \ac{FBS} run by the \ac{BIGS} \citep{ibgePOF}, transportation was on average the second largest group of expenses for Brazilian families, corresponding to 18,1\% of their monthly budget \citep{ibge2019}. The demand for gasoline in Brazil is generally estimated to be price-inelastic \citep{Cardoso2019}, especially in the short run \citep{Bastos2016}.
 
 \tdIL{Obviously all these paragraphs will need a lot of rewriting as you go in order to thread a story together...}
 
@@ -237,7 +242,7 @@ In 2002, the anti-trust ...
 In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{ICMS}) on fuels, to a maximum of 18\%. This was part of a series of attempts to keep inflation under control.
 
 
-\section{\ac{IBGE}'s Quality of Life Loss Index}
+\section{\ac{BIGS}'s Quality of Life Loss Index}
 For comparison. IBGE uses its own deflators.
 
 \section{Estimating Social Welfare from Aggregate Consumer Behaviour}
@@ -249,7 +254,7 @@ For comparison. IBGE uses its own deflators.
 
 \chapter{Methodology and Data}\label{methods}
 We want to characterize the differences in the demand for gasoline across households of different compositions and attributes.
-Following \cite{Jorgenson1990}, I assume \tr{that} households behave as individuals when it comes to maximizing utility, and that households with the same attributes have a utility function of the \textit{transcendental logarithm} form \cite{JorgensonChristensenLau1975}:
+Following \cite{Jorgenson1990}, I assume \tr{that} households behave as individuals when it comes to maximizing utility, and that households with the same attributes have a utility function of the \textit{transcendental logarithm} form \citep{JorgensonChristensenLau1975}:
 
 \begin{equation}
 - \ln U = \alpha_0 + \sum \alpha_i \ln X_i + \frac{\sum{\sum{B_{ij} \ln X_i \ln X_j}}}{2}
@@ -283,10 +288,10 @@ Differences in preferences are captured by \textit{commodity-specific household 
 
 \subsection{Separability}
 Why aggregate goods into groups?
-1. The number of goods consumed observed by the \ac{POF} is very large relative to the number of observations in the 2017-2018 survey. Aggregating goods into groups improves the statistical power of the model.
+1. The number of goods consumed observed by the \ac{FBS} is very large relative to the number of observations in the 2017-2018 survey. Aggregating goods into groups improves the statistical power of the model.
 2. It makes sense intuitively: instead of making purchase decisions with full information all the time, families may allocate income into groups like ``food'', ``housing'' and ``transportation'' and treat each as a separate optimization problem.
 
-Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \cite{DeatonMuellbauer1980}.
+Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \citep{DeatonMuellbauer1980}.
 
 
 
@@ -302,7 +307,7 @@ Following \cite{Slesnick2000}, I use the following attributes to characterize co
 	\item Age of Head of the Household
 	\item Region of Residence
 	\item Race of Head of the Household
-	\item Type of Residence \tdFL{fix spacing} \footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{POF} classifies households as ``urban or rural'', so I use this classification.}
+	\item Type of Residence \tdFL{fix spacing} \footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{FBS} classifies households as ``urban or rural'', so I use this classification.}
 	\item Gender of Head of the Household
 \end{enumerate}
 
@@ -366,10 +371,10 @@ The model for individual expenditure shares is given by:
 
 \subsection {Data Source}
 
-The \ac{POF} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{cohort_attributes}. For the cross-sectional estimation of the utility parameters I used the most recent survey, run between 2017 and 2018.
+The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{cohort_attributes}. For the cross-sectional estimation of the utility parameters I used the most recent survey, run between 2017 and 2018.
 
 The National Accounts provide the time-series aggregate data on consumption and prices.
-(In the event this data turns out to not be enough, I can potentially aggregate the expenditures from earlier \acp{POF} and use that as the time-series component, but this will probably mean low significance.)
+(In the event this data turns out to not be enough, I can potentially aggregate the expenditures from earlier \acp{FBS} and use that as the time-series component, but this will probably mean low significance.)
 
 \tdIL{I am a bit confused, you are going to use to runs of the survey, so that will NOT be a time-series approach correct?}
 
@@ -382,7 +387,7 @@ The National Accounts provide the time-series aggregate data on consumption and 
 
 \tdIL{so can we start seeing tables of descriptives of whatever data you already have, you do have some data.}
 
-\section{Population sample description}
+\subsection{Population sample description}
 
 tex*/
 
@@ -414,7 +419,7 @@ label values region brazil_regions
 // Household identification is UPA + domicilio + unidade consumidora
 // Total households surveyed are total unique combinations of these
 unique COD_UPA NUM_DOM NUM_UC
-local household_count = r(unique)
+texdoc local household_count = strofreal(r(unique))
 
 // Type of residence
 rename TIPO_SITUACAO_REG residence_type
@@ -490,10 +495,6 @@ foreach r_i in "White" "Black" "Mixed" {
 	texdoc local `r_i'_head_hh_pct = strofreal(round(pct[1, "`r_i'"], .01), "%9.2f")
 }
 
-
-texdoc local min_valid_frac = strofreal(round(r(min), .01), "%9.2f")
-texdoc local max_valid_frac = strofreal(round(r(max), .01), "%9.2f")
-
 // Open income data
 // use "Data\Dados_20210304\RENDIMENTO_TRABALHO.dta", clear
 
@@ -509,8 +510,10 @@ The 2017-2018 \ac{FBS} surveyed $`household_count'$ households. Table \ref{demog
 % Compare it with census data
 % While we wait for the 2022 census results, which I believe should be available by the end of January, I'm using the 2010 census.
 In the 2010 census data, 18\% of the households surveyed were in a rural area, while the percentage in the 2017-2018 \ac{FBS} is of $`rural_hh_pct'$\%. In 2010, 38.74\% of households were headed by a woman, versus $`female_head_hh_pct'$\% in 2017-2018. With respect to race, in 2010 49.4\% of the surveyed households were headed by a person self-declared ``white'', 40\% by a person self-declared ``mixed'' and 8.97\% by a person self-declared ``black''. In the 2017-2018 data, we have $`White_head_hh_pct'$\% self-declared ``white'', $`Mixed_head_hh_pct'$\% self-declared ``mixed'' and $`Black_head_hh_pct'$\% self-declared ``black''.
-% Ok this is weird. The % for mixed and white seem to be "switched" between the 2010 census and the POF. Must check!
+\tdILB{The \% for mixed and white seem to be "switched" between the 2010 census and the POF. Double check.}
 
+% Explain the sampling process
+\ac{BIGS} uses a Master Sample framework to select households for surveys, including the \ac{FBS}. The Master Sample is a sample of the census sectors drawn using stratification and probability weighted by the number of households in the sector, and grouped into \acp{PSU} so that each \ac{PSU} has at least 60 households \citep{ibge2008}. The \ac{FBS} uses a subsample of the Master Sample in two stages: first drawing \acp{PSU} randomly from each strata, then drawing households randomly from each \ac{PSU}. See Appendix \ref{ap:sampling_fbs} for more details.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -524,17 +527,84 @@ In the 2010 census data, 18\% of the households surveyed were in a rural area, w
 
 It would be nice to have an annual survey of family expenditures in Brazil, so we could also track changes in time.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\chapter{Sampling of the \ac{FBS}} \label{ap:sampling_fbs}
+
+The \ac{FBS} uses \ac{BIGS}'s Master Sample. The Master Sample is a set of households selected as follows. First, \ac{BIGS} divides the Brazilian territory into census sectors following three sets of criteria: the number of residences, the number of agricultural and livestock facilities, and the number of days needed to collect data in one sector. For urban areas, there is a subdivison between urbanized and non-urbanized areas, and the criterion for rural and non-urbanized areas includes a range of agricultural and livestock facilities. Table \ref{census_sectors_criteria} shows the minimum, average and maximum number of residences or facilities for each category, and the number of days allocated to the data collection.
+
+\begin{table}[]
+\caption{Sector size definition criteria \label{census_sectors_criteria}}
+\begin{adjustwidth}{-1in}{-1in}% adjust the L and R margins by 1 inch
+\begin{center}
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+\multicolumn{2}{c}{\multirow{2}{*}{\textbf{Area type}}} &
+  \multicolumn{3}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Number of\\ residences\end{tabular}}} &
+  \multicolumn{3}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}Number of\\ facilities\end{tabular}}} &
+  \multicolumn{2}{c}{\textbf{Days for collection}} \\ \cmidrule(l){3-10}
+\multicolumn{2}{c}{} &
+  min &
+  avg &
+  max &
+  min &
+  avg &
+  max &
+  counting &
+  \begin{tabular}[c]{@{}c@{}}large\\ agricultural\\ territories\end{tabular} \\ \midrule
+\multicolumn{1}{l|}{\multirow{2}{*}{\textbf{Urban}}} &
+  urbanized area &
+  250 &
+  300 &
+  400 &
+   &
+   &
+   &
+  30 &
+   \\
+\multicolumn{1}{l|}{} &
+  non-urbanized area &
+  150 &
+  200 &
+  250 &
+  100 &
+  150 &
+  200 &
+  45 &
+   \\
+\multicolumn{2}{l}{\textbf{Rural}} &
+  150 &
+  200 &
+  250 &
+  100 &
+  150 &
+  200 &
+  45 &
+  60
+   \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{adjustwidth}
+\end{table}
+
+The sectors are then stratified for sampling as follows: first by federative unit \footnote{A ``federative unit'' is a state or the Federal District of Brasil, where the capital Brasília is located.}, then by municipality within the federative unit, then by the type of residence \footnote{Usually referred to in \ac{BIGS} documents as ``household situation''} and finally by income levels, determined within the stratum.
+\ac{BIGS} groups the census sectors into \acp{PSU}, aiming to have at least 60 permanent residences in each \ac{PSU}, although some \acp{PSU} may not reach that number \citep{ibge2014}. The \acp{PSU} are then drawn from the strata into the Master Sample with weighted probabilities according to the size of the \ac{PSU}. The number of \acp{PSU} drawn is chosen so that the number of individuals 14 years of age or older who are not employed or students --- this is a relevant indicator of another survey, the \ac{HSNS} --- can be estimated with a predefined precision level \citep{ibge2014}. When of the execution of the \ac{FBS}, the number of \acp{PSU} in the Master Sample was 15,096 \citep{ibge2019}.
+
+For the \ac{FBS}, the number of \acp{PSU} sampled from the Master Sample is chosen so that the total income of the head of the households can be estimated under a predetermined precision level. The coefficient of variance was determined for each federative unit, ranging from 6\% to 15\%. The final size of the sample was of 5,504 \ac{FBS}, containing 69,660 households \citep{ibge2019}.
+
+The Master Sample excludes the following areas: military bases, camping sites, prisons, orphanages, hospitals, nunneries and elderly rest homes \citep{ibge2019}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \bibliographystyle{chicago}
 \bibliography{ClaraMAEssaybibfile}
 \end{document}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% appendix placeholder
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\end{document}
-
 
 tex*/
 
