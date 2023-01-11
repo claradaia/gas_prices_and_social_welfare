@@ -47,6 +47,7 @@ vignettes/*.pdf
 
 # Stata stuff
 *.smcl
+*.stloc
 
 # Transformed data files
 aaaMUN/SUPERVISION/2022/Clara/Data/Dados_20210304/*.dta
