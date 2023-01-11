@@ -289,6 +289,7 @@ Why aggregate goods into groups?
 Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \cite{DeatonMuellbauer1980}.
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -382,14 +383,6 @@ The National Accounts provide the time-series aggregate data on consumption and 
 \tdIL{so can we start seeing tables of descriptives of whatever data you already have, you do have some data.}
 
 \section{Population sample description}
-Table \ref{demographic_frequencies} shows how observations are distributed by gender of household head, residence type and race. Overall, the majority of the sampled households are headed by men, self-declares as ``mixed race'' and lives in urban areas.
-
-\input{demographic_summary_table}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\chapter{Results}\label{resultssection}
 
 tex*/
 
@@ -482,12 +475,47 @@ estout col0 col1 using demographic_summary_table.tex, style(tex) replace unstack
     prehead("\begin{table}[htbp]\centering" "\caption{@title}\label{demographic_frequencies}" "\begin{tabular}{l*{6}{c}}" "\toprule" "& \multicolumn{6}{c}{Gender and type of residence} \\") posthead(\midrule) prefoot(\bottomrule) postfoot("\end{tabular}" "\end{table}") // latex setup and last column header
 
 
+// Save some individual percentages for comments
+estpost tab residence_type
+matrix pct = e(pct)
+texdoc local rural_hh_pct = strofreal(round(pct[1,"Rural"], .01), "%9.2f")
+
+estpost tab gender
+matrix pct = e(pct)
+texdoc local female_head_hh_pct = strofreal(round(pct[1,"Female"], .01), "%9.2f")
+
+estpost tab race
+matrix pct = e(pct)
+foreach r_i in "White" "Black" "Mixed" {
+	texdoc local `r_i'_head_hh_pct = strofreal(round(pct[1, "`r_i'"], .01), "%9.2f")
+}
+
+
+texdoc local min_valid_frac = strofreal(round(r(min), .01), "%9.2f")
+texdoc local max_valid_frac = strofreal(round(r(max), .01), "%9.2f")
+
 // Open income data
-use "Data\Dados_20210304\RENDIMENTO_TRABALHO.dta", clear
+// use "Data\Dados_20210304\RENDIMENTO_TRABALHO.dta", clear
 
 texdoc stlog close
 
 /*tex
+The 2017-2018 \ac{FBS} surveyed $`household_count'$ households. Table \ref{demographic_frequencies} shows how observations are distributed by gender of household head, residence type and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
+
+\input{demographic_summary_table}
+
+% Now we show the data is somewhat reliable
+
+% Compare it with census data
+% While we wait for the 2022 census results, which I believe should be available by the end of January, I'm using the 2010 census.
+In the 2010 census data, 18\% of the households surveyed were in a rural area, while the percentage in the 2017-2018 \ac{FBS} is of $`rural_hh_pct'$\%. In 2010, 38.74\% of households were headed by a woman, versus $`female_head_hh_pct'$\% in 2017-2018. With respect to race, in 2010 49.4\% of the surveyed households were headed by a person self-declared ``white'', 40\% by a person self-declared ``mixed'' and 8.97\% by a person self-declared ``black''. In the 2017-2018 data, we have $`White_head_hh_pct'$\% self-declared ``white'', $`Mixed_head_hh_pct'$\% self-declared ``mixed'' and $`Black_head_hh_pct'$\% self-declared ``black''.
+% Ok this is weird. The % for mixed and white seem to be "switched" between the 2010 census and the POF. Must check!
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Results}\label{resultssection}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
