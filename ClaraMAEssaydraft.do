@@ -52,7 +52,6 @@ texdoc init "ClaraMAEssaydraft.tex", replace
 \usepackage{subfiles}
 \usepackage{inputenc}
 \usepackage{lscape}
-%\usepackage[nolist]{acronym}
 \usepackage{acronym}
 \usepackage[title]{appendix}
 \usepackage{bookmark}
@@ -137,7 +136,7 @@ The Informatics Department of UFPR Faculty.
 \acro{IPP}{Import Parity Price}
 \acro{FBS}{Family Budgets Survey}
 \acro{PSU}{Primary Sampling Unit}
-\acro{ICMS}{Imposto sobre Circula\c{c}\~{a}o de Mercadorias e Servi\c{c}os}
+\acro{GSFT}{Goods and Services Flow Tax}
 
 \end{acronym}
 
@@ -156,7 +155,7 @@ The Informatics Department of UFPR Faculty.
 
 
 
-\todo[inline]{We need the acronyms translated into English. Then you can use footnotes or the bib reference to include the original name in Portuguese}
+\todo[inline, color=yellow]{We need the acronyms translated into English. Then you can use footnotes or the bib reference to include the original name in Portuguese}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -164,6 +163,7 @@ The Informatics Department of UFPR Faculty.
 
 \newcommand{\td}{\todo}
 \newcommand{\tdFL}{\todo[fancyline]}
+\newcommand{\tdFLY}{\todo[fancyline, color=yellow]}
 \newcommand{\tdIL}{\todo[inline]}
 \newcommand{\tdILR}{\todo[inline, color=red!80]}
 \newcommand{\tdILY}{\todo[inline, color=yellow]}
@@ -205,11 +205,11 @@ The Informatics Department of UFPR Faculty.
 
 \chapter{Introduction}\label{intro}
 
-\tdIL{Rober suggests italicizing the original Portuguese, curently missing a special c or a z or something in the acronym definition, translating it here into English and creating the acronym for FBS instead or POF. Same with IBGE}
+\tdILY{Rober suggests italicizing the original Portuguese, curently missing a special c or a z or something in the acronym definition, translating it here into English and creating the acronym for FBS instead or POF. Same with IBGE}
 
 \tdIL{checkspelling in bib entries, remember the accents in \TeX: Estatística will yield a missing vowel, use Estat\'{i}stica. }
 
-\tdIL{Also consider using the acronyms in the author field of your bib file, so it looks more tidy. That is, use ``{I}nstituto {B}rasileiro de {G}eografia e {E}statística'' in a ``note'' but only IBGE in the ``author'' field }
+\tdILY{Also consider using the acronyms in the author field of your bib file, so it looks more tidy. That is, use ``{I}nstituto {B}rasileiro de {G}eografia e {E}statística'' in a ``note'' but only IBGE in the ``author'' field }
 
 
 According to the 2017-2018 \ac{FBS} run by the \ac{BIGS} \citep{ibgePOF}, transportation was on average the second largest group of expenses for Brazilian families, corresponding to 18,1\% of their monthly budget \citep{ibge2019}. The demand for gasoline in Brazil is generally estimated to be price-inelastic \citep{Cardoso2019}, especially in the short run \citep{Bastos2016}.
@@ -220,7 +220,7 @@ Having a low price-elasticity of demand and representing a large share of expend
 
 \tdIL{perhaps also add that the price of oil can fluctuate a lot?}
 
-In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower \tdFL{tha what?} for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy \tdFL{big extra space here: fix} \footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil, which resulted in more volatile prices of gasoline to consumers.
+In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower \tdFLY{tha what?} for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\tdFLY{big extra space here: fix}\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil, which resulted in more volatile prices of gasoline to consumers.
 
 From the \tdFL{ENW: English needs work} methodological standpoint, I find that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate effects on specific regions rather than a nation-wide study.
 
@@ -239,7 +239,7 @@ There are also political aspects of interest in analysing the effect of gas pric
 \section{Gas prices interventions}\label{gas_policy_history}
 In 2002, the anti-trust ...
 
-In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{ICMS}) on fuels, to a maximum of 18\%. This was part of a series of attempts to keep inflation under control.
+In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%. This was part of a series of attempts to keep inflation under control.
 
 
 \section{\ac{BIGS}'s Quality of Life Loss Index}
@@ -307,7 +307,7 @@ Following \cite{Slesnick2000}, I use the following attributes to characterize co
 	\item Age of Head of the Household
 	\item Region of Residence
 	\item Race of Head of the Household
-	\item Type of Residence \tdFL{fix spacing} \footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{FBS} classifies households as ``urban or rural'', so I use this classification.}
+	\item Type of Residence\tdFLY{fix spacing}\footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{FBS} classifies households as ``urban or rural'', so I use this classification.}
 	\item Gender of Head of the Household
 \end{enumerate}
 
@@ -385,7 +385,7 @@ The National Accounts provide the time-series aggregate data on consumption and 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\tdIL{so can we start seeing tables of descriptives of whatever data you already have, you do have some data.}
+\tdILY{so can we start seeing tables of descriptives of whatever data you already have, you do have some data.}
 
 \subsection{Population sample description}
 
@@ -591,7 +591,7 @@ The \ac{FBS} uses \ac{BIGS}'s Master Sample. The Master Sample is a set of house
 \end{adjustwidth}
 \end{table}
 
-The sectors are then stratified for sampling as follows: first by federative unit \footnote{A ``federative unit'' is a state or the Federal District of Brasil, where the capital Brasília is located.}, then by municipality within the federative unit, then by the type of residence \footnote{Usually referred to in \ac{BIGS} documents as ``household situation''} and finally by income levels, determined within the stratum.
+The sectors are then stratified for sampling as follows: first by federative unit\footnote{A ``federative unit'' is a state or the Federal District of Brasil, where the capital Brasília is located.}, then by municipality within the federative unit, then by the type of residence\footnote{Usually referred to in \ac{BIGS} documents as ``household situation''} and finally by income levels, determined within the stratum.
 \ac{BIGS} groups the census sectors into \acp{PSU}, aiming to have at least 60 permanent residences in each \ac{PSU}, although some \acp{PSU} may not reach that number \citep{ibge2014}. The \acp{PSU} are then drawn from the strata into the Master Sample with weighted probabilities according to the size of the \ac{PSU}. The number of \acp{PSU} drawn is chosen so that the number of individuals 14 years of age or older who are not employed or students --- this is a relevant indicator of another survey, the \ac{HSNS} --- can be estimated with a predefined precision level \citep{ibge2014}. When of the execution of the \ac{FBS}, the number of \acp{PSU} in the Master Sample was 15,096 \citep{ibge2019}.
 
 For the \ac{FBS}, the number of \acp{PSU} sampled from the Master Sample is chosen so that the total income of the head of the households can be estimated under a predetermined precision level. The coefficient of variance was determined for each federative unit, ranging from 6\% to 15\%. The final size of the sample was of 5,504 \ac{FBS}, containing 69,660 households \citep{ibge2019}.
