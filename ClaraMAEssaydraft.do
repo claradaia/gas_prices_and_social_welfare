@@ -155,7 +155,7 @@ The Informatics Department of UFPR Faculty.
 
 
 
-\todo[inline, color=yellow]{We need the acronyms translated into English. Then you can use footnotes or the bib reference to include the original name in Portuguese}
+\todo[inline, color=green]{We need the acronyms translated into English. Then you can use footnotes or the bib reference to include the original name in Portuguese}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -211,6 +211,8 @@ The Informatics Department of UFPR Faculty.
 
 \tdILY{Also consider using the acronyms in the author field of your bib file, so it looks more tidy. That is, use ``{I}nstituto {B}rasileiro de {G}eografia e {E}statística'' in a ``note'' but only IBGE in the ``author'' field }
 
+\tdIL{You could have somewhere in the intro something about how many/most countries subsidize oil for consumers and how much politcal unrest trying to eliminate those inefficient subsidies can cause.}
+
 
 According to the 2017-2018 \ac{FBS} run by the \ac{BIGS} \citep{ibgePOF}, transportation was on average the second largest group of expenses for Brazilian families, corresponding to 18,1\% of their monthly budget \citep{ibge2019}. The demand for gasoline in Brazil is generally estimated to be price-inelastic \citep{Cardoso2019}, especially in the short run \citep{Bastos2016}.
 
@@ -220,15 +222,15 @@ Having a low price-elasticity of demand and representing a large share of expend
 
 \tdIL{perhaps also add that the price of oil can fluctuate a lot?}
 
-In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower \tdFLY{tha what?} for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\tdFLY{big extra space here: fix}\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil, which resulted in more volatile prices of gasoline to consumers.
+In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil, which resulted in more volatile prices of gasoline to consumers.
 
-From the \tdFL{ENW: English needs work} methodological standpoint, I find that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate effects on specific regions rather than a nation-wide study.
+From the \tdFL{ENW: English needs work: from ``a''} methodological standpoint, \tr{I find} \tdFL{reword} that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate \tdFL{ENW grammar} effects on specific regions rather than a nation-wide study.
 
 \tdIL{We will need a few references to back this up}
 
-There are also political aspects of interest in analysing the effect of gas price changes. Politicians often use gas price regulations as a popularity tool, especially near elections.\tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. Better understanding of demand \tde for gasoline and welfare effect of price changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
+There are also political aspects of interest in analysing the effect of gas price changes. \tdFL{As explained above: bring examples from other countries too?} Politicians often use gas price regulations as a popularity tool, especially near elections. \tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. Better understanding of demand \tde for gasoline and welfare effect of price changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
 
-\tdIL{THis makes it sound that the governmnet revenue and the profits are NOT somehow part of social welfare BUT they are: rethink and reword. The government is not a person, so you may want to measure those gains in goverment revenue in terms of the saved tax distortion in other markets but the stock oweners are indivudals with standing.}
+\todo[color=green]{THis makes it sound that the governmnet revenue and the profits are NOT somehow part of social welfare BUT they are: rethink and reword. The government is not a person, so you may want to measure those gains in goverment revenue in terms of the saved tax distortion in other markets but the stock oweners are indivudals with standing.}
 
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -254,23 +256,23 @@ For comparison. IBGE uses its own deflators.
 
 \chapter{Methodology and Data}\label{methods}
 We want to characterize the differences in the demand for gasoline across households of different compositions and attributes.
-Following \cite{Jorgenson1990}, I assume \tr{that} households behave as individuals when it comes to maximizing utility, and that households with the same attributes have a utility function of the \textit{transcendental logarithm} form \citep{JorgensonChristensenLau1975}:
+Following \cite{Jorgenson1990}, I assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have a utility function of the \textit{transcendental logarithm} form \citep{JorgensonChristensenLau1975}:
 
 \begin{equation}
 - \ln U = \alpha_0 + \sum \alpha_i \ln X_i + \frac{\sum{\sum{B_{ij} \ln X_i \ln X_j}}}{2}
 \end{equation}
 
-Where $i$ and $j$ identify available goods and $X_i$ represents the quantities consumed. By maximizing this utility function and incorporating differences related to demographic characteristics of households, we obtain an indirect utility function \citep{JorgensonSlesnick1987}:
+\tr{Where} \tdFL{lowercase, as this just follows from the equation, perhaps with a comma in front} $i$ and $j$ identify available goods and $X_i$ represents the quantities consumed. By maximizing this utility function and incorporating differences related to demographic characteristics of \tr{the} households, we \tdFL{Again, try to reword, it is not ``we''...use the passive voice perhaps.} obtain an indirect utility function \citep{JorgensonSlesnick1987}:
 
 \begin{equation}
 \ln V_k = \ln \left( \frac{p}{M_k} \right) \alpha_p + \frac{1}{2} \ln \left( \frac{p}{M_k} \right)B_{pp} \ln \left( \frac{p}{M_k} \right) + \ln \left( \frac{p}{M_k} \right)B_{pA}A_k
 \end{equation}
 
-Where
+Where \tdFL{again lowercase}
 \begin{itemize}
 	\item $k$ identifies a household,
 	\item $A_k$ is the vector of attributes of household $k$,
-	\item $\alpha_p$, $B_pp$ characterize general preferences and
+	\item $\alpha_p$, $B_pp$ \tdFL{Do you mean $B_{pp}$} characterize general preferences and
 	\item $B_{pA}$ characterize preferences according to observed attributes.
 \end{itemize}
 
@@ -291,6 +293,8 @@ Why aggregate goods into groups?
 1. The number of goods consumed observed by the \ac{FBS} is very large relative to the number of observations in the 2017-2018 survey. Aggregating goods into groups improves the statistical power of the model.
 2. It makes sense intuitively: instead of making purchase decisions with full information all the time, families may allocate income into groups like ``food'', ``housing'' and ``transportation'' and treat each as a separate optimization problem.
 
+\tdIL{Is this, when separability is not really there, the ``mental account'' heuristic that behavioural economists talk about? In that case, you might wat to mention that, at least in a footnote.}
+
 Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \citep{DeatonMuellbauer1980}.
 
 
@@ -300,18 +304,22 @@ Grouping requires assuming \textit{separability}: a group is separable when the 
 
 \section{Study Variables}\label{variablessection}
 \subsection{Cohort Attributes} \label{cohort_attributes}
-Following \cite{Slesnick2000}, I use the following attributes to characterize cohorts:
+Following \cite{Slesnick2000}, \tr{I use} the following attributes to characterize cohorts:\tdFL{not sure you need capitals for the items in this list}
 
 \begin{enumerate}
 	\item Household Size
 	\item Age of Head of the Household
 	\item Region of Residence
 	\item Race of Head of the Household
-	\item Type of Residence\tdFLY{fix spacing}\footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{FBS} classifies households as ``urban or rural'', so I use this classification.}
+	\item Type of Residence\footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{FBS} classifies households as ``urban or rural'', so I use this classification.}
 	\item Gender of Head of the Household
 \end{enumerate}
 
-See Table \ref{attribute_vars} for the variables from the dataset used to extract each of these attributes.
+See Table \ref{attribute_vars} for the variables from the dataset used to extract\tdFL{capture?} each of these attributes.
+
+
+\tdIL{ENW, In table \ref{attribute_vars} use italics for the official regions and ``and'' in English}
+
 
 \setlength{\extrarowheight}{3pt}
 \begin{table}[]
@@ -357,7 +365,7 @@ The model for individual expenditure shares is given by:
 , where
 \begin{itemize}
 	\item $w_k$ is the vector of expenditure shares for each commodity group for the $k$th \tdFL{FNW: fix subscript format} household;
-	\item $M_k$ is the household income;
+	\item $M_k$ is the household income;\tdFL{ENW check use of ``the''}
 	\item $A_k$ is the vector of household attributes described in Section \ref{cohort_attributes};
 	\item $\mu_k$ is the stochastic component for the $k$th household;
 	\item $\omega_p$, $B_{pp}i$ \tdFL{FNW check the formatting of subscripts} and $B_{pA}$ are the parameters we want to estimate.
@@ -501,7 +509,9 @@ foreach r_i in "White" "Black" "Mixed" {
 texdoc stlog close
 
 /*tex
-The 2017-2018 \ac{FBS} surveyed $`household_count'$ households. Table \ref{demographic_frequencies} shows how observations are distributed by gender of household head, residence type and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
+The 2017-2018 \ac{FBS} surveyed $`household_count'$ households.\tdFL{try to format the macro to show a comma for thousands, as in 58,039} Table \ref{demographic_frequencies} shows how observations are distributed by gender of household head, residence type \tdFL{consider using Oxford commas} and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
+
+\tdIL{It might help to have also the percentages in the table. }
 
 \input{demographic_summary_table}
 
@@ -513,7 +523,7 @@ In the 2010 census data, 18\% of the households surveyed were in a rural area, w
 \tdILB{The \% for mixed and white seem to be "switched" between the 2010 census and the POF. Double check.}
 
 % Explain the sampling process
-\ac{BIGS} uses a Master Sample framework to select households for surveys, including the \ac{FBS}. The Master Sample is a sample of the census sectors drawn using stratification and probability weighted by the number of households in the sector, and grouped into \acp{PSU} so that each \ac{PSU} has at least 60 households \citep{ibge2008}. The \ac{FBS} uses a subsample of the Master Sample in two stages: first drawing \acp{PSU} randomly from each strata, then drawing households randomly from each \ac{PSU}. See Appendix \ref{ap:sampling_fbs} for more details.
+\ac{BIGS} uses a Master Sample \tdFL{capitals needed?} framework to select households for surveys, including the \ac{FBS}. The Master Sample is a sample of the census sectors drawn using stratification and probability weighted by the number of households in the sector, and grouped into \acp{PSU} so that each \ac{PSU} has at least 60 households \citep{ibge2008}. The \ac{FBS} uses a subsample of the Master Sample in two stages: first drawing \acp{PSU} randomly from each strata, then drawing households randomly from each \ac{PSU}. See Appendix \ref{ap:sampling_fbs} for more details.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -536,9 +546,12 @@ It would be nice to have an annual survey of family expenditures in Brazil, so w
 
 The \ac{FBS} uses \ac{BIGS}'s Master Sample. The Master Sample is a set of households selected as follows. First, \ac{BIGS} divides the Brazilian territory into census sectors following three sets of criteria: the number of residences, the number of agricultural and livestock facilities, and the number of days needed to collect data in one sector. For urban areas, there is a subdivison between urbanized and non-urbanized areas, and the criterion for rural and non-urbanized areas includes a range of agricultural and livestock facilities. Table \ref{census_sectors_criteria} shows the minimum, average and maximum number of residences or facilities for each category, and the number of days allocated to the data collection.
 
+\tdIL{Note how Rober changed slightly the size of the font in the table, so you really do not need to fiddle with the largin size. This would probably be a bit more elegant and keep more with the overall settings of the template. I left your original code there commented out. Also commeted out the changepage package in the preamble.}
+
 \begin{table}[]
 \caption{Sector size definition criteria \label{census_sectors_criteria}}
-\begin{adjustwidth}{-1in}{-1in}% adjust the L and R margins by 1 inch
+%\begin{adjustwidth}{-1in}{-1in}% adjust the L and R margins by 1 inch
+\begin{small}
 \begin{center}
 \begin{tabular}{@{}lccccccccc@{}}
 \toprule
@@ -588,11 +601,12 @@ The \ac{FBS} uses \ac{BIGS}'s Master Sample. The Master Sample is a set of house
 \bottomrule
 \end{tabular}
 \end{center}
-\end{adjustwidth}
+\end{small}
+%\end{adjustwidth}
 \end{table}
 
-The sectors are then stratified for sampling as follows: first by federative unit\footnote{A ``federative unit'' is a state or the Federal District of Brasil, where the capital Brasília is located.}, then by municipality within the federative unit, then by the type of residence\footnote{Usually referred to in \ac{BIGS} documents as ``household situation''} and finally by income levels, determined within the stratum.
-\ac{BIGS} groups the census sectors into \acp{PSU}, aiming to have at least 60 permanent residences in each \ac{PSU}, although some \acp{PSU} may not reach that number \citep{ibge2014}. The \acp{PSU} are then drawn from the strata into the Master Sample with weighted probabilities according to the size of the \ac{PSU}. The number of \acp{PSU} drawn is chosen so that the number of individuals 14 years of age or older who are not employed or students --- this is a relevant indicator of another survey, the \ac{HSNS} --- can be estimated with a predefined precision level \citep{ibge2014}. When of the execution of the \ac{FBS}, the number of \acp{PSU} in the Master Sample was 15,096 \citep{ibge2019}.
+The sectors are then stratified for sampling as follows: first by federative unit,\footnote{A ``federative unit'' is a state or the Federal District of Brasil, where the capital Brasília is located.} then by municipality within the federative unit, then by the type of residence\footnote{Usually referred to in \ac{BIGS} documents as ``household situation''} and finally by income levels, determined within the stratum.
+\ac{BIGS} groups the census sectors into \acp{PSU}, aiming to have at least 60 permanent residences in each \ac{PSU}, although some \acp{PSU} may not reach that number \citep{ibge2014}. The \acp{PSU} are then drawn from the strata into the Master Sample with weighted probabilities according to the size of the \ac{PSU}. The number of \acp{PSU} drawn is chosen so that the number of individuals 14 years of age or older who are not employed or students --- this is a relevant indicator of another survey, the \ac{HSNS} \tdFL{definition missing} --- can be estimated with a predefined precision level \citep{ibge2014}. When of the execution of the \ac{FBS}, the number of \acp{PSU} in the Master Sample was 15,096 \citep{ibge2019}.
 
 For the \ac{FBS}, the number of \acp{PSU} sampled from the Master Sample is chosen so that the total income of the head of the households can be estimated under a predetermined precision level. The coefficient of variance was determined for each federative unit, ranging from 6\% to 15\%. The final size of the sample was of 5,504 \ac{FBS}, containing 69,660 households \citep{ibge2019}.
 
@@ -601,6 +615,8 @@ The Master Sample excludes the following areas: military bases, camping sites, p
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tdIL{You will need to tweak those missing freign characetrs in your bib entries and secure the capitalizations too}
 
 \bibliographystyle{chicago}
 \bibliography{ClaraMAEssaybibfile}
