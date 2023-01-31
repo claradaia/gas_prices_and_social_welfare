@@ -250,6 +250,7 @@ For comparison. IBGE uses its own deflators.
 \section{Estimating Social Welfare from Aggregate Consumer Behaviour}
 % Adler 2019, Jorgenson1990, JorgensonSlesnick1987, JorgensonSlesnick2014
 
+
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -463,10 +464,11 @@ label variable age_group "Age group"
 bysort COD_UPA NUM_DOM NUM_UC: gen n_people=_N
 
 // 7 is code for "7 or more"
-replace n_people = 7 if n_people >= 7
-label variable n_people "Number of people"
+gen cut_n_people = n_people
+replace cut_n_people = 7 if cut_n_people >= 7
+label variable cut_n_people "Number of people"
 label define n_people_with_cutoff 7 ">= 7"
-label values n_people n_people_with_cutoff
+label values cut_n_people n_people_with_cutoff
 
 // keep only person of reference in the household (aka "head")
 keep if V0306 == 1
@@ -503,9 +505,6 @@ foreach r_i in "White" "Black" "Mixed" {
 	texdoc local `r_i'_head_hh_pct = strofreal(round(pct[1, "`r_i'"], .01), "%9.2f")
 }
 
-// Open income data
-// use "Data\Dados_20210304\RENDIMENTO_TRABALHO.dta", clear
-
 texdoc stlog close
 
 /*tex
@@ -525,6 +524,228 @@ In the 2010 census data, 18\% of the households surveyed were in a rural area, w
 % Explain the sampling process
 \ac{BIGS} uses a Master Sample \tdFL{capitals needed?} framework to select households for surveys, including the \ac{FBS}. The Master Sample is a sample of the census sectors drawn using stratification and probability weighted by the number of households in the sector, and grouped into \acp{PSU} so that each \ac{PSU} has at least 60 households \citep{ibge2008}. The \ac{FBS} uses a subsample of the Master Sample in two stages: first drawing \acp{PSU} randomly from each strata, then drawing households randomly from each \ac{PSU}. See Appendix \ref{ap:sampling_fbs} for more details.
 
+tex*/
+
+texdoc stlog, nolog
+
+
+/*******************
+* expenditure data *
+********************/
+
+// open individual expenditure data
+use "Data\Dados_20210304\DESPESA_INDIVIDUAL.dta", clear
+
+// add collective expenditure data
+append using "Data\Dados_20210304\DESPESA_COLETIVA.dta"
+
+// add food & cleaning products expenditure data
+append using "Data\Dados_20210304\CADERNETA_COLETIVA.dta"
+
+// add rent data
+append using "Data\Dados_20210304\ALUGUEL_ESTIMADO.dta"
+
+// rename variables of interest
+// the meaning of "QUADRO" is not precise, so I'm leaving it as is
+rename V9001 item_code
+rename V8000 amount_spent
+
+// count observed purchases
+count
+matrix ct = r(N)
+texdoc local purchase_ct = strofreal(ct[1,1])
+
+// 9999999.99 means "unknown"
+// but someone appears to have used 99999 in the "ALUGUEL_ESTIMADO" dataset instead, so we'll also drop those two observations
+count if amount_spent == 9999999.99 | (QUADRO==0 & amount_spent == 99999)
+matrix ct = r(N)
+texdoc local unknown_amt = strofreal(ct[1,1])
+drop if amount_spent == 9999999.99 | (QUADRO==0 & amount_spent == 99999)
+
+gen commodity_group = .
+label define commodity_groups 1 "Gasoline" 2 "Transportation" 3 "Food" 4 "Energy (others)" 5 "Consumer Services" 6 "Consumer Goods" 7 "Capital Services"
+
+
+//***********************************
+// Gasoline and Transportation groups
+
+/* All vehicle fuel codes in case they are needed later
+2301401 -- gasoline
+2301501 -- enhanced gasoline
+2301502 -- special gasoline
+2301601 -- ethanol
+2301701 -- diesel
+2301801 -- natural gas for vehicles*/
+
+// QUADRO 23: expenditure on transportation
+replace commodity_group = 2 if QUADRO == 23
+
+// item codes for gasoline
+// 23* are for vehicles, 700801 is for domestic use
+foreach item_code_i in 2301401 2301501 2301502 700801 {
+	replace commodity_group = 1 if item_code == `item_code_i'
+}
+
+//***********
+// Food group
+
+// QUADRO 24: expenditure eating out
+replace commodity_group = 3 if QUADRO == 24
+
+/* The "QUADRO" variable of the CADERNETA_COLETIVA dataset is not as useful as in the other datasets.
+For ex, if we get the prefixes from the item codes with
+
+gen code_prefix = int(V9001/100000)
+
+we can see all (and only) "quadros" between 63 and 69 have items with other prefixes:
+
+histogram QUADRO if code_prefix!=QUADRO, discrete
+
+However, not all is lost. The code prefixes do seem organized, so I got the following code ranges by looking at the "Cadastro de Produtos" table:
+
+code range				purchase
+---------------------|----------------------------------------------
+6300101 - 8600101		food items
+8600101 - 8610401		cleaning products and some disposable stuff, like coffee filters and cleaning gloves
+8700101 - 8702101		pet food and pet hygiene products
+8800101 - 8800201		flowers
+8900101					toilet paper
+9000101 - 9000928		grouped food items, when unable to specify
+
+*/
+
+// item codes for food
+replace commodity_group = 3 if inrange(item_code, 6300101, 8600101) | inrange(item_code, 9000101, 9000928)
+
+
+//**********************
+// Energy (others) group
+/*
+quadro		purchase
+---------|----------------------------------------------------------
+	06		power, water & sewage fees, piped natural gas, phone, internet, tv
+	07		domestic fuels and water
+
+Within quadro 06
+code			purchase
+600101			power
+600301			piped natural gas
+601801			aggregated costs of power, water and sewage
+699901			some other aggregation of power, water, internet, etc
+
+Within quadro 07, all codes are for domestic fuels (including 700801, included in the gasoline group), except for 700201 and 700202, which are for water
+*/
+replace commodity_group = 4 if inlist(item_code, 600101, 600301, 601801, 699901) | (QUADRO == 7 & ~inlist(item_code, 700201, 700202, 700801))
+
+
+//************************
+// Consumer services group
+/*
+quadro  	purchase
+---------|----------------------------------------------------------
+	09		repair, maintenance and rent of furniture and appliances
+	19		domestic services (cleaning, cooking, gardening, etc)
+	22		games, bets
+	25		communication
+	31		services like barber/salon, massage, tattoos
+	40		lawyer, notary services
+	42		health care services
+	42B		health care services NOT ACQUIRED
+	50		vehicle-related fees for docs, insurance, etc
+
+Within quadro 8, we find the following ranges:
+code range				purchase
+--------------------|----------------------------------------------
+800101 - 802301			products for repairs/maintenance
+802401 - 802601			contractor fees for repairs/maintenance
+802601 - 806701			other products for repairs/maintenance
+899901					aggregated expenditure, when individual values not informed
+
+
+Items from quadros 07 and 06 that are not energy-related are included here.
+
+Within group 9, there are item codes both for goods purchased to fix/maintain an appliance or piece of furniture and for the service fees of the repair. I'm treating everything as a "service", as these are likely not separable: each good needed for a repair will have a particular substitution relationship with the associated service.
+
+*/
+
+replace commodity_group = 5 if ///
+	inlist(QUADRO, 9, 19, 22, 25, 31, 40, 42, 50) | ///
+	(QUADRO == 6 & ~inlist(item_code, 600101, 600301, 601801, 699901)) | ///
+	(QUADRO == 7 & inlist(item_code, 700202, 700801)) | ///
+	(QUADRO == 8 & inrange(item_code, 802401, 802601))
+
+
+//*********************
+// Consumer goods group
+/*
+quadro  	purchase
+---------|----------------------------------------------------------
+	08		small repair/maintenance of house or tomb
+	15		electric appliances
+	16		non-electric appliances
+	17		furniture
+	18		decoration and insulation products
+	21		smoking stuff
+	27 		newspaper, magazines
+	29		health products, including medication
+	29B		health products NOT ACQUIRED
+	30 		make up and hygiene stuff
+	32		stationary
+	34		purchase/renting male clothing
+	35		purchase/renting female clothing
+	36		purchase/renting children's clothing
+	37		fabric, crafts, bed, bath and kitchen towels
+	38		purchase/renting purses, shoes, accessories
+	39		domestic utensils
+	43		toys, games, hunting, fishing, sports, music materials
+	44		cell phones and accessories
+	46		jewelry and watch purchases
+	47		real estate (not the one they live in)
+	51		vehicle purchase payments
+
+*/
+
+replace commodity_group = 6 if inlist(QUADRO, 15, 16, 17, 18, 21, 27, 29, 30, 32, 34, 35, 36, 37, 39, 43, 44, 46, 47, 51)
+
+
+//***********************
+// Capital services group
+/*
+quadro  	purchase
+---------|----------------------------------------------------------
+	10		rent, house taxes and other house fees
+	11		building/renovating of house or tomb
+
+*/
+
+replace commodity_group = 7 if inlist(QUADRO, 10, 11)
+
+
+// Quadros that still need to be mapped
+// This is taking forever so I will leave it out for now and work on one category at a time
+/*
+quadro  	purchase
+	12		other house items
+	13		pets and pet care
+	26		credit card/loan interest and fees
+	28		tickets to museums, purchase of photography supplies, games
+	33		car maintenance and accessories
+	41		travelling
+	45		parties and ceremonies
+	48		loans, securities
+	49		courses, textbooks, other education goods
+
+*/
+
+texdoc stlog close
+
+/*tex
+
+% Data cleaning and expense mapping
+Of the original $`purchase_ct'$ purchases recorded, $`unknown_amt'$ were excluded from the analysis as the amount spent was not informed.
+
+Some expenses on services like renting of clothes or appliance repairs have been included in the ``Consumer Goods'' group, as they are likely not separable from the goods associated.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -536,6 +757,8 @@ In the 2010 census data, 18\% of the households surveyed were in a rural area, w
 \chapter{Conclusions}\label{conclusions}
 
 It would be nice to have an annual survey of family expenditures in Brazil, so we could also track changes in time.
+
+The \ac{FBS} product registry, albeit very detailed, could use improvements. There are 13,474 products identified in the registry, of which 8708 are used in the ``Caderneta Coletiva'' questionnaire. The mapping of survey ``quadros'' can be used to categorize part of the items, but not the ``Caderneta Coletiva'' items. Instead, the goods numeric codes follow a scheme not described in the data documentation. Besides, since the data format does not have labels and the \verb|.xls| files do not have descriptions of the ``quadros'', one must jump from the \verb|.pdf| manual of the survey to the table to the dataset to interpret the codes, creating multiple opportunities for mistakes.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
