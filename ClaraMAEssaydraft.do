@@ -57,7 +57,6 @@ texdoc init "ClaraMAEssaydraft.tex", replace
 \usepackage{bookmark}
 \usepackage{tabularx}
 \usepackage{booktabs}
-\usepackage{changepage}
 \usepackage{multirow}
 
 
@@ -428,7 +427,7 @@ label values region brazil_regions
 // Household identification is UPA + domicilio + unidade consumidora
 // Total households surveyed are total unique combinations of these
 unique COD_UPA NUM_DOM NUM_UC
-texdoc local household_count = strofreal(r(unique))
+texdoc local household_count = strofreal(r(unique), "%9.0gc")
 
 // Type of residence
 rename TIPO_SITUACAO_REG residence_type
@@ -508,7 +507,7 @@ foreach r_i in "White" "Black" "Mixed" {
 texdoc stlog close
 
 /*tex
-The 2017-2018 \ac{FBS} surveyed $`household_count'$ households.\tdFL{try to format the macro to show a comma for thousands, as in 58,039} Table \ref{demographic_frequencies} shows how observations are distributed by gender of household head, residence type \tdFL{consider using Oxford commas} and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
+The 2017-2018 \ac{FBS} surveyed $`household_count'$ households.\tdFLY{try to format the macro to show a comma for thousands, as in 58,039} Table \ref{demographic_frequencies} shows how observations are distributed by gender of household head, residence type \tdFL{consider using Oxford commas} and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
 
 \tdIL{It might help to have also the percentages in the table. }
 
@@ -522,7 +521,7 @@ In the 2010 census data, 18\% of the households surveyed were in a rural area, w
 \tdILB{The \% for mixed and white seem to be "switched" between the 2010 census and the POF. Double check.}
 
 % Explain the sampling process
-\ac{BIGS} uses a Master Sample \tdFL{capitals needed?} framework to select households for surveys, including the \ac{FBS}. The Master Sample is a sample of the census sectors drawn using stratification and probability weighted by the number of households in the sector, and grouped into \acp{PSU} so that each \ac{PSU} has at least 60 households \citep{ibge2008}. The \ac{FBS} uses a subsample of the Master Sample in two stages: first drawing \acp{PSU} randomly from each strata, then drawing households randomly from each \ac{PSU}. See Appendix \ref{ap:sampling_fbs} for more details.
+\ac{BIGS} uses a master sample \tdFLY{capitals needed?} \tdFLY{IBGE's docs say "Amostra Mestra" with capitals, but I saw other docs in English using no capitals so I removed the capitals} framework to select households for surveys, including the \ac{FBS}. The master sample is a sample of the census sectors drawn using stratification and probability weighted by the number of households in the sector, and grouped into \acp{PSU} so that each \ac{PSU} has at least 60 households \citep{ibge2008}. The \ac{FBS} uses a subsample of the master sample in two stages: first drawing \acp{PSU} randomly from each strata, then drawing households randomly from each \ac{PSU}. See Appendix \ref{ap:sampling_fbs} for more details.
 
 tex*/
 
@@ -553,13 +552,13 @@ rename V8000 amount_spent
 // count observed purchases
 count
 matrix ct = r(N)
-texdoc local purchase_ct = strofreal(ct[1,1])
+texdoc local purchase_ct = strofreal(ct[1,1], "%12.0gc")
 
 // 9999999.99 means "unknown"
 // but someone appears to have used 99999 in the "ALUGUEL_ESTIMADO" dataset instead, so we'll also drop those two observations
 count if amount_spent == 9999999.99 | (QUADRO==0 & amount_spent == 99999)
 matrix ct = r(N)
-texdoc local unknown_amt = strofreal(ct[1,1])
+texdoc local unknown_amt = strofreal(ct[1,1], "%12.0gc")
 drop if amount_spent == 9999999.99 | (QUADRO==0 & amount_spent == 99999)
 
 gen commodity_group = .
@@ -758,7 +757,7 @@ Some expenses on services like renting of clothes or appliance repairs have been
 
 It would be nice to have an annual survey of family expenditures in Brazil, so we could also track changes in time.
 
-The \ac{FBS} product registry, albeit very detailed, could use improvements. There are 13,474 products identified in the registry, of which 8708 are used in the ``Caderneta Coletiva'' questionnaire. The mapping of survey ``quadros'' can be used to categorize part of the items, but not the ``Caderneta Coletiva'' items. Instead, the goods numeric codes follow a scheme not described in the data documentation. Besides, since the data format does not have labels and the \verb|.xls| files do not have descriptions of the ``quadros'', one must jump from the \verb|.pdf| manual of the survey to the table to the dataset to interpret the codes, creating multiple opportunities for mistakes.
+The \ac{FBS} product registry, albeit very detailed, could use improvements. There are 13,474 products identified in the registry, of which 8,708 are used in the ``Caderneta Coletiva'' questionnaire. The mapping of survey ``quadros'' can be used to categorize part of the items, but not the ``Caderneta Coletiva'' items. Instead, the goods numeric codes follow a scheme not described in the data documentation. Besides, since the data format does not have labels and the \verb|.xls| files do not have descriptions of the ``quadros'', one must jump from the \verb|.pdf| manual of the survey to the table to the dataset to interpret the codes, creating multiple opportunities for mistakes.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -767,13 +766,12 @@ The \ac{FBS} product registry, albeit very detailed, could use improvements. The
 
 \chapter{Sampling of the \ac{FBS}} \label{ap:sampling_fbs}
 
-The \ac{FBS} uses \ac{BIGS}'s Master Sample. The Master Sample is a set of households selected as follows. First, \ac{BIGS} divides the Brazilian territory into census sectors following three sets of criteria: the number of residences, the number of agricultural and livestock facilities, and the number of days needed to collect data in one sector. For urban areas, there is a subdivison between urbanized and non-urbanized areas, and the criterion for rural and non-urbanized areas includes a range of agricultural and livestock facilities. Table \ref{census_sectors_criteria} shows the minimum, average and maximum number of residences or facilities for each category, and the number of days allocated to the data collection.
+The \ac{FBS} uses \ac{BIGS}'s master Sample. The master sample is a set of households selected as follows. First, \ac{BIGS} divides the Brazilian territory into census sectors following three sets of criteria: the number of residences, the number of agricultural and livestock facilities, and the number of days needed to collect data in one sector. For urban areas, there is a subdivison between urbanized and non-urbanized areas, and the criterion for rural and non-urbanized areas includes a range of agricultural and livestock facilities. Table \ref{census_sectors_criteria} shows the minimum, average and maximum number of residences or facilities for each category, and the number of days allocated to the data collection.
 
-\tdIL{Note how Rober changed slightly the size of the font in the table, so you really do not need to fiddle with the largin size. This would probably be a bit more elegant and keep more with the overall settings of the template. I left your original code there commented out. Also commeted out the changepage package in the preamble.}
+\tdILY{Note how Rober changed slightly the size of the font in the table, so you really do not need to fiddle with the largin size. This would probably be a bit more elegant and keep more with the overall settings of the template. I left your original code there commented out. Also commeted out the changepage package in the preamble.}
 
 \begin{table}[]
 \caption{Sector size definition criteria \label{census_sectors_criteria}}
-%\begin{adjustwidth}{-1in}{-1in}% adjust the L and R margins by 1 inch
 \begin{small}
 \begin{center}
 \begin{tabular}{@{}lccccccccc@{}}
@@ -825,15 +823,14 @@ The \ac{FBS} uses \ac{BIGS}'s Master Sample. The Master Sample is a set of house
 \end{tabular}
 \end{center}
 \end{small}
-%\end{adjustwidth}
 \end{table}
 
 The sectors are then stratified for sampling as follows: first by federative unit,\footnote{A ``federative unit'' is a state or the Federal District of Brasil, where the capital Brasília is located.} then by municipality within the federative unit, then by the type of residence\footnote{Usually referred to in \ac{BIGS} documents as ``household situation''} and finally by income levels, determined within the stratum.
-\ac{BIGS} groups the census sectors into \acp{PSU}, aiming to have at least 60 permanent residences in each \ac{PSU}, although some \acp{PSU} may not reach that number \citep{ibge2014}. The \acp{PSU} are then drawn from the strata into the Master Sample with weighted probabilities according to the size of the \ac{PSU}. The number of \acp{PSU} drawn is chosen so that the number of individuals 14 years of age or older who are not employed or students --- this is a relevant indicator of another survey, the \ac{HSNS} \tdFL{definition missing} --- can be estimated with a predefined precision level \citep{ibge2014}. When of the execution of the \ac{FBS}, the number of \acp{PSU} in the Master Sample was 15,096 \citep{ibge2019}.
+\ac{BIGS} groups the census sectors into \acp{PSU}, aiming to have at least 60 permanent residences in each \ac{PSU}, although some \acp{PSU} may not reach that number \citep{ibge2014}. The \acp{PSU} are then drawn from the strata into the master sample with weighted probabilities according to the size of the \ac{PSU}. The number of \acp{PSU} drawn is chosen so that the number of individuals 14 years of age or older who are not employed or students --- this is a relevant indicator of another survey, the \ac{HSNS} \tdFL{definition missing} --- can be estimated with a predefined precision level \citep{ibge2014}. When of the execution of the 2017-2018 \ac{FBS}, the number of \acp{PSU} in the master sample was 15,096 \citep{ibge2019}.
 
-For the \ac{FBS}, the number of \acp{PSU} sampled from the Master Sample is chosen so that the total income of the head of the households can be estimated under a predetermined precision level. The coefficient of variance was determined for each federative unit, ranging from 6\% to 15\%. The final size of the sample was of 5,504 \ac{FBS}, containing 69,660 households \citep{ibge2019}.
+For the \ac{FBS}, the number of \acp{PSU} sampled from the master sample is chosen so that the total income of the head of the households can be estimated under a predetermined precision level. The coefficient of variance was determined for each federative unit, ranging from 6\% to 15\%. The final size of the sample was of 5,504 \ac{FBS}, containing 69,660 households \citep{ibge2019}.
 
-The Master Sample excludes the following areas: military bases, camping sites, prisons, orphanages, hospitals, nunneries and elderly rest homes \citep{ibge2019}.
+The master sample excludes the following areas: military bases, camping sites, prisons, orphanages, hospitals, nunneries and elderly rest homes \citep{ibge2019}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
