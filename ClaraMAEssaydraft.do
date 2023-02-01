@@ -474,20 +474,14 @@ keep if V0306 == 1
 
 
 // Tentative summary table
-// The desired output looks like
-// table gender residence_type race, nototals
-// But Stata can't make three way tables with tabulate!
-// So we need to work around
-// Make 3 two-way tabs, saving them with eststo
-eststo col0: estpost tab race residence_type if gender==1
-eststo col1: estpost tab race residence_type if gender==2
-
-// make it latex, add header and title
-estout col0 col1 using demographic_summary_table.tex, style(tex) replace unstack /// setup
-    mlabels("Male" "Female", span prefix(\multicolumn{@span}{c}{) suffix(})  erepeat(\cline{@span})) eqlabels(,lhs("Race")) collabels(none) /// labels for columns
-    title("Frequency by gender, type of residence and race") ///
-    prehead("\begin{table}[htbp]\centering" "\caption{@title}\label{demographic_frequencies}" "\begin{tabular}{l*{6}{c}}" "\toprule" "& \multicolumn{6}{c}{Gender and type of residence} \\") posthead(\midrule) prefoot(\bottomrule) postfoot("\end{tabular}" "\end{table}") // latex setup and last column header
-
+// Can use some improvements on the margins still
+collect: table residence_type gender race, ///
+	stat(freq) stat(percent) /// show counts and % of each count
+	nformat(%7.0fc freq) nformat(%3.2f percent) sformat("(%s%%)" percent) /// 1,234 (43,21%)
+	nototals
+collect style header result, level(hide)
+collect style row stack, nodelimiter spacer
+collect export demographic_summary_table.tex, tableonly replace
 
 // Save some individual percentages for comments
 estpost tab residence_type
@@ -509,7 +503,7 @@ texdoc stlog close
 /*tex
 The 2017-2018 \ac{FBS} surveyed $`household_count'$ households.\tdFLY{try to format the macro to show a comma for thousands, as in 58,039} Table \ref{demographic_frequencies} shows how observations are distributed by gender of household head, residence type \tdFL{consider using Oxford commas} and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
 
-\tdIL{It might help to have also the percentages in the table. }
+\tdILY{It might help to have also the percentages in the table. }
 
 \input{demographic_summary_table}
 
