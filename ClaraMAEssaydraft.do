@@ -304,21 +304,21 @@ Grouping requires assuming \textit{separability}: a group is separable when the 
 
 \section{Study Variables}\label{variablessection}
 \subsection{Cohort Attributes} \label{cohort_attributes}
-Following \cite{Slesnick2000}, \tr{I use} the following attributes to characterize cohorts:\tdFL{not sure you need capitals for the items in this list}
+Following \cite{Slesnick2000}, \tr{I use} the following attributes to characterize cohorts:\tdFLY{not sure you need capitals for the items in this list}
 
 \begin{enumerate}
-	\item Household Size
-	\item Age of Head of the Household
-	\item Region of Residence
-	\item Race of Head of the Household
-	\item Type of Residence\footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{FBS} classifies households as ``urban or rural'', so I use this classification.}
-	\item Gender of Head of the Household
+	\item household size
+	\item age of head of the household
+	\item region of residence
+	\item race of head of the household
+	\item type of residence\footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{FBS} classifies households as ``urban or rural'', so I use this classification.}
+	\item gender of head of the household
 \end{enumerate}
 
-See Table \ref{attribute_vars} for the variables from the dataset used to extract\tdFL{capture?} each of these attributes.
+See Table \ref{attribute_vars} for the variables from the dataset used to capture each of these attributes.
 
 
-\tdIL{ENW, In table \ref{attribute_vars} use italics for the official regions and ``and'' in English}
+\tdILY{ENW, In table \ref{attribute_vars} use italics for the official regions and ``and'' in English}
 
 
 \setlength{\extrarowheight}{3pt}
@@ -328,7 +328,7 @@ See Table \ref{attribute_vars} for the variables from the dataset used to extrac
 \textbf{Attribute}                       & \textbf{Source}                                                                                                                                          \\ \midrule
 Household Size                  & The dataset \verb|MORADOR| contains one row per household member, I count the rows in each household and use 7 or more as the upper limit.                               \\
 Age of Head of the Household    & Variable \verb|V0403| in the \verb|MORADOR| dataset contains the age of each member. I grouped the ages into 5 buckets using frequencies (?).                            \\
-Region of Residence             & Variable \verb|UF| in \verb|MORADOR| contains the state where the household is located. I mapped the states into their official regions of Brazil, namely Centro-Oeste, Nordeste, Norte, Sudeste e Sul. \\
+Region of Residence             & Variable \verb|UF| in \verb|MORADOR| contains the state where the household is located. I mapped the states into their official regions of Brazil, namely textit{Centro-Oeste}, textit{Nordeste}, textit{Norte}, textit{Sudeste} and textit{Sul}. \\
 Race of Head of the Household   & Variable \verb|V0405| in \verb|MORADOR| classifies the head of the household as ``white'', ``black'', ``asian'', ``mixed'', ``indigenous'' or ``undeclared''. \\
 Type of Residence               & Variable \verb|TIPO\_SITUACAO\_REG| in \verb|MORADOR| classifies households as ``urban'' or ``rural''.                                        \\
 Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classifies the head of the household as ``male'' or ``female''.                             \\
