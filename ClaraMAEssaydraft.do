@@ -575,17 +575,21 @@ replace commodity_group = 2 if QUADRO == 23
 
 // item codes for gasoline
 // 23* are for vehicles, 700801 is for domestic use
-foreach item_code_i in 2301401 2301501 2301502 700801 {
-	replace commodity_group = 1 if item_code == `item_code_i'
-}
+replace commodity_group = 1 if inlist(item_code, 2301401, 2301501, 2301502, 700801)
+
 
 //***********
 // Food group
 
-// QUADRO 24: expenditure eating out
+
 replace commodity_group = 3 if QUADRO == 24
 
-/* The "QUADRO" variable of the CADERNETA_COLETIVA dataset is not as useful as in the other datasets.
+/*
+quadro		purchase
+---------|----------------------------------------------------------
+	24		eating out
+
+The "QUADRO" variable of the CADERNETA_COLETIVA dataset is not as useful as in the other datasets.
 For ex, if we get the prefixes from the item codes with
 
 gen code_prefix = int(V9001/100000)
@@ -608,7 +612,10 @@ code range				purchase
 */
 
 // item codes for food
-replace commodity_group = 3 if inrange(item_code, 6300101, 8600101) | inrange(item_code, 9000101, 9000928)
+replace commodity_group = 3 if ///
+	QUADRO == 24 | ///
+	inrange(item_code, 6300101, 8600101) | ///
+	inrange(item_code, 9000101, 9000928)
 
 
 //**********************
@@ -628,7 +635,9 @@ code			purchase
 
 Within quadro 07, all codes are for domestic fuels (including 700801, included in the gasoline group), except for 700201 and 700202, which are for water
 */
-replace commodity_group = 4 if inlist(item_code, 600101, 600301, 601801, 699901) | (QUADRO == 7 & ~inlist(item_code, 700201, 700202, 700801))
+replace commodity_group = 4 if ///
+	inlist(item_code, 600101, 600301, 601801, 699901) | ///
+	(QUADRO == 7 & ~inlist(item_code, 700201, 700202, 700801))
 
 
 //************************
@@ -646,15 +655,6 @@ quadro  	purchase
 	42B		health care services NOT ACQUIRED
 	50		vehicle-related fees for docs, insurance, etc
 
-Within quadro 8, we find the following ranges:
-code range				purchase
---------------------|----------------------------------------------
-800101 - 802301			products for repairs/maintenance
-802401 - 802601			contractor fees for repairs/maintenance
-802601 - 806701			other products for repairs/maintenance
-899901					aggregated expenditure, when individual values not informed
-
-
 Items from quadros 07 and 06 that are not energy-related are included here.
 
 Within group 9, there are item codes both for goods purchased to fix/maintain an appliance or piece of furniture and for the service fees of the repair. I'm treating everything as a "service", as these are likely not separable: each good needed for a repair will have a particular substitution relationship with the associated service.
@@ -663,9 +663,8 @@ Within group 9, there are item codes both for goods purchased to fix/maintain an
 
 replace commodity_group = 5 if ///
 	inlist(QUADRO, 9, 19, 22, 25, 31, 40, 42, 50) | ///
-	(QUADRO == 6 & ~inlist(item_code, 600101, 600301, 601801, 699901)) | ///
-	(QUADRO == 7 & inlist(item_code, 700202, 700801)) | ///
-	(QUADRO == 8 & inrange(item_code, 802401, 802601))
+	(QUADRO == 6 & ~inlist(item_code, 600101, 600301, 601801, 699901)) | /// water, sewage, internet
+	(QUADRO == 7 & inlist(item_code, 700201, 700202)) // water
 
 
 //*********************
@@ -673,7 +672,6 @@ replace commodity_group = 5 if ///
 /*
 quadro  	purchase
 ---------|----------------------------------------------------------
-	08		small repair/maintenance of house or tomb
 	15		electric appliances
 	16		non-electric appliances
 	17		furniture
@@ -696,22 +694,42 @@ quadro  	purchase
 	47		real estate (not the one they live in)
 	51		vehicle purchase payments
 
+
+Includes items from the 63 to 69 quadros that are not food items.
+
 */
 
-replace commodity_group = 6 if inlist(QUADRO, 15, 16, 17, 18, 21, 27, 29, 30, 32, 34, 35, 36, 37, 39, 43, 44, 46, 47, 51)
+replace commodity_group = 6 if ///
+	inlist(QUADRO, 15, 16, 17, 18, 21, 27, 29, 30, 32, 34, 35, 36, ///
+		   37, 38, 39, 43, 44, 46, 47, 51) | ///
+	inrange(item_code, 8600101, 8900101)
 
 
 //***********************
 // Capital services group
 /*
+
 quadro  	purchase
 ---------|----------------------------------------------------------
+	08		small repair/maintenance of house or tomb
 	10		rent, house taxes and other house fees
 	11		building/renovating of house or tomb
 
+Item 000101 is "estimated rent". Homeowners provide this estimate.
+
+Within quadro 8, we find the following ranges:
+code range				purchase
+--------------------|----------------------------------------------
+800101 - 802301			products for repairs/maintenance
+802401 - 802601			contractor fees for repairs/maintenance
+802601 - 806701			other products for repairs/maintenance
+899901					aggregated expenditure, when individual values not informed
+
 */
 
-replace commodity_group = 7 if inlist(QUADRO, 10, 11)
+replace commodity_group = 7 if ///
+	inlist(QUADRO, 8, 10, 11) | ///
+	item_code == 000101
 
 
 // Quadros that still need to be mapped
@@ -729,6 +747,10 @@ quadro  	purchase
 	49		courses, textbooks, other education goods
 
 */
+
+drop if inlist(QUADRO, 12, 13, 26, 28, 33, 41, 45, 48, 49)
+
+assert commodity_group != .
 
 texdoc stlog close
 
