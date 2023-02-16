@@ -499,6 +499,41 @@ foreach r_i in "White" "Black" "Mixed" {
 	texdoc local `r_i'_head_hh_pct = strofreal(round(pct[1, "`r_i'"], .01), "%9.2f")
 }
 
+
+/***************************************
+ * how many households have a vehicle? *
+ ***************************************/
+/* item code		product
+  1403001			4-wheel vehicle
+  1403101			motorcycle
+*/
+
+use "Data\Dados_20210304\INVENTARIO.dta", clear
+
+rename V9001 item_code
+egen hh_id = group(COD_UPA NUM_DOM NUM_UC), label
+
+gen vehicle = .
+replace vehicle = 1 if inlist(item_code, 1403001, 143101)
+
+keep hh_id vehicle
+collapse (count) vehicle, by(hh_id)
+
+// make it binary, although in this particular set all households have at most 1 vehicle
+replace vehicle = 1 if vehicle >= 1
+
+// count and % of households with vehicles
+count
+scalar hh_count = r(N)
+count if vehicle == 1
+
+// texdoc local only works by section, so we need to save this separately
+scalar hh_vehicle_count = r(N)
+scalar hh_vehicle_pct = r(N)*100/hh_count
+
+// save for merging later
+save "Data\hh_vehicle.dta", replace
+
 texdoc stlog close
 
 /*tex
@@ -756,6 +791,9 @@ drop if inlist(QUADRO, 12, 13, 26, 28, 47, 48, 49, 51)
 
 assert commodity_group != .
 
+// create macros for texdoc
+texdoc local hh_vehicle_count = strofreal(hh_vehicle_count, "%9.0gc")
+texdoc local hh_vehicle_pct = strofreal(hh_vehicle_pct, "%9.2f")
 
 texdoc stlog close
 
@@ -765,6 +803,9 @@ texdoc stlog close
 Of the original $`purchase_ct'$ purchases recorded, $`unknown_amt'$ were excluded from the analysis as the amount spent was not informed.
 
 Some expenses on services like renting of clothes or appliance repairs have been included in the ``Consumer Goods'' group, as they are likely not separable from the goods associated.
+
+% More useful info
+$`hh_vehicle_count'$ of the households surveyed, or $`hh_vehicle_pct'$\% report owning one vehicle.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
