@@ -425,8 +425,12 @@ label define brazil_regions 1 "Norte" 2 "Nordeste" 3 "Sudeste" 4 "Sul" 5 "Centro
 label values region brazil_regions
 
 // Household identification is UPA + domicilio + unidade consumidora
+// UPA = Unidade Primária de Amostragem = "Primary Sampling Unit"
+// DOM = Domicílio = "House"
+// UC = Unidade Consumidora = "Household"
 // Total households surveyed are total unique combinations of these
-unique COD_UPA NUM_DOM NUM_UC
+egen hh_id = group(COD_UPA NUM_DOM NUM_UC), label
+unique hh_id
 texdoc local household_count = strofreal(r(unique), "%9.0gc")
 
 // Type of residence
@@ -457,10 +461,7 @@ label variable age_group "Age group"
 
 
 // Number of people in the household
-// UPA = Unidade Primária de Amostragem = "Primary Sampling Unit"
-// DOM = Domicílio = "House"
-// UC = Unidade Consumidora = "Household"
-bysort COD_UPA NUM_DOM NUM_UC: gen n_people=_N
+bysort hh_id: gen n_people=_N
 
 // 7 is code for "7 or more"
 gen cut_n_people = n_people
@@ -537,6 +538,9 @@ append using "Data\Dados_20210304\CADERNETA_COLETIVA.dta"
 
 // add rent data
 append using "Data\Dados_20210304\ALUGUEL_ESTIMADO.dta"
+
+// generate household id
+egen hh_id = group(COD_UPA NUM_DOM NUM_UC), label
 
 // rename variables of interest
 // the meaning of "QUADRO" is not precise, so I'm leaving it as is
