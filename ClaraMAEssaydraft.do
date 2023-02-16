@@ -651,8 +651,10 @@ quadro  	purchase
 	25		communication
 	31		services like barber/salon, massage, tattoos
 	40		lawyer, notary services
+	41		travelling
 	42		health care services
 	42B		health care services NOT ACQUIRED
+	45		parties and ceremonies
 	50		vehicle-related fees for docs, insurance, etc
 
 Items from quadros 07 and 06 that are not energy-related are included here.
@@ -662,7 +664,7 @@ Within group 9, there are item codes both for goods purchased to fix/maintain an
 */
 
 replace commodity_group = 5 if ///
-	inlist(QUADRO, 9, 19, 22, 25, 31, 40, 42, 50) | ///
+	inlist(QUADRO, 9, 19, 22, 25, 31, 40, 41, 42, 45, 50) | ///
 	(QUADRO == 6 & ~inlist(item_code, 600101, 600301, 601801, 699901)) | /// water, sewage, internet
 	(QUADRO == 7 & inlist(item_code, 700201, 700202)) // water
 
@@ -691,8 +693,6 @@ quadro  	purchase
 	43		toys, games, hunting, fishing, sports, music materials
 	44		cell phones and accessories
 	46		jewelry and watch purchases
-	47		real estate (not the one they live in)
-	51		vehicle purchase payments
 
 
 Includes items from the 63 to 69 quadros that are not food items.
@@ -701,7 +701,7 @@ Includes items from the 63 to 69 quadros that are not food items.
 
 replace commodity_group = 6 if ///
 	inlist(QUADRO, 15, 16, 17, 18, 21, 27, 29, 30, 32, 34, 35, 36, ///
-		   37, 38, 39, 43, 44, 46, 47, 51) | ///
+		   37, 38, 39, 43, 44, 46) | ///
 	inrange(item_code, 8600101, 8900101)
 
 
@@ -714,6 +714,7 @@ quadro  	purchase
 	08		small repair/maintenance of house or tomb
 	10		rent, house taxes and other house fees
 	11		building/renovating of house or tomb
+	33		car maintenance and accessories
 
 Item 000101 is "estimated rent". Homeowners provide this estimate.
 
@@ -728,7 +729,7 @@ code range				purchase
 */
 
 replace commodity_group = 7 if ///
-	inlist(QUADRO, 8, 10, 11) | ///
+	inlist(QUADRO, 8, 10, 11, 33) | ///
 	item_code == 000101
 
 
@@ -740,17 +741,17 @@ quadro  	purchase
 	13		pets and pet care
 	26		credit card/loan interest and fees
 	28		tickets to museums, purchase of photography supplies, games
-	33		car maintenance and accessories
-	41		travelling
-	45		parties and ceremonies
+	47		real estate (not the one they live in)
 	48		loans, securities
 	49		courses, textbooks, other education goods
+	51		vehicle purchase payments
 
 */
 
-drop if inlist(QUADRO, 12, 13, 26, 28, 33, 41, 45, 48, 49)
+drop if inlist(QUADRO, 12, 13, 26, 28, 47, 48, 49, 51)
 
 assert commodity_group != .
+
 
 texdoc stlog close
 
