@@ -804,7 +804,7 @@ bysort hh_id: keep if _n == 1
 label variable total_expenditure "Household expenditure"
 label variable RENDA_TOTAL "Household income"
 graph hbox total_expenditure RENDA_TOTAL, nooutsides showyvars legend(off)
-graph export "boxplot_exp_inc.png", as(png) replace
+graph export "graphs\boxplot_exp_inc.png", as(png) replace
 
 // skewness
 sum total_expenditure, detail
@@ -843,7 +843,7 @@ graph twoway scatter group_expenditure_share exp_pct if commodity_group == 1, //
       xtitle("Percentile of total expenditure") ///
 	  ytitle("Mean of gasoline expenditure share")
 
-graph export "avg_exp_shares_by_percentile.png", as(png) replace
+graph export "graphs\avg_exp_shares_by_percentile.png", as(png) replace
 
 restore
 
@@ -865,7 +865,7 @@ The distribution of income and total expenditure is strongly right-skewed: figur
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{boxplot_exp_inc.png}
+    \includegraphics[width=0.9\textwidth]{graphs/boxplot_exp_inc.png}
     \caption{Boxplots for total income and expenditure}
     \label{fig:boxplot_exp_inc}
 \end{figure}
@@ -878,7 +878,7 @@ Figure \ref{fig:avg_exp_shares_by_percentile} shows the average share of a house
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{avg_exp_shares_by_percentile.png}
+    \includegraphics[width=0.9\textwidth]{graphs/avg_exp_shares_by_percentile.png}
     \caption{Mean of expenditure share of gasoline by percentile of total expenditure}
     \label{fig:avg_exp_shares_by_percentile}
 \end{figure}
