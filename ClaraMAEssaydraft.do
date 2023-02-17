@@ -330,7 +330,7 @@ Household Size                  & The dataset \verb|MORADOR| contains one row pe
 Age of Head of the Household    & Variable \verb|V0403| in the \verb|MORADOR| dataset contains the age of each member. I grouped the ages into 5 buckets using frequencies (?).                            \\
 Region of Residence             & Variable \verb|UF| in \verb|MORADOR| contains the state where the household is located. I mapped the states into their official regions of Brazil, namely textit{Centro-Oeste}, textit{Nordeste}, textit{Norte}, textit{Sudeste} and textit{Sul}. \\
 Race of Head of the Household   & Variable \verb|V0405| in \verb|MORADOR| classifies the head of the household as ``white'', ``black'', ``asian'', ``mixed'', ``indigenous'' or ``undeclared''. \\
-Type of Residence               & Variable \verb|TIPO\_SITUACAO\_REG| in \verb|MORADOR| classifies households as ``urban'' or ``rural''.                                        \\
+Type of Residence               & Variable \verb|TIPO_SITUACAO_REG| in \verb|MORADOR| classifies households as ``urban'' or ``rural''.                                        \\
 Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classifies the head of the household as ``male'' or ``female''.                             \\
 
 \bottomrule
@@ -791,6 +791,63 @@ drop if inlist(QUADRO, 12, 13, 26, 28, 47, 48, 49, 51)
 
 assert commodity_group != .
 
+
+/**********************************
+ * expenditure shares and summary *
+ **********************************/
+egen total_expenditure = total(amount_spent), by(hh_id)
+
+// Summary info on expenditure and income
+preserve
+bysort hh_id: keep if _n == 1
+
+label variable total_expenditure "Household expenditure"
+label variable RENDA_TOTAL "Household income"
+graph hbox total_expenditure RENDA_TOTAL, nooutsides showyvars legend(off)
+graph export "boxplot_exp_inc.png", as(png) replace
+
+// skewness
+sum total_expenditure, detail
+texdoc local total_exp_skew = strofreal(r(skewness), "%9.2f")
+sum RENDA_TOTAL, detail
+texdoc local total_inc_skew = strofreal(r(skewness), "%9.2f")
+
+restore
+
+
+/***********************************************
+* Plot average expenditure shares by percentile
+*/
+preserve
+egen group_expenditure = total(amount_spent), by(hh_id commodity_group)
+bysort hh_id commodity_group: keep if _n == 1
+
+// make sure empty groups have expenditure zero
+fillin hh_id commodity_group
+replace group_expenditure = 0 if _fillin == 1
+assert group_expenditure != .
+
+gen group_expenditure_share = group_expenditure/total_expenditure
+
+// save for future merging
+keep hh_id commodity_group group_expenditure group_expenditure_share total_expenditure
+save "Data\hh_exp_shares.dta", replace
+
+// tag each percentile
+xtile exp_pct = total_expenditure, nq(100)
+
+// average shares by percentile
+collapse (mean) group_expenditure_share, by(commodity_group exp_pct)
+
+graph twoway scatter group_expenditure_share exp_pct if commodity_group == 1, ///
+      xtitle("Percentile of total expenditure") ///
+	  ytitle("Mean of gasoline expenditure share")
+
+graph export "avg_exp_shares_by_percentile.png", as(png) replace
+
+restore
+
+
 // create macros for texdoc
 texdoc local hh_vehicle_count = strofreal(hh_vehicle_count, "%9.0gc")
 texdoc local hh_vehicle_pct = strofreal(hh_vehicle_pct, "%9.2f")
@@ -804,8 +861,27 @@ Of the original $`purchase_ct'$ purchases recorded, $`unknown_amt'$ were exclude
 
 Some expenses on services like renting of clothes or appliance repairs have been included in the ``Consumer Goods'' group, as they are likely not separable from the goods associated.
 
+The distribution of income and total expenditure is strongly right-skewed: figure \ref{fig:boxplot_exp_inc} shows the boxplots for monthly total income and total expenditure. The skewness score of total expenditure is $`total_exp_skew'$, and the skewness score of total income is $`total_inc_skew'$.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{boxplot_exp_inc.png}
+    \caption{Boxplots for total income and expenditure}
+    \label{fig:boxplot_exp_inc}
+\end{figure}
+
+
 % More useful info
 $`hh_vehicle_count'$ of the households surveyed, or $`hh_vehicle_pct'$\% report owning one vehicle.
+
+Figure \ref{fig:avg_exp_shares_by_percentile} shows the average share of a household's total expenditure spent on gasoline. The shape suggests an Engel curve linear on the logarithm of total expenditure, consistent with existing literature.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{avg_exp_shares_by_percentile.png}
+    \caption{Mean of expenditure share of gasoline by percentile of total expenditure}
+    \label{fig:avg_exp_shares_by_percentile}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
