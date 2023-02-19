@@ -616,6 +616,9 @@ replace commodity_group = 2 if QUADRO == 23
 // 23* are for vehicles, 700801 is for domestic use
 replace commodity_group = 1 if inlist(item_code, 2301401, 2301501, 2301502, 700801)
 
+unique hh_id if item_code == 700801
+texdoc local domestic_use_count = strofreal(r(N), "%12.0gc")
+texdoc local domestic_use_pct = strofreal(r(N)*100/hh_count, "%9.2f")
 
 //***********
 // Food group
@@ -885,7 +888,7 @@ The distribution of income and total expenditure is strongly right-skewed: figur
 
 
 % More useful info
-$`hh_vehicle_count'$ of the households surveyed, or $`hh_vehicle_pct'$\% report owning one vehicle.
+$`hh_vehicle_count'$ of the households surveyed, or $`hh_vehicle_pct'$\% report owning one vehicle. A small number, $`domestic_use_count'$ or $`domestic_use_pct'$\% of households, report purchasing gasoline for domestic use.
 
 Figure \ref{fig:avg_exp_shares_by_percentile} shows the average share of a household's total expenditure spent on gasoline. The shape suggests an Engel curve linear on the logarithm of total expenditure, consistent with existing literature.
 
