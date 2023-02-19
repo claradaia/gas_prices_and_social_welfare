@@ -792,6 +792,17 @@ drop if inlist(QUADRO, 12, 13, 26, 28, 47, 48, 49, 51)
 assert commodity_group != .
 
 
+*********************************
+* standardize reference periods *
+*********************************
+merge m:1 QUADRO using "Data\periodo_de_referencia_por_quadro.dta"
+drop if _merge != 3
+drop description _merge
+
+// extrapolate/divide different period lengths into 30-day periods
+replace amount_spent = amount_spent * 30/days
+
+
 /**********************************
  * expenditure shares and summary *
  **********************************/
@@ -860,6 +871,8 @@ texdoc stlog close
 Of the original $`purchase_ct'$ purchases recorded, $`unknown_amt'$ were excluded from the analysis as the amount spent was not informed.
 
 Some expenses on services like renting of clothes or appliance repairs have been included in the ``Consumer Goods'' group, as they are likely not separable from the goods associated.
+
+The periods of reference vary by purchase group, with food registry being done over a period of 7 days, income and health expenses done over the previous 30 days, durable goods over the last twelve months and other expenses over the previous 90 days. Total expenses reported were extrapolated or averaged into 30-days periods, as formal income is usually paid monthly.
 
 The distribution of income and total expenditure is strongly right-skewed: figure \ref{fig:boxplot_exp_inc} shows the boxplots for monthly total income and total expenditure. The skewness score of total expenditure is $`total_exp_skew'$, and the skewness score of total income is $`total_inc_skew'$.
 
