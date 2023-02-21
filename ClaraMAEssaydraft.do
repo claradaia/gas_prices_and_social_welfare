@@ -581,6 +581,7 @@ egen hh_id = group(COD_UPA NUM_DOM NUM_UC), label
 // the meaning of "QUADRO" is not precise, so I'm leaving it as is
 rename V9001 item_code
 rename V8000 amount_spent
+rename RENDA_TOTAL hh_income
 
 // count observed purchases
 count
@@ -816,14 +817,14 @@ preserve
 bysort hh_id: keep if _n == 1
 
 label variable total_expenditure "Household expenditure"
-label variable RENDA_TOTAL "Household income"
-graph hbox total_expenditure RENDA_TOTAL, nooutsides showyvars legend(off)
+label variable hh_income "Household income"
+graph hbox total_expenditure hh_income, nooutsides showyvars legend(off)
 graph export "graphs\boxplot_exp_inc.png", as(png) replace
 
 // skewness
 sum total_expenditure, detail
 texdoc local total_exp_skew = strofreal(r(skewness), "%9.2f")
-sum RENDA_TOTAL, detail
+sum hh_income, detail
 texdoc local total_inc_skew = strofreal(r(skewness), "%9.2f")
 
 restore
