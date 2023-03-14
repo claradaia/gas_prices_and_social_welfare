@@ -459,9 +459,12 @@ label variable age "Age"
 recode age (0/25=0 "<= 25")  (26/40=1 "26-40") (41/55=2 "41-55") (56/70=3 "56-70") (71/85=4 "71-85") (86/max=5 ">= 86"), gen(age_group)
 label variable age_group "Age group"
 
-
 // Number of people in the household
+gen child = 0
+replace child = 1 if age < 16
+egen n_children = total(child), by(hh_id)
 bysort hh_id: gen n_people=_N
+gen n_adults = n_people - n_children
 
 // 7 is code for "7 or more"
 gen cut_n_people = n_people
@@ -499,6 +502,11 @@ foreach r_i in "White" "Black" "Mixed" {
 	texdoc local `r_i'_head_hh_pct = strofreal(round(pct[1, "`r_i'"], .01), "%9.2f")
 }
 
+// save for merging later
+keep hh_id age_group cut_n_people gender n_children n_adults race region residence_type
+save "Data\hh_head_size.dta", replace
+
+
 
 /***************************************
  * how many households have a vehicle? *
@@ -532,6 +540,7 @@ scalar hh_vehicle_count = r(N)
 scalar hh_vehicle_pct = r(N)*100/hh_count
 
 // save for merging later
+// note not all households have any items in the inventory
 save "Data\hh_vehicle.dta", replace
 
 texdoc stlog close
@@ -580,7 +589,7 @@ egen hh_id = group(COD_UPA NUM_DOM NUM_UC), label
 // rename variables of interest
 // the meaning of "QUADRO" is not precise, so I'm leaving it as is
 rename V9001 item_code
-rename V8000 amount_spent
+rename V8000_DEFLA amount_spent
 rename RENDA_TOTAL hh_income
 
 // count observed purchases
@@ -810,7 +819,15 @@ replace amount_spent = amount_spent * 30/days
 /**********************************
  * expenditure shares and summary *
  **********************************/
-egen total_expenditure = total(amount_spent), by(hh_id)
+egen group_expenditure = total(amount_spent), by(hh_id commodity_group)
+
+// make sure empty groups have expenditure zero
+bysort hh_id commodity_group: keep if _n == 1
+fillin hh_id commodity_group
+replace group_expenditure = 0 if _fillin == 1
+assert group_expenditure != .
+
+egen total_expenditure = total(group_expenditure), by(hh_id)
 
 // Summary info on expenditure and income
 preserve
@@ -834,24 +851,19 @@ restore
 * Plot average expenditure shares by percentile
 */
 preserve
-egen group_expenditure = total(amount_spent), by(hh_id commodity_group)
-bysort hh_id commodity_group: keep if _n == 1
-
-// make sure empty groups have expenditure zero
-fillin hh_id commodity_group
-replace group_expenditure = 0 if _fillin == 1
-assert group_expenditure != .
-
 gen group_expenditure_share = group_expenditure/total_expenditure
 
 // save for future merging
 keep hh_id commodity_group group_expenditure group_expenditure_share total_expenditure
 save "Data\hh_exp_shares.dta", replace
 
+use "Data\hh_exp_shares.dta", clear
+
+drop if group_expenditure == 0
+
 // tag each percentile
 xtile exp_pct = total_expenditure, nq(100)
 
-// average shares by percentile
 collapse (mean) group_expenditure_share, by(commodity_group exp_pct)
 
 graph twoway scatter group_expenditure_share exp_pct if commodity_group == 1, ///
@@ -861,6 +873,27 @@ graph twoway scatter group_expenditure_share exp_pct if commodity_group == 1, //
 graph export "graphs\avg_exp_shares_by_percentile.png", as(png) replace
 
 restore
+
+/***************************************************
+* Estimate a Working-Leser model for the Engel curve
+*/
+use "Data\hh_exp_shares.dta", clear
+merge m:1 hh_id using "Data\hh_head_size.dta"
+gen n_people = n_adults + n_children
+gen pc_exp = total_expenditure / n_people
+gen ln_pc_exp = log(pc_exp)
+
+collect get: reg group_expenditure_share ln_pc_exp n_adults n_children
+predict p_exp_share
+
+
+collect: table residence_type gender race, ///
+	stat(freq) stat(percent) /// show counts and % of each count
+	nformat(%7.0fc freq) nformat(%3.2f percent) sformat("(%s%%)" percent) /// 1,234 (43,21%)
+	nototals
+collect style header result, level(hide)
+collect style row stack, nodelimiter spacer
+collect export demographic_summary_table.tex, tableonly replace
 
 
 // create macros for texdoc
@@ -891,7 +924,7 @@ The distribution of income and total expenditure is strongly right-skewed: figur
 % More useful info
 $`hh_vehicle_count'$ of the households surveyed, or $`hh_vehicle_pct'$\% report owning one vehicle. A small number, $`domestic_use_count'$ or $`domestic_use_pct'$\% of households, report purchasing gasoline for domestic use.
 
-Figure \ref{fig:avg_exp_shares_by_percentile} shows the average share of a household's total expenditure spent on gasoline. The shape suggests an Engel curve linear on the logarithm of total expenditure, consistent with existing literature.
+Figure \ref{fig:avg_exp_shares_by_percentile} shows the average share of a household's total expenditure spent on gasoline, for households that consumed any gasoline during the period of the survey. The shape suggests an Engel curve linear on the logarithm of total expenditure, consistent with existing literature.
 
 \begin{figure}
     \centering
@@ -899,6 +932,8 @@ Figure \ref{fig:avg_exp_shares_by_percentile} shows the average share of a house
     \caption{Mean of expenditure share of gasoline by percentile of total expenditure}
     \label{fig:avg_exp_shares_by_percentile}
 \end{figure}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
