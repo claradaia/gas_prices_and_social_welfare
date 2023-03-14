@@ -134,6 +134,7 @@ The Informatics Department of UFPR Faculty.
 \acro{BIGS}{Brazilian Institute of Geography and Statistics}
 \acro{IPP}{Import Parity Price}
 \acro{FBS}{Family Budgets Survey}
+\acro{PIGLOG}{Price-Independent Generalized Logarithmic}
 \acro{PSU}{Primary Sampling Unit}
 \acro{GSFT}{Goods and Services Flow Tax}
 
@@ -255,7 +256,10 @@ For comparison. IBGE uses its own deflators.
 
 
 \chapter{Methodology and Data}\label{methods}
-We want to characterize the differences in the demand for gasoline across households of different compositions and attributes.
+We want to characterize the differences in the demand for gasoline across households of different compositions and attributes and use this characterization to estimate the welfare effects of a subsidy policy change.
+
+To characterize the demand for gasoline, I use the transcendental logarithmic (translog) model of aggregate consumer behaviour. This model uses a translog specification of the \ac{PIGLOG} class of functions.
+
 Following \cite{Jorgenson1990}, I assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have a utility function of the \textit{transcendental logarithm} form \citep{JorgensonChristensenLau1975}:
 
 \begin{equation}
@@ -272,7 +276,7 @@ Where \tdFL{again lowercase}
 \begin{itemize}
 	\item $k$ identifies a household,
 	\item $A_k$ is the vector of attributes of household $k$,
-	\item $\alpha_p$, $B_pp$ \tdFL{Do you mean $B_{pp}$} characterize general preferences and
+	\item $\alpha_p$, $B_{pp}$ \tdFLY{Do you mean $B_{pp}$} characterize general preferences and
 	\item $B_{pA}$ characterize preferences according to observed attributes.
 \end{itemize}
 
@@ -348,6 +352,7 @@ Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classi
  \item Capital Services
  \item Consumer Services
 \end{enumerate}
+
 
 In order to isolate the effect of gasoline prices, I subdivide the ``energy'' group into ``gasoline'' and ``others'', and the ``consumer services'' group into ``public transportation'' and ``others''.
 
