@@ -58,6 +58,10 @@ texdoc init "ClaraMAEssaydraft.tex", replace
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{lscape}
+\setlength{\LTcapwidth}{\textwidth}
 
 
 \Title{Clara's MA Essay texdoc template for ECON6999} %% it shall not include LaTeX macros
@@ -137,6 +141,8 @@ The Informatics Department of UFPR Faculty.
 \acro{PIGLOG}{Price-Independent Generalized Logarithmic}
 \acro{PSU}{Primary Sampling Unit}
 \acro{GSFT}{Goods and Services Flow Tax}
+\acro{NSCPI}{National System of Consumer Price Indices}
+\acro{ACPI}{Ample Consumer Price Index}
 
 \end{acronym}
 
@@ -307,7 +313,7 @@ Grouping requires assuming \textit{separability}: a group is separable when the 
 
 
 \section{Study Variables}\label{variablessection}
-\subsection{Cohort Attributes} \label{cohort_attributes}
+\subsection{Cohort Attributes} \label{ssec:cohort_attributes}
 Following \cite{Slesnick2000}, \tr{I use} the following attributes to characterize cohorts:\tdFLY{not sure you need capitals for the items in this list}
 
 \begin{enumerate}
@@ -343,7 +349,7 @@ Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classi
 \end{table}
 
 
-\subsection{Commodity Groups} \label{commodity_groups}
+\subsection{Commodity Groups} \label{ssec:commodity_groups}
 \cite{Jorgenson1990} and \cite{Slesnick2000} use the following commodity groups:
 \begin{enumerate}
  \item Energy
@@ -371,7 +377,7 @@ The model for individual expenditure shares is given by:
 \begin{itemize}
 	\item $w_k$ is the vector of expenditure shares for each commodity group for the $k$th \tdFL{FNW: fix subscript format} household;
 	\item $M_k$ is the household income;\tdFL{ENW check use of ``the''}
-	\item $A_k$ is the vector of household attributes described in Section \ref{cohort_attributes};
+	\item $A_k$ is the vector of household attributes described in Section \ref{ssec:cohort_attributes};
 	\item $\mu_k$ is the stochastic component for the $k$th household;
 	\item $\omega_p$, $B_{pp}i$ \tdFL{FNW check the formatting of subscripts} and $B_{pA}$ are the parameters we want to estimate.
 \end{itemize}
@@ -384,9 +390,11 @@ The model for individual expenditure shares is given by:
 
 \subsection {Data Source}
 
-The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{cohort_attributes}. For the cross-sectional estimation of the utility parameters I used the most recent survey, run between 2017 and 2018.
+The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. For the cross-sectional estimation of the utility parameters I used the most recent survey, run between 2017 and 2018.
 
-The National Accounts provide the time-series aggregate data on consumption and prices.
+The \ac{ACPI} provides a price index of consumer goods and services with monthly variations. See Appendix \ref{ap:acpi_to_commodity_groups_map} for the correspondence used between the groups of goods and services of the \ac{ACPI} and the commodity groups mentioned in Section \ref{ssec:commodity_groups}.
+
+The National Accounts provide the time-series aggregate data on quantities consumed.
 (In the event this data turns out to not be enough, I can potentially aggregate the expenditures from earlier \acp{FBS} and use that as the time-series component, but this will probably mean low significance.)
 
 \tdIL{I am a bit confused, you are going to use to runs of the survey, so that will NOT be a time-series approach correct?}
@@ -1029,6 +1037,110 @@ The master sample excludes the following areas: military bases, camping sites, p
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Mapping of \ac{ACPI} groups to commodity groups} \label{ap:acpi_to_commodity_groups_map}
+
+Table \ref{acpi_groups} shows the structure of groups, subgroups, items and subitems of goods and services used by the \ac{ACPI}, with the respective commodity group in the first stage of the model. Less aggregated levels of the structure have been omitted when the entire parent category was mapped into a single group, for example the \ac{ACPI} group ``Food and Beverages'' is entirely included in the ``Food'' commodity group, so it is represented by a single row in the table, whereas each subgroup of the ``Health Goods and Services'' was mapped to a different commodity group, occupying a separate row.
+
+
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}}
+\caption {First stage \ac{ACPI} group to commodity group mapping} \label{acpi_groups} \\ \toprule
+\textbf{Group} &
+  \textbf{Subgroup} &
+  \textbf{Item} &
+  \textbf{Subitem} &
+  \textbf{First Stage Commodity Group} \\ \midrule
+\endfirsthead
+\caption* {Table \ref{acpi_groups} Continued:} \\ \toprule
+\textbf{Group} &
+  \textbf{Subgroup} &
+  \textbf{Item} &
+  \textbf{Subitem} &
+  \textbf{First Stage Commodity Group} \\ \midrule
+\endhead
+Food and Beverages       &                                &                       &                   & Food              \\ \midrule
+\multirow{4}{=}{Housing} &
+  \multirow{3}{=}{Fees and Maintenance} &
+  Rent and Fees &
+   &
+  Capital Services \\
+                         &                                & Repairs               &                   & Capital Services  \\
+                         &                                & Cleaning Products     &                   & Consumer Goods    \\ \cmidrule(l){2-5}
+                         & Domestic fuels and electricity &                       &                   & Energy            \\ \midrule
+Appliances and Furniture &                                &                       &                   & Capital Services  \\ \midrule
+Clothing                 &                                &                       &                   & Consumer Goods    \\ \midrule
+\multirow{3}{=}{Transportation} &
+  \multirow{3}{=}{Transportation} &
+  Public Transportation &
+   &
+  Consumer Services \\
+                         &                                & Private Vehicle       &                   & Capital Services  \\
+                         &                                & Vehicle Fuels         &                   & Energy            \\ \midrule
+\multirow{3}{=}{Health Goods and Services} &
+  Pharmaceutical and Optical Goods &
+   &
+   &
+  Consumer Goods \\
+                         & Health Services                &                       &                   & Consumer Services \\
+                         & Personal Care                  &                       &                   & Consumer Goods    \\ \midrule
+\multirow{9}{=}{Personal Expenses} &
+  Personal Services &
+   &
+   &
+  Consumer Services \\ \cmidrule(l){2-5}
+ &
+  \multirow{8}{=}{Recreation and Smoking} &
+  \multirow{7}{=}{Recreation} &
+  Musical Instrument &
+  Consumer Goods \\
+                         &                                &                       & Bicycle           & Consumer Goods    \\
+                         &                                &                       & Toys              & Consumer Goods    \\
+                         &                                &                       & Fishing Materials & Consumer Goods    \\
+                         &                                &                       & Sports Materials  & Consumer Goods    \\
+                         &                                &                       & Pet Food          & Consumer Goods    \\
+                         &                                &                       & All Others *      & Consumer Services \\ \cmidrule(l){3-5}
+                         &                                & Smoking               &                   & Consumer Goods    \\ \midrule
+\multirow{4}{=}{Education} &
+  \multirow{4}{=}{Courses, Reading and Stationary} &
+  Regular Courses &
+   &
+  Consumer Services \\
+                         &                                & Miscellaneous Courses &                   & Consumer Services \\
+                         &                                & Reading Materials     &                   & Consumer Goods    \\
+                         &                                & Stationary            &                   & Consumer Goods    \\ \midrule
+Communication            &                                &                       &                   & Consumer Services \\ \bottomrule
+\end{longtable}
+
+
+
+
+Table \ref{acpi_groups_second_stage} shows the map of \ac{ACPI} groups, subgroups, items and subitems of goods and services and the respective commodity group in the second stage of the model.
+
+\begin{table}[h!]
+\caption{Second stage stage \ac{ACPI} group to commodity group mapping} \label{acpi_groups_second_stage}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}}
+\toprule
+\textbf{Group}           & \textbf{Subgroup}                               & \textbf{Item}  & \textbf{Subitem} & \textbf{Second Stage Commodity Group} \\ \midrule
+\multirow{2}{=}{Housing} & \multirow{2}{=}{Domestic Fuels and Electricity} & Domestic Fuels &                  & Domestic Fuels                        \\
+                         &                                                 & Electricity    &                  & Electricity                           \\ \midrule
+\multirow{3}{=}{Transportation} & \multirow{3}{=}{Transportation} & \multirow{3}{=}{Vehicle Fuels} & Gasoline & Gasoline \\
+                         &                                                 &                & Ethanol          & Ethanol                               \\
+                         &                                                 &                & Diesel           & Diesel
+\end{tabular}
+\end{table}
+
+
+\section{Price index transformation}
+\ac{BIGS} provides monthly variation by groups, subgroups, items and subitems of the \ac{ACPI} starting from 2005, along with each level weight in the general price index. The index for groups, subgroups and items is produced with the Laspeyres method.
+
+Estimating the translog model requires the price variations for each commodity group at each time period. First all groups, subgroups, items and subitems variations are transformed into index numbers with January 2018 as the base date. Then, a new index number is created for each commodity group through a weighted average of its components (groups, subgroups, items and subitems) in the \ac{ACPI}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \tdIL{You will need to tweak those missing freign characetrs in your bib entries and secure the capitalizations too}
