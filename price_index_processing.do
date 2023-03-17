@@ -112,25 +112,25 @@ assert commodity_group != ""
 // check that we included all categories, either the parent or all its children
 // the sum of all weights in a month should equal 100
 // I allow a bit more or less due to roundings
-egen month_total_weight = total(weight), by(month year)
+egen double month_total_weight = total(weight), by(month year)
 assert inrange(month_total_weight, 99.9, 100.1)
 
 
 // transform weights
-egen group_weight = total(weight), by(commodity_group month year)
-gen ingroup_weight = weight / group_weight
+egen double group_weight = total(weight), by(commodity_group month year)
+gen double ingroup_weight = weight / group_weight
 
 // get group variation
 
 // weight the variation of each item
-gen weighted_variation = variation * ingroup_weight
+gen double weighted_variation = variation * ingroup_weight
 // sum for each group
 collapse (sum) weighted_variation (first) group_weight (first) general_monthly_variation, by(commodity_group month year)
 rename weighted_variation group_variation
 
 // check that the sum of the weighted variation of all groups is the same as the national variation
-gen group_weighted_variation = group_weight * group_variation
-egen general_mo_var_from_new_groups = total(group_weighted_variation), by(month year)
+gen double group_weighted_variation = group_weight * group_variation
+egen double general_mo_var_from_new_groups = total(group_weighted_variation), by(month year)
 // allow small difference due to rounding
 // the national variation only has 2 decimal digits
 gen uplimit = general_monthly_variation*100 + 1
@@ -144,12 +144,12 @@ keep month year commodity_group group_variation
 // formula below will give 1/1.25 = 0.8
 // 0.8 = january index number / february index number
 // the index starts from "the future", so we'd get the january index number by multiplying the february index number by 0.8
-gen inverse_group_ratio = 100/(100 + group_variation)
+gen double inverse_group_ratio = 100/(100 + group_variation)
 assert inverse_group_ratio > 0
 
 // gen index number
 // starting in january 2018, base year of the POF
-gen group_price_index = .
+gen double group_price_index = .
 replace group_price_index = 1 if month == 1 & year == 2018
 
 local groups capital energy food goods services
