@@ -1133,9 +1133,9 @@ Table \ref{acpi_groups_second_stage} shows the map of \ac{ACPI} groups, subgroup
 
 
 \section{Price index transformation}
-\ac{BIGS} provides monthly variation by groups, subgroups, items and subitems of the \ac{ACPI} starting from 2005, along with each level weight in the general price index. The index for groups, subgroups and items is produced with the Laspeyres method.
+\ac{BIGS} provides monthly variation by groups, subgroups, items and subitems of the \ac{ACPI}, along with each level weight in the general price index. I used the indices from July 2006 to December 2019 available at \cite{ibgeIPCA2011} and \cite{ibgeIPCA2019}. The index for groups, subgroups and items is produced with the Laspeyres method.
 
-Estimating the translog model requires the price variations for each commodity group at each time period. First all groups, subgroups, items and subitems variations are transformed into index numbers with January 2018 as the base date. Then, a new index number is created for each commodity group through a weighted average of its components (groups, subgroups, items and subitems) in the \ac{ACPI}.
+Estimating the translog model requires price index numbers for each commodity group at each time period. First, the variation of each commodity group is obtained through the weighted average of variations of its components (groups, subgroups, items and subitems)  in the \ac{ACPI}. Then the variations are transformed into index numbers with January 2018 as the base date, with each commodity group price normalized to unity.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
