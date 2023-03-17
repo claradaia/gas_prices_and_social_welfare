@@ -111,6 +111,8 @@ My mother and father.
 
 Dr. Martinez-Espi\~{n}eira who taught me about welfare economics and to stay humble about our assumptions.
 Dr. Locke, who first presented me to the concept of the social welfare function and to the translog utility function.
+
+Dr. Daniela Verzola Vaz and Dr. Rodolfo Hoffmann for their advice on the use of the \ac{FBS} dataset.
 Dr. Hexsel.
 
 The Informatics Department of UFPR Faculty.
@@ -338,7 +340,7 @@ See Table \ref{attribute_vars} for the variables from the dataset used to captur
 \textbf{Attribute}                       & \textbf{Source}                                                                                                                                          \\ \midrule
 Household Size                  & The dataset \verb|MORADOR| contains one row per household member, I count the rows in each household and use 7 or more as the upper limit.                               \\
 Age of Head of the Household    & Variable \verb|V0403| in the \verb|MORADOR| dataset contains the age of each member. I grouped the ages into 5 buckets using frequencies (?).                            \\
-Region of Residence             & Variable \verb|UF| in \verb|MORADOR| contains the state where the household is located. I mapped the states into their official regions of Brazil, namely textit{Centro-Oeste}, textit{Nordeste}, textit{Norte}, textit{Sudeste} and textit{Sul}. \\
+Region of Residence             & Variable \verb|UF| in \verb|MORADOR| contains the state where the household is located. I mapped the states into their official regions of Brazil, namely \textit{Centro-Oeste}, \textit{Nordeste}, \textit{Norte}, \textit{Sudeste} and \textit{Sul}. \\
 Race of Head of the Household   & Variable \verb|V0405| in \verb|MORADOR| classifies the head of the household as ``white'', ``black'', ``asian'', ``mixed'', ``indigenous'' or ``undeclared''. \\
 Type of Residence               & Variable \verb|TIPO_SITUACAO_REG| in \verb|MORADOR| classifies households as ``urban'' or ``rural''.                                        \\
 Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classifies the head of the household as ``male'' or ``female''.                             \\
