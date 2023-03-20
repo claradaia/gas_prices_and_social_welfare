@@ -5,6 +5,7 @@ Dropbox
 // Where the output and data files are
 cd "aaaMUN\SUPERVISION\2022\Clara"
 
+// source: https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/precos-revenda-e-de-distribuicao-combustiveis/serie-historica-do-levantamento-de-precos
 import excel "Data\fuel_prices\mensal-brasil-desde-jan2013.xlsx", sheet("BRASIL - DESDE JANEIRO DE 2013") cellrange(A17:R772) firstrow clear
 
 rename PREÇOMÉDIOREVENDA mean_retail_price
