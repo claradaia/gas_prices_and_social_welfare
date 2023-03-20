@@ -1,6 +1,12 @@
-// Clean, merge and transform price indices
+/***********************************************************
+ *  Clara Daia Hilgenberg Daru                             *
+ *  March 2023                                             *
+ *                                                         *
+ *  Clean, merge and transform price indices               *
+ ***********************************************************/
 
 Dropbox
+
 // Where the output and data files are
 cd "aaaMUN\SUPERVISION\2022\Clara"
 
@@ -94,7 +100,6 @@ replace commodity_group = "goods" if inlist(level_code, 2104, 4, 61, 63, 7201008
 // "Cinema"
 // "Ingresso para Jogo"
 // "Clube"
-// "Disco Laser"
 // "Aluguel de DVD e Fita de Videocassete"
 // "Boite, Danceteria e Discoteca"
 // "Jogos de Azar"
