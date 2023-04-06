@@ -72,8 +72,6 @@ rename PRECOMÉDIOREVENDA mean_retail_price
 
 append using "Data\fuel_prices\fuel_prices_2013.dta", force
 
-// rename DESVIOPADRÃOREVENDA std_dev_retail_price
-
 
 // fix some differences between datasets
 replace PRODUTO = "ÓLEO DIESEL" if PRODUTO == "OLEO DIESEL"
@@ -95,9 +93,6 @@ rename MÊS month
 label variable month "Month"
 replace month = mofd(month)
 format month %tm
-
-// gen upper = mean_retail_price + std_dev_retail_price
-// gen lower = mean_retail_price - std_dev_retail_price
 
 
 /* Merge everything and plot
@@ -121,6 +116,3 @@ by PRODUTO: gen norm_retail_price = mean_retail_price / mean_retail_price[1]
 
 sort month
 twoway (line norm_retail_price month if PRODUTO=="Ethanol") (line norm_retail_price month if PRODUTO=="Gasoline") (line norm_retail_price month if PRODUTO=="Diesel") (line norm_crude_oil_price month), tlabel(2005m1 2010m1 2015m1 2020m1 2016m10, format(%tmMon/YY)) tline(2016m10)
-
-// twoway (rarea lower upper month, fcolor(gs14) lwidth(none)  legend(label(1 "std deviation range"))) (line retail_price month) (line crude_oil_price month), by(PRODUTO, cols(1) note("")) tlabel(2005m1 2010m1 2015m1 2020m1 2016m10, format(%tmMon/YY)) tline(2016m10) ysize(10)
-
