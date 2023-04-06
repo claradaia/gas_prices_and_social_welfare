@@ -61,7 +61,11 @@ aaaMUN/SUPERVISION/2022/Clara/Data/hh_*.dta
 aaaMUN/SUPERVISION/2022/Clara/graphs/*
 aaaMUN/SUPERVISION/2022/Clara/Data/IPCA/*.dta
 aaaMUN/SUPERVISION/2022/Clara/Data/fuel_prices/*.dta
-
+aaaMUN/SUPERVISION/2022/Clara/Data/fuel_prices/basketDayArchives.csv
 
 # deliverables
 deliverables
+
+# libreoffice lock files
+.~lock*
+
