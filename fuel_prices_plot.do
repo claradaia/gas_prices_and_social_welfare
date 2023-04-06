@@ -115,4 +115,6 @@ sort PRODUTO month
 by PRODUTO: gen norm_retail_price = mean_retail_price / mean_retail_price[1]
 
 sort month
-twoway (line norm_retail_price month if PRODUTO=="Ethanol") (line norm_retail_price month if PRODUTO=="Gasoline") (line norm_retail_price month if PRODUTO=="Diesel") (line norm_crude_oil_price month), tlabel(2005m1 2010m1 2015m1 2020m1 2016m10, format(%tmMon/YY)) tline(2016m10)
+graph twoway (line norm_retail_price month if PRODUTO=="Ethanol") (line norm_retail_price month if PRODUTO=="Gasoline") (line norm_retail_price month if PRODUTO=="Diesel") (line norm_crude_oil_price month), tlabel(2005m1 2010m1 2015m1 2020m1 2016m10, format(%tmMon/YY)) tline(2016m10)
+
+graph export "graphs\fuel_prices_over_time.png", as(png) replace

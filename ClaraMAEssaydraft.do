@@ -145,6 +145,7 @@ The Informatics Department of UFPR Faculty.
 \acro{GSFT}{Goods and Services Flow Tax}
 \acro{NSCPI}{National System of Consumer Price Indices}
 \acro{ACPI}{Ample Consumer Price Index}
+\acro{BRL}{Brazilian Real}
 
 \end{acronym}
 
@@ -230,7 +231,29 @@ Having a low price-elasticity of demand and representing a large share of expend
 
 \tdIL{perhaps also add that the price of oil can fluctuate a lot?}
 
-In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil, which resulted in more volatile prices of gasoline to consumers.
+In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil.
+
+Figure \ref{fig:fuel_prices_over_time} shows average monthly retail prices of gasoline, ethanol and diesel in Brazil, as well as the OPEC crude oil monthly prices between 2003 and 2023, all in \ac{BRL} and normalized to 1 in the first time period. The graph shows that Petrobras' price policy before 2016 cushioned fuel prices against international market price variations, and that since the policy change prices have followed crude oil price trends, increasing over time and becoming more volatile.
+
+tex*/
+
+texdoc stlog, nolog
+
+// generate fuel prices graph
+do "..\..\..\..\fuel_prices_plot.do"
+
+texdoc stlog close
+
+/*tex
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{graphs/fuel_prices_over_time.png}
+    \caption{Fuel and crude oil prices over time}
+    \label{fig:fuel_prices_over_time}
+\end{figure}
+
 
 From the \tdFL{ENW: English needs work: from ``a''} methodological standpoint, \tr{I find} \tdFL{reword} that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate \tdFL{ENW grammar} effects on specific regions rather than a nation-wide study.
 
@@ -250,7 +273,6 @@ There are also political aspects of interest in analysing the effect of gas pric
 In 2002, the anti-trust ...
 
 In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%. This was part of a series of attempts to keep inflation under control.
-
 
 \section{\ac{BIGS}'s Quality of Life Loss Index}
 For comparison. IBGE uses its own deflators.
@@ -619,12 +641,17 @@ matrix ct = r(N)
 texdoc local unknown_amt = strofreal(ct[1,1], "%12.0gc")
 drop if amount_spent == 9999999.99 | (QUADRO==0 & amount_spent == 99999)
 
+// stage 1 groups
 gen commodity_group = .
-label define commodity_groups 1 "Gasoline" 2 "Transportation" 3 "Food" 4 "Energy (others)" 5 "Consumer Services" 6 "Consumer Goods" 7 "Capital Services"
+label define commodity_groups 1 "Energy" 2 "Food" 3 "Consumer Services" 4 "Consumer Goods" 5 "Capital Services"
+
+// stage 2 groups
+gen stage2_commodity_group = .
+label define stage2_commodity_groups 1 "Gasoline" 2 "Diesel" 3 "Ethanol" 4 "Energy (others)"
 
 
-//***********************************
-// Gasoline and Transportation groups
+//*************
+// Energy group
 
 /* All vehicle fuel codes in case they are needed later
 2301401 -- gasoline
@@ -632,24 +659,38 @@ label define commodity_groups 1 "Gasoline" 2 "Transportation" 3 "Food" 4 "Energy
 2301502 -- special gasoline
 2301601 -- ethanol
 2301701 -- diesel
-2301801 -- natural gas for vehicles*/
+2301801 -- natural gas for vehicles
 
-// QUADRO 23: expenditure on transportation
-replace commodity_group = 2 if QUADRO == 23
+quadro		purchase
+---------|----------------------------------------------------------
+	06		power, water & sewage fees, piped natural gas, phone, internet, tv
+	07		domestic fuels and water
+
+Within quadro 06
+code			purchase
+600101			power
+600301			piped natural gas
+601801			aggregated costs of power, water and sewage
+699901			some other aggregation of power, water, internet, etc
+
+Within quadro 07, all codes are for domestic fuels (including 700801, included in the gasoline group), except for 700201 and 700202, which are for water
+*/
 
 // item codes for gasoline
 // 23* are for vehicles, 700801 is for domestic use
 replace commodity_group = 1 if inlist(item_code, 2301401, 2301501, 2301502, 700801)
 
+replace commodity_group = 1 if ///
+	inlist(item_code, 600101, 600301, 601801, 699901) | ///
+	(QUADRO == 7 & ~inlist(item_code, 700201, 700202, 700801))
+
 unique hh_id if item_code == 700801
 texdoc local domestic_use_count = strofreal(r(N), "%12.0gc")
 texdoc local domestic_use_pct = strofreal(r(N)*100/hh_count, "%9.2f")
 
+
 //***********
 // Food group
-
-
-replace commodity_group = 3 if QUADRO == 24
 
 /*
 quadro		purchase
@@ -679,32 +720,11 @@ code range				purchase
 */
 
 // item codes for food
-replace commodity_group = 3 if ///
+replace commodity_group = 2 if ///
 	QUADRO == 24 | ///
 	inrange(item_code, 6300101, 8600101) | ///
 	inrange(item_code, 9000101, 9000928)
 
-
-//**********************
-// Energy (others) group
-/*
-quadro		purchase
----------|----------------------------------------------------------
-	06		power, water & sewage fees, piped natural gas, phone, internet, tv
-	07		domestic fuels and water
-
-Within quadro 06
-code			purchase
-600101			power
-600301			piped natural gas
-601801			aggregated costs of power, water and sewage
-699901			some other aggregation of power, water, internet, etc
-
-Within quadro 07, all codes are for domestic fuels (including 700801, included in the gasoline group), except for 700201 and 700202, which are for water
-*/
-replace commodity_group = 4 if ///
-	inlist(item_code, 600101, 600301, 601801, 699901) | ///
-	(QUADRO == 7 & ~inlist(item_code, 700201, 700202, 700801))
 
 
 //************************
@@ -715,6 +735,7 @@ quadro  	purchase
 	09		repair, maintenance and rent of furniture and appliances
 	19		domestic services (cleaning, cooking, gardening, etc)
 	22		games, bets
+	23		transportation
 	25		communication
 	31		services like barber/salon, massage, tattoos
 	40		lawyer, notary services
@@ -730,10 +751,11 @@ Within group 9, there are item codes both for goods purchased to fix/maintain an
 
 */
 
-replace commodity_group = 5 if ///
+replace commodity_group = 3 if ///
 	inlist(QUADRO, 9, 19, 22, 25, 31, 40, 41, 42, 45, 50) | ///
 	(QUADRO == 6 & ~inlist(item_code, 600101, 600301, 601801, 699901)) | /// water, sewage, internet
-	(QUADRO == 7 & inlist(item_code, 700201, 700202)) // water
+	(QUADRO == 7 & inlist(item_code, 700201, 700202)) | /// water
+	(QUADRO == 23 & commodity_group == .) /// transportation excluding fuels
 
 
 //*********************
@@ -766,7 +788,7 @@ Includes items from the 63 to 69 quadros that are not food items.
 
 */
 
-replace commodity_group = 6 if ///
+replace commodity_group = 4 if ///
 	inlist(QUADRO, 15, 16, 17, 18, 21, 27, 29, 30, 32, 34, 35, 36, ///
 		   37, 38, 39, 43, 44, 46) | ///
 	inrange(item_code, 8600101, 8900101)
@@ -795,7 +817,7 @@ code range				purchase
 
 */
 
-replace commodity_group = 7 if ///
+replace commodity_group = 5 if ///
 	inlist(QUADRO, 8, 10, 11, 33) | ///
 	item_code == 000101
 
@@ -1043,7 +1065,7 @@ The master sample excludes the following areas: military bases, camping sites, p
 
 \chapter{Mapping of \ac{ACPI} groups to commodity groups} \label{ap:acpi_to_commodity_groups_map}
 
-Table \ref{acpi_groups} shows the structure of groups, subgroups, items and subitems of goods and services used by the \ac{ACPI}, with the respective commodity group in the first stage of the model. Less aggregated levels of the structure have been omitted when the entire parent category was mapped into a single group, for example the \ac{ACPI} group ``Food and Beverages'' is entirely included in the ``Food'' commodity group, so it is represented by a single row in the table, whereas each subgroup of the ``Health Goods and Services'' was mapped to a different commodity group, occupying a separate row.
+Table \ref{acpi_groups} shows the structure of groups, subgroups, items and subitems of goods and services used by the \ac{ACPI} \citep{ibge2020}, with the respective commodity group in the first stage of the model. Less aggregated levels of the structure have been omitted when the entire parent category was mapped into a single group, for example the \ac{ACPI} group ``Food and Beverages'' is entirely included in the ``Food'' commodity group, so it is represented by a single row in the table, whereas each subgroup of the ``Health Goods and Services'' was mapped to a different commodity group, occupying a separate row.
 
 
 
