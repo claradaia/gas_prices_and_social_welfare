@@ -229,7 +229,7 @@ According to the 2017-2018 \ac{FBS} run by the \ac{BIGS} \citep{ibgePOF}, transp
 
 Having a low price-elasticity of demand and representing a large share of expenditure means the impact of gasoline price fluctuations is severe on consumers' well-being. Reflecting that relevance, in the past two decades the pricing of petroleum and its products in Brazil has been the target of several important policy interventions. Section \ref{gas_policy_history} provides a brief history of these interventions.
 
-\tdIL{perhaps also add that the price of oil can fluctuate a lot?}
+\tdILY{perhaps also add that the price of oil can fluctuate a lot?}
 
 In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil.
 
@@ -254,6 +254,7 @@ texdoc stlog close
     \label{fig:fuel_prices_over_time}
 \end{figure}
 
+\citep{LinPrince2013} find that high price volatility yields lower aggregate demand for gasoline.
 
 From the \tdFL{ENW: English needs work: from ``a''} methodological standpoint, \tr{I find} \tdFL{reword} that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate \tdFL{ENW grammar} effects on specific regions rather than a nation-wide study.
 
