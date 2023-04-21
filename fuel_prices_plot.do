@@ -88,7 +88,6 @@ replace PRODUTO = "Gasoline" if PRODUTO == "GASOLINA COMUM"
 replace PRODUTO = "Ethanol" if PRODUTO == "ETANOL HIDRATADO"
 replace PRODUTO = "Diesel" if PRODUTO == "ÓLEO DIESEL"
 
-label variable mean_retail_price "Mean fuel retail price (BRL)"
 rename MÊS month
 label variable month "Month"
 replace month = mofd(month)
@@ -111,10 +110,22 @@ replace crude_oil_price = crude_oil_price/usd_price
 
 // normalize prices to 1 at t=1
 gen norm_crude_oil_price = crude_oil_price / crude_oil_price[1]
+label variable norm_crude_oil_price "Crude oil prices (BRL)"
+
 sort PRODUTO month
 by PRODUTO: gen norm_retail_price = mean_retail_price / mean_retail_price[1]
 
 sort month
-graph twoway (line norm_retail_price month if PRODUTO=="Ethanol") (line norm_retail_price month if PRODUTO=="Gasoline") (line norm_retail_price month if PRODUTO=="Diesel") (line norm_crude_oil_price month), tlabel(2005m1 2010m1 2015m1 2020m1 2016m10, format(%tmMon/YY)) tline(2016m10)
+graph twoway (line norm_retail_price month if PRODUTO=="Ethanol", legend(label(1 "Ethanol"))) ///
+	(line norm_retail_price month if PRODUTO=="Gasoline", legend(label(2 "Gasoline"))) ///
+	(line norm_retail_price month if PRODUTO=="Diesel", legend(label(3 "Diesel"))) ///
+	(line norm_crude_oil_price month, legend(label(4 "Crude oil"))), ///
+	tlabel(2005m1 2010m1 2015m1 2020m1 2016m10, format(%tmMon/YY)) /// tick labels
+	tline(2016m10) /// vertical line
+	ytitle("Mean price (BRL, relative to Jan 2003)") ///
+	xtitle("Month") ///
+	ylabel(,labsize(small)) xlabel(,labsize(small)) ///
+	graphregion(color(white) margin(zero)) bgcolor(white)
 
-graph export "graphs\fuel_prices_over_time.png", as(png) replace
+// graph was looking a bit weird in the pdf, so I increased the width a lot
+graph export "graphs\fuel_prices_over_time.png", as(png) width(3000) replace

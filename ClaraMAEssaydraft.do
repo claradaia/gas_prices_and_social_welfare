@@ -18,6 +18,9 @@ set more off
 
 texdoc init "ClaraMAEssaydraft.tex", replace
 
+graph set window fontface "Palatino Linotype"
+
+
 /*tex
 \documentclass[12pt]{pdfathesis}
 
@@ -249,7 +252,7 @@ texdoc stlog close
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{graphs/fuel_prices_over_time.png}
+    \includegraphics[width=\textwidth]{graphs/fuel_prices_over_time.png}
     \caption{Fuel and crude oil prices over time}
     \label{fig:fuel_prices_over_time}
 \end{figure}
@@ -873,7 +876,7 @@ bysort hh_id: keep if _n == 1
 
 label variable total_expenditure "Household expenditure"
 label variable hh_income "Household income"
-graph hbox total_expenditure hh_income, nooutsides showyvars legend(off)
+graph hbox total_expenditure hh_income, nooutsides showyvars legend(off) graphregion(color(white) margin(zero)) bgcolor(white)
 graph export "graphs\boxplot_exp_inc.png", as(png) replace
 
 // skewness
@@ -906,7 +909,8 @@ collapse (mean) group_expenditure_share, by(commodity_group exp_pct)
 
 graph twoway scatter group_expenditure_share exp_pct if commodity_group == 1, ///
       xtitle("Percentile of total expenditure") ///
-	  ytitle("Mean of gasoline expenditure share")
+	  ytitle("Mean of gasoline expenditure share") ///
+	  graphregion(color(white) margin(zero)) bgcolor(white)
 
 graph export "graphs\avg_exp_shares_by_percentile.png", as(png) replace
 
