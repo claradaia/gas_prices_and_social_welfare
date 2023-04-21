@@ -631,6 +631,7 @@ egen hh_id = group(COD_UPA NUM_DOM NUM_UC), label
 // the meaning of "QUADRO" is not precise, so I'm leaving it as is
 rename V9001 item_code
 rename V8000_DEFLA amount_spent
+rename V8000 amount_spent_raw
 rename RENDA_TOTAL hh_income
 
 // count observed purchases
@@ -638,12 +639,13 @@ count
 matrix ct = r(N)
 texdoc local purchase_ct = strofreal(ct[1,1], "%12.0gc")
 
-// 9999999.99 means "unknown"
-// but someone appears to have used 99999 in the "ALUGUEL_ESTIMADO" dataset instead, so we'll also drop those two observations
-count if amount_spent == 9999999.99 | (QUADRO==0 & amount_spent == 99999)
+// 9999999.99 means "unknown" in the V8000 variable
+// oddly, some observations with 9999999.99 in V8000 have a much different (and reasonable) amount in the V8000_DEFLA variable, which then ends up not being removed if we don't check the V8000 variable
+// also someone appears to have used 99999 in the "ALUGUEL_ESTIMADO" dataset instead, so we'll also drop those two observations
+count if amount_spent_raw == 9999999.99 | (QUADRO==0 & amount_spent_raw == 99999)
 matrix ct = r(N)
 texdoc local unknown_amt = strofreal(ct[1,1], "%12.0gc")
-drop if amount_spent == 9999999.99 | (QUADRO==0 & amount_spent == 99999)
+drop if amount_spent_raw == 9999999.99 | (QUADRO==0 & amount_spent_raw == 99999)
 
 // stage 1 groups
 gen commodity_group = .
