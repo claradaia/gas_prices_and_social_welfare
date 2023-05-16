@@ -649,24 +649,26 @@ drop if amount_spent_raw == 9999999.99 | (QUADRO==0 & amount_spent_raw == 99999)
 
 // stage 1 groups
 gen commodity_group = .
-label define commodity_groups 1 "Energy" 2 "Food" 3 "Consumer Services" 4 "Consumer Goods" 5 "Capital Services"
+local ENERGY_G 1
+local FOOD_G 2
+local SERVICES_G 3
+local GOODS_G 4
+local CAPITAL_G 5
+label define commodity_groups `ENERGY_G' "Energy" `FOOD_G' "Food" `SERVICES_G' "Consumer Services" `GOODS_G' "Consumer Goods" `CAPITAL_G' "Capital Services"
 
 // stage 2 groups
 gen stage2_commodity_group = .
-label define stage2_commodity_groups 1 "Gasoline" 2 "Diesel" 3 "Ethanol" 4 "Energy (others)"
+local GASOLINE_G 1
+local DIESEL_G 2
+local ETHANOL_G 3
+local OTHERS_G 4
+label define stage2_commodity_groups `GASOLINE_G' "Gasoline" `DIESEL_G' "Diesel" `ETHANOL_G' "Ethanol" `OTHERS_G' "Energy (others)"
 
 
 //*************
 // Energy group
 
-/* All vehicle fuel codes in case they are needed later
-2301401 -- gasoline
-2301501 -- enhanced gasoline
-2301502 -- special gasoline
-2301601 -- ethanol
-2301701 -- diesel
-2301801 -- natural gas for vehicles
-
+/*
 quadro		purchase
 ---------|----------------------------------------------------------
 	06		power, water & sewage fees, piped natural gas, phone, internet, tv
@@ -680,13 +682,20 @@ code			purchase
 699901			some other aggregation of power, water, internet, etc
 
 Within quadro 07, all codes are for domestic fuels (including 700801, included in the gasoline group), except for 700201 and 700202, which are for water
+
+Vehicle fuel codes, within quadro 23
+code			purchase
+2301401			gasoline
+2301501			enhanced gasoline
+2301502			special gasoline
+2301601			ethanol
+2301701			diesel
+2301801			natural gas for vehicles
 */
 
-// item codes for gasoline
-// 23* are for vehicles, 700801 is for domestic use
-replace commodity_group = 1 if inlist(item_code, 2301401, 2301501, 2301502, 700801)
+replace commodity_group = `ENERGY_G' if inlist(item_code, 2301401, 2301501, 2301502, 700801)
 
-replace commodity_group = 1 if ///
+replace commodity_group = `ENERGY_G' if ///
 	inlist(item_code, 600101, 600301, 601801, 699901) | ///
 	(QUADRO == 7 & ~inlist(item_code, 700201, 700202, 700801))
 
@@ -726,7 +735,7 @@ code range				purchase
 */
 
 // item codes for food
-replace commodity_group = 2 if ///
+replace commodity_group = `FOOD_G' if ///
 	QUADRO == 24 | ///
 	inrange(item_code, 6300101, 8600101) | ///
 	inrange(item_code, 9000101, 9000928)
@@ -757,7 +766,7 @@ Within group 9, there are item codes both for goods purchased to fix/maintain an
 
 */
 
-replace commodity_group = 3 if ///
+replace commodity_group = `SERVICES_G' if ///
 	inlist(QUADRO, 9, 19, 22, 25, 31, 40, 41, 42, 45, 50) | ///
 	(QUADRO == 6 & ~inlist(item_code, 600101, 600301, 601801, 699901)) | /// water, sewage, internet
 	(QUADRO == 7 & inlist(item_code, 700201, 700202)) | /// water
@@ -794,7 +803,7 @@ Includes items from the 63 to 69 quadros that are not food items.
 
 */
 
-replace commodity_group = 4 if ///
+replace commodity_group = `GOODS_G' if ///
 	inlist(QUADRO, 15, 16, 17, 18, 21, 27, 29, 30, 32, 34, 35, 36, ///
 		   37, 38, 39, 43, 44, 46) | ///
 	inrange(item_code, 8600101, 8900101)
@@ -823,7 +832,7 @@ code range				purchase
 
 */
 
-replace commodity_group = 5 if ///
+replace commodity_group = `CAPITAL_G' if ///
 	inlist(QUADRO, 8, 10, 11, 33) | ///
 	item_code == 000101
 
@@ -859,21 +868,80 @@ drop description _merge
 replace amount_spent = amount_spent * 30/days
 
 
-/**********************************
- * expenditure shares and summary *
- **********************************/
-egen group_expenditure = total(amount_spent), by(hh_id commodity_group)
+**********************
+* expenditure shares *
+**********************
+
+************************************
+* expenditure share on vehicle fuels
+preserve
+
+gen commodity_group_s2 = .
+
+// 23* are for vehicles, 700801 is for domestic use
+replace commodity_group_s2 = `GASOLINE_G' if inlist(item_code, 2301401, 2301501, 2301502, 700801)
+
+replace commodity_group_s2 = `ETHANOL_G' if item_code == 2301601
+replace commodity_group_s2 = `DIESEL_G' if item_code == 2301701
+replace commodity_group_s2 = `OTHERS_G' if inlist(item_code, 2301801, 600101, 600301, 601801, 699901) | QUADRO == 7 & ~inlist(item_code, 700201, 700202)
 
 // make sure empty groups have expenditure zero
+fillin hh_id commodity_group_s2
+replace amount_spent = 0 if _fillin == 1
+
+egen total_expenditure = total(amount_spent) if amount_spent != ., by(hh_id)
+assert total_expenditure != .
+
+egen group_expenditure_s2 = total(amount_spent), by(hh_id commodity_group_s2)
+assert group_expenditure_s2 != .
+
+// keep only one observation per household and energy group
+bysort hh_id commodity_group_s2: keep if _n == 1
+
+gen group_expenditure_share_s2 = group_expenditure_s2/total_expenditure
+
+// drop top 2.5% gasoline expenditure values for better visuals
+_pctile group_expenditure_share_s2 if commodity_group_s2 == `GASOLINE_G' & group_expenditure_s2 > 0, p(97.5)
+local share_cutoff = r(r1)
+drop if group_expenditure_share_s2 > `share_cutoff'
+
+// also drop top 2.5% total expenditure values for better visuals
+_pctile total_expenditure if commodity_group_s2 == `GASOLINE_G' & group_expenditure_s2 > 0, p(97.5)
+local exp_cutoff = r(r1)
+drop if total_expenditure > `exp_cutoff'
+
+graph twoway scatter group_expenditure_share_s2 total_expenditure if commodity_group_s2 == `GASOLINE_G', ///
+      xtitle("Total monthly expenditure") ///
+	  ytitle("Gasoline expenditure share") ///
+	  graphregion(color(white) margin(zero)) bgcolor(white) msize(vtiny)
+
+graph export "graphs\exp_shares_gasoline.png", as(png) replace
+
+restore
+
+
+
+**********************************
+* expenditure shares and summary *
+**********************************
+egen group_expenditure = total(amount_spent), by(hh_id commodity_group)
+egen total_expenditure = total(amount_spent) if amount_spent != ., by(hh_id)
+assert total_expenditure != .
+assert group_expenditure != .
+
+// keep only one observation per household and commodity group
 bysort hh_id commodity_group: keep if _n == 1
+
+// make sure empty groups have expenditure zero
 fillin hh_id commodity_group
 replace group_expenditure = 0 if _fillin == 1
 assert group_expenditure != .
 
-egen total_expenditure = total(group_expenditure), by(hh_id)
 
 // Summary info on expenditure and income
 preserve
+
+// keep only one observation per household
 bysort hh_id: keep if _n == 1
 
 label variable total_expenditure "Household expenditure"
@@ -890,38 +958,15 @@ texdoc local total_inc_skew = strofreal(r(skewness), "%9.2f")
 restore
 
 
-/***********************************************
-* Plot average expenditure shares by percentile
+/***************************************************
+* Estimate a Working-Leser model for the Engel curve
 */
-preserve
 gen group_expenditure_share = group_expenditure/total_expenditure
 
 // save for future merging
 keep hh_id commodity_group group_expenditure group_expenditure_share total_expenditure
-save "Data\hh_exp_shares.dta", replace
 
-use "Data\hh_exp_shares.dta", clear
 
-drop if group_expenditure == 0
-
-// tag each percentile
-xtile exp_pct = total_expenditure, nq(100)
-
-collapse (mean) group_expenditure_share, by(commodity_group exp_pct)
-
-graph twoway scatter group_expenditure_share exp_pct if commodity_group == 1, ///
-      xtitle("Percentile of total expenditure") ///
-	  ytitle("Mean of gasoline expenditure share") ///
-	  graphregion(color(white) margin(zero)) bgcolor(white)
-
-graph export "graphs\avg_exp_shares_by_percentile.png", as(png) replace
-
-restore
-
-/***************************************************
-* Estimate a Working-Leser model for the Engel curve
-*/
-use "Data\hh_exp_shares.dta", clear
 merge m:1 hh_id using "Data\hh_head_size.dta"
 gen n_people = n_adults + n_children
 gen pc_exp = total_expenditure / n_people
@@ -968,13 +1013,13 @@ The distribution of income and total expenditure is strongly right-skewed: figur
 % More useful info
 $`hh_vehicle_count'$ of the households surveyed, or $`hh_vehicle_pct'$\% report owning one vehicle. A small number, $`domestic_use_count'$ or $`domestic_use_pct'$\% of households, report purchasing gasoline for domestic use.
 
-Figure \ref{fig:avg_exp_shares_by_percentile} shows the average share of a household's total expenditure spent on gasoline, for households that consumed any gasoline during the period of the survey. The shape suggests an Engel curve linear on the logarithm of total expenditure, consistent with existing literature.
+Figure \ref{fig:exp_shares_gasoline} shows the shares of a households total expenditure spent on gasoline. For households that consumed any gasoline during the period of the survey, the clusters shapes suggest Engel curves linear on the logarithm of total expenditure, which is expected of good that are not luxuries.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{graphs/avg_exp_shares_by_percentile.png}
-    \caption{Mean of expenditure share of gasoline by percentile of total expenditure}
-    \label{fig:avg_exp_shares_by_percentile}
+    \includegraphics[width=0.9\textwidth]{graphs/exp_shares_gasoline.png}
+    \caption{Expenditure share of gasoline by total expenditure}
+    \label{fig:exp_shares_gasoline}
 \end{figure}
 
 
