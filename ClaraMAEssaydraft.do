@@ -611,6 +611,10 @@ texdoc stlog, nolog
 /*******************
 * expenditure data *
 ********************/
+frames reset
+frame create expenditures
+frame change expenditures
+
 
 // open individual expenditure data
 use "Data\Dados_20210304\DESPESA_INDIVIDUAL.dta", clear
@@ -648,21 +652,9 @@ texdoc local unknown_amt = strofreal(ct[1,1], "%12.0gc")
 drop if amount_spent_raw == 9999999.99 | (QUADRO==0 & amount_spent_raw == 99999)
 
 // stage 1 groups
-gen commodity_group = .
-local ENERGY_G 1
-local FOOD_G 2
-local SERVICES_G 3
-local GOODS_G 4
-local CAPITAL_G 5
-label define commodity_groups `ENERGY_G' "Energy" `FOOD_G' "Food" `SERVICES_G' "Consumer Services" `GOODS_G' "Consumer Goods" `CAPITAL_G' "Capital Services"
-
+gen commodity_group = ""
 // stage 2 groups
-gen stage2_commodity_group = .
-local GASOLINE_G 1
-local DIESEL_G 2
-local ETHANOL_G 3
-local OTHERS_G 4
-label define stage2_commodity_groups `GASOLINE_G' "Gasoline" `DIESEL_G' "Diesel" `ETHANOL_G' "Ethanol" `OTHERS_G' "Energy (others)"
+gen stage2_commodity_group = ""
 
 
 //*************
@@ -693,9 +685,9 @@ code			purchase
 2301801			natural gas for vehicles
 */
 
-replace commodity_group = `ENERGY_G' if inlist(item_code, 2301401, 2301501, 2301502, 700801)
+replace commodity_group = "Energy" if inlist(item_code, 2301401, 2301501, 2301502, 700801)
 
-replace commodity_group = `ENERGY_G' if ///
+replace commodity_group = "Energy" if ///
 	inlist(item_code, 600101, 600301, 601801, 699901) | ///
 	(QUADRO == 7 & ~inlist(item_code, 700201, 700202, 700801))
 
@@ -735,7 +727,7 @@ code range				purchase
 */
 
 // item codes for food
-replace commodity_group = `FOOD_G' if ///
+replace commodity_group = "Food" if ///
 	QUADRO == 24 | ///
 	inrange(item_code, 6300101, 8600101) | ///
 	inrange(item_code, 9000101, 9000928)
@@ -766,11 +758,11 @@ Within group 9, there are item codes both for goods purchased to fix/maintain an
 
 */
 
-replace commodity_group = `SERVICES_G' if ///
+replace commodity_group = "Consumer Services" if ///
 	inlist(QUADRO, 9, 19, 22, 25, 31, 40, 41, 42, 45, 50) | ///
 	(QUADRO == 6 & ~inlist(item_code, 600101, 600301, 601801, 699901)) | /// water, sewage, internet
 	(QUADRO == 7 & inlist(item_code, 700201, 700202)) | /// water
-	(QUADRO == 23 & commodity_group == .) /// transportation excluding fuels
+	(QUADRO == 23 & missing(commodity_group)) /// transportation excluding fuels
 
 
 //*********************
@@ -803,7 +795,7 @@ Includes items from the 63 to 69 quadros that are not food items.
 
 */
 
-replace commodity_group = `GOODS_G' if ///
+replace commodity_group = "Consumer Goods" if ///
 	inlist(QUADRO, 15, 16, 17, 18, 21, 27, 29, 30, 32, 34, 35, 36, ///
 		   37, 38, 39, 43, 44, 46) | ///
 	inrange(item_code, 8600101, 8900101)
@@ -832,7 +824,7 @@ code range				purchase
 
 */
 
-replace commodity_group = `CAPITAL_G' if ///
+replace commodity_group = "Capital Services" if ///
 	inlist(QUADRO, 8, 10, 11, 33) | ///
 	item_code == 000101
 
@@ -854,7 +846,7 @@ quadro  	purchase
 
 drop if inlist(QUADRO, 12, 13, 26, 28, 47, 48, 49, 51)
 
-assert commodity_group != .
+assert ~missing(commodity_group)
 
 
 *********************************
@@ -874,16 +866,25 @@ replace amount_spent = amount_spent * 30/days
 
 ************************************
 * expenditure share on vehicle fuels
-preserve
 
-gen commodity_group_s2 = .
+// use a separate frame as we'll be doing some destructive stuff
+frame change expenditures
+
+// drop frame if it exists from previous runs
+capture frame drop fuel_expenditure_shares
+
+frame put hh_id amount_spent item_code QUADRO, into(fuel_expenditure_shares)
+frame change fuel_expenditure_shares
+
+gen commodity_group_s2 = ""
 
 // 23* are for vehicles, 700801 is for domestic use
-replace commodity_group_s2 = `GASOLINE_G' if inlist(item_code, 2301401, 2301501, 2301502, 700801)
+replace commodity_group_s2 = "Gasoline" if inlist(item_code, 2301401, 2301501, 2301502, 700801)
 
-replace commodity_group_s2 = `ETHANOL_G' if item_code == 2301601
-replace commodity_group_s2 = `DIESEL_G' if item_code == 2301701
-replace commodity_group_s2 = `OTHERS_G' if inlist(item_code, 2301801, 600101, 600301, 601801, 699901) | QUADRO == 7 & ~inlist(item_code, 700201, 700202)
+replace commodity_group_s2 = "Ethanol" if item_code == 2301601
+replace commodity_group_s2 = "Diesel" if item_code == 2301701
+replace commodity_group_s2 = "Public" if inlist(item_code, 2300101, 2300201, 2300301, 2300401, 2300402, 2300403, 2300404, 2300405,  2300406, 2300407, 2300408, 2300409, 2300501, 2300502, 2300601, 2300602, 2300701, 2300801, 2301101, 2301201, 2301301, 2303201)
+replace commodity_group_s2 = "Others" if inlist(item_code, 2301801, 600101, 600301, 601801, 699901) | QUADRO == 7 & ~inlist(item_code, 700201, 700202)
 
 // make sure empty groups have expenditure zero
 fillin hh_id commodity_group_s2
@@ -892,55 +893,88 @@ replace amount_spent = 0 if _fillin == 1
 egen total_expenditure = total(amount_spent) if amount_spent != ., by(hh_id)
 assert total_expenditure != .
 
+drop if missing(commodity_group_s2)
 egen group_expenditure_s2 = total(amount_spent), by(hh_id commodity_group_s2)
-assert group_expenditure_s2 != .
+assert ~missing(group_expenditure_s2)
 
 // keep only one observation per household and energy group
 bysort hh_id commodity_group_s2: keep if _n == 1
 
+// save fuel expenditures for another plot
+// drop frame if it exists from previous runs
+capture frame drop lorenz_curve
+frame put hh_id commodity_group_s2 total_expenditure group_expenditure_s2, into(lorenz_curve)
+
 gen group_expenditure_share_s2 = group_expenditure_s2/total_expenditure
 
 // drop top 2.5% gasoline expenditure values for better visuals
-_pctile group_expenditure_share_s2 if commodity_group_s2 == `GASOLINE_G' & group_expenditure_s2 > 0, p(97.5)
+_pctile group_expenditure_share_s2 if commodity_group_s2 == "Gasoline" & group_expenditure_s2 > 0, p(97.5)
 local share_cutoff = r(r1)
 drop if group_expenditure_share_s2 > `share_cutoff'
 
 // also drop top 2.5% total expenditure values for better visuals
-_pctile total_expenditure if commodity_group_s2 == `GASOLINE_G' & group_expenditure_s2 > 0, p(97.5)
+_pctile total_expenditure if commodity_group_s2 == "Gasoline" & group_expenditure_s2 > 0, p(97.5)
 local exp_cutoff = r(r1)
 drop if total_expenditure > `exp_cutoff'
 
-graph twoway scatter group_expenditure_share_s2 total_expenditure if commodity_group_s2 == `GASOLINE_G', ///
+graph twoway scatter group_expenditure_share_s2 total_expenditure if commodity_group_s2 == "Gasoline", ///
       xtitle("Total monthly expenditure") ///
 	  ytitle("Gasoline expenditure share") ///
 	  graphregion(color(white) margin(zero)) bgcolor(white) msize(vtiny)
 
 graph export "graphs\exp_shares_gasoline.png", as(png) replace
 
-restore
+
+
+****************************************************************
+* "lorenz curves" of fuels and public transportation expenditure
+frame change lorenz_curve
+
+capture frame drop lorenz_curve_throwaway
+frame copy lorenz_curve lorenz_curve_throwaway
+frame change lorenz_curve_throwaway
+
+rename group_expenditure_s2 exp
+reshape wide exp, i(hh_id) j(commodity_group_s2) string
+sort total_expenditure
+gen cum_total_exp = sum(total_expenditure)
+egen total_total_exp = total(total_expenditure)
+gen total_exp_prop = cum_total_exp / total_total_exp
+
+// mixing up snake case and camel case. not proud of it.
+foreach fuel in "Gasoline" "Ethanol" "Diesel" "Public" {
+// 	sort exp`fuel'
+	gen cum_`fuel'_exp = sum(exp`fuel')
+	egen total_`fuel'_exp = total(exp`fuel')
+	gen `fuel'_exp_lorenz = cum_`fuel'_exp / total_`fuel'_exp
+}
+
+graph twoway (line Gasoline_exp_lorenz total_exp_prop) ///
+      (line Diesel_exp_lorenz total_exp_prop) ///
+      (line Ethanol_exp_lorenz total_exp_prop) ///
+      (line Public_exp_lorenz total_exp_prop), ///
+      xtitle("Cumulative proportion of total expenditure") ///
+      ytitle("Cumulative proportion of expenditure on fuels") ///
+      graphregion(color(white) margin(zero)) bgcolor(white)
+
+graph export "graphs\fuel_exp_by_cumulative_income.png", as(png) replace
 
 
 
-**********************************
-* expenditure shares and summary *
-**********************************
-egen group_expenditure = total(amount_spent), by(hh_id commodity_group)
+****************************************
+* expenditure and income distributions *
+****************************************
+frame change expenditures
+
+// drop frame if it exists from previous runs
+capture frame drop expenditure_income
+frame put hh_id hh_income amount_spent commodity_group, into(expenditure_income)
+frame change expenditure_income
+
 egen total_expenditure = total(amount_spent) if amount_spent != ., by(hh_id)
 assert total_expenditure != .
-assert group_expenditure != .
-
-// keep only one observation per household and commodity group
-bysort hh_id commodity_group: keep if _n == 1
-
-// make sure empty groups have expenditure zero
-fillin hh_id commodity_group
-replace group_expenditure = 0 if _fillin == 1
-assert group_expenditure != .
-
 
 // Summary info on expenditure and income
-preserve
-
 // keep only one observation per household
 bysort hh_id: keep if _n == 1
 
@@ -955,12 +989,32 @@ texdoc local total_exp_skew = strofreal(r(skewness), "%9.2f")
 sum hh_income, detail
 texdoc local total_inc_skew = strofreal(r(skewness), "%9.2f")
 
-restore
 
 
 /***************************************************
 * Estimate a Working-Leser model for the Engel curve
 */
+frame change expenditures
+
+// drop frame if it exists from previous runs
+capture frame drop working_leser
+frame put hh_id amount_spent commodity_group, into(working_leser)
+frame change working_leser
+
+egen group_expenditure = total(amount_spent), by(hh_id commodity_group)
+assert group_expenditure != .
+
+egen total_expenditure = total(amount_spent) if amount_spent != ., by(hh_id)
+assert total_expenditure != .
+
+// keep only one observation per household and commodity group
+bysort hh_id commodity_group: keep if _n == 1
+
+// make sure empty groups have expenditure zero
+fillin hh_id commodity_group
+replace group_expenditure = 0 if _fillin == 1
+assert group_expenditure != .
+
 gen group_expenditure_share = group_expenditure/total_expenditure
 
 // save for future merging
@@ -1013,7 +1067,9 @@ The distribution of income and total expenditure is strongly right-skewed: figur
 % More useful info
 $`hh_vehicle_count'$ of the households surveyed, or $`hh_vehicle_pct'$\% report owning one vehicle. A small number, $`domestic_use_count'$ or $`domestic_use_pct'$\% of households, report purchasing gasoline for domestic use.
 
-Figure \ref{fig:exp_shares_gasoline} shows the shares of a households total expenditure spent on gasoline. For households that consumed any gasoline during the period of the survey, the clusters shapes suggest Engel curves linear on the logarithm of total expenditure, which is expected of good that are not luxuries.
+\subsection{Expenditure patterns on fuel and transportation}
+
+Figure \ref{fig:exp_shares_gasoline} shows the shares of a households total expenditure spent on gasoline. For households that consumed any gasoline during the period of the survey, the clusters shapes suggest Engel curves linear on the logarithm of total expenditure, which is expected of goods that are not luxuries.
 
 \begin{figure}
     \centering
@@ -1022,7 +1078,16 @@ Figure \ref{fig:exp_shares_gasoline} shows the shares of a households total expe
     \label{fig:exp_shares_gasoline}
 \end{figure}
 
+Figure \ref{fig:fuel_exp_by_cumulative_income}, inspired by the Suits Index of regressivity, shows the proportion of total expenditure on fuels and public transportation by the proportion of total overall expenditure. Families with higher expenditure, presumably wealthier, are responsible for a larger proportion of the total expenditure on all three main vehicle fuels, while families with lower expenditure are responsible for a larger proportion of expenditure on public transportation.
 
+If price elasticity of demand for fuels does not vary significantly across wealth levels, Figure \ref{fig:fuel_exp_by_cumulative_income} suggests a subsidy is regressive. On the other hand, the price of public transportation depends on fuel prices and subsidies specific to public transportation are low/uncommon/have only been introduced in Brazil during the pandemic in some states, and much lower than in other countries according to the ANTP \tdILB{look at formal references with actual numbers on this}. From that perspective, a subsidy on fuels, in particular diesel, indirectly subsidises public transportation.
+
+
+\begin{figure}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/fuel_exp_by_cumulative_income.png}
+    \caption{Cumulative proportion of expenditure of fuels and public transportation by cumulative proportion of total expenditure}
+    \label{fig:fuel_exp_by_cumulative_income}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
