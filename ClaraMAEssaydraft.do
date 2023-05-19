@@ -952,10 +952,13 @@ foreach fuel in "Gasoline" "Ethanol" "Diesel" "Public" {
 graph twoway (line Gasoline_exp_lorenz total_exp_prop) ///
       (line Diesel_exp_lorenz total_exp_prop) ///
       (line Ethanol_exp_lorenz total_exp_prop) ///
-      (line Public_exp_lorenz total_exp_prop), ///
-      xtitle("Cumulative proportion of total expenditure") ///
-      ytitle("Cumulative proportion of expenditure on fuels") ///
-      graphregion(color(white) margin(zero)) bgcolor(white)
+      (line Public_exp_lorenz total_exp_prop) ///
+      (function y=x, lpattern(dot) color(black) lwidth(thin)), ///
+      xtitle("Proportion of total expenditure") ///
+      ytitle("Proportion of expenditure on fuels") ///
+      graphregion(color(white) margin(zero)) bgcolor(white) ///
+      legend(label(1 "Gasoline") label(2 "Diesel") label(3 "Ethanol") label(4 "Public Transportation") label(5 "45°"))
+
 
 graph export "graphs\fuel_exp_by_cumulative_income.png", as(png) replace
 
