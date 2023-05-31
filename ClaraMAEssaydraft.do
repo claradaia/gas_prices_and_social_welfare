@@ -149,6 +149,9 @@ The Informatics Department of UFPR Faculty.
 \acro{NSCPI}{National System of Consumer Price Indices}
 \acro{ACPI}{Ample Consumer Price Index}
 \acro{BRL}{Brazilian Real}
+\acro{DQUAIDS}{Demographically-Scaled Quadratic Almost Ideal Demand System}
+\acro{GHG}{Greenhouse effect Gases}
+\acro{OECD}{Organisation for Economic Co-operation and Development}
 
 \end{acronym}
 
@@ -273,18 +276,59 @@ There are also political aspects of interest in analysing the effect of gas pric
 
 \chapter{Literature Review}\label{litreview}
 
-\section{Gas prices interventions}\label{gas_policy_history}
+\section{Fuel price interventions}\label{gas_policy_history}
 In 2002, the anti-trust ...
 
 In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%. This was part of a series of attempts to keep inflation under control.
 
+<<<<<<< Updated upstream
 \section{\ac{BIGS}'s Quality of Life Loss Index}
 For comparison. IBGE uses its own deflators.
+=======
+In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula da Silva (elected in 2022) campaign suggestions \citep{SantanaRamalho2023}.
+
+
+\section{The DWL angle}
+Price distortions in competitive markets lead to deadweight loss. By maintaining domestic prices artificially low, Petrobras subsidizes consumption implicitly through forgone revenue and directly when it needs to import fuel to satisfy the domestic demand.
+
+With Petrobras being partly nationalized, the loss incurred by consumers from increased prices can be counteracted by a decrease in the tax burden accounting for the government increased revenue. \cite{Moreira2017} uses a static open economy macroeconomic model of Brazil to estimate the impact of removing fuel subsidies on output, aggregate consumption and labour demand for the years 2011-2014. She finds that if accompanied by an equivalent reduction on major taxes, the removal of the subsidy increases output, consumption and employment.
+
+An aggregate demand function that yields dead-weight loss estimates typically uses a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. We don't like that very much because needs, access and ability to pay vary a lot between families.
+
+
+\section{The regressivity/progressivity angle} \label{sec:regressivity}
+To incorporate income differences into the analysis, we can use regressivity measures. If fuels comprise a larger share of the expenditure of families with lower income, a tax on them can be considered regressive as it disproportionately affects those families. Similarly, a subsidy will be progressive.
+
+One line of research suggests that using income results leads to overestimating the regressivity of a gasoline tax: \cite{Poterba1991} uses total expenditure instead of income as a proxy of lifetime earnings, which however relies on the assumption that poverty is in general temporary \tdILB{Is income mobility high in Brazil?}. \cite{TeixidoVerde2017} include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
+
+\cite{Sterner2012} argues that whether a tax is regressive will vary between countries and in particular that cars in developing countries are luxury goods. However, fuels can have a large impact on industry costs and output. In Brazil, transportation of consumer goods is largely made by trucks. \cite{FreitasRibeiroSouzaHewings2016} analyse the distributional effects of taxing \ac{GHG} in Brazil using an input-output model of the production chains and find that food and transportation bear the largest changes in output. Because low-income households also spend the greatest shares in these goods, a fuel tax is found to be regressive.
+
+
+\section{Demand systems, other sources of heterogeneity and welfare computation}
+Besides income, other household attributes affect demand for fuels. Incorporating demographic characteristics in the characterization of demand for fuels allows for a more detailed prediction of the heterogeneous welfare effects of a subsidy.
+
+\cite{NikodinoskaSchroder2016} study the welfare effects of fuel taxes in Germany using a \ac{DQUAIDS} model that includes the number of adults and children below 15 years of age in a household. In order to make households with different compositions comparable, they use the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers.
+
+\cite{SpillerStephensChen2017} consider that households in rural areas do not have access to public transportation, reducing their ability to substitute driving.
+
+
+>>>>>>> Stashed changes
 
 \section{Estimating Social Welfare from Aggregate Consumer Behaviour}
 % Adler 2019, Jorgenson1990, JorgensonSlesnick1987, JorgensonSlesnick2014
 
 
+<<<<<<< Updated upstream
+=======
+\section{Other important observations}
+
+% Why we must include ethanol in the analysis
+Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, brazilians consumed 15.5 billion litres of ethanol and 43 billion litres of gasoline \citep{anp2022}. The majority of vehicles sold in the country are \textit{flex-fuel}, i.e. can run on any combination of gasoline or ethanol, making ethanol and gasoline close short-run substitutes. In 2021, for example, of the 2,104,461 new vehicles licensed, 1,633,245 or 77.6\% were \textit{flex-fuel}. The share is even larger, 83.3\%, if we exclude trucks and buses \citep{anfavea2023}.
+
+As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the same volume of gasoline, so online guides instruct drivers to buy ethanol when its price is 70\% of the price of gasoline or less. \cite{Iootty2009} estimates that demand for gasoline has a cross-price elasticity of 1.5 with respect to ethanol prices, while the demand for ethanol has a cross-price elasticity of 8.09 with respect to gasoline prices.
+
+\cite{DahlSterner1991} note that seasonal (monthly or quarterly) data yield elasticities far too different from annual data, and conclude that seasonal data should not be used to estimate long-run elasticities.
+>>>>>>> Stashed changes
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -587,7 +631,7 @@ save "Data\hh_vehicle.dta", replace
 texdoc stlog close
 
 /*tex
-The 2017-2018 \ac{FBS} surveyed $`household_count'$ households.\tdFLY{try to format the macro to show a comma for thousands, as in 58,039} Table \ref{demographic_frequencies} shows how observations are distributed by gender of household head, residence type \tdFL{consider using Oxford commas} and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
+The 2017-2018 \ac{FBS} surveyed $`household_count'$ households.\tdFLY{try to format the macro to show a comma for thousands, as in 58,039} Table \ref{tab:demographic_frequencies} shows how observations are distributed by gender of household head, residence type \tdFL{consider using Oxford commas} and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
 
 \tdILY{It might help to have also the percentages in the table. }
 
