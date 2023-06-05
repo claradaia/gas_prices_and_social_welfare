@@ -500,6 +500,12 @@ label variable gender "Gender"
 label define genders 1 "Male" 2 "Female"
 label values gender genders
 
+// Race
+rename V0405 race
+label variable race "Race"
+label define races 1 "White" 2 "Black" 3 "Asian" 4 "Mixed" 5 "Indigenous" 9 "Undeclared"
+label values race races
+
 // Age
 rename V0403 age
 label variable age "Age"
