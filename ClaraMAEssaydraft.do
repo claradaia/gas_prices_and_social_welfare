@@ -237,7 +237,7 @@ Having a low price-elasticity of demand and representing a large share of expend
 
 \tdILY{perhaps also add that the price of oil can fluctuate a lot?}
 
-In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term effective subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil.
+In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term implicit subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil.
 
 Figure \ref{fig:fuel_prices_over_time} shows average monthly retail prices of gasoline, ethanol and diesel in Brazil, as well as the OPEC crude oil monthly prices between 2003 and 2023, all in \ac{BRL} and normalized to 1 in the first time period. The graph shows that Petrobras' price policy before 2016 cushioned fuel prices against international market price variations, and that since the policy change prices have followed crude oil price trends, increasing over time and becoming more volatile.
 
@@ -281,10 +281,6 @@ In 2002, the anti-trust ...
 
 In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%. This was part of a series of attempts to keep inflation under control.
 
-<<<<<<< Updated upstream
-\section{\ac{BIGS}'s Quality of Life Loss Index}
-For comparison. IBGE uses its own deflators.
-=======
 In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula da Silva (elected in 2022) campaign suggestions \citep{SantanaRamalho2023}.
 
 
@@ -312,14 +308,10 @@ Besides income, other household attributes affect demand for fuels. Incorporatin
 \cite{SpillerStephensChen2017} consider that households in rural areas do not have access to public transportation, reducing their ability to substitute driving.
 
 
->>>>>>> Stashed changes
 
-\section{Estimating Social Welfare from Aggregate Consumer Behaviour}
 % Adler 2019, Jorgenson1990, JorgensonSlesnick1987, JorgensonSlesnick2014
 
 
-<<<<<<< Updated upstream
-=======
 \section{Other important observations}
 
 % Why we must include ethanol in the analysis
@@ -328,7 +320,6 @@ Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, brazilian
 As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the same volume of gasoline, so online guides instruct drivers to buy ethanol when its price is 70\% of the price of gasoline or less. \cite{Iootty2009} estimates that demand for gasoline has a cross-price elasticity of 1.5 with respect to ethanol prices, while the demand for ethanol has a cross-price elasticity of 8.09 with respect to gasoline prices.
 
 \cite{DahlSterner1991} note that seasonal (monthly or quarterly) data yield elasticities far too different from annual data, and conclude that seasonal data should not be used to estimate long-run elasticities.
->>>>>>> Stashed changes
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -392,33 +383,13 @@ Following \cite{Slesnick2000}, \tr{I use} the following attributes to characteri
 	\item household size
 	\item age of head of the household
 	\item region of residence
-	\item race of head of the household
 	\item type of residence\footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{FBS} classifies households as ``urban or rural'', so I use this classification.}
 	\item gender of head of the household
 \end{enumerate}
 
-See Table \ref{attribute_vars} for the variables from the dataset used to capture each of these attributes.
+See Appendix \ref{ap:demographic_attribute_variables} for the variables from the dataset used to capture each of these attributes.
 
 
-\tdILY{ENW, In table \ref{attribute_vars} use italics for the official regions and ``and'' in English}
-
-
-\setlength{\extrarowheight}{3pt}
-\begin{table}[]
-\begin{tabular}{p{0.25\textwidth}p{0.75\textwidth}}
-\toprule
-\textbf{Attribute}                       & \textbf{Source}                                                                                                                                          \\ \midrule
-Household Size                  & The dataset \verb|MORADOR| contains one row per household member, I count the rows in each household and use 7 or more as the upper limit.                               \\
-Age of Head of the Household    & Variable \verb|V0403| in the \verb|MORADOR| dataset contains the age of each member. I grouped the ages into 5 buckets using frequencies (?).                            \\
-Region of Residence             & Variable \verb|UF| in \verb|MORADOR| contains the state where the household is located. I mapped the states into their official regions of Brazil, namely \textit{Centro-Oeste}, \textit{Nordeste}, \textit{Norte}, \textit{Sudeste} and \textit{Sul}. \\
-Race of Head of the Household   & Variable \verb|V0405| in \verb|MORADOR| classifies the head of the household as ``white'', ``black'', ``asian'', ``mixed'', ``indigenous'' or ``undeclared''. \\
-Type of Residence               & Variable \verb|TIPO_SITUACAO_REG| in \verb|MORADOR| classifies households as ``urban'' or ``rural''.                                        \\
-Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classifies the head of the household as ``male'' or ``female''.                             \\
-
-\bottomrule
-\end{tabular}
-\caption{Source variables of household attributes} \label{attribute_vars}
-\end{table}
 
 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
@@ -529,12 +500,6 @@ rename V0404 gender
 label variable gender "Gender"
 label define genders 1 "Male" 2 "Female"
 label values gender genders
-
-// Race
-rename V0405 race
-label variable race "Race"
-label define races 1 "White" 2 "Black" 3 "Asian" 4 "Mixed" 5 "Indigenous" 9 "Undeclared"
-label values race races
 
 // Age
 rename V0403 age
@@ -1226,6 +1191,29 @@ The master sample excludes the following areas: military bases, camping sites, p
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\chapter{Demographic attribute variables in the \ac{FBS}} \label{ap:demographic_attribute_variables}
+
+Table \ref{tab:attribute_vars} shows the variable in the \ac{FBS} datasets for each attribute used to scale demand in the \ac{DQUAIDS}.
+
+\setlength{\extrarowheight}{3pt}
+\begin{table}[]
+\begin{tabular}{p{0.25\textwidth}p{0.75\textwidth}}
+\toprule
+\textbf{Attribute}                       & \textbf{Source}                                                                                                                                          \\ \midrule
+Household Size                  & The dataset \verb|MORADOR| contains one row per household member, I count the rows in each household and use 7 or more as the upper limit.                               \\
+Age of Head of the Household    & Variable \verb|V0403| in the \verb|MORADOR| dataset contains the age of each member. I grouped the ages into 5 buckets using frequencies (?).                            \\
+Region of Residence             & Variable \verb|UF| in \verb|MORADOR| contains the state where the household is located. I mapped the states into their official regions of Brazil, namely \textit{Centro-Oeste}, \textit{Nordeste}, \textit{Norte}, \textit{Sudeste} and \textit{Sul}. \\
+Type of Residence               & Variable \verb|TIPO_SITUACAO_REG| in \verb|MORADOR| classifies households as ``urban'' or ``rural''.                                        \\
+Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classifies the head of the household as ``male'' or ``female''.                             \\
+
+\bottomrule
+\end{tabular}
+\caption{Source variables of household attributes} \label{tab:attribute_vars}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Mapping of \ac{ACPI} groups to commodity groups} \label{ap:acpi_to_commodity_groups_map}
 
