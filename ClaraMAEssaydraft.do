@@ -307,9 +307,9 @@ Besides income, other household attributes affect demand for fuels. Incorporatin
 
 \cite{SpillerStephensChen2017} consider that households in rural areas do not have access to public transportation, reducing their ability to substitute driving.
 
+\cite{JorgensonSlesnick1987} use a transcendental logarithm demand system and incorporate demographic attributes (number of people. age, gender, race and whether the family lives in a rural area) into \textit{commodity-specific household equivalence scales}.
 
-
-% Adler 2019, Jorgenson1990, JorgensonSlesnick1987, JorgensonSlesnick2014
+% Adler 2019, Jorgenson1990, JorgensonSlesnick2014
 
 
 \section{Other important observations}
@@ -320,7 +320,8 @@ Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, brazilian
 As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the same volume of gasoline, so online guides instruct drivers to buy ethanol when its price is 70\% of the price of gasoline or less. \cite{Iootty2009} estimates that demand for gasoline has a cross-price elasticity of 1.5 with respect to ethanol prices, while the demand for ethanol has a cross-price elasticity of 8.09 with respect to gasoline prices.
 
 \cite{DahlSterner1991} note that seasonal (monthly or quarterly) data yield elasticities far too different from annual data, and conclude that seasonal data should not be used to estimate long-run elasticities.
- 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -377,7 +378,7 @@ Grouping requires assuming \textit{separability}: a group is separable when the 
 
 \section{Study Variables}\label{variablessection}
 \subsection{Cohort Attributes} \label{ssec:cohort_attributes}
-Following \cite{Slesnick2000}, \tr{I use} the following attributes to characterize cohorts:\tdFLY{not sure you need capitals for the items in this list}
+Taking into consideration the demographic attributes used by \cite{Slesnick2000;NikodinoskaSchroder2016;SpillerStephensChen2017}, we use the following for scaling of demand in the \ac{DQUAIDS} model:\tdFLY{not sure you need capitals for the items in this list}
 
 \begin{enumerate}
 	\item household size
@@ -387,9 +388,7 @@ Following \cite{Slesnick2000}, \tr{I use} the following attributes to characteri
 	\item gender of head of the household
 \end{enumerate}
 
-See Appendix \ref{ap:demographic_attribute_variables} for the variables from the dataset used to capture each of these attributes.
-
-
+See Appendix \ref{ap:demographic_attribute_variables} for the variables used to capture each of these attributes.
 
 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
