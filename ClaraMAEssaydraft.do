@@ -629,6 +629,12 @@ frames reset
 frame create expenditures
 frame change expenditures
 
+local Energy 2
+local Food 1
+local ConsumerServices 4
+local ConsumerGoods 3
+local CapitalServices 5
+
 
 // open individual expenditure data
 use "Data\Dados_20210304\DESPESA_INDIVIDUAL.dta", clear
@@ -666,7 +672,7 @@ texdoc local unknown_amt = strofreal(ct[1,1], "%12.0gc")
 drop if amount_spent_raw == 9999999.99 | (QUADRO==0 & amount_spent_raw == 99999)
 
 // stage 1 groups
-gen commodity_group = ""
+gen commodity_group = .
 // stage 2 groups
 gen stage2_commodity_group = ""
 
@@ -699,9 +705,9 @@ code			purchase
 2301801			natural gas for vehicles
 */
 
-replace commodity_group = "Energy" if inlist(item_code, 2301401, 2301501, 2301502, 700801)
+replace commodity_group = `Energy' if inlist(item_code, 2301401, 2301501, 2301502, 700801)
 
-replace commodity_group = "Energy" if ///
+replace commodity_group = `Energy' if ///
 	inlist(item_code, 600101, 600301, 601801, 699901) | ///
 	(QUADRO == 7 & ~inlist(item_code, 700201, 700202, 700801))
 
@@ -741,7 +747,7 @@ code range				purchase
 */
 
 // item codes for food
-replace commodity_group = "Food" if ///
+replace commodity_group = `Food' if ///
 	QUADRO == 24 | ///
 	inrange(item_code, 6300101, 8600101) | ///
 	inrange(item_code, 9000101, 9000928)
@@ -772,7 +778,7 @@ Within group 9, there are item codes both for goods purchased to fix/maintain an
 
 */
 
-replace commodity_group = "Consumer Services" if ///
+replace commodity_group = `ConsumerServices' if ///
 	inlist(QUADRO, 9, 19, 22, 25, 31, 40, 41, 42, 45, 50) | ///
 	(QUADRO == 6 & ~inlist(item_code, 600101, 600301, 601801, 699901)) | /// water, sewage, internet
 	(QUADRO == 7 & inlist(item_code, 700201, 700202)) | /// water
@@ -809,7 +815,7 @@ Includes items from the 63 to 69 quadros that are not food items.
 
 */
 
-replace commodity_group = "Consumer Goods" if ///
+replace commodity_group = `ConsumerGoods' if ///
 	inlist(QUADRO, 15, 16, 17, 18, 21, 27, 29, 30, 32, 34, 35, 36, ///
 		   37, 38, 39, 43, 44, 46) | ///
 	inrange(item_code, 8600101, 8900101)
@@ -838,7 +844,7 @@ code range				purchase
 
 */
 
-replace commodity_group = "Capital Services" if ///
+replace commodity_group = `CapitalServices' if ///
 	inlist(QUADRO, 8, 10, 11, 33) | ///
 	item_code == 000101
 
@@ -872,6 +878,65 @@ drop description _merge
 
 // extrapolate/divide different period lengths into 30-day periods
 replace amount_spent = amount_spent * 30/days
+
+
+*****************
+* price indices *
+*****************
+/* create a price index from the available deflators */
+
+frame change expenditures
+
+/*****************************************************
+* identify groups based on common deflator values for a particular item
+
+e.g. if families A, B, C have a deflator value of 0.95 for rice, they are assumed to have been surveyed at the same period, so their deflators are all pooled to create the commodity group price indices
+*/
+
+// drop frame if it exists from previous runs
+capture frame drop price_groups
+
+frame put * , into(price_groups)
+frame change price_groups
+
+// find most common item
+// note the level of sorcery we are forced to resort to just to get a single value from the dataset as a scalar
+preserve
+unique hh_id, by(item_code) gen(households_by_item_code)
+egen max_hhs = max(households_by_item_code)
+keep if households_by_item_code == max_hhs
+scalar max_hhs_item_code = item_code[1]
+restore
+
+// this gives us 600101 as the item code that "covers" the most households
+// in future iterations, we can try to "cover" other households by choosing other items and attempting to match their deflators to existing groups
+
+gen price_group = DEFLATOR if item_code == max_hhs_item_code
+drop if missing(price_group)
+keep hh_id price_group
+duplicates drop
+
+frame change expenditures
+
+// drop frame if it exists from previous runs
+capture frame drop price_indices
+
+frame put * , into(price_indices)
+frame change price_indices
+
+// merge household price groups
+frlink m:1 hh_id, frame(price_groups)
+frget price_group, from(price_groups)
+drop if missing(price_group)
+
+// for each commodity group and each price group, calculate a price index, weighted by the aggregate expenditure on each item and its deflator value
+egen agg_group_expenditure = total(amount_spent), by(commodity_group price_group)
+gen weighted_deflator = DEFLATOR*amount_spent
+egen deflator_sum = total(weighted_deflator), by(commodity_group price_group)
+gen price_index = deflator_sum/agg_group_expenditure
+
+collapse (first) price_index, by(hh_id commodity_group)
+
 
 
 **********************
@@ -1021,9 +1086,6 @@ frame change working_leser
 egen group_expenditure = total(amount_spent), by(hh_id commodity_group)
 assert group_expenditure != .
 
-egen total_expenditure = total(amount_spent) if amount_spent != ., by(hh_id)
-assert total_expenditure != .
-
 // keep only one observation per household and commodity group
 bysort hh_id commodity_group: keep if _n == 1
 
@@ -1032,10 +1094,18 @@ fillin hh_id commodity_group
 replace group_expenditure = 0 if _fillin == 1
 assert group_expenditure != .
 
+egen total_expenditure = total(group_expenditure), by(hh_id)
+assert total_expenditure != .
+
 gen group_expenditure_share = group_expenditure/total_expenditure
 
-// save for future merging
+// save for the main model
 keep hh_id commodity_group group_expenditure group_expenditure_share total_expenditure
+
+// drop frame if it exists from previous runs
+capture frame drop expenditure_shares
+frame put hh_id commodity_group group_expenditure group_expenditure_share total_expenditure, into(expenditure_shares)
+
 
 
 merge m:1 hh_id using "Data\hh_head_size.dta"
@@ -1111,6 +1181,29 @@ If price elasticity of demand for fuels does not vary significantly across wealt
 
 \chapter{Results}\label{resultssection}
 
+tex*/
+
+texdoc stlog, nolog
+
+frame change expenditure_shares
+
+// make a throwaway copy
+capture frame drop tmp_exp_shares
+frame copy expenditure_shares tmp_exp_shares
+frame change tmp_exp_shares
+
+reshape wide group_expenditure_share group_expenditure, i(hh_id total_expenditure) j(commodity_group)
+
+
+frlink m:1 hh_id commodity_group, frame(price_indices)
+frget price_index, from(price_indices)
+
+// now we should have all the expenditure shares, total expenditures and price indices, so we can run the main model!
+
+texdoc stlog close
+
+
+/*tex
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
