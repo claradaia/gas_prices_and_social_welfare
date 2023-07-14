@@ -99,7 +99,7 @@ graph set window fontface "Palatino Linotype"
 % Abstract is mandatory. It should not exceed 100 words
 \abstract
 
-Fossil fuels represent a large share of expenditure for Brazilian households. Demand is inelastic in the short-term, and pricing policies implemented by Petrobras. Frequent price changes affect families well-being, and it does so heterogeneously. To understand these heterogeneous effects, we use a social welfare function framework. We analyse the effect of gasoline prices on social welfare in Brazil using the transcendental logarithm social welfare function and use those estimates to evaluate the import parity price policy implemented by Petrobras. We find that the policy affected families of median and above income x times more than families under the median income, and that families living in rural areas were x times more affected than families in urban areas.
+Fossil fuels represent a large share of expenditure for Brazilian households. Demand is inelastic in the short-term, and pricing policies implemented by Petrobras. Frequent price changes affect families well-being, and it does so heterogeneously. To understand these heterogeneous effects, we use a social welfare function framework. We analyse the effect of gasoline prices on social welfare in Brazil using the transcendental logarithm social welfare function, and use those estimates to evaluate the import parity price policy implemented by Petrobras. We find that the policy affected families of median and above income x times more than families under the median income, and that families living in rural areas were x times more affected than families in urban areas.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1236,16 +1236,34 @@ texdoc stlog, nolog
 
 frame change expenditure_shares
 
+// define the macros again so that we don't have to run the entire code again
+local Energy 2
+local Food 1
+local ConsumerServices 4
+local ConsumerGoods 3
+local CapitalServices 5
+
 // make a throwaway copy
 capture frame drop tmp_exp_shares
 frame copy expenditure_shares tmp_exp_shares
 frame change tmp_exp_shares
 
-reshape wide group_expenditure_share group_expenditure, i(hh_id total_expenditure) j(commodity_group)
-
-
 frlink m:1 hh_id commodity_group, frame(price_indices)
 frget price_index, from(price_indices)
+drop price_indices
+
+reshape wide group_expenditure_share group_expenditure price_index, i(hh_id total_expenditure) j(commodity_group)
+
+// ensure that the sum of expenditure shares is close enough to 1...
+gen sum_of_exp_shares = group_expenditure_share`Food' + group_expenditure_share`Energy' + group_expenditure_share`ConsumerServices' + group_expenditure_share`ConsumerGoods' + group_expenditure_share`CapitalServices'
+assert inrange(sum_of_exp_shares, 0.999999, 1.000001)
+drop sum_of_exp_shares
+
+// ...but replace the 5th one with the complement of the others, as quaids does not accept the small difference
+replace group_expenditure_share`Food' = 1 - (group_expenditure_share`Energy' + group_expenditure_share`ConsumerServices' + group_expenditure_share`ConsumerGoods' + group_expenditure_share`CapitalServices')
+
+// drop households for which one of the price_indices is 0 (i.e. there were no expenditure on any of the goods in the group)
+drop if price_index`Food' == 0 | price_index`Energy' == 0 | price_index`ConsumerServices' == 0 | price_index`ConsumerGoods' == 0 | price_index`CapitalServices' == 0
 
 // now we should have all the expenditure shares, total expenditures and price indices, so we can run the main model!
 
