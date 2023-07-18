@@ -266,7 +266,23 @@ Having a low price-elasticity of demand and representing a large share of expend
 
 In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term implicit subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil.
 
-\tdIL{OK, this next paragraph does not really belong in the Intro with all these details. You might wat to have a subsection within the intro later or just add a section about ``background''. The intro should just have the generalities of what you do, why, how and what you find. Not so much details (data, tables, figures, references, etc.)}
+\citep{LinPrince2013} find that high price volatility yields lower aggregate demand for gasoline.\tdFL{This should be fleshed out and moved to the literature review}
+
+From the \tdFL{ENW: English needs work: from ``a''} methodological standpoint, \tr{I find} \tdFL{reword} that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate \tdFL{ENW grammar} effects on specific regions rather than a nation-wide study.
+
+\tdIL{We will need a few references to back this up}
+
+There are also political aspects of interest in analysing the effect of gas price changes. \tdFL{As explained above: bring examples from other countries too?} Politicians often use gas price regulations as a popularity tool, especially near elections. \tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. Better understanding of demand \tde for gasoline and welfare effect of price changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
+
+%\todo[color=green]{This makes it sound that the government revenue and the profits are NOT somehow part of social welfare BUT they are: rethink and reword. The government is not a person, so you may want to measure those gains in government revenue in terms of the saved tax distortion in other markets but the stock owners are individuals with standing.}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Background}\label{chap:background}
+
+\tdILY{OK, this next paragraph does not really belong in the Intro with all these details. You might wat to have a subsection within the intro later or just add a section about ``background''. The intro should just have the generalities of what you do, why, how and what you find. Not so much details (data, tables, figures, references, etc.)}
 
 Figure \ref{fig:fuel_prices_over_time} shows average monthly retail prices of gasoline, ethanol and diesel in Brazil, as well as the OPEC crude oil monthly prices between 2003 and 2023, all in \ac{BRL} and normalized to 1 in the first time period. The graph shows that Petrobras' price policy before 2016 cushioned fuel prices against international market price variations, and that since the policy change prices have followed crude oil price trends, increasing over time and becoming more volatile.
 
@@ -289,21 +305,7 @@ texdoc stlog close
     \label{fig:fuel_prices_over_time}
 \end{figure}
 
-\citep{LinPrince2013} find that high price volatility yields lower aggregate demand for gasoline.\tdFL{This should be fleshed out and moved to the literature review}
 
-From the \tdFL{ENW: English needs work: from ``a''} methodological standpoint, \tr{I find} \tdFL{reword} that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate \tdFL{ENW grammar} effects on specific regions rather than a nation-wide study.
-
-\tdIL{We will need a few references to back this up}
-
-There are also political aspects of interest in analysing the effect of gas price changes. \tdFL{As explained above: bring examples from other countries too?} Politicians often use gas price regulations as a popularity tool, especially near elections. \tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. Better understanding of demand \tde for gasoline and welfare effect of price changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
-
-%\todo[color=green]{This makes it sound that the government revenue and the profits are NOT somehow part of social welfare BUT they are: rethink and reword. The government is not a person, so you may want to measure those gains in government revenue in terms of the saved tax distortion in other markets but the stock owners are individuals with standing.}
-
-		
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\chapter{Literature Review}\label{litreview}
 
 \section{Fuel price interventions}\label{gas_policy_history}
 
@@ -316,15 +318,35 @@ In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting th
 In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula da Silva \tdFL{missing genitive here} (elected in 2022) campaign suggestions \citep{SantanaRamalho2023}.
 
 
-\section{The DWL angle}
+\section{Other important observations}
+
+\tdILY{Again: not Lit review but background}
+
+
+% Why we must include ethanol in the analysis
+Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, \tde \tr{brazilians} consumed 15.5 billion litres of ethanol and 43 billion litres of gasoline \citep{anp2022}. The majority of vehicles sold in the country are \textit{flex-fuel}, i.e. can run on any combination of gasoline or ethanol, making ethanol and gasoline close short-run substitutes. In 2021, for example, of the 2,104,461 new vehicles licensed, 1,633,245 or 77.6\% were \textit{flex-fuel}. The share is even larger, 83.3\%, if we exclude trucks and buses \citep{anfavea2023}.
+
+As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the same volume of gasoline, so online guides instruct drivers to buy ethanol when its price is 70\% of the price of gasoline or less. \cite{Iootty2009} estimates that demand for gasoline has a cross-price elasticity of 1.5 with respect to ethanol prices, while the demand for ethanol has a cross-price elasticity of 8.09 with respect to gasoline prices.\tdFL{Only the second half of this paragraph is really literature review. You would link it to the background subsection where you talk specifically about the ethanol use in Brazil.}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Literature Review}\label{litreview}
+Welfare valuation methods incorporate efficiency and distribution concerns to varying degrees. Sections \ref{sec:dwl}, \ref{sec:income} and \ref{sec:ds} describe the three main lines of research found in the literature regarding the welfare effects of gasoline prices.
+
+Besides distribution concerns, family composition and other characteristics affect their potential economies of scale in consumption. Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
+
+\section{The DWL angle}\label{sec:dwl}
 Price distortions in competitive markets lead to deadweight loss. By maintaining domestic prices artificially low, Petrobras subsidizes consumption implicitly through forgone revenue and directly when it needs to import fuel to satisfy the domestic demand.
 
 With Petrobras being partly nationalized, the loss incurred by consumers from increased prices can be counteracted by a decrease in the tax burden accounting for the government increased revenue. \cite{Moreira2017} uses a static open economy macroeconomic model of Brazil to estimate the impact of removing fuel subsidies on output, aggregate consumption and labour demand for the years 2011-2014. She \tdFL{use the citation, avoid gender identifiers} finds that if accompanied by an equivalent reduction on major taxes, the removal of the subsidy increases output, consumption and employment.
 
-An aggregate demand function that yields dead-weight loss estimates typically uses a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. We don't \tdFL{no contractions} like that very much because needs, access and ability to pay vary a lot between families.\tdFL{too colloquial}
+An aggregate demand function that yields dead-weight loss estimates typically uses a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. The welfare loss measured by this method reflects only efficiency losses, which the author considers to be insufficient for policy analysis because needs, access and ability to pay vary a lot between families.\tdFLY{too colloquial}
 
 
-\section{The regressivity/progressivity angle} \label{sec:regressivity}
+\section{Income, Engel curves and the regressivity/progressivity angle} \label{sec:regressivity}
 To incorporate income differences into the analysis, we can use regressivity measures. If fuels comprise a larger share of the expenditure of families with lower income, a tax on them can be considered regressive as it disproportionately affects those families. Similarly, a subsidy will be progressive.
 
 One line of research suggests that using \tr{income results} \tdeFL leads to overestimating the regressivity of a gasoline tax: \cite{Poterba1991} uses total expenditure instead of income as a proxy of lifetime earnings, which however relies on \tdFL{explain this further} the assumption that poverty is in general temporary \tdFL{Is income mobility high in Brazil?}. \cite{TeixidoVerde2017} include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
@@ -333,11 +355,15 @@ One line of research suggests that using \tr{income results} \tdeFL leads to ove
 
 
 \section{Demand systems, other sources of heterogeneity and welfare computation}
-Besides income, other household attributes affect the demand for fuels. Incorporating demographic characteristics in the characterization of demand for fuels allows for a more detailed prediction of the heterogeneous welfare effects of a subsidy.
+Demand systems model simultaneously the demand for all goods (or groups of goods) that families consume. This allows us to anticipate not only how demand for gasoline will change after a price change, but also the demand for other goods (or groups of goods).
 
-\cite{NikodinoskaSchroder2016} study the welfare effects of fuel taxes in Germany using a \ac{DQUAIDS} model that includes the number of adults and children below 15 years of age in a household. In order to make households with different compositions comparable, they use the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers.
+Deaton & Muellbauer defined the \ac{AIDS} to approximate any general demand function of income and preferences. This model was expanded by (?) to include a quadratic term that improved the precision of the estimates.
+
+Besides income, other household attributes affect demand. (?) incorporate demographic characteristics as scaling factors into the model. \cite{NikodinoskaSchroder2016} study the welfare effects of fuel taxes in Germany using a \ac{DQUAIDS} model that includes the number of adults and children below 15 years of age in a household.
 
 \tdIL{At this stage we still have no context within which to place the \ac{DQUAIDS} model. there is no actual reviewing of the different proposals for demand modelling. You do not explain why the \ac{DQUAIDS} might be more useful but I think that, as soon as you started doing that, you would notice that you have not even explained earlier types of demand systems such as the \ac{AIDS}. This needs to be done. You need to go through the systems and then, in Section \ref{methods}, you tell us why this or that method was not an option for you and why you chose this other one instead.}
+
+In order to make households with different compositions comparable, \cite{NikodinoskaSchroder2016} use the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers.
 
 
 \tdIL{Rober assumes this is being worked on but eventually we will need to have in the literature section a bit about equivalence scales: their purpose, their evolution, their shortcomings, etc.}
@@ -349,19 +375,11 @@ Besides income, other household attributes affect the demand for fuels. Incorpor
 
 % Adler 2019, Jorgenson1990, JorgensonSlesnick2014
 
-
-\section{Other important observations}
-
-\tdIL{Again: not Lit review but background}
+% \cite{DahlSterner1991} note that seasonal (monthly or quarterly) data yield elasticities far too different from annual data, and conclude that seasonal data should not be used to estimate long-run elasticities.
 
 
-% Why we must include ethanol in the analysis
-Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, \tde \tr{brazilians} consumed 15.5 billion litres of ethanol and 43 billion litres of gasoline \citep{anp2022}. The majority of vehicles sold in the country are \textit{flex-fuel}, i.e. can run on any combination of gasoline or ethanol, making ethanol and gasoline close short-run substitutes. In 2021, for example, of the 2,104,461 new vehicles licensed, 1,633,245 or 77.6\% were \textit{flex-fuel}. The share is even larger, 83.3\%, if we exclude trucks and buses \citep{anfavea2023}.
+\section{Equivalence scales}\label{sec:equivalence_scales}
 
-As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the same volume of gasoline, so online guides instruct drivers to buy ethanol when its price is 70\% of the price of gasoline or less. \cite{Iootty2009} estimates that demand for gasoline has a cross-price elasticity of 1.5 with respect to ethanol prices, while the demand for ethanol has a cross-price elasticity of 8.09 with respect to gasoline prices.\tdFL{Only the second half of this paragraph is really literature review. You would link it to the background subsection where you talk specifically about the ethanol use in Brazil.}
-
-
-\cite{DahlSterner1991} note that seasonal (monthly or quarterly) data yield elasticities far too different from annual data, and conclude that seasonal data should not be used to estimate long-run elasticities.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
