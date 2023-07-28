@@ -354,7 +354,7 @@ One line of research suggests that using \tr{income results} \tdeFL leads to ove
 \cite{Sterner2012} argues that whether a tax is regressive will vary between tdFL{among} countries and in particular that cars in developing countries are luxury goods. However, fuels can have a large impact on industry costs and output. In Brazil, transportation of consumer goods is largely made by trucks\tdFL{and what does this mean? explain further}. \tdFL{new paragraph once you enlarge the previous one}\cite{FreitasRibeiroSouzaHewings2016} analyse the distributional effects of taxing \ac{GHG} in Brazil using an input-output model of the production chains and find that food and transportation bear the largest changes in output. Because low-income households also spend the greatest shares in these goods, a fuel tax is found to be regressive.
 
 
-\section{Demand systems, other sources of heterogeneity and welfare computation}
+\section{Demand systems, other sources of heterogeneity and welfare computation}\label{sec:demand_sys}
 \cite{BanksBlundellLewbel1996a} have shown that the bias in estimating a first-order approximation of welfare effects from a price change (1) will be large if the change in question is large, which appears to be the case of the fuel price policy in Brazil; (2) depends on the own-price elasticity of demand, which may vary across demographic groups and (3) that it varies systematically over the logarithm of income, which violates the fairness principle of predictive parity.
 
 In order to produce second-order estimates of welfare effects that address the biases found by \cite{BanksBlundellLewbel1996a}, substitution effects must be taken into account. These can be modelled with demand systems that estimate simultaneously the demand for all goods (or groups of goods) that families consume.
@@ -379,7 +379,15 @@ Besides income, other household attributes affect demand. (?) incorporate demogr
 \section{Equivalence scales}\label{sec:equivalence_scales}
 \tdIL{Rober assumes this is being worked on but eventually we will need to have in the literature section a bit about equivalence scales: their purpose, their evolution, their shortcomings, etc.}
 
-In order to make households with different compositions comparable, \cite{NikodinoskaSchroder2016} use the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers.
+As seen in Section \ref{sec:demand_sys}, demand can be modelled under the assumption that preferences depend on attributes of the household such as age and number of its members, and location. The same assumption may be applied to the comparison of welfare changes between households: for example, if we consider two families with the same income, but one is composed of two adults and the other is composed of three adults, it is reasonable to conclude the second is worse off. Other comparisons are not as clear --- how does the welfare of a family of two adults and one child compare with the welfare of a family of three adults on the same income?
+
+Economies of scale in consumption also affect welfare comparisons. Additional members of a family will not, on average, double its consumption of energy and water. Larger families will usually share appliances and vehicles. Therefore, welfare differences under the same income are unlikely to be linear on the number of members of a family.
+
+To formally define how composition, age and other factors should affect the comparison of money measures of welfare, we can define equivalence scales. An equivalence scale is a deflation factor that aims to equivalize family incomes or wealth \citep{DeatonMuellbauer1980}.
+
+\cite{NikodinoskaSchroder2016} use the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers.
+
+The transcendental logarithm demand system of \cite{JorgensonSlesnick1987} yield commodity-specific household equivalence scales.
 
 
 
@@ -1285,6 +1293,11 @@ replace group_expenditure_share`Food' = 1 - (group_expenditure_share`Energy' + g
 drop if price_index`Food' == 0 | price_index`Energy' == 0 | price_index`ConsumerServices' == 0 | price_index`ConsumerGoods' == 0 | price_index`CapitalServices' == 0
 
 // now we should have all the expenditure shares, total expenditures and price indices, so we can run the main model!
+quaids group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
+	expenditure(total_expenditure) ///
+	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
+	anot(10)
+
 
 texdoc stlog close
 
