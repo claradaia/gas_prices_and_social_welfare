@@ -328,6 +328,8 @@ Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, \tde \tr{
 
 As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the same volume of gasoline, so online guides instruct drivers to buy ethanol when its price is 70\% of the price of gasoline or less. \cite{Iootty2009} estimates that demand for gasoline has a cross-price elasticity of 1.5 with respect to ethanol prices, while the demand for ethanol has a cross-price elasticity of 8.09 with respect to gasoline prices.\tdFL{Only the second half of this paragraph is really literature review. You would link it to the background subsection where you talk specifically about the ethanol use in Brazil.}
 
+% Why we want to look at differences between groups
+% In decision making algorithms, predictive parity says error rates should be the same for protected categories. what is the name of the analogous principle for preference modelling?
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -355,15 +357,29 @@ One line of research suggests that using \tr{income results} \tdeFL leads to ove
 
 
 \section{Demand systems, other sources of heterogeneity and welfare computation}\label{sec:demand_sys}
-\cite{BanksBlundellLewbel1996a} have shown that the bias in estimating a first-order approximation of welfare effects from a price change (1) will be large if the change in question is large, which appears to be the case of the fuel price policy in Brazil; (2) depends on the own-price elasticity of demand, which may vary across demographic groups and (3) that it varies systematically over the logarithm of income, which violates the fairness principle of predictive parity.
+\cite{BanksBlundellLewbel1996a} have shown that the bias in estimating a first-order approximation of welfare effects from a price change (1) will be large if the change in question is large; (2) depends on the own-price elasticity of demand, which may vary across demographic groups and (3) that it varies systematically over the logarithm of income. Figure \ref{fig:fuel_prices_over_time} suggests (1) may be the case of the fuel price policy in Brazil. (2) and (3) are potential violations of [fairness].
 
 In order to produce second-order estimates of welfare effects that address the biases found by \cite{BanksBlundellLewbel1996a}, substitution effects must be taken into account. These can be modelled with demand systems that estimate simultaneously the demand for all goods (or groups of goods) that families consume.
 
-\cite{DeatonMuellbauer1980} defined the \ac{AIDS} to approximate any general demand function of income and preferences. This model was expanded by \cite{BanksBlundellLewbel1996b} to include a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income.
+\cite{DeatonMuellbauer1980} defined the \ac{AIDS} to approximate any general demand function of income and preferences.
 
-Besides income, other household attributes affect demand. (?) incorporate demographic characteristics as scaling factors into the model. \cite{NikodinoskaSchroder2016} study the welfare effects of fuel taxes in Germany using a \ac{DQUAIDS} model that includes the number of adults and children below 15 years of age in a household.
+$$w_i = \alpha_i + \sum_j \gamma_{ij} \ln p_j + \beta_i \ln\left ( frac{x}{P}\right )$$
+
+\cite{DeatonMuellbauer1980} also propose a linear approximation of the \ac{AIDS} model: the \ac{LA-AIDS} model was used by \cite{AlmeidaJustoOliveiraSilva2016} with monthly aggregate consumption of gasoline, diesel and ethanol over the state of Pernambuco in Brazil, and they find that demand for gasoline and diesel is price-inelastic while demand for ethanol is price-elastic. This approach, however, precludes (1) differentiating demographic groups, as consumption is fully aggregated and (2) regressivity analysis, as demand is modelled as a function of expenditure only on fuels.
+
+The \ac{AIDS} model was expanded by \cite{BanksBlundellLewbel1996b} to include a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income.
+
+$$$$
+
+Besides income, other household attributes affect demand. (?) incorporate demographic characteristics as scaling factors into the model.
+
+$$$$
+
+\cite{NikodinoskaSchroder2016} uses the \ac{DQUAIDS} to study the welfare effects of fuel taxes in Germany, including the number of adults and children below 15 years of age in a household as scaling factors.
 
 \tdIL{At this stage we still have no context within which to place the \ac{DQUAIDS} model. there is no actual reviewing of the different proposals for demand modelling. You do not explain why the \ac{DQUAIDS} might be more useful but I think that, as soon as you started doing that, you would notice that you have not even explained earlier types of demand systems such as the \ac{AIDS}. This needs to be done. You need to go through the systems and then, in Section \ref{methods}, you tell us why this or that method was not an option for you and why you chose this other one instead.}
+
+\cite{NikodinoskaSchroder2016} uses the \ac{DQUAIDS} to study the welfare effects of fuel taxes in Germany, including the number of adults and children below 15 years of age in a household as scaling factors.
 
 
 \cite{SpillerStephensChen2017} consider that households in rural areas do not have access to public transportation, reducing their ability to substitute driving.\tdFL{and what was the result? what changed?}
@@ -387,7 +403,7 @@ To formally define how composition, age and other factors should affect the comp
 
 \cite{NikodinoskaSchroder2016} use the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers.
 
-The transcendental logarithm demand system of \cite{JorgensonSlesnick1987} yield commodity-specific household equivalence scales.
+The transcendental logarithm demand system of \cite{JorgensonSlesnick1987} yields commodity-specific household equivalence scales.
 
 
 
