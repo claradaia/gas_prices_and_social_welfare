@@ -186,6 +186,7 @@ The Informatics Department of UFPR Faculty.
 
 
 \newcommand{\tr}{\textcolor{red}}
+\newcommand{\ty}{\textcolor{yellow}}
 \newcommand{\tde}{\todo{ENW}}
 \newcommand{\tdeFL}{\todo[fancyline]{ENW}}
 \newcommand{\tdeIL}{\todo[inline]{ENW}}
@@ -324,7 +325,7 @@ In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment wi
 
 
 % Why we must include ethanol in the analysis
-Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, \tde \tr{brazilians} consumed 15.5 billion litres of ethanol and 43 billion litres of gasoline \citep{anp2022}. The majority of vehicles sold in the country are \textit{flex-fuel}, i.e. can run on any combination of gasoline or ethanol, making ethanol and gasoline close short-run substitutes. In 2021, for example, of the 2,104,461 new vehicles licensed, 1,633,245 or 77.6\% were \textit{flex-fuel}. The share is even larger, 83.3\%, if we exclude trucks and buses \citep{anfavea2023}.
+Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, Brazilians consumed 15.5 billion litres of ethanol and 43 billion litres of gasoline \citep{anp2022}. The majority of vehicles sold in the country are \textit{flex-fuel}, i.e. can run on any combination of gasoline or ethanol, making ethanol and gasoline close short-run substitutes. In 2021, for example, of the 2,104,461 new vehicles licensed, 1,633,245 or 77.6\% were \textit{flex-fuel}. The share is even larger, 83.3\%, if we exclude trucks and buses \citep{anfavea2023}.
 
 As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the same volume of gasoline, so online guides instruct drivers to buy ethanol when its price is 70\% of the price of gasoline or less. \cite{Iootty2009} estimates that demand for gasoline has a cross-price elasticity of 1.5 with respect to ethanol prices, while the demand for ethanol has a cross-price elasticity of 8.09 with respect to gasoline prices.\tdFL{Only the second half of this paragraph is really literature review. You would link it to the background subsection where you talk specifically about the ethanol use in Brazil.}
 
@@ -349,7 +350,7 @@ An aggregate demand function that yields dead-weight loss estimates typically us
 
 
 \section{Income, Engel curves and the regressivity/progressivity angle} \label{sec:regressivity}
-To incorporate income differences into the analysis, we can use regressivity measures. If fuels comprise a larger share of the expenditure of families with lower income, a tax on them can be considered regressive as it disproportionately affects those families. Similarly, a subsidy will be progressive.
+One way to incorporate income differences into the analysis is to use regressivity measures. If fuels comprise a larger share of the expenditure of families with lower income, a tax on them can be considered regressive as it disproportionately affects those families. Similarly, a subsidy will be progressive.
 
 One line of research suggests that using \tr{income results} \tdeFL leads to overestimating the regressivity of a gasoline tax: \cite{Poterba1991} uses total expenditure instead of income as a proxy of lifetime earnings, which however relies on \tdFL{explain this further} the assumption that poverty is in general temporary \tdFL{Is income mobility high in Brazil?}. \cite{TeixidoVerde2017} include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
 
@@ -470,7 +471,7 @@ Grouping requires assuming \textit{separability}: a group is separable when the 
 
 \section{Study Variables}\label{variablessection}
 \subsection{Cohort Attributes} \label{ssec:cohort_attributes}
-Taking into consideration the demographic attributes used by \cite{Slesnick2000;NikodinoskaSchroder2016;SpillerStephensChen2017}, we use the following for scaling of demand in the \ac{DQUAIDS} model:\tdFLY{not sure you need capitals for the items in this list}
+Taking into consideration the demographic attributes used by \cite{Slesnick2000;NikodinoskaSchroder2016;SpillerStephensChen2017}, I use the following for scaling of demand in the \ac{DQUAIDS} model:\tdFLY{not sure you need capitals for the items in this list}
 
 \begin{enumerate}
 	\item household size
@@ -1236,7 +1237,7 @@ The distribution of income and total expenditure is strongly right-skewed: Figur
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{graphs/boxplot_exp_inc.png}
-    \caption{Boxplots for total income and expenditure \tr{where, for whom, from which source?}}
+    \caption{Boxplots of total income and expenditure by Brazilian households from the 2017-2018 \ac{FBS} \ty{where, for whom, from which source?}}
     \label{fig:boxplot_exp_inc}
 \end{figure}
 
@@ -1253,7 +1254,7 @@ Figure \ref{fig:exp_shares_gasoline} shows the shares of a households \tdeFL tot
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{graphs/exp_shares_gasoline.png}
-    \caption{Expenditure share of gasoline by total expenditure \tr{where, for whom, from which source?}}
+    \caption{Expenditure share on gasoline of Brazilian households by total expenditure from the 2017-2018 \ac{FBS}\ty{where, for whom, from which source?}}
     \label{fig:exp_shares_gasoline}
 \end{figure}
 
@@ -1264,7 +1265,7 @@ If price elasticity of demand for fuels does not vary significantly across wealt
 
 \begin{figure}
     \centering   \includegraphics[width=0.9\textwidth]{graphs/fuel_exp_by_cumulative_income.png}
-    \caption{Cumulative proportion of expenditure of fuels and public transportation by cumulative proportion of total expenditure \tr{where, for whom, from which source?}}
+    \caption{Cumulative proportion of expenditure of fuels and public transportation of Brazilian households by cumulative proportion of total expenditure from the 2017-2018 \ac{FBS} \ty{where, for whom, from which source?}}
     \label{fig:fuel_exp_by_cumulative_income}
 \end{figure}
 
@@ -1411,7 +1412,9 @@ Table \ref{tab:attribute_vars} shows the variable in the \ac{FBS} datasets for e
 \tdILY{ENW, In Table \ref{attribute_vars} use italics for the official regions and ``and'' in English}
 
 
-\tdIL{Rober assumes that the verbatim text in Table \ref{attribute_vars}  to denote the datasets and the original variable names will eventually be eliminated and substituted by more conventional (easier to recognise) names and regular font (in italics for the variable names). This is all OK for now for our preliminary private purposes but in the end all the variables described should have ``obvious'' names after recoding. For example, V0404 will have to be recoded into an indicator called either \textit{male} or \textit{female}. If you think it were necessary to use them in this ``raw'' format, they would go into an appendix. But it looks for now that there are only a very small number of them to consider, so just follow convention and recode, rename, and retype to make them al look good in the end.}
+\tdILY{Rober assumes that the verbatim text in Table \ref{attribute_vars}  to denote the datasets and the original variable names will eventually be eliminated and substituted by more conventional (easier to recognise) names and regular font (in italics for the variable names). This is all OK for now for our preliminary private purposes but in the end all the variables described should have ``obvious'' names after recoding. For example, V0404 will have to be recoded into an indicator called either \textit{male} or \textit{female}. If you think it were necessary to use them in this ``raw'' format, they would go into an appendix. But it looks for now that there are only a very small number of them to consider, so just follow convention and recode, rename, and retype to make them al look good in the end.}
+\tdILY{Clara: I moved it into the appendix. I did rename all the variables, but I thought of this table as a description of how I got from the raw datasets to the data I actually used for a hypothetical reader that wanted to replicate it from the raw datasets, hence the original names.}
+
 
 
 \setlength{\extrarowheight}{3pt}
