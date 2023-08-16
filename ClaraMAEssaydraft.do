@@ -48,7 +48,7 @@ graph set window fontface "Palatino Linotype"
 \usepackage{graphicx}
 \usepackage{epsfig}
 \usepackage{natbib}
-\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{stata}
 \usepackage{verbatim}
@@ -66,6 +66,16 @@ graph set window fontface "Palatino Linotype"
 \usepackage{lscape}
 \setlength{\LTcapwidth}{\textwidth}
 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=.,
+    anchorcolor=.,
+    citecolor=.,
+    filecolor=.,
+    menucolor=.,
+    runcolor=.,
+    urlcolor=cyan
+}
 
 \Title{Clara's MA Essay texdoc template for ECON6999} %% it shall not include LaTeX macros
 \Author{Clara Daia Hilgenberg Daru}        %% ibidem
@@ -186,7 +196,7 @@ The Informatics Department of UFPR Faculty.
 
 
 \newcommand{\tr}{\textcolor{red}}
-\newcommand{\ty}{\textcolor{yellow}}
+\renewcommand{\ty}{\textcolor{yellow}}
 \newcommand{\tde}{\todo{ENW}}
 \newcommand{\tdeFL}{\todo[fancyline]{ENW}}
 \newcommand{\tdeIL}{\todo[inline]{ENW}}
@@ -225,14 +235,9 @@ The Informatics Department of UFPR Faculty.
 
 \tdIL{Look at Section 4.1 in \citet{NikodinoskaSchroder2016}. They have a short paragraph there about the history of demand systems and then their own methods paragraph about why they themselves use. They had to squeeze all that in only two paragraphs in the published version of their paper. You do have more space for full-fledged sections.}
 
-\tdIL{Rober: you also need to make sure you distinguish carefully between the background and the literature review.  The former is about your case study, Brazil/fuel prices/taxes/subsidies at a certain time. The latter is about what other people wrote, not necessarily about Brazil/fuel prices/taxes/subsidies but that will help us understand your choices, your methods, your shortcuts, and your results. At this time you comingle both types of sections and there is no background section as such. This also means that there is stuff in the Intro that should go to a background section. }
+\tdILY{Rober: you also need to make sure you distinguish carefully between the background and the literature review.  The former is about your case study, Brazil/fuel prices/taxes/subsidies at a certain time. The latter is about what other people wrote, not necessarily about Brazil/fuel prices/taxes/subsidies but that will help us understand your choices, your methods, your shortcuts, and your results. At this time you comingle both types of sections and there is no background section as such. This also means that there is stuff in the Intro that should go to a background section. }
 
-
-\tdILY{Plotted cumulative expenditure on fuels and public transportation against cumulative income. This was based by some of the graphs about regressivity, but those usually use tax paid, while I used the entire expenditure. I thought of a few alternative ways of showing this, including using the 2008-2009 survey (which was under the implicit subsidy), but I think the graph as is conveys what I wanted.}
-
-\tdIL{Rober: OK but as you explain what the reader can see in Figure \ref{fig:fuel_exp_by_cumulative_income} you should also refer to the actual graph. For example, that story about the poor people spending a large share on public transit makes sense and can be seen if one looks at the yellow line, so do mention that yellow line when you explain that result in the paragraph. This is like later when you talk about tables of results: you will talk about this on that shown in the x column of Table Y.}
-
-\tdIL{Rober: OK but I put comments on all captions, because we want all floats to be almost fully self-explanatory, so you need more detail/context in the caption itself.}
+\tdILY{Rober: OK but I put comments on all captions, because we want all floats to be almost fully self-explanatory, so you need more detail/context in the caption itself.}
 
 \tdILY{Next I'll rework the entire method section: Drop "race" from the attributes. I was only doing it because Jorgenson did it; I don't want to get into how ethnicity would have an effect on preferences;}
 
@@ -525,16 +530,19 @@ The model for individual expenditure shares is given by:
 
 \subsection {Data Source}
 
-The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. For the cross-sectional estimation of the utility parameters I used the most recent survey, run between 2017 and 2018.
+The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23rd 2018.
 
-The \ac{ACPI} provides a price index of consumer goods and services with monthly variations. See Appendix \ref{ap:acpi_to_commodity_groups_map} for the correspondence used between the groups of goods and services of the \ac{ACPI} and the commodity groups mentioned in Section \ref{ssec:commodity_groups}.
+The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed, while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
 
-The National Accounts provide the time-series aggregate data on quantities consumed.
-(In the event this data turns out to not be enough, I can potentially aggregate the expenditures from earlier \acp{FBS} and use that as the time-series component, but this will probably mean low significance.)
+The grouping was done as follows. First, I identified housing as the type of expense that was present more frequently among the households surveyed: $`pct_rent'$\% of households recorded an expense. For the second step, I assumed that two households who paid rent or were interviewed on the same date  and on the same location would have the same deflator value. Under this assumption, I grouped households that had the same deflator value for rent and treated each group as facing the same prices.
 
-\tdIL{I am a bit confused, you are going to use to runs of the survey, so that will NOT be a time-series approach correct?}
+This exploitation made it possible to obtain estimates but, given that the procedure by which the deflators are generated and mapped onto observations is not transparent and I did not have the dates of collection, the results are not reliable. The reader should take the estimates, their discussion and conclusions as an example of the use of the method to address the question rather than an actual answer.
 
-\tdIL{Rober SEPT 19: you do not name a variable "urban\_or\_rural" (also because the underscores tend to be a nuisance in \LaTeX), since that is not going to help: name it EITHER urban OR rural and lable the 0 and 1 values accordingly. Same with "gender" "marital status" etc. Use male (or female, or additional binary indicators) and "married", "single", "divorced", etc. }
+If the deflator values had been solely determined by the date of the payment or the survey, we would expect to find at most 395 different values (365 for each day of the survey + 30 for the days prior to the first day of the survey). Instead, $`price_group_count'$ values were found, and the \ac{FBS} documentation informs us that location and time period are both used to produce the deflator values. This means the groups do not reflect only a time dimension. Additionally, even though inflation records for housing grew every month in the period of the survey, the absence of definitive information on the deflator source leaves open the possibility that households surveyed at different periods and locations would have the same deflator value.
+
+
+\tdILY{Rober SEPT 19: you do not name a variable "urban\_or\_rural" (also because the underscores tend to be a nuisance in \LaTeX), since that is not going to help: name it EITHER urban OR rural and lable the 0 and 1 values accordingly. Same with "gender" "marital status" etc. Use male (or female, or additional binary indicators) and "married", "single", "divorced", etc. }
+\tdILY{Clara: ok, I changed it. I used the categories as variable names and let Stata interpret them with i.var\_name when possible, but the quaids command does not support it. Also snake\_case is \href{https://www.cs.kent.edu/~jmaletic/papers/ICPC2010-CamelCaseUnderScoreClouds.pdf}{the superior naming convention} so I will keep it unless there is no way to fix the \LaTeX output}
 
 
 
@@ -1258,14 +1266,17 @@ Figure \ref{fig:exp_shares_gasoline} shows the shares of a households \tdeFL tot
     \label{fig:exp_shares_gasoline}
 \end{figure}
 
-Figure \ref{fig:fuel_exp_by_cumulative_income}, inspired by the Suits Index of regressivity\tdFL{reference needed}, shows the proportion of total expenditure on fuels and public transportation by the proportion of total overall expenditure. Families with higher expenditure, presumably wealthier, are responsible for a larger proportion of the total expenditure on all three main vehicle fuels, while families with lower expenditure are responsible for a larger proportion of expenditure on public transportation.
+
+\tdILY{Rober: OK but as you explain what the reader can see in Figure \ref{fig:fuel_exp_by_cumulative_income} you should also refer to the actual graph. For example, that story about the poor people spending a large share on public transit makes sense and can be seen if one looks at the yellow line, so do mention that yellow line when you explain that result in the paragraph. This is like later when you talk about tables of results: you will talk about this on that shown in the x column of Table Y.}
+
+Figure \ref{fig:fuel_exp_by_cumulative_income}, inspired by the Suits Index of regressivity\tdFL{reference needed}, shows the proportion of total expenditure on fuels and public transportation by the proportion of total overall expenditure. Families with higher expenditure, presumably wealthier, are responsible for a larger proportion of the total expenditure on all three main vehicle fuels (gasoline in blue, ethanol in green and diesel in purple), while families with lower expenditure are responsible for a larger proportion of expenditure on public transportation (in orange).
 
 If price elasticity of demand for fuels does not vary significantly across wealth levels, Figure \ref{fig:fuel_exp_by_cumulative_income} suggests a subsidy is regressive. On the other hand, the price of public transportation depends on fuel prices and subsidies specific to public transportation are low/uncommon/have only been introduced in Brazil during the pandemic in some states, and much lower than in other countries according to the ANTP \tdFL{what is ANTP and where is the reference?} (http://www.antp.org.br/noticias/clippings/estados-e-municipios-ampliam-subsidios-para-transporte.html) \tdILB{look at formal references with actual numbers on this}. From that perspective, a subsidy on fuels, in particular diesel, indirectly subsidises public transportation.
 
 
 \begin{figure}
     \centering   \includegraphics[width=0.9\textwidth]{graphs/fuel_exp_by_cumulative_income.png}
-    \caption{Cumulative proportion of expenditure of fuels and public transportation of Brazilian households by cumulative proportion of total expenditure from the 2017-2018 \ac{FBS} \ty{where, for whom, from which source?}}
+    \caption{Cumulative proportion of expenditure on fuels and public transportation of Brazilian households by cumulative proportion of total expenditure from the 2017-2018 \ac{FBS} \ty{where, for whom, from which source?}}
     \label{fig:fuel_exp_by_cumulative_income}
 \end{figure}
 
@@ -1413,7 +1424,7 @@ Table \ref{tab:attribute_vars} shows the variable in the \ac{FBS} datasets for e
 
 
 \tdILY{Rober assumes that the verbatim text in Table \ref{attribute_vars}  to denote the datasets and the original variable names will eventually be eliminated and substituted by more conventional (easier to recognise) names and regular font (in italics for the variable names). This is all OK for now for our preliminary private purposes but in the end all the variables described should have ``obvious'' names after recoding. For example, V0404 will have to be recoded into an indicator called either \textit{male} or \textit{female}. If you think it were necessary to use them in this ``raw'' format, they would go into an appendix. But it looks for now that there are only a very small number of them to consider, so just follow convention and recode, rename, and retype to make them al look good in the end.}
-\tdILY{Clara: I moved it into the appendix. I did rename all the variables, but I thought of this table as a description of how I got from the raw datasets to the data I actually used for a hypothetical reader that wanted to replicate it from the raw datasets, hence the original names.}
+\tdILY{Clara: I moved it into the appendix. I did rename all the variables, but I thought of this table as a description of how I got info from the raw datasets, for a hypothetical reader that wanted to replicate it from the raw datasets but save a trip through the docs, hence the original names.}
 
 
 
@@ -1430,7 +1441,7 @@ Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classi
 
 \bottomrule
 \end{tabular}
-\caption{Source variables of household attributes} \label{tab:attribute_vars}
+\caption{Source variables of household attributes in the 2017-2018 \ac{FBS}} \label{tab:attribute_vars}
 \end{table}
 
 
