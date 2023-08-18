@@ -197,6 +197,7 @@ The Informatics Department of UFPR Faculty.
 
 \newcommand{\tr}{\textcolor{red}}
 \renewcommand{\ty}{\textcolor{yellow}}
+\renewcommand{\to}{\textcolor{orange}}
 \newcommand{\tde}{\todo{ENW}}
 \newcommand{\tdeFL}{\todo[fancyline]{ENW}}
 \newcommand{\tdeIL}{\todo[inline]{ENW}}
@@ -209,6 +210,7 @@ The Informatics Department of UFPR Faculty.
 
 %checking:
 \tr{checking red}
+\to{checking orange}
 \tde
 \tdeFL
 \tdIL{this in line}
@@ -328,7 +330,6 @@ In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment wi
 
 \tdILY{Again: not Lit review but background}
 
-
 % Why we must include ethanol in the analysis
 Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, Brazilians consumed 15.5 billion litres of ethanol and 43 billion litres of gasoline \citep{anp2022}. The majority of vehicles sold in the country are \textit{flex-fuel}, i.e. can run on any combination of gasoline or ethanol, making ethanol and gasoline close short-run substitutes. In 2021, for example, of the 2,104,461 new vehicles licensed, 1,633,245 or 77.6\% were \textit{flex-fuel}. The share is even larger, 83.3\%, if we exclude trucks and buses \citep{anfavea2023}.
 
@@ -359,23 +360,25 @@ One way to incorporate income differences into the analysis is to use regressivi
 
 One line of research suggests that using \tr{income results} \tdeFL leads to overestimating the regressivity of a gasoline tax: \cite{Poterba1991} uses total expenditure instead of income as a proxy of lifetime earnings, which however relies on \tdFL{explain this further} the assumption that poverty is in general temporary \tdFL{Is income mobility high in Brazil?}. \cite{TeixidoVerde2017} include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
 
-\cite{Sterner2012} argues that whether a tax is regressive will vary between tdFL{among} countries and in particular that cars in developing countries are luxury goods. However, fuels can have a large impact on industry costs and output. In Brazil, transportation of consumer goods is largely made by trucks\tdFL{and what does this mean? explain further}. \tdFL{new paragraph once you enlarge the previous one}\cite{FreitasRibeiroSouzaHewings2016} analyse the distributional effects of taxing \ac{GHG} in Brazil using an input-output model of the production chains and find that food and transportation bear the largest changes in output. Because low-income households also spend the greatest shares in these goods, a fuel tax is found to be regressive.
+\cite{Sterner2012} argues that whether a tax is regressive will vary between tdFL{among} countries and in particular that cars in developing countries are luxury goods. However, fuels can have a large impact on industry costs and output. For example, in Brazil transportation of consumer goods is largely made by trucks\tdFLY{and what does this mean? explain further} powered by diesel, so that a tax on diesel can increase prices of all goods. In this case, even if cars are luxuries, the tax may be regressive if the price of goods consumed by low income families is more sensitive to transportation costs than the price of goods consumed by high income families.
+
+\tdFLY{new paragraph once you enlarge the previous one}\cite{FreitasRibeiroSouzaHewings2016} analyse the distributional effects of taxing \ac{GHG} in Brazil using an input-output model of the production chains and find that food and transportation bear the largest changes in output. Because low-income households also spend the greatest shares in these goods, a fuel tax is found to be regressive.
 
 
 \section{Demand systems, other sources of heterogeneity and welfare computation}\label{sec:demand_sys}
-\cite{BanksBlundellLewbel1996a} have shown that the bias in estimating a first-order approximation of welfare effects from a price change (1) will be large if the change in question is large; (2) depends on the own-price elasticity of demand, which may vary across demographic groups and (3) that it varies systematically over the logarithm of income. Figure \ref{fig:fuel_prices_over_time} suggests (1) may be the case of the fuel price policy in Brazil. (2) and (3) are potential violations of [fairness].
+\cite{BanksBlundellLewbel1996a} have shown that the bias in estimating a first-order approximation of welfare effects from a price change (1) will be large if the change in question is large; (2) depends on the own-price elasticity of demand, which may vary across demographic groups and (3) that it varies systematically over the logarithm of income. Figure \ref{fig:fuel_prices_over_time} suggests (1) may be the case of the fuel price policy in Brazil. (2) and (3) raise equity concerns.
 
 In order to produce second-order estimates of welfare effects that address the biases found by \cite{BanksBlundellLewbel1996a}, substitution effects must be taken into account. These can be modelled with demand systems that estimate simultaneously the demand for all goods (or groups of goods) that families consume.
 
 \cite{DeatonMuellbauer1980} defined the \ac{AIDS} to approximate any general demand function of income and preferences.
 
-$$w_i = \alpha_i + \sum_j \gamma_{ij} \ln p_j + \beta_i \ln\left ( frac{x}{P}\right )$$
+$$w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)}$$
 
-\cite{DeatonMuellbauer1980} also propose a linear approximation of the \ac{AIDS} model: the \ac{LA-AIDS} model was used by \cite{AlmeidaJustoOliveiraSilva2016} with monthly aggregate consumption of gasoline, diesel and ethanol over the state of Pernambuco in Brazil, and they find that demand for gasoline and diesel is price-inelastic while demand for ethanol is price-elastic. This approach, however, precludes (1) differentiating demographic groups, as consumption is fully aggregated and (2) regressivity analysis, as demand is modelled as a function of expenditure only on fuels.
+\cite{DeatonMuellbauer1980} also propose a linear approximation of the \ac{AIDS} model: the \ac{LA-AIDS} model was used by \cite{AlmeidaJustoOliveiraSilva2016} with monthly aggregate consumption of gasoline, diesel and ethanol over the state of Pernambuco in Brazil, and they find that demand for gasoline and diesel is price-inelastic while demand for ethanol is price-elastic. This approach, however, precludes (1) differentiating demographic groups, as consumption is aggregated over consumers and (2) regressivity analysis, as demand is modelled as a function of expenditure only on fuels.
 
 The \ac{AIDS} model was expanded by \cite{BanksBlundellLewbel1996b} to include a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income.
 
-$$$$
+$$w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)} \left [ \ln \frac{x}{a(p)} \right ]^2$$
 
 Besides income, other household attributes affect demand. (?) incorporate demographic characteristics as scaling factors into the model.
 
@@ -384,8 +387,6 @@ $$$$
 \cite{NikodinoskaSchroder2016} uses the \ac{DQUAIDS} to study the welfare effects of fuel taxes in Germany, including the number of adults and children below 15 years of age in a household as scaling factors.
 
 \tdIL{At this stage we still have no context within which to place the \ac{DQUAIDS} model. there is no actual reviewing of the different proposals for demand modelling. You do not explain why the \ac{DQUAIDS} might be more useful but I think that, as soon as you started doing that, you would notice that you have not even explained earlier types of demand systems such as the \ac{AIDS}. This needs to be done. You need to go through the systems and then, in Section \ref{methods}, you tell us why this or that method was not an option for you and why you chose this other one instead.}
-
-\cite{NikodinoskaSchroder2016} uses the \ac{DQUAIDS} to study the welfare effects of fuel taxes in Germany, including the number of adults and children below 15 years of age in a household as scaling factors.
 
 
 \cite{SpillerStephensChen2017} consider that households in rural areas do not have access to public transportation, reducing their ability to substitute driving.\tdFL{and what was the result? what changed?}
@@ -399,18 +400,37 @@ $$$$
 
 
 \section{Equivalence scales}\label{sec:equivalence_scales}
-\tdIL{Rober assumes this is being worked on but eventually we will need to have in the literature section a bit about equivalence scales: their purpose, their evolution, their shortcomings, etc.}
+\tdILY{Rober assumes this is being worked on but eventually we will need to have in the literature section a bit about equivalence scales: their purpose, their evolution, their shortcomings, etc.}
 
-As seen in Section \ref{sec:demand_sys}, demand can be modelled under the assumption that preferences depend on attributes of the household such as age and number of its members, and location. The same assumption may be applied to the comparison of welfare changes between households: for example, if we consider two families with the same income, but one is composed of two adults and the other is composed of three adults, it is reasonable to conclude the second is worse off. Other comparisons are not as clear --- how does the welfare of a family of two adults and one child compare with the welfare of a family of three adults on the same income?
+Once we start looking at disaggregated demand for welfare analysis, either within a regressivity framework or a demand system, the issue of comparability between households arises. For example total income, if used as a measure of welfare, will underestimate the well-being of a family of two adults relative to that same family with a child at the same level of income, as satisfying the needs of the child will reduce the consumption of the parents.
 
-Economies of scale in consumption also affect welfare comparisons. Additional members of a family will not, on average, double its consumption of energy and water. Larger families will usually share appliances and vehicles. Therefore, welfare differences under the same income are unlikely to be linear on the number of members of a family.
+A common correction to this issue is to use the income \textit{per capita} instead. In fact, the \ac{FBS} provides in all its expense datasets a column with the per capita income of the household. However, per capita income disregards (1) that members may have different needs and (2) that there are economies of scale in consumption. Children, for example, consume less food than adults in general. Demand for goods such as lighting and water does not increase proportionally to the number of people in a household. Family members will usually share appliances and vehicles, and can purchase larger quantities of goods at a discount.
 
-To formally define how composition, age and other factors should affect the comparison of money measures of welfare, we can define equivalence scales. An equivalence scale is a deflation factor that aims to equivalize family incomes or wealth \citep{DeatonMuellbauer1980}.
+If we determine how children's consumption must be relative to an adult so that they achieve the same level of well-being, it becomes possible to compare households based on the number of \textit{adult equivalents} \cite[p.~242]{Deaton1997}. Incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor that equivalizes family incomes or wealth \citep{DeatonMuellbauer1980}.
 
-\cite{NikodinoskaSchroder2016} use the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers.
+\cite{Mancero2001} classifies equivalence scales into four categories according to the method of construction: behavioural scales, parametric scales, expert scales and subjective scales. See below a summary of each approach.
 
-The transcendental logarithm demand system of \cite{JorgensonSlesnick1987} yields commodity-specific household equivalence scales.
+\textbf{Expert scales} --- these are developed for particular purposes by ``experts'' of a field. The main example provided by \cite{Mancero2001} is based on how dietary needs vary between individuals according to age and gender. \to{Fuels are not physiological needs, so it is unlikely an ``expert'' could provide such a scale based on anything but observed behaviour, so we'll skip that.}
 
+\textbf{Subjective scales} --- these are constructed by surveying families and asking what they would consider the minimum expenditure they would require to satisfy the needs of all members. \to{We'll also skip this as ``needs'' are socially defined and families' estimates of how much income they would require as a minimum tends to increase as their actual income increases.}
+
+\textbf{Parametric scales} --- start from a functional form that incorporates economies of scale and differences in members needs according to their attributes as parameters. Such scales are useful as standards of comparison between studies in different countries, for example. \cite{NikodinoskaSchroder2016} uses the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers.
+
+\textbf{Behavioural scales} --- these are based on observed consumption patterns of families. \to{
+* Started with Engel's observations of food expenditures. Richer families tend to spend lower fractions of their income on food than poorer families, so we can use the fraction of income spent on food as an approximation of welfare.
+* Rothbarth: consider ``adult goods'': goods such as alcohol are not purchased by children, so when a family has a child, the ``cost of the child'' is the additional income necessary to restore the consumption of said ``adult goods'' to their initial levels.
+* Prais and Houthakker: generalize the Engel method to allow for different scales for each good
+* \cite{VazVaz2007} estimate equivalence scales for Brazil from the 2002-2003 FBS. The estimates are in general non-significant but they find that children are cheaper than adults.
+* \cite{Mancero2011} estimates behavioural equivalence scales for LatAm and finds high variability in the marginal cost of a child, ultimately recommending the use of parametric equivalence scales instead.
+* Might be doable, but afaik Stata does not compute these automatically so I think I'll stick with the OECD for now.
+* The translog demand system of \cite{JorgensonSlesnick1987} yields commodity-specific household equivalence scales.}
+
+
+\cite{Fisher1987} raises an important issue regarding behavioural equivalence scales: systematic differences between the tastes of black and white people may reflect past differences in income and education.
+
+Another challenge arises if we consider studies that show women tend to spend more on children than men \tdFL{add refs}. This means a sample of households headed by women will overestimate (maybe some other word that does not suggest ``wrongness''?) the cost of a child relative to a sample of households headed by men.
+
+Finally, it may not be socially acceptable to attribute a lower ``weight'' to children in welfare analysis.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -534,7 +554,7 @@ The \ac{FBS} provides detailed data on individual household expenditure on parti
 
 The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed, while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
 
-The grouping was done as follows. First, I identified housing as the type of expense that was present more frequently among the households surveyed: $`pct_rent'$\% of households recorded an expense. For the second step, I assumed that two households who paid rent or were interviewed on the same date  and on the same location would have the same deflator value. Under this assumption, I grouped households that had the same deflator value for rent and treated each group as facing the same prices.
+The grouping was done as follows. First, I identified housing as the type of expense that was present more frequently among the households surveyed: $`pct_rent'$\% of households recorded an expense. For the second step, I assumed that two households who paid rent or were interviewed on the same date  and on the same location would have the same deflator value. Under this assumption, I grouped households that had the same deflator value for rent and treated each group as facing the same prices. Third, I produced a Stone price index from all expenses reported by all households in each group.
 
 This exploitation made it possible to obtain estimates but, given that the procedure by which the deflators are generated and mapped onto observations is not transparent and I did not have the dates of collection, the results are not reliable. The reader should take the estimates, their discussion and conclusions as an example of the use of the method to address the question rather than an actual answer.
 
@@ -1554,8 +1574,7 @@ Estimating the translog model requires price index numbers for each commodity gr
 
 \tdILY{You will need to tweak those missing foreign characters in your bib entries and secure the capitalizations too}
 
-\tdILY{coul you try to generate the ugly URL codes as embedded in hyperlinks, using the relevant tex tag (I think it is $\backslash$href or something). That would still work as a URL hyperlink without the massive usgliness of having to show verbatim the whole URL}
-
+\tdIL{coul you try to generate the ugly URL codes as embedded in hyperlinks, using the relevant tex tag (I think it is $\backslash$href or something). That would still work as a URL hyperlink without the massive usgliness of having to show verbatim the whole URL}
 
 
 \bibliographystyle{chicago}
