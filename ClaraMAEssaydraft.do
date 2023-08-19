@@ -434,37 +434,33 @@ Finally, it may not be socially acceptable to attribute a lower ``weight'' to ch
 \chapter{Methodology and Data}\label{methods}
 We want to characterize the differences in the demand for gasoline across households of different compositions and attributes and use this characterization to estimate the welfare effects of a subsidy policy change.
 
-To characterize the demand for gasoline, I use the transcendental logarithmic (translog) model of aggregate consumer behaviour. This model uses a translog specification of the \ac{PIGLOG} class of functions.
-
-\tdIL{OK, once you have all this within your lit review in Section \ref{litreview}, we will be able to understand what you mean by ``\ac{PIGLOG} class of functions''}
-
-Following \cite{Jorgenson1990}, I \tdFL{Be consistent between ``we'' and ``I''} assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have a utility function of the \textit{transcendental logarithm} form \citep{JorgensonChristensenLau1975}:
+I assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have a utility function of the form:
 
 \begin{equation}
-- \ln U = \alpha_0 + \sum \alpha_i \ln X_i + \frac{\sum{\sum{B_{ij} \ln X_i \ln X_j}}}{2}
 \end{equation}
 
-\tr{Where} \tdFL{lowercase, as this just follows from the equation, perhaps with a comma in front} $i$ and $j$ identify available goods and $X_i$ represents the quantities consumed. By maximizing this utility function and incorporating differences related to demographic characteristics of \tr{the} households, we \tdFL{Again, try to reword, it is not ``we''...use the passive voice perhaps.} obtain an indirect utility function \citep{JorgensonSlesnick1987}:
+\tr{where} \tdFL{lowercase, as this just follows from the equation, perhaps with a comma in front} . By maximizing this utility function and incorporating differences related to demographic characteristics of \tr{the} households, we \tdFL{Again, try to reword, it is not ``we''...use the passive voice perhaps.} obtain an indirect utility function \citep{JorgensonSlesnick1987}:
 
 \begin{equation}
-\ln V_k = \ln \left( \frac{p}{M_k} \right) \alpha_p + \frac{1}{2} \ln \left( \frac{p}{M_k} \right)B_{pp} \ln \left( \frac{p}{M_k} \right) + \ln \left( \frac{p}{M_k} \right)B_{pA}A_k
 \end{equation}
 
-Where \tdFL{again lowercase}
+where
 \begin{itemize}
-	\item $k$ identifies a household,
-	\item $A_k$ is the vector of attributes of household $k$,
-	\item $\alpha_p$, $B_{pp}$ characterize general preferences and
-	\item $B_{pA}$ characterize preferences according to observed attributes.
+	\item{}
 \end{itemize}
 
-Differences in preferences are captured by \textit{commodity-specific household equivalence scales}:
+Following \cite{Poi2012, DeatonMuellbauer1980, BanksBlundellLewbel1996b}, I predefine $\alpha_0$ as the lowest total expenditure in the dataset.
 
-\tdIL{reconsider if you need to have italics in all the words above or just on commodity-specific. Also, insert references to other works that developed, proposed, and used these type of equivalence scales.}
+The price-elasticity of demand is then given by
+\begin{equation}
+\end{equation}
+
+which can then be used to obtain the compensating variation
 
 \begin{equation}
-\ln m(A_k) = B_{pp}^{-1}B_{pA}A_k
 \end{equation}
+
+following a price change. Then the compensating variation for each household is equalized by means of the OECD equivalence scale.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -525,16 +521,12 @@ In order to isolate the effect of gasoline prices, I subdivide the ``energy'' gr
 The model for individual expenditure shares is given by:
 
 \begin{equation}
-- w_k = \omega_p - B_{pp}i \ln M_k + B_{pA}A_k + \mu_k
 \end{equation}
 
 , where
 \begin{itemize}
 	\item $w_k$ is the vector of expenditure shares for each commodity group for the $k$th \tdFL{FNW: fix subscript format} household;
-	\item $M_k$ is the household income;\tdFL{ENW check use of ``the''}
-	\item $A_k$ is the vector of household attributes described in Section \ref{ssec:cohort_attributes};
-	\item $\mu_k$ is the stochastic component for the $k$th household;
-	\item $\omega_p$, $B_{pp}i$ \tdFL{FNW check the formatting of subscripts} and $B_{pA}$ are the parameters we want to estimate.
+	\item $x_k$ is the household expenditure on all goods;\tdFL{ENW check use of ``the''}
 \end{itemize}
 
 
