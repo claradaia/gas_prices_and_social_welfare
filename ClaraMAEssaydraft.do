@@ -1296,13 +1296,6 @@ texdoc stlog, nolog
 
 frame change expenditure_shares
 
-// define the macros again so that we don't have to run the entire code again
-local Energy 2
-local Food 1
-local ConsumerServices 4
-local ConsumerGoods 3
-local CapitalServices 5
-
 // make a throwaway copy
 capture frame drop tmp_exp_shares
 frame copy expenditure_shares tmp_exp_shares
@@ -1313,6 +1306,8 @@ frget price_index, from(price_indices)
 drop price_indices
 
 reshape wide group_expenditure_share group_expenditure price_index, i(hh_id total_expenditure) j(commodity_group)
+merge m:1 hh_id using "Data\hh_head_size.dta"
+keep if _merge==3
 
 // ensure that the sum of expenditure shares is close enough to 1...
 gen sum_of_exp_shares = group_expenditure_share`Food' + group_expenditure_share`Energy' + group_expenditure_share`ConsumerServices' + group_expenditure_share`ConsumerGoods' + group_expenditure_share`CapitalServices'
@@ -1325,11 +1320,23 @@ replace group_expenditure_share`Food' = 1 - (group_expenditure_share`Energy' + g
 // drop households for which one of the price_indices is 0 (i.e. there were no expenditure on any of the goods in the group)
 drop if price_index`Food' == 0 | price_index`Energy' == 0 | price_index`ConsumerServices' == 0 | price_index`ConsumerGoods' == 0 | price_index`CapitalServices' == 0
 
+// unpack categorical variables because quaids can't handle i.var_name :)
+gen male = gender
+replace male = 0 if gender == 2
+tab region, g(region_)
+
+// get a_0
+capture drop min_exp
+egen min_exp = min(total_expenditure)
+scalar _min_exp = min_exp
+
 // now we should have all the expenditure shares, total expenditures and price indices, so we can run the main model!
 quaids group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
 	expenditure(total_expenditure) ///
 	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
-	anot(10)
+	demographics(n_adults n_children male region_1-region_4) ///
+	iterate(5) /// provisional, command was running >80 iterations
+	anot(`=_min_exp')
 
 
 texdoc stlog close
