@@ -150,6 +150,11 @@ The Informatics Department of UFPR Faculty.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{acronym}
+\acro{AIDS}{Almost Ideal Demand System}
+\acro{LA-AIDS}{Linear Approximate Almost Ideal Demand System}
+\acro{QUAIDS}{Quadratic Almost Ideal Demand System}
+\acro{DQUAIDS}{Demographically-Scaled Quadratic Almost Ideal Demand System}
+\acro{NSHS}{National Sample Household Survey}
 \acro{BIGS}{Brazilian Institute of Geography and Statistics}
 \acro{IPP}{Import Parity Price}
 \acro{FBS}{Family Budgets Survey}
@@ -159,7 +164,6 @@ The Informatics Department of UFPR Faculty.
 \acro{NSCPI}{National System of Consumer Price Indices}
 \acro{ACPI}{Ample Consumer Price Index}
 \acro{BRL}{Brazilian Real}
-\acro{DQUAIDS}{Demographically-Scaled Quadratic Almost Ideal Demand System}
 \acro{GHG}{Greenhouse effect Gases}
 \acro{OECD}{Organisation for Economic Co-operation and Development}
 
@@ -1430,7 +1434,7 @@ The \ac{FBS} uses \ac{BIGS}'s master Sample. The master sample is a set of house
 \end{table}
 
 The sectors are then stratified for sampling as follows: first by federative unit,\footnote{A ``federative unit'' is a state or the Federal District of Brazil, where the capital Brasília is located.} then by municipality within the federative unit, then by the type of residence\footnote{Usually referred to in \ac{BIGS} documents as ``household situation''} and finally by income levels, determined within the stratum.
-\ac{BIGS} groups the census sectors into \acp{PSU}, aiming to have at least 60 permanent residences in each \ac{PSU}, although some \acp{PSU} may not reach that number \citep{ibge2014}. The \acp{PSU} are then drawn from the strata into the master sample with weighted probabilities according to the size of the \ac{PSU}. The number of \acp{PSU} drawn is chosen so that the number of individuals 14 years of age or older who are not employed or students --- this is a relevant indicator of another survey, the \ac{HSNS} \tdFL{definition missing} --- can be estimated with a predefined precision level \citep{ibge2014}. When of the execution of the 2017-2018 \ac{FBS}, the number of \acp{PSU} in the master sample was 15,096 \citep{ibge2019}.
+\ac{BIGS} groups the census sectors into \acp{PSU}, aiming to have at least 60 permanent residences in each \ac{PSU}, although some \acp{PSU} may not reach that number \citep{ibge2014}. The \acp{PSU} are then drawn from the strata into the master sample with weighted probabilities according to the size of the \ac{PSU}. The number of \acp{PSU} drawn is chosen so that the number of individuals 14 years of age or older who are not employed or students --- this is a relevant indicator of another survey, the \ac{NSHS} --- can be estimated with a predefined precision level \citep{ibge2014}. When of the execution of the 2017-2018 \ac{FBS}, the number of \acp{PSU} in the master sample was 15,096 \citep{ibge2019}.
 
 For the \ac{FBS}, the number of \acp{PSU} sampled from the master sample is chosen so that the total income of the head of the households can be estimated under a predetermined precision level. The coefficient of variance was determined for each federative unit, ranging from 6\% to 15\%. The final size of the sample was of 5,504 \ac{FBS}, containing 69,660 households \citep{ibge2019}.
 
