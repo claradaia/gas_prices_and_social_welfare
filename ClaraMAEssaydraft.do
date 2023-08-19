@@ -1344,6 +1344,17 @@ texdoc stlog close
 
 /*tex
 
+\subsection{Welfare effects estimation}
+
+% get the average price of gasoline before and after october 2016 but before 2020 to avoid pandemic effects
+
+% get the average elasticity for each income decile in the sample
+
+% estimate CV and EV for each income decile of the price changed
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Conclusions}\label{conclusions}
