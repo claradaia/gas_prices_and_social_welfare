@@ -230,18 +230,9 @@ The Informatics Department of UFPR Faculty.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\tdILY{Hi Rober, Clara said: I added sections to the literature review. I thought I'd do a "progression" of sorts, starting with DWL, then regressivity measures, then including demographic attributes.}
-
-\tdIL{Rober: you also need to go through the development and the evolution of the different equivalence scales, who came up with them? why when? who used them for what? What are their shortcomings and advantages?. You mentioned them in the methods section as if the reader were superfamiliar with them. } 
-
-\tdIL{Look at Section 4.1 in \citet{NikodinoskaSchroder2016}. They have a short paragraph there about the history of demand systems and then their own methods paragraph about why they themselves use. They had to squeeze all that in only two paragraphs in the published version of their paper. You do have more space for full-fledged sections.}
-
-\tdILY{Rober: you also need to make sure you distinguish carefully between the background and the literature review.  The former is about your case study, Brazil/fuel prices/taxes/subsidies at a certain time. The latter is about what other people wrote, not necessarily about Brazil/fuel prices/taxes/subsidies but that will help us understand your choices, your methods, your shortcuts, and your results. At this time you comingle both types of sections and there is no background section as such. This also means that there is stuff in the Intro that should go to a background section. }
-
 \tdILY{Rober: OK but I put comments on all captions, because we want all floats to be almost fully self-explanatory, so you need more detail/context in the caption itself.}
 
-\tdILY{Next I'll rework the entire method section: Drop "race" from the attributes. I was only doing it because Jorgenson did it; I don't want to get into how ethnicity would have an effect on preferences;}
+\tdIL{Next I'll rework the entire method section: Drop "race" from the attributes. I was only doing it because Jorgenson did it; I don't want to get into how ethnicity would have an effect on preferences;}
 
 \tdIL{Rober: OK but do explain this AFTER giving it another go at the literature and ensuring that other authors are not using that attribute either when dealing with similar analyses}
 
@@ -289,6 +280,7 @@ There are also political aspects of interest in analysing the effect of gas pric
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Background}\label{chap:background}
+\tdILY{Rober: you also need to make sure you distinguish carefully between the background and the literature review.  The former is about your case study, Brazil/fuel prices/taxes/subsidies at a certain time. The latter is about what other people wrote, not necessarily about Brazil/fuel prices/taxes/subsidies but that will help us understand your choices, your methods, your shortcuts, and your results. At this time you comingle both types of sections and there is no background section as such. This also means that there is stuff in the Intro that should go to a background section. }
 
 \tdILY{OK, this next paragraph does not really belong in the Intro with all these details. You might wat to have a subsection within the intro later or just add a section about ``background''. The intro should just have the generalities of what you do, why, how and what you find. Not so much details (data, tables, figures, references, etc.)}
 
@@ -366,6 +358,9 @@ One line of research suggests that using \tr{income results} \tdeFL leads to ove
 
 
 \section{Demand systems, other sources of heterogeneity and welfare computation}\label{sec:demand_sys}
+
+\tdIL{Look at Section 4.1 in \citet{NikodinoskaSchroder2016}. They have a short paragraph there about the history of demand systems and then their own methods paragraph about why they themselves use. They had to squeeze all that in only two paragraphs in the published version of their paper. You do have more space for full-fledged sections.}
+
 \cite{BanksBlundellLewbel1996a} have shown that the bias in estimating a first-order approximation of welfare effects from a price change (1) will be large if the change in question is large; (2) depends on the own-price elasticity of demand, which may vary across demographic groups and (3) that it varies systematically over the logarithm of income. Figure \ref{fig:fuel_prices_over_time} suggests (1) may be the case of the fuel price policy in Brazil. (2) and (3) raise equity concerns.
 
 In order to produce second-order estimates of welfare effects that address the biases found by \cite{BanksBlundellLewbel1996a}, substitution effects must be taken into account. These can be modelled with demand systems that estimate simultaneously the demand for all goods (or groups of goods) that families consume.
@@ -562,7 +557,7 @@ If the deflator values had been solely determined by the date of the payment or 
 
 
 \tdILY{Rober SEPT 19: you do not name a variable "urban\_or\_rural" (also because the underscores tend to be a nuisance in \LaTeX), since that is not going to help: name it EITHER urban OR rural and lable the 0 and 1 values accordingly. Same with "gender" "marital status" etc. Use male (or female, or additional binary indicators) and "married", "single", "divorced", etc. }
-\tdILY{Clara: ok, I changed it. I used the categories as variable names and let Stata interpret them with i.var\_name when possible, but the quaids command does not support it. Also snake\_case is \href{https://www.cs.kent.edu/~jmaletic/papers/ICPC2010-CamelCaseUnderScoreClouds.pdf}{the superior naming convention} so I will keep it unless there is no way to fix the \LaTeX output}
+\tdILY{Clara: ok, I changed it. I used the categories as variable names and let Stata interpret them with i.var\_name when possible, but the quaids command does not support it. Also snake\_case is \href{https://www.cs.kent.edu/~jmaletic/papers/ICPC2010-CamelCaseUnderScoreClouds.pdf}{the superior naming convention} so I will keep it unless there is no way to fix the \LaTeX\ output}
 
 
 
@@ -1029,7 +1024,6 @@ restore
 
 // this gives us 600101 as the item code that "covers" the most households
 // in future iterations, we can try to "cover" other households by choosing other items and attempting to match their deflators to existing groups
-
 gen price_group = DEFLATOR if item_code == max_hhs_item_code
 drop if missing(price_group)
 keep hh_id price_group
