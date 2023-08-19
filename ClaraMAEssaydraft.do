@@ -470,13 +470,12 @@ following a price change. Then the compensating variation for each household is 
 
 \subsection{Separability}
 
-\tdIL{Reword this paragraph: do not ask the question, just write up a paragraph. Do not use``1'' and ``2'' just flesh out a proper paragraph.}
+\tdILY{Reword this paragraph: do not ask the question, just write up a paragraph. Do not use``1'' and ``2'' just flesh out a proper paragraph.}
 
-Why aggregate goods into groups?
-1. The number of goods consumed observed by the \ac{FBS} is very large relative to the number of observations in the 2017-2018 survey. Aggregating goods into groups improves the statistical power of the model.
-2. It makes sense intuitively: instead of making purchase decisions with full information all the time, families may allocate income into groups like ``food'', ``housing'' and ``transportation'' and treat each as a separate optimization problem.
+% Why aggregate goods into groups
+Instead of making each purchase decision with full information all the time, families may allocate income into groups like ``food'', ``housing'' and ``transportation'' and treat each as a separate optimization problem. \tdIL{Is this, when separability is not really there, the ``mental account'' heuristic that behavioural economists talk about? In that case, you might want to mention that, at least in a footnote, with references.}
 
-\tdIL{Is this, when separability is not really there, the ``mental account'' heuristic that behavioural economists talk about? In that case, you might want to mention that, at least in a footnote, with references.}
+Aggregating goods into groups has the additional advantages of improving the statistical power of the model and avoiding censoring issues. Because the number of goods consumed observed by the \ac{FBS} is very large relative to the number of observations in the 2017-2018 survey, families will have zero expenditure on the majority of individual available goods, but are unlikely to have zero expenditure on major frequent expense categories such as food and transportation.
 
 Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \citep{DeatonMuellbauer1980}.
 
