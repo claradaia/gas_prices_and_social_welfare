@@ -111,6 +111,11 @@ graph set window fontface "Palatino Linotype"
 
 Fossil fuels represent a large share of expenditure for Brazilian households. Demand is inelastic in the short-term, and pricing policies implemented by Petrobras. Frequent price changes affect families well-being, and it does so heterogeneously. To understand these heterogeneous effects, we use a social welfare function framework. We analyse the effect of gasoline prices on social welfare in Brazil using the transcendental logarithm social welfare function, and use those estimates to evaluate the import parity price policy implemented by Petrobras. We find that the policy affected families of median and above income x times more than families under the median income, and that families living in rural areas were x times more affected than families in urban areas.
 
+\todo[inline]{Eventually, this abstract will need some further ``sell'' or motivation. Why are we interested in the effects of changes in the price of oil? Why would they keep changing or change more in the future? Why were the policies that changed the prices effected? Climate change? International Pressure? Sustainable Development Goals? The IMF requiring it? Will this happen again? That is, is there a policy situation to solve? A problem to deal with? Is it getting better? worse? }
+
+\todo[inline]{Eventually, this abstract will need some policy conclusions. Now that ``thankfully for the World or at least Brazil, you completed this work, what can you say that will inform policy, make things better, help solve the original problem?'' }
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Dedication placeholder
@@ -149,6 +154,19 @@ The Informatics Department of UFPR Faculty.
 %% Abbreviations placeholder
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{abbreviations}
+
+\todo[inline]{Just insert your acronym package commands here and the list will appear as if they were abbreviations
+Note that the list will keep ``unused'' acronyms. \LaTeX will, however, flag ``undefined'' acronyms.}
+
+\end{abbreviations}
+
+
+\todo[inline]{But you do need to keep this ``abbreviations'' environment here, so the page has a title as required by the ECON template}
+
+\todo[inline]{Alphabetize the list of abbreviations in the end}
+
+
 \begin{acronym}
 \acro{AIDS}{Almost Ideal Demand System}
 \acro{LA-AIDS}{Linear Approximate Almost Ideal Demand System}
@@ -184,8 +202,6 @@ The Informatics Department of UFPR Faculty.
 
 
 
-\todo[inline, color=green]{We need the acronyms translated into English. Then you can use footnotes or the bib reference to include the original name in Portuguese}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % A few shortcuts for todonotes and text colouring
@@ -198,6 +214,7 @@ The Informatics Department of UFPR Faculty.
 \newcommand{\tdILY}{\todo[inline, color=yellow]}
 \newcommand{\tdILB}{\todo[inline, color=cyan]}
 
+\newcommand{\tdILG}{\todo[inline, color=green]}
 
 \newcommand{\tr}{\textcolor{red}}
 \renewcommand{\ty}{\textcolor{yellow}}
@@ -234,7 +251,7 @@ The Informatics Department of UFPR Faculty.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\tdILY{Rober: OK but I put comments on all captions, because we want all floats to be almost fully self-explanatory, so you need more detail/context in the caption itself.}
+\tdILG{Rober: We want all floats to be almost fully self-explanatory, so you need more detail/context in the caption itself.}
 
 \tdIL{Next I'll rework the entire method section: Drop "race" from the attributes. I was only doing it because Jorgenson did it; I don't want to get into how ethnicity would have an effect on preferences;}
 
@@ -246,11 +263,25 @@ The Informatics Department of UFPR Faculty.
 
 
 
+\tdIL{AUG 25: The most important new things are:}
+\tdIL{1. The section about equivalence scales -- I left some things in orange to indicate that I still have to make them into a proper paragraph, but you can let me know if the contents are good.}
+\tdILY{OK, I just suggest a bit of reordering and expanding in that section}
+
+\tdIL{2. The explanation of how I "extracted" price variability from the dataset, in the Data Source section.}
+
+\tdILY{That is OK. It will have to go in some form to the ``limitatons'' as well}
+
+
+\tdIL{3. The model runs with demographic vars. I still need to figure out why there are so many missing values in the price index, 2/5 of the households are not being included because of it.}
+
+\tdILY{AUG 25: Any progress on this? }
+
+
 
 
 \chapter{Introduction}\label{intro}
 
-\tdILY{Rober suggests italicizing the original Portuguese, curently missing a special c or a z or something in the acronym definition, translating it here into English and creating the acronym for FBS instead or POF. Same with IBGE}
+\tdILY{Rober suggests italicizing the original Portuguese, currently missing a special c or a z or something in the acronym definition, translating it here into English and creating the acronym for FBS instead or POF. Same with IBGE}
 
 \tdIL{checkspelling in bib entries, remember the accents in \TeX: Estatística will yield a missing vowel, use Estat\'{i}stica. }
 
@@ -259,34 +290,38 @@ The Informatics Department of UFPR Faculty.
 \tdIL{You could have somewhere in the intro something about how many/most countries subsidize oil for consumers and how much political unrest trying to eliminate those inefficient subsidies can cause.}
 
 
+
+\tdILR{Eventually, this introduction will need much more of further ``sell'' or motivation. Why are we interested in the effects of changes in the price of oil? Why would they keep changing or change more in the future? Why were the policies that changed the prices effected? Climate change? International Pressure? Sustainable Development Goals? The IMF requiring it? Will this happen again? That is, is there a policy situation to solve? A problem to deal with? Is it getting better? worse? }
+
+
+
+
 According to the 2017-2018 \ac{FBS} run by the \ac{BIGS} \citep{ibgePOF}, transportation was on average the second largest group of expenses for Brazilian families, corresponding to 18,1\% of their monthly budget \citep{ibge2019}. The demand for gasoline in Brazil is generally estimated to be price-inelastic \citep{Cardoso2019}, especially in the short run \citep{Bastos2016}.
 
-\tdIL{Obviously all these paragraphs will need a lot of rewriting as you go in order to thread a story together...}
+\tdIL{Obviously, all these paragraphs will need a lot of rewriting as you go in order to thread a story together...}
 
 Having a low price-elasticity of demand and representing a large share of expenditure means the impact of gasoline price fluctuations is severe on consumers' well-being. Reflecting that relevance, in the past two decades the pricing of petroleum and its products in Brazil has been the target of several important policy interventions. Section \ref{gas_policy_history} provides a brief history of these interventions.
 
 \tdILY{perhaps also add that the price of oil can fluctuate a lot?}
 
-In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term implicit subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced within the country the same as the prices in the international market for oil.
+In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term implicit subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced \tdFL{charged???} within the country the same as the prices in the international market for oil.
 
-\citep{LinPrince2013} find that high price volatility yields lower aggregate demand for gasoline.\tdFL{This should be fleshed out and moved to the literature review}
+\citet{LinPrince2013} find that high price volatility yields lower aggregate demand for gasoline.\tdFL{This should be fleshed out and moved to the literature review}
 
-From the \tdFL{ENW: English needs work: from ``a''} methodological standpoint, \tr{I find} \tdFL{reword} that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or investigate \tdFL{ENW grammar} effects on specific regions rather than a nation-wide study.
+From \tr{the} \tdFL{ENW: English needs work: from ``a''} methodological standpoint, \tr{I find} \tdFL{reword} that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or \tr{investigate} \tdFL{ENW grammar} effects on specific regions rather than a nation-wide study.
 
 \tdIL{We will need a few references to back this up}
 
-There are also political aspects of interest in analysing the effect of gas price changes. \tdFL{As explained above: bring examples from other countries too?} Politicians often use gas price regulations as a popularity tool, especially near elections. \tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. Better understanding of demand \tde for gasoline and welfare effect of price changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
-
-%\todo[color=green]{This makes it sound that the government revenue and the profits are NOT somehow part of social welfare BUT they are: rethink and reword. The government is not a person, so you may want to measure those gains in government revenue in terms of the saved tax distortion in other markets but the stock owners are individuals with standing.}
+There are also political aspects of interest in analysing the effect of gas price changes. \tdFL{As explained above: bring examples from other countries too?} Politicians often use gas price regulations as a popularity tool, especially near elections. \tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. \tr{Better understanding of demand \tde for gasoline and welfare effect of price} changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Background}\label{chap:background}
-\tdILY{Rober: you also need to make sure you distinguish carefully between the background and the literature review.  The former is about your case study, Brazil/fuel prices/taxes/subsidies at a certain time. The latter is about what other people wrote, not necessarily about Brazil/fuel prices/taxes/subsidies but that will help us understand your choices, your methods, your shortcuts, and your results. At this time you comingle both types of sections and there is no background section as such. This also means that there is stuff in the Intro that should go to a background section. }
+\tdILR{Eventually, this Section \ref{chap:background} will need much more of further detailing of the motivation you would have inserted in the Introduction. Why are we interested in the effects of changes in the price of oil? Why would they keep changing or change more in the future? Why were the policies that changed the prices effected? Climate change? International Pressure? Sustainable Development Goals? The IMF requiring it? Will this happen again? That is, is there a policy situation to solve? A problem to deal with? Is it getting better? worse? Only in Section \ref{chap:background} you can be more detailed, use numbers, use tables and graphs (you have some already), comparisons with the situation in other countries, etc.}
 
-\tdILY{OK, this next paragraph does not really belong in the Intro with all these details. You might wat to have a subsection within the intro later or just add a section about ``background''. The intro should just have the generalities of what you do, why, how and what you find. Not so much details (data, tables, figures, references, etc.)}
+
 
 Figure \ref{fig:fuel_prices_over_time} shows average monthly retail prices of gasoline, ethanol and diesel in Brazil, as well as the OPEC crude oil monthly prices between 2003 and 2023, all in \ac{BRL} and normalized to 1 in the first time period. The graph shows that Petrobras' price policy before 2016 cushioned fuel prices against international market price variations, and that since the policy change prices have followed crude oil price trends, increasing over time and becoming more volatile.
 
@@ -305,7 +340,7 @@ texdoc stlog close
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{graphs/fuel_prices_over_time.png}
-    \caption{Fuel and crude oil prices over time}
+    \caption{Fuel and crude oil prices over time \tr{in Brazil}}
     \label{fig:fuel_prices_over_time}
 \end{figure}
 
@@ -313,18 +348,15 @@ texdoc stlog close
 
 \section{Fuel price interventions}\label{gas_policy_history}
 
-\tdILR{And this subsection really would be placed in the ``background section''. not the literature section}
-
 In 2002, the anti-trust ...
 
 In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%. This was part of a series of attempts to keep inflation under control.
 
-In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula da Silva \tdFL{missing genitive here} (elected in 2022) campaign suggestions \citep{SantanaRamalho2023}.
+In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula \tr{da Silva \tdFL{missing genitive here} (elected in 2022) campaign} suggestions \citep{SantanaRamalho2023}.
 
 
 \section{Other important observations}
-
-\tdILY{Again: not Lit review but background}
+\tdILY{This section will need a better title}
 
 % Why we must include ethanol in the analysis
 Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, Brazilians consumed 15.5 billion litres of ethanol and 43 billion litres of gasoline \citep{anp2022}. The majority of vehicles sold in the country are \textit{flex-fuel}, i.e. can run on any combination of gasoline or ethanol, making ethanol and gasoline close short-run substitutes. In 2021, for example, of the 2,104,461 new vehicles licensed, 1,633,245 or 77.6\% were \textit{flex-fuel}. The share is even larger, 83.3\%, if we exclude trucks and buses \citep{anfavea2023}.
@@ -339,16 +371,23 @@ As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the sa
 
 
 \chapter{Literature Review}\label{litreview}
-Welfare valuation methods incorporate efficiency and distribution concerns to varying degrees. Sections \ref{sec:dwl}, \ref{sec:income} and \ref{sec:ds} describe the three main lines of research found in the literature regarding the welfare effects of gasoline prices.
 
-Besides distribution concerns, family composition and other characteristics affect their potential economies of scale in consumption. Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
+\tdILR{To start with, there should be a whole bit about what is welfare in terms of economics, why it is measured, what are the original ways to measure it, etc. We would have said a thing or two about this in CBA class ; ) Then look at the welfare effects of price changes and then criticize those more conventional ways to look at the welfare effects of price changes and motivate the new strategies. Bu Rober misses the terms consumer surplus, equivalent variation, etc. Remember not only how but why the seminal contributors to welfare economics conceived of the effects of a policy (a regulation, a project, a price change, etc. ) and the assumptions they made. For example they would originally treat a household as a unit, they would assume that the marginal utility of income was the same for everyone… We need an explanation about why the analysis of a change in price brought about by a policy is not straightforward and a few paragraphs oh description of the evolution of this type of analysis. You do not need to use the latest state-of-the-art analysis but you must who us that you have a good understanding of why new techniques have been developed through the decades. }
+\tdILR{What you have for now is just small hints…Without a little bit more of that historical context your literature review reads quite empty... }
+
+Welfare valuation methods incorporate efficiency and distribution concerns to varying degrees. Sections \ref{sec:dwl}, \ref{sec:income} and \ref{sec:ds} \tdFL{references need fixing, they do not match the labels} describe the three main lines of research found in the literature regarding the welfare effects of gasoline prices.
+
+\tr{Besides distribution concerns, family composition and other characteristics affect their potential economies of scale in consumption}. \tdFL{Does this sentence make sense?} Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
 
 \section{The DWL angle}\label{sec:dwl}
-Price distortions in competitive markets lead to deadweight loss. By maintaining domestic prices artificially low, Petrobras subsidizes consumption implicitly through forgone revenue and directly when it needs to import fuel to satisfy the domestic demand.
 
-With Petrobras being partly nationalized, the loss incurred by consumers from increased prices can be counteracted by a decrease in the tax burden accounting for the government increased revenue. \cite{Moreira2017} uses a static open economy macroeconomic model of Brazil to estimate the impact of removing fuel subsidies on output, aggregate consumption and labour demand for the years 2011-2014. She \tdFL{use the citation, avoid gender identifiers} finds that if accompanied by an equivalent reduction on major taxes, the removal of the subsidy increases output, consumption and employment.
+\tdILR{this section will need a better title}
 
-An aggregate demand function that yields dead-weight loss estimates typically uses a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. The welfare loss measured by this method reflects only efficiency losses, which the author considers to be insufficient for policy analysis because needs, access and ability to pay vary a lot between families.\tdFLY{too colloquial}
+Price distortions in \tdFL{otherwise} competitive markets lead to deadweight loss. By maintaining domestic prices artificially low, Petrobras subsidizes consumption implicitly through forgone revenue and directly when it needs to import fuel to satisfy the domestic demand.\tdFL{This paragraph is more background than literature review}
+
+With Petrobras being partly nationalized, the loss incurred by consumers from increased prices can be counteracted by a decrease in the tax burden accounting for the government increased revenue. \tdFL{First sentence is background still} \cite{Moreira2017} uses a static open economy macroeconomic model of Brazil to estimate the impact of removing fuel subsidies on output, aggregate consumption and labour demand for the years 2011-2014. She \tdFL{use the citation, avoid gender identifiers} finds that if accompanied by an equivalent reduction on major taxes, the removal of the subsidy increases output, consumption and employment.
+
+\tr{An aggregate demand function that yields dead-weight loss estimates} \tdFL{needs rewording} typically uses a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. The welfare loss measured by this method reflects only efficiency losses, which the author considers to be insufficient for policy analysis because needs, access and ability to pay vary a lot between families.\tdFLY{``between'' two people but ``among'' more than two people}
 
 
 \section{Income, Engel curves and the regressivity/progressivity angle} \label{sec:regressivity}
@@ -356,37 +395,48 @@ One way to incorporate income differences into the analysis is to use regressivi
 
 One line of research suggests that using \tr{income results} \tdeFL leads to overestimating the regressivity of a gasoline tax: \cite{Poterba1991} uses total expenditure instead of income as a proxy of lifetime earnings, which however relies on \tdFL{explain this further} the assumption that poverty is in general temporary \tdFL{Is income mobility high in Brazil?}. \cite{TeixidoVerde2017} include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
 
-\cite{Sterner2012} argues that whether a tax is regressive will vary between tdFL{among} countries and in particular that cars in developing countries are luxury goods. However, fuels can have a large impact on industry costs and output. For example, in Brazil transportation of consumer goods is largely made by trucks\tdFLY{and what does this mean? explain further} powered by diesel, so that a tax on diesel can increase prices of all goods. In this case, even if cars are luxuries, the tax may be regressive if the price of goods consumed by low income families is more sensitive to transportation costs than the price of goods consumed by high income families.
+\tdILR{Is income mobility high in Brazil? Could you tell us and add refes, trying to link it to your own analysis/results}
 
-\tdFLY{new paragraph once you enlarge the previous one}\cite{FreitasRibeiroSouzaHewings2016} analyse the distributional effects of taxing \ac{GHG} in Brazil using an input-output model of the production chains and find that food and transportation bear the largest changes in output. Because low-income households also spend the greatest shares in these goods, a fuel tax is found to be regressive.
+\cite{Sterner2012} argues that whether a tax is regressive will vary among countries and in particular that cars in developing countries are luxury goods. However, fuels can have a large impact on industry costs and output. For example, in Brazil transportation of consumer goods is largely made by trucks\tdFLY powered by diesel, so that a tax on diesel can increase prices of all goods. In this case, even if cars are luxuries, the tax may be regressive if the price of goods consumed by low income families is more sensitive to transportation costs than the price of goods consumed by high income families.
+
+\tdILR{Could you expand this using similar examples, getting additional references? There might be references within \cite{Sterner2012}. The story below from \cite{FreitasRibeiroSouzaHewings2016} is one good example.}
+
+\cite{FreitasRibeiroSouzaHewings2016} analyse the distributional effects of taxing \ac{GHG} in Brazil using an input-output model of the production chains and find that food and transportation bear the largest changes in output. Because low-income households also spend the greatest shares in these goods, a fuel tax is found to be regressive.
 
 
 \section{Demand systems, other sources of heterogeneity and welfare computation}\label{sec:demand_sys}
 
 \tdIL{Look at Section 4.1 in \citet{NikodinoskaSchroder2016}. They have a short paragraph there about the history of demand systems and then their own methods paragraph about why they themselves use. They had to squeeze all that in only two paragraphs in the published version of their paper. You do have more space for full-fledged sections.}
 
-\cite{BanksBlundellLewbel1996a} have shown that the bias in estimating a first-order approximation of welfare effects from a price change (1) will be large if the change in question is large; (2) depends on the own-price elasticity of demand, which may vary across demographic groups and (3) that it varies systematically over the logarithm of income. Figure \ref{fig:fuel_prices_over_time} suggests (1) may be the case of the fuel price policy in Brazil. (2) and (3) raise equity concerns.
+\cite{BanksBlundellLewbel1996a} have shown that the bias in estimating a first-order approximation of welfare effects from a price change (1) will be large if the change in question is large; (2) depends on the own-price elasticity of demand, which may vary across demographic groups and (3) \tr{that it} \tdeFL varies systematically over the logarithm of income. Figure \ref{fig:fuel_prices_over_time} suggests \tr{(1)} may be the case of the fuel price policy in Brazil. \tr{(2) and (3)} raise equity concerns.
 
-In order to produce second-order estimates of welfare effects that address the biases found by \cite{BanksBlundellLewbel1996a}, substitution effects must be taken into account. These can be modelled with demand systems that estimate simultaneously the demand for all goods (or groups of goods) that families consume.
+\tdILR{This may be still just a draft, so OK. In its final version, it would need better writing. For example (1) and (2) need qualifiers like ``Concerns (2) and (3)'' or something. Or just ditch the numbering and use full words (``the former'', ``the latter'', ``the first issue'', etc.) }
 
-\cite{DeatonMuellbauer1980} defined the \ac{AIDS} to approximate any general demand function of income and preferences.
+In order to produce second-order \tdFL{You must explain/clarify what you mean by first-order and second-order estimates, at least in a footnote.} estimates of welfare effects that address the biases found by \cite{BanksBlundellLewbel1996a}, substitution effects must be taken into account. These can be modelled with demand systems that estimate simultaneously the demand for all goods (or groups of goods) that families consume.
 
-$$w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)}$$
+\cite{DeatonMuellbauer1980} \tdFL{Page numbers needed for books} defined the \ac{AIDS} to approximate any general demand function of income and preferences. \tdFL{Rober guesses that this system can be summarized by Equation \ref{eq.AIDS} but he would prefer to have Clara inserting a proper cross--reference herself.}
 
-\cite{DeatonMuellbauer1980} also propose a linear approximation of the \ac{AIDS} model: the \ac{LA-AIDS} model was used by \cite{AlmeidaJustoOliveiraSilva2016} with monthly aggregate consumption of gasoline, diesel and ethanol over the state of Pernambuco in Brazil, and they find that demand for gasoline and diesel is price-inelastic while demand for ethanol is price-elastic. This approach, however, precludes (1) differentiating demographic groups, as consumption is aggregated over consumers and (2) regressivity analysis, as demand is modelled as a function of expenditure only on fuels.
+\tdILR{Use the \LaTeX equation environment to number and cross-reference the equations. Right now there is no number and no cross-referencing: they are just ``there''}
+
+\begin{equation}
+\label{eq.AIDS}
+w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)}
+\end{equation}
+
+
+
+\cite{DeatonMuellbauer1980} also propose a linear approximation of the \ac{AIDS} model: the \ac{LA-AIDS} model \tr{was} used by \cite{AlmeidaJustoOliveiraSilva2016} with monthly aggregate consumption of gasoline, diesel and ethanol over the state of Pernambuco in Brazil, and they \tr{find} \tdFL{be consistent with verb tense} that demand for gasoline and diesel is price-inelastic \tdpFL while demand for ethanol is price-elastic. This approach, however, precludes (1) \tdFL{yeah, let us not do this} differentiating demographic groups, as consumption is aggregated over consumers and (2) regressivity analysis, as demand is modelled as a function of expenditure only on fuels.\tdFL{explain/clarify further}
 
 The \ac{AIDS} model was expanded by \cite{BanksBlundellLewbel1996b} to include a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income.
+\tdIL{Explain/clarify further, provide examples: examples in general (alcoholic drinks, etc.) and examples that \cite{BanksBlundellLewbel1996b} might have found or commented on. Would the use of the quadratic form also allow for goods/services that are necessities at low levels of income but become luxuries at high levels of income? If so, mention that and provide examples. Ideally provide examples from other authors who also use the same approach as \cite{BanksBlundellLewbel1996b}.}
 
 $$w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)} \left [ \ln \frac{x}{a(p)} \right ]^2$$
 
-Besides income, other household attributes affect demand. (?) incorporate demographic characteristics as scaling factors into the model.
+Besides income, other household attributes affect demand. (?) \tdFL{So I assume that you are looking for some references. } incorporate demographic characteristics as scaling factors into the model.
 
-$$$$
+\tdILR{So I assume that you will be adding further references to studies in which the authors took into account demographic characteristics. You should try and tell us in each case what is most sophisticated approach help them uncover, what about vantages it brought what biases it corrected, etc.} 
 
-\cite{NikodinoskaSchroder2016} uses the \ac{DQUAIDS} to study the welfare effects of fuel taxes in Germany, including the number of adults and children below 15 years of age in a household as scaling factors.
-
-\tdIL{At this stage we still have no context within which to place the \ac{DQUAIDS} model. there is no actual reviewing of the different proposals for demand modelling. You do not explain why the \ac{DQUAIDS} might be more useful but I think that, as soon as you started doing that, you would notice that you have not even explained earlier types of demand systems such as the \ac{AIDS}. This needs to be done. You need to go through the systems and then, in Section \ref{methods}, you tell us why this or that method was not an option for you and why you chose this other one instead.}
-
+\cite{NikodinoskaSchroder2016} uses \tdFL{use sounds better but OK} the \ac{DQUAIDS} to study the welfare effects of fuel taxes in Germany, including the number of adults and children below 15 years of age in a household as scaling factors.
 
 \cite{SpillerStephensChen2017} consider that households in rural areas do not have access to public transportation, reducing their ability to substitute driving.\tdFL{and what was the result? what changed?}
 
@@ -397,23 +447,32 @@ $$$$
 
 % \cite{DahlSterner1991} note that seasonal (monthly or quarterly) data yield elasticities far too different from annual data, and conclude that seasonal data should not be used to estimate long-run elasticities.
 
+\tdILR{So for all these (and more if you find more) references to studies in which the authors took into account demographic characteristics, try and tell us in each case what is most sophisticated approach help them uncover, what about vantages it brought what biases it corrected, etc.}
+
+
 
 \section{Equivalence scales}\label{sec:equivalence_scales}
-\tdILY{Rober assumes this is being worked on but eventually we will need to have in the literature section a bit about equivalence scales: their purpose, their evolution, their shortcomings, etc.}
+\tdILG{Rober assumes this is being worked on but eventually we will need to have in the literature section a bit about equivalence scales: their purpose, their evolution, their shortcomings, etc.}
 
-Once we start looking at disaggregated demand for welfare analysis, either within a regressivity framework or a demand system, the issue of comparability between households arises. For example total income, if used as a measure of welfare, will underestimate the well-being of a family of two adults relative to that same family with a child at the same level of income, as satisfying the needs of the child will reduce the consumption of the parents.
+Once we start looking \tr{at disaggregated demand for welfare analysis}\tdFL{rewrite!}, either within a regressivity framework or a demand system, the issue of comparability between \tde households arises. For example \tdp total income, if used as a measure of welfare, will underestimate the well-being of a family of two adults relative to that same family with a child at the same level of income, as satisfying the needs of the child will reduce the consumption of the parents.
 
-A common correction to this issue is to use the income \textit{per capita} instead. In fact, the \ac{FBS} provides in all its expense datasets a column with the per capita income of the household. However, per capita income disregards (1) that members may have different needs and (2) that there are economies of scale in consumption. Children, for example, consume less food than adults in general. Demand for goods such as lighting and water does not increase proportionally to the number of people in a household. Family members will usually share appliances and vehicles, and can purchase larger quantities of goods at a discount.
+A common correction to this issue is to use the income \textit{per capita} instead. In fact, the \ac{FBS} provides in all its expense datasets a column with the per capita income of the household. However, per capita income disregards (1) \tdFL{avoid the use of this numbering} that members may have different needs and (2) that there are economies of scale in consumption. Children, for example, consume less food than adults in general. Demand for goods such as lighting and water does not increase proportionally to the number of people in a household. Family members will usually share appliances and vehicles, and can purchase larger quantities of goods at a discount.
 
-If we determine how children's consumption must be relative to an adult so that they achieve the same level of well-being, it becomes possible to compare households based on the number of \textit{adult equivalents} \cite[p.~242]{Deaton1997}. Incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor that equivalizes family incomes or wealth \citep{DeatonMuellbauer1980}.
+\tdIL{See if you can add references to support all this. For example, there are studies of water demand that document carefully this economies of scale. That is just one example. Indeed some of the literature on economics of the family will point out that those economics of scale and the non-rivalness and of goods and services in a household are one of the advantages of getting married. You can mention that but, in any event, you want tor backup your statements with references.}
+
+If we determine how children's consumption must be relative to an adult so that they achieve the same level of well-being, it becomes possible to compare households based on the number of \textit{adult equivalents} \cite[p.~242]{Deaton1997}.\tdFL{reference missing} Incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor that equivalizes family incomes or wealth \citep{DeatonMuellbauer1980}.\tdFL{pages missing?}
 
 \cite{Mancero2001} classifies equivalence scales into four categories according to the method of construction: behavioural scales, parametric scales, expert scales and subjective scales. See below a summary of each approach.
 
-\textbf{Expert scales} --- these are developed for particular purposes by ``experts'' of a field. The main example provided by \cite{Mancero2001} is based on how dietary needs vary between individuals according to age and gender. \to{Fuels are not physiological needs, so it is unlikely an ``expert'' could provide such a scale based on anything but observed behaviour, so we'll skip that.}
+\textbf{Expert scales} --- these are developed for particular purposes by ``experts'' of a field. The main example provided by \cite{Mancero2001} is based on how dietary needs vary between individuals according to age and gender. \tdFL{Any examples of use of this type?} \to{Fuels are not physiological needs, so it is unlikely an ``expert'' could provide such a scale based on anything but observed behaviour, so we'll skip that.} \tdFL{reword but keep this stuff in \to{orange}}
 
-\textbf{Subjective scales} --- these are constructed by surveying families and asking what they would consider the minimum expenditure they would require to satisfy the needs of all members. \to{We'll also skip this as ``needs'' are socially defined and families' estimates of how much income they would require as a minimum tends to increase as their actual income increases.}
+\textbf{Subjective scales} --- these are constructed by surveying families and asking what they would consider the minimum expenditure they would require to satisfy the needs of all members. \tdFL{Any examples of use of this type?} \to{We'll also skip this as ``needs'' are socially defined and families' estimates of how much income they would require as a minimum tends to increase as their actual income increases.}\tdFL{reword but keep this stuff in \to{orange}}
+\tdILR{Little thing: but in the end, we will be using none of these bold fonts etc. for subheadings. If needed used subsections and subsubsections, so \LaTeX will do the formatting in a consistent way that will probably also look better}
 
-\textbf{Parametric scales} --- start from a functional form that incorporates economies of scale and differences in members needs according to their attributes as parameters. Such scales are useful as standards of comparison between studies in different countries, for example. \cite{NikodinoskaSchroder2016} uses the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers.
+\textbf{Parametric scales} --- start from a functional form that incorporates economies of scale and differences in members needs according to their attributes as parameters. Such scales are useful as standards of comparison between studies in different countries, for example. \cite{NikodinoskaSchroder2016} uses the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers. \tdFL{Any more examples of use of this type? Could you quote the numbers used by \cite{NikodinoskaSchroder2016}, so we get a better idea of how this scale works?}
+
+\tdILR{OK so these parametric scales are going to be what you  focus on, right? OK: so I suggest that you leave a brief paragraph (even it is a bit longer than what you now have) here, but as the last type of scale and then flesh out a full new subsection of lit review dealing more in depth with this type of scale: more examples, more developments, more criticisms. }
+
 
 \textbf{Behavioural scales} --- these are based on observed consumption patterns of families. \to{
 * Started with Engel's observations of food expenditures. Richer families tend to spend lower fractions of their income on food than poorer families, so we can use the fraction of income spent on food as an approximation of welfare.
@@ -421,15 +480,20 @@ If we determine how children's consumption must be relative to an adult so that 
 * Prais and Houthakker: generalize the Engel method to allow for different scales for each good
 * \cite{VazVaz2007} estimate equivalence scales for Brazil from the 2002-2003 FBS. The estimates are in general non-significant but they find that children are cheaper than adults.
 * \cite{Mancero2011} estimates behavioural equivalence scales for LatAm and finds high variability in the marginal cost of a child, ultimately recommending the use of parametric equivalence scales instead.
-* Might be doable, but afaik Stata does not compute these automatically so I think I'll stick with the OECD for now.
+* Might be doable, but afaik Stata \tdFL{Ideally try to see if you can find a better reason to stick to OECD scales other than ``Stata cannot do it automatically'' : ) }
+ does not compute these automatically so I think I'll stick with the OECD for now.
 * The translog demand system of \cite{JorgensonSlesnick1987} yields commodity-specific household equivalence scales.}
 
 
 \cite{Fisher1987} raises an important issue regarding behavioural equivalence scales: systematic differences between the tastes of black and white people may reflect past differences in income and education.
 
-Another challenge arises if we consider studies that show women tend to spend more on children than men \tdFL{add refs}. This means a sample of households headed by women will overestimate (maybe some other word that does not suggest ``wrongness''?) the cost of a child relative to a sample of households headed by men.
+Another challenge arises if we consider studies that show women tend to spend more on children than men \tdFL{add refs}. This means a sample of households headed by women will overestimate \tdFL{maybe some other word that does not suggest ``wrongness''?}) the cost of a child relative to a sample of households headed by men.
 
-Finally, it may not be socially acceptable to attribute a lower ``weight'' to children in welfare analysis.
+\tdIL{It is not the households headed by women that will overestimate things, it is the use of those households in a sample. In any case, you can reword that to avoid any impression of wrongness. You should be able to add references to the literature on economics of the family, health, labour, gender economics...especially in developing countries, women tend to spend more on things for the children (education health, perhaps clothes and toys?...)}
+
+\tdIL{There may be issues related to race, ethnicity, country of origin , for immigrants, etc. The same household with the same age composition might have a systematically different pattern of expenses than another family if the families have different cultural backgrounds. For example, in the case of use of bottled water, US households behave very different depending on whether they are recent immigrants/second generation Americans versus households with a longer history of immigration to the US. Latinos and African Americans also purchase more bottled water. Could there be similar issues in your case? At least, when it comes to the lit review, it might make a difference to mention/discuss this. Even if you do not have the time/data to investigate this yourself. And if you find someone doing it and you cannot, that goes in to the limitations and suggestions for further research. Ideally, you would be able to also comment on what you suspect you might be missing (or being misled about) for non doing something that others did…}
+
+Finally, it may not be socially acceptable to attribute a lower ``weight'' to children in welfare analysis. \tdFL{Any references to back this up?}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -443,7 +507,7 @@ I assume that households behave as individuals when it comes to maximizing utili
 \begin{equation}
 \end{equation}
 
-\tr{where} \tdFL{lowercase, as this just follows from the equation, perhaps with a comma in front} . By maximizing this utility function and incorporating differences related to demographic characteristics of \tr{the} households, we \tdFL{Again, try to reword, it is not ``we''...use the passive voice perhaps.} obtain an indirect utility function \citep{JorgensonSlesnick1987}:
+where, ???  . By maximizing this utility function and incorporating differences related to demographic characteristics of the households, we \tdFL{Again, try to reword, it is not ``we''...use the passive voice perhaps.} obtain an indirect utility function \citep{JorgensonSlesnick1987}:
 
 \begin{equation}
 \end{equation}
@@ -453,7 +517,7 @@ where
 	\item{}
 \end{itemize}
 
-Following \cite{Poi2012, DeatonMuellbauer1980, BanksBlundellLewbel1996b}, I predefine $\alpha_0$ as the lowest total expenditure in the dataset.
+Following \cite{Poi2012, DeatonMuellbauer1980, BanksBlundellLewbel1996b}, \tdFL{Poi ref is missing and use chronological order} I predefine $\alpha_0$ as the lowest total expenditure in the dataset.
 
 The price-elasticity of demand is then given by
 \begin{equation}
@@ -470,7 +534,7 @@ following a price change. Then the compensating variation for each household is 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Assumptions on consumer preferences}
+\section{Assumptions about consumer preferences}
 
 \subsection{Separability}
 
@@ -481,7 +545,7 @@ Instead of making each purchase decision with full information all the time, fam
 
 Aggregating goods into groups has the additional advantages of improving the statistical power of the model and avoiding censoring issues. Because the number of goods consumed observed by the \ac{FBS} is very large relative to the number of observations in the 2017-2018 survey, families will have zero expenditure on the majority of individual available goods, but are unlikely to have zero expenditure on major frequent expense categories such as food and transportation.
 
-Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \citep{DeatonMuellbauer1980}.
+Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \citep{DeatonMuellbauer1980}. \tdFL{pages for books}
 
 
 
@@ -490,7 +554,7 @@ Grouping requires assuming \textit{separability}: a group is separable when the 
 
 \section{Study Variables}\label{variablessection}
 \subsection{Cohort Attributes} \label{ssec:cohort_attributes}
-Taking into consideration the demographic attributes used by \cite{Slesnick2000;NikodinoskaSchroder2016;SpillerStephensChen2017}, I use the following for scaling of demand in the \ac{DQUAIDS} model:\tdFLY{not sure you need capitals for the items in this list}
+Taking into consideration the demographic attributes used by \cite{Slesnick2000;NikodinoskaSchroder2016;SpillerStephensChen2017}, I use the following for scaling of demand in the \ac{DQUAIDS} model:
 
 \begin{enumerate}
 	\item household size
@@ -540,20 +604,20 @@ The model for individual expenditure shares is given by:
 
 \subsection {Data Source}
 
-The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23rd 2018.
+The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23rd \tdFL{fix superscript} 2018.
 
 The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed, while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
 
-The grouping was done as follows. First, I identified housing as the type of expense that was present more frequently among the households surveyed: $`pct_rent'$\% of households recorded an expense. For the second step, I assumed that two households who paid rent or were interviewed on the same date  and on the same location would have the same deflator value. Under this assumption, I grouped households that had the same deflator value for rent and treated each group as facing the same prices. Third, I produced a Stone price index from all expenses reported by all households in each group.
+The grouping was done as follows. First, I \tdFL{there are a lot of ``I's' in this section: use the passive voice more} identified housing as the type of expense that was present more frequently among the households surveyed: $`pct_rent'$\% \tdFL{these macros will work in the end right?} of households recorded an expense. For the second step, I assumed that two households who paid rent or were interviewed on the same date and on the same location would have the same deflator value. Under this assumption, I grouped households that had the same deflator value for rent and treated each group as facing the same prices. Third, I produced a Stone price index from all expenses reported by all households in each group.
 
 This exploitation made it possible to obtain estimates but, given that the procedure by which the deflators are generated and mapped onto observations is not transparent and I did not have the dates of collection, the results are not reliable. The reader should take the estimates, their discussion and conclusions as an example of the use of the method to address the question rather than an actual answer.
 
-If the deflator values had been solely determined by the date of the payment or the survey, we would expect to find at most 395 different values (365 for each day of the survey + 30 for the days prior to the first day of the survey). Instead, $`price_group_count'$ values were found, and the \ac{FBS} documentation informs us that location and time period are both used to produce the deflator values. This means the groups do not reflect only a time dimension. Additionally, even though inflation records for housing grew every month in the period of the survey, the absence of definitive information on the deflator source leaves open the possibility that households surveyed at different periods and locations would have the same deflator value.
+If the deflator values had been solely determined by the date of the payment or the survey, we would expect to find at most 395 different values (365 for each day of the survey plus 30 for the days prior to the first day of the survey). Instead, $`price_group_count'$ values were found, and the \ac{FBS} documentation informs us that location and time period are both used to produce the deflator values. This means the groups do not reflect only a time dimension. Additionally, \tr{even though inflation records for housing grew every month} \tdFL{reword/clarify, more records? higher prices? more inflation?} in the period of the survey, the absence of definitive information on the deflator source leaves open the possibility that households surveyed at different periods and locations would have the same deflator value.
 
 
-\tdILY{Rober SEPT 19: you do not name a variable "urban\_or\_rural" (also because the underscores tend to be a nuisance in \LaTeX), since that is not going to help: name it EITHER urban OR rural and lable the 0 and 1 values accordingly. Same with "gender" "marital status" etc. Use male (or female, or additional binary indicators) and "married", "single", "divorced", etc. }
+\tdILY{Rober SEPT 19: you do not name a variable "urban\_or\_rural" (also because the underscores tend to be a nuisance in \LaTeX), since that is not going to help: name it EITHER urban OR rural and label the 0 and 1 values accordingly. Same with "gender" "marital status" etc. Use male (or female, or additional binary indicators) and "married", "single", "divorced", etc. }
 \tdILY{Clara: ok, I changed it. I used the categories as variable names and let Stata interpret them with i.var\_name when possible, but the quaids command does not support it. Also snake\_case is \href{https://www.cs.kent.edu/~jmaletic/papers/ICPC2010-CamelCaseUnderScoreClouds.pdf}{the superior naming convention} so I will keep it unless there is no way to fix the \LaTeX\ output}
-
+\tdILY{OK, yo are ahead of me in terms of dealing with this ; )  If what yo use in Stata gives you trouble in \LaTeX \, remember that you can also use \LaTeX \ macros to change things that the \LaTeX \ can read or produce better. }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -567,7 +631,7 @@ tex*/
 
 texdoc stlog, nolog
 
-***Rober SEPT 19 This would go to the data subfolderand unzips the big compressed file:
+***Rober SEPT 19 This would go to the data subfolder and unzips the big compressed file:
 *** cd aaaMUN\SUPERVISION\2022\Clara\Data
 *** unzipfile DataCLARA, replace
 
@@ -712,7 +776,7 @@ save "Data\hh_vehicle.dta", replace
 texdoc stlog close
 
 /*tex
-The 2017-2018 \ac{FBS} surveyed $`household_count'$ households. Table \ref{tab:demographic_frequencies} \tdFL{is this table mislabelled?} shows how observations are distributed by gender of household head, residence type \tdFL{consider using Oxford commas} and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
+The 2017-2018 \ac{FBS} surveyed $`household_count'$ households. Table \ref{tab:demographic_frequencies} \tdFL{is this table mislabelled? there is no caption in the table!!!} shows how observations are distributed by gender of household head, residence type \tdFL{consider using Oxford commas} and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
 
 \input{demographic_summary_table}
 
@@ -1247,14 +1311,14 @@ Of the original $`purchase_ct'$ purchases recorded, $`unknown_amt'$ were exclude
 
 Some expenses on services like renting of clothes or appliance repairs have been included in the ``Consumer Goods'' group, as they are likely not separable from the goods associated.
 
-The periods of reference vary by purchase group, with food registry being done over a period of 7 days, income and health expenses done over the previous 30 days, durable goods over the last twelve months and other expenses over the previous 90 days. Total expenses reported were extrapolated or averaged into 30-day periods, as formal income is usually paid monthly.
+The periods of reference vary by purchase group, with food registry being done over a period of seven days, income and health expenses done over the previous 30 days, durable goods over the last twelve months and other expenses over the previous 90 days. Total expenses reported were extrapolated or averaged into 30-day periods, as formal income is usually paid monthly.
 
 The distribution of income and total expenditure is strongly right-skewed: Figure \ref{fig:boxplot_exp_inc} shows the boxplots for monthly total income and total expenditure. The skewness score of total expenditure is $`total_exp_skew'$, and the skewness score of total income is $`total_inc_skew'$.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{graphs/boxplot_exp_inc.png}
-    \caption{Boxplots of total income and expenditure by Brazilian households from the 2017-2018 \ac{FBS} \ty{where, for whom, from which source?}}
+    \caption{Boxplots of total income and expenditure by Brazilian households from the 2017-2018 \ac{FBS}}
     \label{fig:boxplot_exp_inc}
 \end{figure}
 
@@ -1266,12 +1330,12 @@ $`hh_vehicle_count'$ of the households surveyed, or $`hh_vehicle_pct'$\%, report
 
 Figure \ref{fig:exp_shares_gasoline} shows the shares of a households \tdeFL total expenditure spent on gasoline. For households that consumed any gasoline during the period of the survey, the clusters shapes suggest Engel curves linear on the logarithm of total expenditure, which is expected of goods that are not luxuries.
 
-\tdIL{All figures captions should be short, yes, but explicit enough for us to be able to just look at the graph itself and get a pretty good idea of what the figure shoes, so generic labels like "expenditure and income" will not hep us. We need something like "Evolution of expenditure by all Brazilian households between 2000 and 2023. Source: 2023 Brazilian Census (or appropriate citation)."}
+\tdILG{All figures' captions should be short, yes, but explicit enough for us to be able to just look at the graph itself and get a pretty good idea of what the figure shoes, so generic labels like "expenditure and income" will not hep us. We need something like "Evolution of expenditure by all Brazilian households between 2000 and 2023. Source: 2023 Brazilian Census (or appropriate citation)."}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{graphs/exp_shares_gasoline.png}
-    \caption{Expenditure share on gasoline of Brazilian households by total expenditure from the 2017-2018 \ac{FBS}\ty{where, for whom, from which source?}}
+    \caption{Expenditure share on gasoline of Brazilian households by total expenditure from the 2017-2018 \ac{FBS}}
     \label{fig:exp_shares_gasoline}
 \end{figure}
 
@@ -1280,12 +1344,12 @@ Figure \ref{fig:exp_shares_gasoline} shows the shares of a households \tdeFL tot
 
 Figure \ref{fig:fuel_exp_by_cumulative_income}, inspired by the Suits Index of regressivity\tdFL{reference needed}, shows the proportion of total expenditure on fuels and public transportation by the proportion of total overall expenditure. Families with higher expenditure, presumably wealthier, are responsible for a larger proportion of the total expenditure on all three main vehicle fuels (gasoline in blue, ethanol in green and diesel in purple), while families with lower expenditure are responsible for a larger proportion of expenditure on public transportation (in orange).
 
-If price elasticity of demand for fuels does not vary significantly across wealth levels, Figure \ref{fig:fuel_exp_by_cumulative_income} suggests a subsidy is regressive. On the other hand, the price of public transportation depends on fuel prices and subsidies specific to public transportation are low/uncommon/have only been introduced in Brazil during the pandemic in some states, and much lower than in other countries according to the ANTP \tdFL{what is ANTP and where is the reference?} (http://www.antp.org.br/noticias/clippings/estados-e-municipios-ampliam-subsidios-para-transporte.html) \tdILB{look at formal references with actual numbers on this}. From that perspective, a subsidy on fuels, in particular diesel, indirectly subsidises public transportation.
+If price elasticity of demand for fuels does not vary significantly across wealth \tdFL{or income??? check !} levels, Figure \ref{fig:fuel_exp_by_cumulative_income} suggests a subsidy is regressive. On the other hand, the price of public transportation depends on fuel prices and subsidies specific to public transportation are low/uncommon/have only been introduced in Brazil during the pandemic in some states, and much lower than in other countries according to the ANTP \tdFL{what is ANTP? needs acronym} \tdFL {Too ugly: use de href \LaTeX command with an informative text to insert live URLs}(http://www.antp.org.br/noticias/clippings/estados-e-municipios-ampliam-subsidios-para-transporte.html) \tdILB{look at formal references with actual numbers on this}. From that perspective, a subsidy on fuels, in particular diesel, indirectly subsidises public transportation.
 
 
 \begin{figure}
     \centering   \includegraphics[width=0.9\textwidth]{graphs/fuel_exp_by_cumulative_income.png}
-    \caption{Cumulative proportion of expenditure on fuels and public transportation of Brazilian households by cumulative proportion of total expenditure from the 2017-2018 \ac{FBS} \ty{where, for whom, from which source?}}
+    \caption{Cumulative proportion of expenditure on fuels and public transportation of Brazilian households by cumulative proportion of total expenditure from the 2017-2018 \ac{FBS}}
     \label{fig:fuel_exp_by_cumulative_income}
 \end{figure}
 
@@ -1350,6 +1414,8 @@ texdoc stlog close
 
 \subsection{Welfare effects estimation}
 
+\tdIL{this is for now a section, no a subsection, right?}
+
 % get the average price of gasoline before and after october 2016 but before 2020 to avoid pandemic effects
 
 % get the average elasticity for each income decile in the sample
@@ -1365,14 +1431,22 @@ texdoc stlog close
 
 It would be nice to have an annual survey of family expenditures in Brazil, so we could also track changes in time.
 
+
+\tdILR{THe stuff below is too detailed to go into Section \ref{conclusions} as limitations. It is too detailed but you can but it in details in the data section etc. and then mention it again without the details here }
+
 The \ac{FBS} product registry, albeit very detailed, could use improvements. There are 13,474 products identified in the registry, of which 8,708 are used in the ``Caderneta Coletiva'' questionnaire. The mapping of survey ``quadros'' can be used to categorize part of the items, but not the ``Caderneta Coletiva'' items. Instead, the goods numeric codes follow a scheme not described in the data documentation. Besides, since the data format does not have labels and the \verb|.xls| files do not have descriptions of the ``quadros'', one must jump from the \verb|.pdf| manual of the survey to the table to the dataset to interpret the codes, creating multiple opportunities for mistakes.
 
+
+\tdILR{Eventually, you should of course have some conclusions and some description of the limitations of your study, together with some policy recommendations. But bear in mind that the limitations are about YOUR own work, not the shortcomings of the dataset, etc. If you can somehow phrase your issues about faulty/incomplete datasets as policy recommendations, then those would be OK here}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \appendix
 
 \chapter{Sampling of the \ac{FBS}} \label{ap:sampling_fbs}
+
+\tdILR{Ensure that all your footnotes have a period at the end.}
+
 
 The \ac{FBS} uses \ac{BIGS}'s master Sample. The master sample is a set of households selected as follows. First, \ac{BIGS} divides the Brazilian territory into census sectors following three sets of criteria: the number of residences, the number of agricultural and livestock facilities, and the number of days needed to collect data in one sector. For urban areas, there is a subdivision between urbanized and non-urbanized areas, and the criterion for rural and non-urbanized areas includes a range of agricultural and livestock facilities. Table \ref{census_sectors_criteria} shows the minimum, average and maximum number of residences or facilities for each category, and the number of days allocated to the data collection.
 
@@ -1447,12 +1521,12 @@ The master sample excludes the following areas: military bases, camping sites, p
 
 Table \ref{tab:attribute_vars} shows the variable in the \ac{FBS} datasets for each attribute used to scale demand in the \ac{DQUAIDS}.
 
-\tdILY{ENW, In Table \ref{attribute_vars} use italics for the official regions and ``and'' in English}
+\tdILG{ENW, In Table \ref{tab:attribute_vars} use italics for the official regions and ``and'' in English}
 
 
 \tdILY{Rober assumes that the verbatim text in Table \ref{attribute_vars}  to denote the datasets and the original variable names will eventually be eliminated and substituted by more conventional (easier to recognise) names and regular font (in italics for the variable names). This is all OK for now for our preliminary private purposes but in the end all the variables described should have ``obvious'' names after recoding. For example, V0404 will have to be recoded into an indicator called either \textit{male} or \textit{female}. If you think it were necessary to use them in this ``raw'' format, they would go into an appendix. But it looks for now that there are only a very small number of them to consider, so just follow convention and recode, rename, and retype to make them al look good in the end.}
 \tdILY{Clara: I moved it into the appendix. I did rename all the variables, but I thought of this table as a description of how I got info from the raw datasets, for a hypothetical reader that wanted to replicate it from the raw datasets but save a trip through the docs, hence the original names.}
-
+\tdILR{OK that is fine but then in the table caption, add a little note to express that the original names are left in that special fontface}
 
 
 \setlength{\extrarowheight}{3pt}
@@ -1476,6 +1550,8 @@ Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Mapping of \ac{ACPI} groups to commodity groups} \label{ap:acpi_to_commodity_groups_map}
+
+\tdILR{Use single spacing for Table \ref{acpi_groups}}
 
 Table \ref{acpi_groups} shows the structure of groups, subgroups, items and subitems of goods and services used by the \ac{ACPI} \citep{ibge2020}, with the respective commodity group in the first stage of the model. Less aggregated levels of the structure have been omitted when the entire parent category was mapped into a single group, for example the \ac{ACPI} group ``Food and Beverages'' is entirely included in the ``Food'' commodity group, so it is represented by a single row in the table, whereas each subgroup of the ``Health Goods and Services'' was mapped to a different commodity group, occupying a separate row.
 
