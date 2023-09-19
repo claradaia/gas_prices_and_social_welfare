@@ -1099,13 +1099,17 @@ frame change price_indices
 // merge household price groups
 frlink m:1 hh_id, frame(price_groups)
 frget price_group, from(price_groups)
-drop if missing(price_group)
+drop if (missing(price_group) | missing(DEFLATOR))
 
-// for each commodity group and each price group, calculate a price index, weighted by the aggregate expenditure on each item and its deflator value
-egen agg_group_expenditure = total(amount_spent), by(commodity_group price_group)
+// for each commodity group and each price group, calculate a price index as an average of the deflators weighted by the aggregate expenditure on each item
+bysort commodity_group price_group: egen agg_group_expenditure = total(amount_spent)
 gen weighted_deflator = DEFLATOR*amount_spent
-egen deflator_sum = total(weighted_deflator), by(commodity_group price_group)
+bysort commodity_group price_group: egen deflator_sum = total(weighted_deflator)
 gen price_index = deflator_sum/agg_group_expenditure
+egen max_DEFLATOR = max(DEFLATOR)
+egen min_DEFLATOR = min(DEFLATOR)
+assert (price_index >= min_DEFLATOR & price_index <= max_DEFLATOR)
+
 
 collapse (first) price_index, by(hh_id commodity_group)
 
