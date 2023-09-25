@@ -1157,8 +1157,8 @@ bysort hh_id commodity_group_s2: keep if _n == 1
 
 // save fuel expenditures for another plot
 // drop frame if it exists from previous runs
-capture frame drop lorenz_curve
-frame put hh_id commodity_group_s2 total_expenditure group_expenditure_s2, into(lorenz_curve)
+capture frame drop concentration_curve
+frame put hh_id commodity_group_s2 total_expenditure group_expenditure_s2, into(concentration_curve)
 
 gen group_expenditure_share_s2 = group_expenditure_s2/total_expenditure
 
@@ -1181,13 +1181,13 @@ graph export "graphs\exp_shares_gasoline.png", as(png) replace
 
 
 
-****************************************************************
-* "lorenz curves" of fuels and public transportation expenditure
-frame change lorenz_curve
+*********************************************************************
+* concentration curves of fuels and public transportation expenditure
+frame change concentration_curve
 
-capture frame drop lorenz_curve_throwaway
-frame copy lorenz_curve lorenz_curve_throwaway
-frame change lorenz_curve_throwaway
+capture frame drop concentration_curve_throwaway
+frame copy concentration_curve concentration_curve_throwaway
+frame change concentration_curve_throwaway
 
 rename group_expenditure_s2 exp
 reshape wide exp, i(hh_id) j(commodity_group_s2) string
@@ -1201,13 +1201,13 @@ foreach fuel in "Gasoline" "Ethanol" "Diesel" "Public" {
 // 	sort exp`fuel'
 	gen cum_`fuel'_exp = sum(exp`fuel')
 	egen total_`fuel'_exp = total(exp`fuel')
-	gen `fuel'_exp_lorenz = cum_`fuel'_exp / total_`fuel'_exp
+	gen `fuel'_exp_conc = cum_`fuel'_exp / total_`fuel'_exp
 }
 
-graph twoway (line Gasoline_exp_lorenz total_exp_prop) ///
-      (line Diesel_exp_lorenz total_exp_prop) ///
-      (line Ethanol_exp_lorenz total_exp_prop) ///
-      (line Public_exp_lorenz total_exp_prop) ///
+graph twoway (line Gasoline_exp_conc total_exp_prop) ///
+      (line Diesel_exp_conc total_exp_prop) ///
+      (line Ethanol_exp_conc total_exp_prop) ///
+      (line Public_exp_conc total_exp_prop) ///
       (function y=x, lpattern(dot) color(black) lwidth(thin)), ///
       xtitle("Proportion of total expenditure") ///
       ytitle("Proportion of expenditure on fuels") ///
@@ -1346,10 +1346,9 @@ Figure \ref{fig:exp_shares_gasoline} shows the shares of a households \tdeFL tot
 
 \tdILY{Rober: OK but as you explain what the reader can see in Figure \ref{fig:fuel_exp_by_cumulative_income} you should also refer to the actual graph. For example, that story about the poor people spending a large share on public transit makes sense and can be seen if one looks at the yellow line, so do mention that yellow line when you explain that result in the paragraph. This is like later when you talk about tables of results: you will talk about this on that shown in the x column of Table Y.}
 
-Figure \ref{fig:fuel_exp_by_cumulative_income}, inspired by the Suits Index of regressivity\tdFL{reference needed}, shows the proportion of total expenditure on fuels and public transportation by the proportion of total overall expenditure. Families with higher expenditure, presumably wealthier, are responsible for a larger proportion of the total expenditure on all three main vehicle fuels (gasoline in blue, ethanol in green and diesel in purple), while families with lower expenditure are responsible for a larger proportion of expenditure on public transportation (in orange).
+Figure \ref{fig:fuel_exp_by_cumulative_income} shows concentration curves of expenditure on fuels and public transportation in Brazil based on the 2017-2018 \ac{FBS}. The horizontal axis is the cumulative proportion of total expenditure on fuels and public transportation by each household in the sample, sorted by their total expenditure, and the vertical axis is the cumulative proportion of the total expenditure by all households in the sample. Families with higher expenditure, presumably wealthier, are responsible for a larger proportion of the total expenditure on all three main vehicle fuels (gasoline in blue, ethanol in green and diesel in purple), while families with lower expenditure are responsible for a larger proportion of expenditure on public transportation (in orange).
 
 If price elasticity of demand for fuels does not vary significantly across wealth \tdFL{or income??? check !} levels, Figure \ref{fig:fuel_exp_by_cumulative_income} suggests a subsidy is regressive. On the other hand, the price of public transportation depends on fuel prices and subsidies specific to public transportation are low/uncommon/have only been introduced in Brazil during the pandemic in some states, and much lower than in other countries according to the ANTP \tdFL{what is ANTP? needs acronym} \tdFL {Too ugly: use de href \LaTeX command with an informative text to insert live URLs}(http://www.antp.org.br/noticias/clippings/estados-e-municipios-ampliam-subsidios-para-transporte.html) \tdILB{look at formal references with actual numbers on this}. From that perspective, a subsidy on fuels, in particular diesel, indirectly subsidises public transportation.
-
 
 \begin{figure}
     \centering   \includegraphics[width=0.9\textwidth]{graphs/fuel_exp_by_cumulative_income.png}
