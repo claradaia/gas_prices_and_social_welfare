@@ -257,15 +257,6 @@ Note that the list will keep ``unused'' acronyms. \LaTeX will, however, flag ``u
 
 \tdIL{Rober: OK but do explain this AFTER giving it another go at the literature and ensuring that other authors are not using that attribute either when dealing with similar analyses}
 
-\tdILY{Probably use DQUAIDS. One of the papers I found that did a welfare analysis in Germany uses it. I don't love that they use the OECD equivalence scale but I need to finish this}
-
-\tdIL{True, so explain/acknowledge/justify and get it done :) It does not have to be perfect, it needs to be ``useful''.}
-
-
-
-\tdIL{AUG 25: The most important new things are:}
-\tdIL{1. The section about equivalence scales -- I left some things in orange to indicate that I still have to make them into a proper paragraph, but you can let me know if the contents are good.}
-\tdILY{OK, I just suggest a bit of reordering and expanding in that section}
 
 \tdIL{2. The explanation of how I "extracted" price variability from the dataset, in the Data Source section.}
 
@@ -292,8 +283,6 @@ Note that the list will keep ``unused'' acronyms. \LaTeX will, however, flag ``u
 
 
 \tdILR{Eventually, this introduction will need much more of further ``sell'' or motivation. Why are we interested in the effects of changes in the price of oil? Why would they keep changing or change more in the future? Why were the policies that changed the prices effected? Climate change? International Pressure? Sustainable Development Goals? The IMF requiring it? Will this happen again? That is, is there a policy situation to solve? A problem to deal with? Is it getting better? worse? }
-
-
 
 
 According to the 2017-2018 \ac{FBS} run by the \ac{BIGS} \citep{ibgePOF}, transportation was on average the second largest group of expenses for Brazilian families, corresponding to 18,1\% of their monthly budget \citep{ibge2019}. The demand for gasoline in Brazil is generally estimated to be price-inelastic \citep{Cardoso2019}, especially in the short run \citep{Bastos2016}.
@@ -456,7 +445,7 @@ Besides income, other household attributes affect demand. (?) \tdFL{So I assume 
 
 Once we start looking \tr{at disaggregated demand for welfare analysis}\tdFL{rewrite!}, either within a regressivity framework or a demand system, the issue of comparability between \tde households arises. For example \tdp total income, if used as a measure of welfare, will underestimate the well-being of a family of two adults relative to that same family with a child at the same level of income, as satisfying the needs of the child will reduce the consumption of the parents.
 
-A common correction to this issue is to use the income \textit{per capita} instead. In fact, the \ac{FBS} provides in all its expense datasets a column with the per capita income of the household. However, per capita income disregards (1) \tdFL{avoid the use of this numbering} that members may have different needs and (2) that there are economies of scale in consumption. Children, for example, consume less food than adults in general. Demand for goods such as lighting and water does not increase proportionally to the number of people in a household. Family members will usually share appliances and vehicles, and can purchase larger quantities of goods at a discount.
+A common correction to this issue is to use the income \textit{per capita} instead. In fact, the \ac{FBS} provides in all its expense datasets a column with the per capita income of the household. However, per capita income disregards that members may have different needs and that there are economies of scale in consumption. Children, for example, consume less food than adults in general. Demand for goods such as lighting and water does not increase proportionally to the number of people in a household. Family members will usually share appliances and vehicles, and can purchase larger quantities of goods at a discount.
 
 \tdIL{See if you can add references to support all this. For example, there are studies of water demand that document carefully this economies of scale. That is just one example. Indeed some of the literature on economics of the family will point out that those economics of scale and the non-rivalness and of goods and services in a household are one of the advantages of getting married. You can mention that but, in any event, you want tor backup your statements with references.}
 
@@ -485,8 +474,11 @@ If we determine how children's consumption must be relative to an adult so that 
 * The translog demand system of \cite{JorgensonSlesnick1987} yields commodity-specific household equivalence scales.}
 
 
+\subsection{Criticism of equivalence scales}
+% preferences are constructed, not innate
 \cite{Fisher1987} raises an important issue regarding behavioural equivalence scales: systematic differences between the tastes of black and white people may reflect past differences in income and education.
 
+% gendered differences
 Another challenge arises if we consider studies that show women tend to spend more on children than men \tdFL{add refs}. This means a sample of households headed by women will overestimate \tdFL{maybe some other word that does not suggest ``wrongness''?}) the cost of a child relative to a sample of households headed by men.
 
 \tdIL{It is not the households headed by women that will overestimate things, it is the use of those households in a sample. In any case, you can reword that to avoid any impression of wrongness. You should be able to add references to the literature on economics of the family, health, labour, gender economics...especially in developing countries, women tend to spend more on things for the children (education health, perhaps clothes and toys?...)}
@@ -604,11 +596,11 @@ The model for individual expenditure shares is given by:
 
 \subsection {Data Source}
 
-The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23rd \tdFL{fix superscript} 2018.
+The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23^{rd} \tdFLY{fix superscript} 2018.
 
 The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed, while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
 
-The grouping was done as follows. First, I \tdFL{there are a lot of ``I's' in this section: use the passive voice more} identified housing as the type of expense that was present more frequently among the households surveyed: $`pct_rent'$\% \tdFL{these macros will work in the end right?} of households recorded an expense. For the second step, I assumed that two households who paid rent or were interviewed on the same date and on the same location would have the same deflator value. Under this assumption, I grouped households that had the same deflator value for rent and treated each group as facing the same prices. Third, I produced a Stone price index from all expenses reported by all households in each group.
+The grouping was done as follows. First, identify \tdFLY{there are a lot of ``I's' in this section: use the passive voice more} the type of expense that was present more frequently among the households surveyed: in the case of the 2017-2018 \ac{FBS} this was rent or estimated rent, $`pct_rent'$\% \tdFL{these macros will work in the end right?} of households recorded a value. The second step is done under the assumption that two households that paid rent on the same date and location, or were interviewed on the same date and location, would have the same deflator value. Under this assumption, group households that have the same deflator value for rent and treat each group as facing the same prices. Third, produce a Stone price index from all expenses reported by all households in each group.
 
 This exploitation made it possible to obtain estimates but, given that the procedure by which the deflators are generated and mapped onto observations is not transparent and I did not have the dates of collection, the results are not reliable. The reader should take the estimates, their discussion and conclusions as an example of the use of the method to address the question rather than an actual answer.
 
@@ -1060,7 +1052,7 @@ replace amount_spent = amount_spent * 30/days
 
 frame change expenditures
 
-/*****************************************************
+/**********************************************************************
 * identify groups based on common deflator values for a particular item
 
 e.g. if families A, B, C have a deflator value of 0.95 for rice, they are assumed to have been surveyed at the same period, so their deflators are all pooled to create the commodity group price indices
@@ -1087,6 +1079,11 @@ gen price_group = DEFLATOR if item_code == max_hhs_item_code
 drop if missing(price_group)
 keep hh_id price_group
 duplicates drop
+
+
+/****************************************************
+* calculate the price index for each group identified
+*/
 
 frame change expenditures
 
@@ -1415,9 +1412,7 @@ texdoc stlog close
 
 /*tex
 
-\subsection{Welfare effects estimation}
-
-\tdIL{this is for now a section, no a subsection, right?}
+\section{Welfare effects estimation}
 
 % get the average price of gasoline before and after october 2016 but before 2020 to avoid pandemic effects
 
@@ -1510,7 +1505,7 @@ The \ac{FBS} uses \ac{BIGS}'s master Sample. The master sample is a set of house
 \end{small}
 \end{table}
 
-The sectors are then stratified for sampling as follows: first by federative unit,\footnote{A ``federative unit'' is a state or the Federal District of Brazil, where the capital Brasília is located.} then by municipality within the federative unit, then by the type of residence\footnote{Usually referred to in \ac{BIGS} documents as ``household situation''} and finally by income levels, determined within the stratum.
+The sectors are then stratified for sampling as follows: first by federative unit,\footnote{A ``federative unit'' is a state or the Federal District of Brazil, where the capital Brasília is located.} then by municipality within the federative unit, then by the type of residence\footnote{Usually referred to in \ac{BIGS} documents as ``household situation''.} and finally by income levels, determined within the stratum.
 \ac{BIGS} groups the census sectors into \acp{PSU}, aiming to have at least 60 permanent residences in each \ac{PSU}, although some \acp{PSU} may not reach that number \citep{ibge2014}. The \acp{PSU} are then drawn from the strata into the master sample with weighted probabilities according to the size of the \ac{PSU}. The number of \acp{PSU} drawn is chosen so that the number of individuals 14 years of age or older who are not employed or students --- this is a relevant indicator of another survey, the \ac{NSHS} --- can be estimated with a predefined precision level \citep{ibge2014}. When of the execution of the 2017-2018 \ac{FBS}, the number of \acp{PSU} in the master sample was 15,096 \citep{ibge2019}.
 
 For the \ac{FBS}, the number of \acp{PSU} sampled from the master sample is chosen so that the total income of the head of the households can be estimated under a predetermined precision level. The coefficient of variance was determined for each federative unit, ranging from 6\% to 15\%. The final size of the sample was of 5,504 \ac{FBS}, containing 69,660 households \citep{ibge2019}.
