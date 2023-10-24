@@ -293,7 +293,7 @@ Having a low price-elasticity of demand and representing a large share of expend
 
 \tdILY{perhaps also add that the price of oil can fluctuate a lot?}
 
-In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term implicit subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices practiced \tdFL{charged???} within the country the same as the prices in the international market for oil.
+In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term implicit subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices charged within the country the same as the prices in the international market for oil. In 2023, the change was reversed and price controls were put back in place.
 
 \citet{LinPrince2013} find that high price volatility yields lower aggregate demand for gasoline.\tdFL{This should be fleshed out and moved to the literature review}
 
@@ -303,14 +303,31 @@ From \tr{the} \tdFL{ENW: English needs work: from ``a''} methodological standpoi
 
 There are also political aspects of interest in analysing the effect of gas price changes. \tdFL{As explained above: bring examples from other countries too?} Politicians often use gas price regulations as a popularity tool, especially near elections. \tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. \tr{Better understanding of demand \tde for gasoline and welfare effect of price} changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
 
-
+By properly identifying ``winners'' and ``losers'' from a policy change, the government can decide whether the change should happen and, if so, whether further action must be taken to counteract negative effects on protected groups. In this essay, I will investigate how fuel prices affect different population groups to support future decisions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Background}\label{chap:background}
-\tdILR{Eventually, this Section \ref{chap:background} will need much more of further detailing of the motivation you would have inserted in the Introduction. Why are we interested in the effects of changes in the price of oil? Why would they keep changing or change more in the future? Why were the policies that changed the prices effected? Climate change? International Pressure? Sustainable Development Goals? The IMF requiring it? Will this happen again? That is, is there a policy situation to solve? A problem to deal with? Is it getting better? worse? Only in Section \ref{chap:background} you can be more detailed, use numbers, use tables and graphs (you have some already), comparisons with the situation in other countries, etc.}
+\tdILR{Eventually, this Section \ref{chap:background} will need much more of further detailing of the motivation you would have inserted in the Introduction. Only in Section \ref{chap:background} you can be more detailed, use numbers, use tables and graphs (you have some already), comparisons with the situation in other countries, etc.}
 
+% Why are we interested in the effects of changes in the price of oil?
+Petroleum derivates are used to produce electricity, to power vehicles used in farming, to power machines in several industries, in public transportation and directly by consumers for heating and in vehicles.
+* Oil prices are not stable in the international market
 
+% Why were the policies that changed the prices effected?
+The Brazilian petroleum company Petrobras is partially nationalized -- 51% of its stock is owned by the Brazilian federal government and is responsible for over 65\% of the petroleum market in the country. It is subject to a lot of political influence, as the company's president is appointed by the government, and political parties usually  From corruption scandals to debates regarding its profitability, political parties
+
+In 2016, the \ac{IPP} was implemented under the argument that it would increase the profits of Petrobras. This meant higher government revenue that could be used to lower taxes on other areas. Revenues increased and so did fuel prices.
+
+In 2023, the price control returned with the purpose of ``nationalizing'' prices. The argument is that the abundance of oil and gas in Brazilian territory should mean easier access to fuels to citizens and national industries regardless of international trends in the oil market.
+
+% Why would they keep changing or change more in the future? Climate change? International Pressure? Sustainable Development Goals? The IMF requiring it?
+* Sale of refining facilities may further change the market share of Petrobras and decrease its market power
+* The same forces that led to the IPP policy in 2016 are likely to start putting pressure again after the change in policy in 2023
+* Hopefully more people will start taking climate change seriously in Brazil --- which could come with a carbon tax. (Does not seem to be happening, though. We're looking at extracting oil from the Amazon and expanding vehicle production :clown_face:)
+
+% Will this happen again? That is, is there a policy situation to solve? A problem to deal with? Is it getting better? worse?
+One argument against the price control policy is that it is regressive, because it benefits people with higher incomes, who are more likely to own vehicles, more than people with lower incomes. This argument is muddied by the fact that fuels impact consumers of all levels of income indirectly, as inputs of production and transportation of other goods. For policymakers that promote progressive values, it is important to know whether the price control aligns with those values, and if so, to what degree.
 
 Figure \ref{fig:fuel_prices_over_time} shows average monthly retail prices of gasoline, ethanol and diesel in Brazil, as well as the OPEC crude oil monthly prices between 2003 and 2023, all in \ac{BRL} and normalized to 1 in the first time period. The graph shows that Petrobras' price policy before 2016 cushioned fuel prices against international market price variations, and that since the policy change prices have followed crude oil price trends, increasing over time and becoming more volatile.
 
@@ -344,7 +361,15 @@ In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting th
 In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula \tr{da Silva \tdFL{missing genitive here} (elected in 2022) campaign} suggestions \citep{SantanaRamalho2023}.
 
 
-\section{Other important observations}
+\section{Expected changes}
+2013: petrol reservoirs found in the Amazon region, recent movements towards approving extraction
+
+May 2022: Carbon and methane credits regulation https://www.gov.br/mma/pt-br/assuntos/noticias/mma-anuncia-decreto-que-regulamenta-mercado-de-carbono-no-brasil
+
+June 2023: incentives to vehicle production https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2023/06/alckmin-detalha-incentivo-a-industria-automotiva-e-reducao-de-preco-de-carros-caminhoes-e-onibus
+
+
+\section{The role of ethanol}
 \tdILY{This section will need a better title}
 
 % Why we must include ethanol in the analysis
@@ -360,6 +385,7 @@ As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the sa
 
 
 \chapter{Literature Review}\label{litreview}
+
 
 \tdILR{To start with, there should be a whole bit about what is welfare in terms of economics, why it is measured, what are the original ways to measure it, etc. We would have said a thing or two about this in CBA class ; ) Then look at the welfare effects of price changes and then criticize those more conventional ways to look at the welfare effects of price changes and motivate the new strategies. Bu Rober misses the terms consumer surplus, equivalent variation, etc. Remember not only how but why the seminal contributors to welfare economics conceived of the effects of a policy (a regulation, a project, a price change, etc. ) and the assumptions they made. For example they would originally treat a household as a unit, they would assume that the marginal utility of income was the same for everyone… We need an explanation about why the analysis of a change in price brought about by a policy is not straightforward and a few paragraphs oh description of the evolution of this type of analysis. You do not need to use the latest state-of-the-art analysis but you must who us that you have a good understanding of why new techniques have been developed through the decades. }
 \tdILR{What you have for now is just small hints…Without a little bit more of that historical context your literature review reads quite empty... }
