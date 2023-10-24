@@ -390,27 +390,70 @@ As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the sa
 \tdILR{To start with, there should be a whole bit about what is welfare in terms of economics, why it is measured, what are the original ways to measure it, etc. We would have said a thing or two about this in CBA class ; ) Then look at the welfare effects of price changes and then criticize those more conventional ways to look at the welfare effects of price changes and motivate the new strategies. Bu Rober misses the terms consumer surplus, equivalent variation, etc. Remember not only how but why the seminal contributors to welfare economics conceived of the effects of a policy (a regulation, a project, a price change, etc. ) and the assumptions they made. For example they would originally treat a household as a unit, they would assume that the marginal utility of income was the same for everyone… We need an explanation about why the analysis of a change in price brought about by a policy is not straightforward and a few paragraphs oh description of the evolution of this type of analysis. You do not need to use the latest state-of-the-art analysis but you must who us that you have a good understanding of why new techniques have been developed through the decades. }
 \tdILR{What you have for now is just small hints…Without a little bit more of that historical context your literature review reads quite empty... }
 
-Welfare valuation methods incorporate efficiency and distribution concerns to varying degrees. Sections \ref{sec:dwl}, \ref{sec:income} and \ref{sec:ds} \tdFL{references need fixing, they do not match the labels} describe the three main lines of research found in the literature regarding the welfare effects of gasoline prices.
+% Welfare intro
+Assuming that governments, especially representative ones, must work to improve or maintain the well-being of their citizens, policy development requires some measure of that well-being \cite{AdlerPosner1999}. In the decision making process, the consequences of different policies on the well-being are compared and, ideally, the option that produces the highest level of well-being is implemented.
 
-\tr{Besides distribution concerns, family composition and other characteristics affect their potential economies of scale in consumption}. \tdFL{Does this sentence make sense?} Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
+% Utility, revealed preference
+For economic policy, individual well-being is represented by utility, a measure of the degree to which individuals satisfy their preferences through consumption. Welfare analysis typically measures changes in utility as a result of policies or other shocks in markets. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences. Revealed preference methods characterize demand by inferring utility functions from observed consumption.
 
-\section{The DWL angle}\label{sec:dwl}
+% Pareto, ordinalism
+Individual preferences can be inferred from individual behaviour, such that state $A$ can be said to be strictly preferred by an individual to state $B$. However, if we introduce a second individual that strictly prefers state $B$ to state $A$, it is not immediately clear which state should be preferred from the decision maker point of view. Provided the decision maker is able to adequately measure the individual changes in utility for all afected parties, an unambiguous decision process requires aggregating these measures into an index that allows them to state which state of the world is preferred.
 
-\tdILR{this section will need a better title}
+The Pareto principle provides a starting point: if one individual prefers state $A$ to state $B$ but the other is indifferent between them, increases without loss of well-being to other individuals, the new state is preferred to the previous state of the world. The ordinalist view suggests that interpersonal comparisons of utility are not possible, because well-being cannot be objectively determined. If this is true, it leaves a policy analyst with a limited ability to determine whether a policy is desirable.
 
-Price distortions in \tdFL{otherwise} competitive markets lead to deadweight loss. By maintaining domestic prices artificially low, Petrobras subsidizes consumption implicitly through forgone revenue and directly when it needs to import fuel to satisfy the domestic demand.\tdFL{This paragraph is more background than literature review}
+% Hicks-Kaldor, money-metric measures
+Enter Hicks & Kaldor. To determine whether the winners could compensate the losers and still be better off, one needs a comparable, cardinal, measure of gains and losses. Enter money-metric measures of welfare.
 
-With Petrobras being partly nationalized, the loss incurred by consumers from increased prices can be counteracted by a decrease in the tax burden accounting for the government increased revenue. \tdFL{First sentence is background still} \cite{Moreira2017} uses a static open economy macroeconomic model of Brazil to estimate the impact of removing fuel subsidies on output, aggregate consumption and labour demand for the years 2011-2014. She \tdFL{use the citation, avoid gender identifiers} finds that if accompanied by an equivalent reduction on major taxes, the removal of the subsidy increases output, consumption and employment.
+% Compensated demand, EV & CV, substitution
+The change in utility following a price change of a certain good or service depends also on the consumer's willigness or ability to substitute for other goods and services.
+
+Consider a price change situation such as the fuel price policy change by Petrobras. 
+
+Compensating variation is the monetary value that would restore the utility of an individual to the level it was before the change. It can be described as the amount of money the individual would pay to effect the change, in the case of a change that increases their utility, or the amount the individual would require to accept the change, in the case of a change that decreases their utility. In equation \ref{eq:CV}, the compensating variation ($CV$) is the difference in expenditure that would allow the individual to afford $u_0$ under the new prices $p_1$.
+
+\begin{equation} \label{eq:CV}
+CV = e(p_0, u_0) - e(p_1, u_0)
+\end{equation}
+
+Equivalent variation is the monetary value that would be ``equivalent'', in terms of utility change to the individual, as the price change. It can be described as the amount of money the individual would accept to forgo the change, in the case of a change that increases their utility, or the amount the individual would be willing to pay to avoid the change, in the case of a change that decreases their utility. In equation \ref{eq:EV}, the equivalent variation ($EV$) is the difference in expenditure that would allow the individual to afford $u_1$ under the original prices $p_0$.
+
+\begin{equation} \label{eq:CV}
+EV = e(p_1, u_1) - e(p_0, u_1)
+\end{equation}
+
+% Marshallian demand, first-order approximation
+\cite{Willig1976} showed that for small enough variations in income elasticities of demand and price changes, $EV$ and $CV$ can be closely approximated by the difference in compensated demand following the price change. Social surplus measured that way is often used as a measure of welfare, and Section \ref{sec:dwl} covers research on this.
+
+% Substitution effects and other stuff
+Consumer surplus is not always great. Blundell et al have shown this can be an issue.
+
+% Inequality concerns
+Welfare changes may vary systematically over population groups. Because of diminishing marginal utility of income, price changes will not affect poorer families the same way as richer families. Policies can be analysed under this framework as regressive or progressive. Section \ref{sec:income} covers that.
+
+% Equivalence scales
+Other household characteristics affect demand. Children of different ages, working age adults, retired adults and elderly have different needs. Family composition also affects economies of scale in consumption, and policymakers may have targets for groups based on other protected characteristics, such as gender or race identities. Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
+
+\section{Efficiency and consumer surplus}\label{sec:dwl}
+
+\tdILY{this section will need a better title}
+
+Price distortions in otherwise competitive markets lead to deadweight loss. From an ordinalist point of view, it matters not who ``wins'' after a change, but whether there was a potential Pareto improvement and how large it was. By maintaining domestic prices artificially low, Petrobras subsidizes consumption implicitly through forgone revenue and directly when it needs to import fuel to satisfy the domestic demand.\tdFL{This paragraph is more background than literature review}
+
+With Petrobras being partly nationalized, the loss incurred by consumers from increased prices can be counteracted by a decrease in the tax burden accounting for the government increased revenue. \tdFL{First sentence is background still} \cite{Moreira2017} uses a static open economy macroeconomic model of Brazil to estimate the impact of removing fuel subsidies on output, aggregate consumption and labour demand for the years 2011-2014. \cite{Moreira2017} finds that if accompanied by an equivalent reduction on major taxes, the removal of the subsidy increases output, consumption and employment.
 
 \tr{An aggregate demand function that yields dead-weight loss estimates} \tdFL{needs rewording} typically uses a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. The welfare loss measured by this method reflects only efficiency losses, which the author considers to be insufficient for policy analysis because needs, access and ability to pay vary a lot between families.\tdFLY{``between'' two people but ``among'' more than two people}
 
 
-\section{Income, Engel curves and the regressivity/progressivity angle} \label{sec:regressivity}
+\section{Income, Engel curves, and regressivity/progressivity analysis} \label{sec:regressivity}
 One way to incorporate income differences into the analysis is to use regressivity measures. If fuels comprise a larger share of the expenditure of families with lower income, a tax on them can be considered regressive as it disproportionately affects those families. Similarly, a subsidy will be progressive.
 
-One line of research suggests that using \tr{income results} \tdeFL leads to overestimating the regressivity of a gasoline tax: \cite{Poterba1991} uses total expenditure instead of income as a proxy of lifetime earnings, which however relies on \tdFL{explain this further} the assumption that poverty is in general temporary \tdFL{Is income mobility high in Brazil?}. \cite{TeixidoVerde2017} include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
+% consumption != expenditure != income
+While inequality is usually measured through differences in income, consumption need not be equivalent to income, and the difference tends to be higher the shorter the period under analysis is. Goods purchased in one period may be consumed over many subsequent periods, income received in one period may be saved for future use, and credit lines may allow consumption in one period to be paid for in the future. \cite{Poterba1991} suggests that consumption is determined by expected lifetime earnings, and that using \tr{income} leads to overestimating the regressivity of a gasoline tax. \cite{Poterba1991} shows this by estimating demand as a function of total expenditure rather than income, relying on \tdFL{explain this further} the assumption that poverty is in general temporary. In this context, expenditure patterns in a period of low or no income reflect the expectation of a higher income in the near future, so that the effect of the recorded income is .
 
-\tdILR{Is income mobility high in Brazil? Could you tell us and add refes, trying to link it to your own analysis/results}
+\tdILY{Is income mobility high in Brazil? Could you tell us and add refes, trying to link it to your own analysis/results}
+\cite[p.~88]{WorldBank2022} estimates ``transient poverty''\footnote{Transient poverty is the condition of households that have a low income but do not fall into ``poverty traps'' due to lack of education or infrastructure, making them more likely to be poor only temporarily.} reached 10\% of the Brazilian population in 2019, while \cite{OECD2018} shows income mobility is higher in Brazil relative to OECD countries, which is likely to produce the type of bias described by \cite{Poterba1991}.
+
+\cite{TeixidoVerde2017} argue that wealth has the opposite effect. Between two similar families with the same level of income but different levels of wealth, the demand of the more wealthy family is likely to be less elastic to prices due to wealth providing a ``safety net'' on the event of income losses. By omitting this factor, the price-elasticity of demand of the wealthier family will be biased up, thus overstating their welfare losses on the case of a price increase. \cite{TeixidoVerde2017} thus include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
 
 \cite{Sterner2012} argues that whether a tax is regressive will vary among countries and in particular that cars in developing countries are luxury goods. However, fuels can have a large impact on industry costs and output. For example, in Brazil transportation of consumer goods is largely made by trucks\tdFLY powered by diesel, so that a tax on diesel can increase prices of all goods. In this case, even if cars are luxuries, the tax may be regressive if the price of goods consumed by low income families is more sensitive to transportation costs than the price of goods consumed by high income families.
 
