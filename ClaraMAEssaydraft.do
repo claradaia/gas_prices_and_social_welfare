@@ -1180,6 +1180,23 @@ assert (price_index >= min_DEFLATOR & price_index <= max_DEFLATOR)
 collapse (first) price_index, by(hh_id commodity_group)
 
 
+/*************************************************
+* count households with expenditures in all groups
+*/
+
+frame change expenditures
+
+// drop frame if it exists from previous runs
+capture frame drop missing_groups
+
+frame put hh_id commodity_group, into(missing_groups)
+frame change missing_groups
+
+gen _count = 1
+collapse (count) _count, by (hh_id commodity_group)
+drop commodity_group
+collapse (count) _count, by (hh_id)
+
 
 **********************
 * expenditure shares *
