@@ -394,12 +394,14 @@ As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the sa
 Assuming that governments, especially representative ones, must work to improve or maintain the well-being of their citizens, policy development requires some measure of that well-being \cite{AdlerPosner1999}. In the decision making process, the consequences of different policies on the well-being are compared and, ideally, the option that produces the highest level of well-being is implemented.
 
 % Utility, revealed preference
-For economic policy, individual well-being is represented by utility, a measure of the degree to which individuals satisfy their preferences through consumption. Welfare analysis typically measures changes in utility as a result of policies or other shocks in markets. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences. Revealed preference methods characterize demand by inferring utility functions from observed consumption.
+For economic policy, individual well-being is usually represented by utility, a measure of the degree to which individuals satisfy their preferences through consumption. Welfare analysis typically measures changes in utility as a result of policies or other shocks in markets. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences, so revealed preference methods characterize demand by inferring utility functions from observed consumption.
 
 % Pareto, ordinalism
-Individual preferences can be inferred from individual behaviour, such that state $A$ can be said to be strictly preferred by an individual to state $B$. However, if we introduce a second individual that strictly prefers state $B$ to state $A$, it is not immediately clear which state should be preferred from the decision maker point of view. Provided the decision maker is able to adequately measure the individual changes in utility for all afected parties, an unambiguous decision process requires aggregating these measures into an index that allows them to state which state of the world is preferred.
+Individual preferences can be inferred from individual behaviour, such that state $A$ of the world can be said to be preferred by an individual to state $B$. However, if we introduce a second individual that prefers state $B$ to state $A$, it is not immediately clear which state should be preferred from a decision maker point of view. Provided the decision maker is able to adequately measure the individual changes in utility for all afected parties, an unambiguous decision process still requires aggregating these measures into an index that allows them to fully rank the possible states of the world.
 
-The Pareto principle provides a starting point: if one individual prefers state $A$ to state $B$ but the other is indifferent between them, increases without loss of well-being to other individuals, the new state is preferred to the previous state of the world. The ordinalist view suggests that interpersonal comparisons of utility are not possible, because well-being cannot be objectively determined. If this is true, it leaves a policy analyst with a limited ability to determine whether a policy is desirable.
+The Pareto principle provides a starting point: if between states $A$ and $B$ of the world one individual prefers state $A$ to state $B$ and the others are indifferent between them, it is fairly straightforward to presume state $A$ is preferred to state $B$.
+
+The ordinalist view suggests that interpersonal comparisons of well-being are not possible. If we take this to be true, it leaves a policy analyst with a limited ability to determine whether a policy is desirable.
 
 % Hicks-Kaldor, money-metric measures
 Enter Hicks & Kaldor. To determine whether the winners could compensate the losers and still be better off, one needs a comparable, cardinal, measure of gains and losses. Enter money-metric measures of welfare.
@@ -417,7 +419,7 @@ CV = e(p_0, u_0) - e(p_1, u_0)
 
 Equivalent variation is the monetary value that would be ``equivalent'', in terms of utility change to the individual, as the price change. It can be described as the amount of money the individual would accept to forgo the change, in the case of a change that increases their utility, or the amount the individual would be willing to pay to avoid the change, in the case of a change that decreases their utility. In equation \ref{eq:EV}, the equivalent variation ($EV$) is the difference in expenditure that would allow the individual to afford $u_1$ under the original prices $p_0$.
 
-\begin{equation} \label{eq:CV}
+\begin{equation} \label{eq:EV}
 EV = e(p_1, u_1) - e(p_0, u_1)
 \end{equation}
 
@@ -463,6 +465,8 @@ While inequality is usually measured through differences in income, consumption 
 
 
 \section{Demand systems, other sources of heterogeneity and welfare computation}\label{sec:demand_sys}
+
+The regressivity evaluation in \cite{Poterba1991} is done over a partial equilibrium analysis, and comes with the caveat that gasoline (as other fuels) are also used as an input in the production and transportation of many other consumer goods. A more complete evaluation, as suggested in \cite{Poterba1991}, would use I/O tables and a general equilibrium model to compute the effects of a change in gasoline prices on all production sectors. This approach is used by \cite{JorgensonSlesnick1987b} along with a social welfare function that accounts for both efficiency and distribution effects. \cite{JorgensonSlesnick1987b} evaluate a policy of price controls on natural gas in the United States and conclude that decontrol would increase efficiency but decrease equity.
 
 \tdIL{Look at Section 4.1 in \citet{NikodinoskaSchroder2016}. They have a short paragraph there about the history of demand systems and then their own methods paragraph about why they themselves use. They had to squeeze all that in only two paragraphs in the published version of their paper. You do have more space for full-fledged sections.}
 
