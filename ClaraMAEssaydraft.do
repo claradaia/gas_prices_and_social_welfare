@@ -823,8 +823,10 @@ foreach r_i in "White" "Black" "Mixed" {
 	texdoc local `r_i'_head_hh_pct = strofreal(round(pct[1, "`r_i'"], .01), "%9.2f")
 }
 
+gen disposable_income = PC_RENDA_DISP * n_people
+
 // save for merging later
-keep hh_id age_group cut_n_people gender n_children n_adults race region residence_type
+keep hh_id age_group cut_n_people gender n_children n_adults race region residence_type disposable_income
 save "Data\hh_head_size.dta", replace
 
 
@@ -1514,13 +1516,17 @@ capture drop min_exp
 egen min_exp = min(total_expenditure)
 scalar _min_exp = min_exp
 
+gen ln_disposable_income = log(disposable_income)
+
 // now we should have all the expenditure shares, total expenditures and price indices, so we can run the main model!
-quaids group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
+aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
 	expenditure(total_expenditure) ///
+	ivexpenditure(ln_disposable_income) ///
 	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
-	demographics(n_adults n_children male region_1-region_4) ///
-	iterate(5) /// provisional, command was running >80 iterations
-	anot(`=_min_exp')
+	intercept(n_adults n_children gender region) ///
+	iteration(5) /// provisional, command was running >80 iterations
+	alpha_0(`=_min_exp') ///
+	quadratic
 
 
 texdoc stlog close
