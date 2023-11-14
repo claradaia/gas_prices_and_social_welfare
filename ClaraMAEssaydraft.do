@@ -476,29 +476,40 @@ The regressivity evaluation in \cite{Poterba1991} is done over a partial equilib
 
 In order to produce second-order \tdFL{You must explain/clarify what you mean by first-order and second-order estimates, at least in a footnote.} estimates of welfare effects that address the biases found by \cite{BanksBlundellLewbel1996a}, substitution effects must be taken into account. These can be modelled with demand systems that estimate simultaneously the demand for all goods (or groups of goods) that families consume.
 
-\cite{DeatonMuellbauer1980} \tdFL{Page numbers needed for books} defined the \ac{AIDS} to approximate any general demand function of income and preferences. \tdFL{Rober guesses that this system can be summarized by Equation \ref{eq.AIDS} but he would prefer to have Clara inserting a proper cross--reference herself.}
+{\cite{DeatonMuellbauer1980} \tdFL{Page numbers needed for books} defined the \ac{AIDS} to approximate any general demand function of income and preferences. \ac{AIDS} models the share of a household's total expenditure devoted to each good (or group of goods) as a function of the household's total expenditure on all goods and the prices of all goods (or groups of goods). In Equation \ref{eq:AIDS}, $w_i$ is the expenditure share on good $i$, $p_n$ is the price of good $n$ and $x$ is total expenditure on all goods. \tdFLY{Rober guesses that this system can be summarized by Equation \ref{eq.AIDS} but he would prefer to have Clara inserting a proper cross--reference herself.}
 
 \tdILR{Use the \LaTeX equation environment to number and cross-reference the equations. Right now there is no number and no cross-referencing: they are just ``there''}
 
-\begin{equation}
-\label{eq.AIDS}
+
+\begin{equation} \label{eq:AIDS}
 w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)}
 \end{equation}
 
 
-
 \cite{DeatonMuellbauer1980} also propose a linear approximation of the \ac{AIDS} model: the \ac{LA-AIDS} model \tr{was} used by \cite{AlmeidaJustoOliveiraSilva2016} with monthly aggregate consumption of gasoline, diesel and ethanol over the state of Pernambuco in Brazil, and they \tr{find} \tdFL{be consistent with verb tense} that demand for gasoline and diesel is price-inelastic \tdpFL while demand for ethanol is price-elastic. This approach, however, precludes (1) \tdFL{yeah, let us not do this} differentiating demographic groups, as consumption is aggregated over consumers and (2) regressivity analysis, as demand is modelled as a function of expenditure only on fuels.\tdFL{explain/clarify further}
 
-The \ac{AIDS} model was expanded by \cite{BanksBlundellLewbel1996b} to include a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income.
+The \ac{AIDS} model was expanded by \cite{BanksBlundellLewbel1996b} to include a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income, or vice-versa.
 \tdIL{Explain/clarify further, provide examples: examples in general (alcoholic drinks, etc.) and examples that \cite{BanksBlundellLewbel1996b} might have found or commented on. Would the use of the quadratic form also allow for goods/services that are necessities at low levels of income but become luxuries at high levels of income? If so, mention that and provide examples. Ideally provide examples from other authors who also use the same approach as \cite{BanksBlundellLewbel1996b}.}
 
-$$w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)} \left [ \ln \frac{x}{a(p)} \right ]^2$$
 
-Besides income, other household attributes affect demand. (?) \tdFL{So I assume that you are looking for some references. } incorporate demographic characteristics as scaling factors into the model.
+\begin{equation} \label{eq:QUAIDS}
+w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)} \left [ \ln \frac{x}{a(p)} \right ]^2
+\end{equation}
+
+\cite{BanksBlundellLewbel1996b} show that in data from family budget surveys from the United Kingdom between 1970 and 1986, expenditure on alcohol and clothing exhibit non-linear relationships to the logarithm of expenditure, whereas fuel and food exhibit linear decreasing relationships. On the other hand, \cite{WaleedMirza2020} finds that for Pakistani families, while the coefficient of the linear log income term is negative for fuels, consistent with goods that are necessities, the coefficient of the quadratic log income term is significant and positive. The authors suggest this is due to families with higher income increasing expenditure on fuels to power luxuries such as air conditioning and heating.
+
+
+Besides income, other household attributes affect demand. In particular, the age of a household member often translates into different needs and preferences. For example, children in general do not consume alcohol and tobacco, and may require specific goods such as disposable diapers and baby formula. Models of ``the cost of the child'' incorporate the number and age of children in a household into the demand estimation. \cite{Ray1983} demographic characteristics as scaling factors into the model. Equation \ref{eq:DQUAIDS} shows the \ac{DQUAIDS} model of expenditure shares where $\omega$ is an array of demographic characteristics.
+
+\begin{equation} \label{eq:DQUAIDS}
+w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)} \left [ \ln \frac{x}{a(p)} \right ]^2
+\end{equation}
 
 \tdILR{So I assume that you will be adding further references to studies in which the authors took into account demographic characteristics. You should try and tell us in each case what is most sophisticated approach help them uncover, what about vantages it brought what biases it corrected, etc.} 
 
-\cite{NikodinoskaSchroder2016} uses \tdFL{use sounds better but OK} the \ac{DQUAIDS} to study the welfare effects of fuel taxes in Germany, including the number of adults and children below 15 years of age in a household as scaling factors.
+\cite{NikodinoskaSchroder2016} use the \ac{DQUAIDS} to study the welfare effects of fuel taxes in Germany, including the number of adults and children below 15 years of age in a household as scaling factors.
+
+\cite{WaleedMirza2020} use two-stage budgeting with Probit and QUAIDS to analyse the demand for a variety of fuels in Pakistan.
 
 \cite{SpillerStephensChen2017} consider that households in rural areas do not have access to public transportation, reducing their ability to substitute driving.\tdFL{and what was the result? what changed?}
 
@@ -530,11 +541,9 @@ If we determine how children's consumption must be relative to an adult so that 
 
 \textbf{Subjective scales} --- these are constructed by surveying families and asking what they would consider the minimum expenditure they would require to satisfy the needs of all members. \tdFL{Any examples of use of this type?} \to{We'll also skip this as ``needs'' are socially defined and families' estimates of how much income they would require as a minimum tends to increase as their actual income increases.}\tdFL{reword but keep this stuff in \to{orange}}
 \tdILR{Little thing: but in the end, we will be using none of these bold fonts etc. for subheadings. If needed used subsections and subsubsections, so \LaTeX will do the formatting in a consistent way that will probably also look better}
+\tdILR{Ok but I need a way to return to the scope of the section to conclude "considering this and that I'll be using the X scale", and subsections don't allow that. Any other options?}
 
 \textbf{Parametric scales} --- start from a functional form that incorporates economies of scale and differences in members needs according to their attributes as parameters. Such scales are useful as standards of comparison between studies in different countries, for example. \cite{NikodinoskaSchroder2016} uses the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers. \tdFL{Any more examples of use of this type? Could you quote the numbers used by \cite{NikodinoskaSchroder2016}, so we get a better idea of how this scale works?}
-
-\tdILR{OK so these parametric scales are going to be what you  focus on, right? OK: so I suggest that you leave a brief paragraph (even it is a bit longer than what you now have) here, but as the last type of scale and then flesh out a full new subsection of lit review dealing more in depth with this type of scale: more examples, more developments, more criticisms. }
-
 
 \textbf{Behavioural scales} --- these are based on observed consumption patterns of families. \to{
 * Started with Engel's observations of food expenditures. Richer families tend to spend lower fractions of their income on food than poorer families, so we can use the fraction of income spent on food as an approximation of welfare.
@@ -561,11 +570,19 @@ Another challenge arises if we consider studies that show women tend to spend mo
 Finally, it may not be socially acceptable to attribute a lower ``weight'' to children in welfare analysis. \tdFL{Any references to back this up?}
 
 
+\subsection{Parametric Equivalence Scales}
+\tdILR{OK so these parametric scales are going to be what you  focus on, right? OK: so I suggest that you leave a brief paragraph (even it is a bit longer than what you now have) here, but as the last type of scale and then flesh out a full new subsection of lit review dealing more in depth with this type of scale: more examples, more developments, more criticisms. }
+
+* OECD (new & old)
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{Methodology and Data}\label{methods}
-We want to characterize the differences in the demand for gasoline across households of different compositions and attributes and use this characterization to estimate the welfare effects of a subsidy policy change.
+We want to characterize demand for gasoline across households of different compositions and attributes and use this characterization to estimate the welfare effects of a subsidy policy change.
 
 I assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have a utility function of the form:
 
@@ -582,15 +599,24 @@ where
 	\item{}
 \end{itemize}
 
+Following \cite{BanksBlundellLewbel1997} the total expenditure of households is instrumented by their reported income. This, as well as ignoring certain categories of purchases such as vehicles, mitigates the impact of unusual large expenses.
+
 Following \cite{Poi2012, DeatonMuellbauer1980, BanksBlundellLewbel1996b}, \tdFL{Poi ref is missing and use chronological order} I predefine $\alpha_0$ as the lowest total expenditure in the dataset.
 
-The price-elasticity of demand is then given by
+The income elasticity of demand of each household for each commodity group is given by
+
 \begin{equation}
+\varepsilon_mi = \frac{\partial w_i}{\partial \ln m} \frac{1}{w_i} + 1
 \end{equation}
 
-which can then be used to obtain the compensating variation
+The uncompensated price elasticity of demand is given by
+\begin{equation} \label{eq:uncompensated_e}
+\varepsilon_{ij}^u = \frac{\partial w_i}{\partial \ln m} \frac{1}{w_i} - \delta_{ij}
+\end{equation}
 
+The Slutsky equation for the compensated price elasticities $\varepsilon_{ij}^c = \varepsilon_{ij}^u + \varepsilon_{m} m, the compensated price-elasticity of demand of each household for each commodity group is then given by
 \begin{equation}
+\varepsilon_h^c = 
 \end{equation}
 
 following a price change. Then the compensating variation for each household is equalized by means of the OECD equivalence scale.
@@ -633,14 +659,14 @@ See Appendix \ref{ap:demographic_attribute_variables} for the variables used to 
 
 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
-\cite{Jorgenson1990} and \cite{Slesnick2000} use the following commodity groups:
-\begin{enumerate}
- \item Energy
- \item Food
- \item Consumer Goods
- \item Capital Services
- \item Consumer Services
-\end{enumerate}
+* Auto and real estate purchases are excluded to avoid ``spurious volatility'' \cite{Poterba1991}
+* "Adult goods" such as alcohol and cigarettes are its own group, following from the observations of \cite{BanksBlundellLewbel1996b} and the observations of Rothbarth \cite{Ray1983}
+* Fuels are one group
+* Some authors separate groceries from restaurant expenses. I suspect this should probably not be done for Brazil, where workers often eat in low cost restaurants every day, with "meal vouchers" for exclusive use in restaurants being a frequent benefit provided by employers
+
+\cite{Jorgenson1990} and \cite{Slesnick2000} commodity groups: Energy, Food, Consumer Goods, Capital Services, Consumer Services
+\cite{BanksBlundellLewbel1996b}: food, clothing, fuel, alcohol, other goods
+
 
 
 In order to isolate the effect of gasoline prices, I subdivide the ``energy'' group into ``gasoline'' and ``others'', and the ``consumer services'' group into ``public transportation'' and ``others''.
@@ -671,7 +697,7 @@ The model for individual expenditure shares is given by:
 
 The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23^{rd} \tdFLY{fix superscript} 2018.
 
-The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed, while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
+The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed\footnote{\cite{WaleedMirza2020}, for example, match their family budget survey data to the weekly Pakistan Bureau of Statistics price index using the date of collection.}, while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
 
 The grouping was done as follows. First, identify \tdFLY{there are a lot of ``I's' in this section: use the passive voice more} the type of expense that was present more frequently among the households surveyed: in the case of the 2017-2018 \ac{FBS} this was rent or estimated rent, $`pct_rent'$\% \tdFL{these macros will work in the end right?} of households recorded a value. The second step is done under the assumption that two households that paid rent on the same date and location, or were interviewed on the same date and location, would have the same deflator value. Under this assumption, group households that have the same deflator value for rent and treat each group as facing the same prices. Third, produce a Stone price index from all expenses reported by all households in each group.
 
@@ -1735,7 +1761,7 @@ Table \ref{acpi_groups_second_stage} shows the map of \ac{ACPI} groups, subgroup
 \section{Price index transformation}
 \ac{BIGS} provides monthly variation by groups, subgroups, items and subitems of the \ac{ACPI}, along with each level weight in the general price index. I used the indices from July 2006 to December 2019 available at \cite{ibgeIPCA2011} and \cite{ibgeIPCA2019}. The index for groups, subgroups and items is produced with the Laspeyres method.
 
-Estimating the translog model requires price index numbers for each commodity group at each time period. First, the variation of each commodity group is obtained through the weighted average of variations of its components (groups, subgroups, items and subitems)  in the \ac{ACPI}. Then the variations are transformed into index numbers with January 2018 as the base date, with each commodity group price normalized to unity.
+Estimating demand systems requires price index numbers for each commodity group at each time period. First, the variation of each commodity group is obtained through the weighted average of variations of its components (groups, subgroups, items and subitems)  in the \ac{ACPI}. Then the variations are transformed into index numbers with January 2018 as the base date, with each commodity group price normalized to unity.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
