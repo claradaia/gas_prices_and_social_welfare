@@ -324,7 +324,7 @@ In 2023, the price control returned with the purpose of ``nationalizing'' prices
 % Why would they keep changing or change more in the future? Climate change? International Pressure? Sustainable Development Goals? The IMF requiring it?
 * Sale of refining facilities may further change the market share of Petrobras and decrease its market power
 * The same forces that led to the IPP policy in 2016 are likely to start putting pressure again after the change in policy in 2023
-* Hopefully more people will start taking climate change seriously in Brazil --- which could come with a carbon tax. (Does not seem to be happening, though. We're looking at extracting oil from the Amazon and expanding vehicle production :clown_face:)
+* Hopefully more people will start taking climate change seriously in Brazil --- which could come with a carbon tax. (Does not seem to be happening, though. We're looking at extracting oil from the Amazon and expanding vehicle production.)
 
 % Will this happen again? That is, is there a policy situation to solve? A problem to deal with? Is it getting better? worse?
 One argument against the price control policy is that it is regressive, because it benefits people with higher incomes, who are more likely to own vehicles, more than people with lower incomes. This argument is muddied by the fact that fuels impact consumers of all levels of income indirectly, as inputs of production and transportation of other goods. For policymakers that promote progressive values, it is important to know whether the price control aligns with those values, and if so, to what degree.
@@ -404,7 +404,7 @@ The Pareto principle provides a starting point: if between states $A$ and $B$ of
 The ordinalist view suggests that interpersonal comparisons of well-being are not possible. If we take this to be true, it leaves a policy analyst with a limited ability to determine whether a policy is desirable.
 
 % Hicks-Kaldor, money-metric measures
-Enter Hicks & Kaldor. To determine whether the winners could compensate the losers and still be better off, one needs a comparable, cardinal, measure of gains and losses. Enter money-metric measures of welfare.
+Enter Hicks and Kaldor. To determine whether the winners could compensate the losers and still be better off, one needs a comparable, cardinal, measure of gains and losses. Enter money-metric measures of welfare.
 
 % Compensated demand, EV & CV, substitution
 The change in utility following a price change of a certain good or service depends also on the consumer's willigness or ability to substitute for other goods and services.
@@ -573,7 +573,7 @@ Finally, it may not be socially acceptable to attribute a lower ``weight'' to ch
 \subsection{Parametric Equivalence Scales}
 \tdILR{OK so these parametric scales are going to be what you  focus on, right? OK: so I suggest that you leave a brief paragraph (even it is a bit longer than what you now have) here, but as the last type of scale and then flesh out a full new subsection of lit review dealing more in depth with this type of scale: more examples, more developments, more criticisms. }
 
-* OECD (new & old)
+* OECD (new and old)
 
 
 
@@ -614,7 +614,7 @@ The uncompensated price elasticity of demand is given by
 \varepsilon_{ij}^u = \frac{\partial w_i}{\partial \ln m} \frac{1}{w_i} - \delta_{ij}
 \end{equation}
 
-The Slutsky equation for the compensated price elasticities $\varepsilon_{ij}^c = \varepsilon_{ij}^u + \varepsilon_{m} m, the compensated price-elasticity of demand of each household for each commodity group is then given by
+The Slutsky equation for the compensated price elasticities is $\varepsilon_{ij}^c = \varepsilon_{ij}^u + \varepsilon_{m} m$, the compensated price-elasticity of demand of each household for each commodity group is then given by
 \begin{equation}
 \varepsilon_h^c = 
 \end{equation}
@@ -695,7 +695,7 @@ The model for individual expenditure shares is given by:
 
 \subsection {Data Source}
 
-The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23^{rd} \tdFLY{fix superscript} 2018.
+The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23rd \tdFLY{fix superscript} 2018.
 
 The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed\footnote{\cite{WaleedMirza2020}, for example, match their family budget survey data to the weekly Pakistan Bureau of Statistics price index using the date of collection.}, while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
 
