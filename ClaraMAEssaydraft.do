@@ -1511,7 +1511,7 @@ gen male = gender
 replace male = 0 if gender == 2
 tab region, g(region_)
 
-// get a_0
+// a_0 is the minimum total expenditure
 capture drop min_exp
 egen min_exp = min(total_expenditure)
 scalar _min_exp = min_exp
@@ -1523,7 +1523,7 @@ aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_exp
 	expenditure(total_expenditure) ///
 	ivexpenditure(ln_disposable_income) ///
 	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
-	intercept(n_adults n_children gender region) ///
+	intercept(n_adults n_children male region_1-region_4) ///
 	iteration(5) /// provisional, command was running >80 iterations
 	alpha_0(`=_min_exp') ///
 	quadratic
