@@ -550,11 +550,11 @@ If we determine how children's consumption must be relative to an adult so that 
 * Rothbarth: consider ``adult goods'': goods such as alcohol are not purchased by children, so when a family has a child, the ``cost of the child'' is the additional income necessary to restore the consumption of said ``adult goods'' to their initial levels.
 * Prais and Houthakker: generalize the Engel method to allow for different scales for each good
 * \cite{VazVaz2007} estimate equivalence scales for Brazil from the 2002-2003 FBS. The estimates are in general non-significant but they find that children are cheaper than adults.
-* \cite{Mancero2011} estimates behavioural equivalence scales for LatAm and finds high variability in the marginal cost of a child, ultimately recommending the use of parametric equivalence scales instead.
-* Might be doable, but afaik Stata \tdFL{Ideally try to see if you can find a better reason to stick to OECD scales other than ``Stata cannot do it automatically'' : ) }
  does not compute these automatically so I think I'll stick with the OECD for now.
 * The translog demand system of \cite{JorgensonSlesnick1987} yields commodity-specific household equivalence scales.}
-
+* \cite{Mancero2011} estimates behavioural equivalence scales for LatAm and finds high variability in the marginal cost of a child, ultimately recommending the use of parametric equivalence scales instead.
+* Might be doable, but afaik Stata \tdFLY{Ideally try to see if you can find a better reason to stick to OECD scales other than ``Stata cannot do it automatically'' : ) }
+* \cite{PollakWales1979} point out that equivalence scales obtained from demand system estimates are not appropriate for welfare comparisons. These scales assume demographic parameters are fixed, which may be true for attributes such as gender and race but not so for others like the number of children or the location of the household. Consumption patterns do not reveal the ``direct'' utility contribution of children or location and are instead conditional on the demographic parameters being fixed, whereas equivalence scales used for welfare comparisons should be unconditional. \cite{PollakWales1979} mention that their estimates of equivalence scales from observed consumption in the UK would suggest that larger families require less money than smaller families to reach the same level of utility, as an example of how the use of conditional equivalence scales may lead to spurious results.
 
 \subsection{Criticism of equivalence scales}
 % preferences are constructed, not innate
