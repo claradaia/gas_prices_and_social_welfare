@@ -667,17 +667,15 @@ See Appendix \ref{ap:demographic_attribute_variables} for the variables used to 
 
 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
-* Auto and real estate purchases are excluded to avoid ``spurious volatility'' \cite{Poterba1991}
-* "Adult goods" such as alcohol and cigarettes are its own group, following from the observations of \cite{BanksBlundellLewbel1996b} and the observations of Rothbarth \cite{Ray1983}
-* Fuels are one group
-* Some authors separate groceries from restaurant expenses. I suspect this should probably not be done for Brazil, where workers often eat in low cost restaurants every day, with "meal vouchers" for exclusive use in restaurants being a frequent benefit provided by employers
+In the literature, the choice of groups of goods and services vary. Food is present in all the reviewed articles, housing and clothing are often present, and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups. Vehicle fuels may be present in "fuel", "energy" or "transportation" groups.
+
+In this essay, the following groups compose the first stage of the budget: fuels, clothing, housing, adult goods, other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \cite{Poterba1991}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations of \cite{BanksBlundellLewbel1996b} and the observations of Rothbarth \cite{Ray1983}.
+
+Some authors separate groceries from restaurant expenses. I suspect this should probably not be done for Brazil, where workers often eat in low cost restaurants every day, with "meal vouchers" for exclusive use in restaurants being a frequent benefit provided by employers
 
 \cite{Jorgenson1990} and \cite{Slesnick2000} commodity groups: Energy, Food, Consumer Goods, Capital Services, Consumer Services
 \cite{BanksBlundellLewbel1996b}: food, clothing, fuel, alcohol, other goods
-
-
-
-In order to isolate the effect of gasoline prices, I subdivide the ``energy'' group into ``gasoline'' and ``others'', and the ``consumer services'' group into ``public transportation'' and ``others''.
+\cite{MenezesAzzoniSilveira2008}: food, housing, clothing, transportation, health and personal care, personal expenditure, education, tobacco
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1681,24 +1679,24 @@ Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classi
 
 \tdILR{Use single spacing for Table \ref{acpi_groups}}
 
-Table \ref{acpi_groups} shows the structure of groups, subgroups, items and subitems of goods and services used by the \ac{ACPI} \citep{ibge2020}, with the respective commodity group in the first stage of the model. Less aggregated levels of the structure have been omitted when the entire parent category was mapped into a single group, for example the \ac{ACPI} group ``Food and Beverages'' is entirely included in the ``Food'' commodity group, so it is represented by a single row in the table, whereas each subgroup of the ``Health Goods and Services'' was mapped to a different commodity group, occupying a separate row.
+Table \ref{acpi_groups} shows the structure of groups, subgroups, items and subitems of goods and services used by the \ac{ACPI} \citep{ibge2020}, with the respective commodity group. Less aggregated levels of the structure have been omitted when the entire parent category was mapped into a single group, for example the \ac{ACPI} group ``Food and Beverages'' is entirely included in the ``Food'' commodity group, so it is represented by a single row in the table, whereas each subgroup of the ``Health Goods and Services'' was mapped to a different commodity group, occupying a separate row.
 
 
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}}
-\caption {First stage \ac{ACPI} group to commodity group mapping} \label{acpi_groups} \\ \toprule
+\caption {\ac{ACPI} group to commodity group mapping} \label{acpi_groups} \\ \toprule
 \textbf{Group} &
   \textbf{Subgroup} &
   \textbf{Item} &
   \textbf{Subitem} &
-  \textbf{First Stage Commodity Group} \\ \midrule
+  \textbf{Commodity Group} \\ \midrule
 \endfirsthead
 \caption* {Table \ref{acpi_groups} Continued:} \\ \toprule
 \textbf{Group} &
   \textbf{Subgroup} &
   \textbf{Item} &
   \textbf{Subitem} &
-  \textbf{First Stage Commodity Group} \\ \midrule
+  \textbf{Commodity Group} \\ \midrule
 \endhead
 Food and Beverages       &                                &                       &                   & Food              \\ \midrule
 \multirow{4}{=}{Housing} &
@@ -1754,22 +1752,6 @@ Communication            &                                &                     
 \end{longtable}
 
 
-
-
-Table \ref{acpi_groups_second_stage} shows the map of \ac{ACPI} groups, subgroups, items and subitems of goods and services and the respective commodity group in the second stage of the model.
-
-\begin{table}[h!]
-\caption{Second stage stage \ac{ACPI} group to commodity group mapping} \label{acpi_groups_second_stage}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}}
-\toprule
-\textbf{Group}           & \textbf{Subgroup}                               & \textbf{Item}  & \textbf{Subitem} & \textbf{Second Stage Commodity Group} \\ \midrule
-\multirow{2}{=}{Housing} & \multirow{2}{=}{Domestic Fuels and Electricity} & Domestic Fuels &                  & Domestic Fuels                        \\
-                         &                                                 & Electricity    &                  & Electricity                           \\ \midrule
-\multirow{3}{=}{Transportation} & \multirow{3}{=}{Transportation} & \multirow{3}{=}{Vehicle Fuels} & Gasoline & Gasoline \\
-                         &                                                 &                & Ethanol          & Ethanol                               \\
-                         &                                                 &                & Diesel           & Diesel
-\end{tabular}
-\end{table}
 
 
 \section{Price index transformation}
