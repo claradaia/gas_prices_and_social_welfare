@@ -621,7 +621,13 @@ The Slutsky equation for the compensated price elasticities is $\varepsilon_{ij}
 \varepsilon_h^c = 
 \end{equation}
 
-following a price change. Then the compensating variation for each household is equalized by means of the OECD equivalence scale.
+The compensating variation for each household is obtained from the cost or expenditure function in equation \ref{eq:cost}:
+
+\begin{equation}
+CV \approx \sum_{i=1}w_i \Delta \ln p_i + \frac{1}{2} \sum_{i=1} \sum_{j=1} w_i \varepsilon_{ij} \Delta \ln p_i \Delta \ln p_j
+\end{equation}
+
+with $p_0$ being the price vector with the gasoline price set to the average price without the price control policy, and $p_1$ being the price vector with the price control. Then the compensating variation for each household is equalized by means of the OECD modified equivalence scale.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
