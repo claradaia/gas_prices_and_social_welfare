@@ -582,9 +582,11 @@ Finally, it may not be socially acceptable to attribute a lower ``weight'' to ch
 
 
 \chapter{Methodology and Data}\label{methods}
-We want to characterize demand for gasoline across households of different compositions and attributes and use this characterization to estimate the welfare effects of a subsidy policy change.
+In this essay I characterize the demand for gasoline across households of different compositions and attributes and use this characterization to estimate the welfare effects of a subsidy policy change.
 
-I assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have a utility function of the form:
+Demand is estimated with \ref{eq:QUAIDS} using data from the \ac{FBS} and the \ac{ACPI}.
+
+Assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have a utility function of the form:
 
 \begin{equation}
 \end{equation}
@@ -601,7 +603,7 @@ where
 
 Following \cite{BanksBlundellLewbel1997} the total expenditure of households is instrumented by their reported income. This, as well as ignoring certain categories of purchases such as vehicles, mitigates the impact of unusual large expenses.
 
-Following \cite{Poi2012, DeatonMuellbauer1980, BanksBlundellLewbel1996b}, \tdFL{Poi ref is missing and use chronological order} I predefine $\alpha_0$ as the lowest total expenditure in the dataset.
+Following \cite{Poi2012, DeatonMuellbauer1980, BanksBlundellLewbel1996b}, \tdFL{Poi ref is missing and use chronological order} $\alpha_0$ is predefined as the lowest total expenditure in the dataset.
 
 The income elasticity of demand of each household for each commodity group is given by
 
