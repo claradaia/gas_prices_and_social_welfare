@@ -633,7 +633,8 @@ with $p_0$ being the price vector with the gasoline price set to the average pri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Assumptions about consumer preferences}
+\section{Assumptions and restrictions}\label{sec:assumptions}
+Demand theory and regularity imply a few restrictions on the parameters of Equation \ref{eq:shares}.
 
 \subsection{Separability}
 
@@ -646,6 +647,37 @@ Aggregating goods into groups has the additional advantages of improving the sta
 
 Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \citep{DeatonMuellbauer1980}. \tdFL{pages for books}
 
+\subsection{Consistency with the theory of demand}
+Demand theory yields negativity and symmetry restrictions that are best explained in light of the Slutsky matrix definition. The Slutsky matrix is formatted as follows:
+
+$$S(p, w) =
+\begin{pmatrix}
+S_{11} & S_{12} & \cdots & S_{1n} \\
+S_{21} & S_{22} & \cdots & S_{2n} \\
+\vdots  & \vdots  & \ddots & \vdots  \\
+S_{n1} & S_{n2} & \cdots & S_{nn} \\
+\end{pmatrix}
+$$
+
+Each element in the matrix is a sum $S_{ij} = \frac{\partial x_i}{\partial p_j} + \frac{\partial x_i}{\partial x} x_j(p, x)$ that represents the substitution effect of a price change if the consumer was compensated just enough to affort their initial bundle. 
+
+If demand satisfies Walras' law and the weak axiom of revealed preferences, the Slutsky matrix will be \textit{negative semidefinite}, which implies that $\forall v \in \mathds{R}, v \cdot S(p, x) v \leq 0$. \citep{MGWp34}. 
+
+\citep{MGWp70} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the Hessian (second-derivative) matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  \citep{MGWp80}, which will be used to estimate welfare effects.
+
+
+\subsection{Regularity}
+Demand is subject to a budget constraint, which in the model of Equation \ref{eq:shares} becomes the \textit{additivity} constraint: the expenditure shares of all goods for any given family must add up to 1. This will be true if conditions \ref{eq:additivity} are satisfied.
+
+\begin{equation}\label{eq:additivity}
+\sum_{i=1}^n \alpha_i = 1 \hspace{2em} \sum_{i=1}^n \gamma_{ij} = 0 \hspace{2em} \sum_{i=1}^n \beta_{i} = 0
+\end{equation}
+
+Additionally, families are expected to not have money illusion, which translates into the property of \textit{homogeneity}: changing prices and total expenditure by the same rate should not change quantities demanded. This will be true of the system if condition \ref{eq:homogeneity} is satisfied.
+
+\begin{equation}\label{eq:homogeneity}
+\sum_{j} \gamma_{ij} = 0
+\end{equation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
