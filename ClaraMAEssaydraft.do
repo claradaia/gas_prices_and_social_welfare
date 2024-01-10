@@ -44,6 +44,7 @@ graph set window fontface "Palatino Linotype"
 \usepackage{tocloft}
 \usepackage{pdfathesis}
 \usepackage{amsmath}
+\usepackage{dsfont}
 \usepackage{endnotes}
 \usepackage{graphicx}
 \usepackage{epsfig}
@@ -674,15 +675,15 @@ S_{n1} & S_{n2} & \cdots & S_{nn} \\
 \end{pmatrix}
 $$
 
-Each element in the matrix is a sum $S_{ij} = \frac{\partial x_i}{\partial p_j} + \frac{\partial x_i}{\partial x} x_j(p, x)$ that represents the substitution effect of a price change if the consumer was compensated just enough to affort their initial bundle. 
+Each element in the matrix is a sum $S_{ij} = \frac{\partial x_i}{\partial p_j} + \frac{\partial x_i}{\partial x} x_j(p, x)$ that represents the substitution effect of a price change if the consumer was compensated just enough to afford their initial bundle.
 
-If demand satisfies Walras' law and the weak axiom of revealed preferences, the Slutsky matrix will be \textit{negative semidefinite}, which implies that $\forall v \in \mathds{R}, v \cdot S(p, x) v \leq 0$. \citep{MGWp34}. 
+If demand satisfies Walras' law and the weak axiom of revealed preferences, the Slutsky matrix will be \textit{negative semidefinite}, which implies that $\forall v \in \mathds{R}, v \cdot S(p, x) v \leq 0$ \cite[p.~34]{MWG1995}.
 
-\citep{MGWp70} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the Hessian (second-derivative) matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  \citep{MGWp80}, which will be used to estimate welfare effects.
+\citet[p.~70]{MWG1995} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the second-derivative matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  \cite[p.~80]{MWG1995}, which will be used to estimate welfare effects.
 
 
 \subsection{Regularity}
-Demand is subject to a budget constraint, which in the model of Equation \ref{eq:shares} becomes the \textit{additivity} constraint: the expenditure shares of all goods for any given family must add up to 1. This will be true if conditions \ref{eq:additivity} are satisfied.
+Demand is subject to a budget constraint, which in the model of Equation \ref{eq:shares} becomes the \textit{additivity} constraint: the expenditure shares of all goods for any given family must add up to 1. This will be true if conditions \ref{eq:additivity} are satisfied, and is enforced on estimation of the \ac{AIDS} and its extensions by dropping one of the share equations and computing its parameters such that they satisfy these conditions.
 
 \begin{equation}\label{eq:additivity}
 \sum_{i=1}^n \alpha_i = 1 \hspace{2em} \sum_{i=1}^n \gamma_{ij} = 0 \hspace{2em} \sum_{i=1}^n \beta_{i} = 0
