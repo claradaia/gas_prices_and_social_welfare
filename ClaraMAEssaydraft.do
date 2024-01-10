@@ -1570,7 +1570,7 @@ replace group_expenditure_share`Food' = 1 - (group_expenditure_share`Energy' + g
 // drop households for which one of the price_indices is 0 (i.e. there were no expenditure on any of the goods in the group)
 drop if price_index`Food' == 0 | price_index`Energy' == 0 | price_index`ConsumerServices' == 0 | price_index`ConsumerGoods' == 0 | price_index`CapitalServices' == 0
 
-// unpack categorical variables because quaids can't handle i.var_name :)
+// unpack categorical variables because aidsills can't handle i.var_name :)
 gen male = gender
 replace male = 0 if gender == 2
 tab region, g(region_)
@@ -1588,15 +1588,82 @@ aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_exp
 	ivexpenditure(ln_disposable_income) ///
 	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
 	intercept(n_adults n_children male region_1-region_4) ///
-	iteration(5) /// provisional, command was running >80 iterations
 	alpha_0(`=_min_exp') ///
 	quadratic
 
+estimates store quaids
+
+// test QUAIDS against AIDS
+test lambda_lnx2
+
+// run the non-quadratic version
+aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
+	expenditure(total_expenditure) ///
+	ivexpenditure(ln_disposable_income) ///
+	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
+	intercept(n_adults n_children male region_1-region_4) ///
+	alpha_0(`=_min_exp')
+
+estimates store aids
+
+// enforce homogeneity, test for symmetry
+aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
+	expenditure(total_expenditure) ///
+	ivexpenditure(ln_disposable_income) ///
+	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
+	intercept(n_adults n_children male region_1-region_4) ///
+	alpha_0(`=_min_exp') ///
+	quadratic homogeneity
+
+estimates store homo
+
+// test QUAIDS against AIDS
+test lambda_lnx2
+
+// enforce symmetry and homogeneity
+aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
+	expenditure(total_expenditure) ///
+	ivexpenditure(ln_disposable_income) ///
+	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
+	intercept(n_adults n_children male region_1-region_4) ///
+	alpha_0(`=_min_exp') ///
+	quadratic symmetry
+
+estimates store symm
+
+// test QUAIDS against AIDS
+test lambda_lnx2
+
+etable, estimates(quaids aids homo symm) mstat(N) column(estimates) ///
+	showstars showstarsnote cstat(_r_b) ///
+	title("Demand system estimates for the Brazilian population") ///
+	showeq ///
+	cstat(_r_ci, nformat(%6.3f) cidelimiter(","))
+
+collect label levels coleq ///
+	group_expenditure_share1 "w_{Food}" ///
+	group_expenditure_share2 "w_{Energy}" ///
+	group_expenditure_share3 "w_{Services}" ///
+	group_expenditure_share3 "w_{Goods}" ///
+	group_expenditure_share3 "w_{Housing}", ///
+	modify
+
+collect label levels colname ///
+	gamma_lnprice_index1 "gamma_{Food}" ///
+	gamma_lnprice_index2 "gamma_{Energy}" ///
+	gamma_lnprice_index3 "gamma_{Services}" ///
+	gamma_lnprice_index4 "gamma_{Goods}" ///
+	gamma_lnprice_index5 "gamma_{Housing}", ///
+	modify
+
+collect export "reg_results_table.tex", name(ETable) as(tex) tableonly replace
 
 texdoc stlog close
 
 
 /*tex
+
+\input{reg_results_table}
 
 \section{Welfare effects estimation}
 
