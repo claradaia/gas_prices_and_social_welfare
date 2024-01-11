@@ -1582,6 +1582,9 @@ scalar _min_exp = min_exp
 
 gen ln_disposable_income = log(disposable_income)
 
+// collect tests for the quadratic coefficients
+collect create quad_tests, replace
+
 // now we should have all the expenditure shares, total expenditures and price indices, so we can run the main model!
 aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
 	expenditure(total_expenditure) ///
@@ -1593,8 +1596,8 @@ aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_exp
 
 estimates store quaids
 
-// test QUAIDS against AIDS
-test lambda_lnx2
+// test quadratic coefficients
+collect, name(quad_tests) tag(model["Unconstrained"]): test lambda_lnx2
 
 // run the non-quadratic version
 aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
@@ -1617,8 +1620,8 @@ aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_exp
 
 estimates store homo
 
-// test QUAIDS against AIDS
-test lambda_lnx2
+// test quadratic coefficients
+collect, name(quad_tests) tag(model["Enforced Homogeneity"]): test lambda_lnx2
 
 // enforce symmetry and homogeneity
 aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
@@ -1631,9 +1634,11 @@ aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_exp
 
 estimates store symm
 
-// test QUAIDS against AIDS
-test lambda_lnx2
+// test quadratic coefficients
+collect, name(quad_tests) tag(model["Enforced Homogeneity and Symmetry"]): test lambda_lnx2
 
+
+// format and export regression results
 etable, estimates(quaids aids homo symm) mstat(N) column(estimates) ///
 	showstars showstarsnote cstat(_r_b) ///
 	title("Demand system estimates for the Brazilian population") ///
@@ -1646,7 +1651,7 @@ collect label levels coleq ///
 	group_expenditure_share3 "w_{Services}" ///
 	group_expenditure_share3 "w_{Goods}" ///
 	group_expenditure_share3 "w_{Housing}", ///
-	modify
+	name(ETable) modify
 
 collect label levels colname ///
 	gamma_lnprice_index1 "gamma_{Food}" ///
@@ -1654,9 +1659,18 @@ collect label levels colname ///
 	gamma_lnprice_index3 "gamma_{Services}" ///
 	gamma_lnprice_index4 "gamma_{Goods}" ///
 	gamma_lnprice_index5 "gamma_{Housing}", ///
-	modify
+	name(ETable) modify
 
 collect export "reg_results_table.tex", name(ETable) as(tex) tableonly replace
+
+
+// format and export joint test of quadratic coefficients
+collect label levels result ///
+	chi2 "chi2", ///
+	name(quad_tests) modify
+
+collect layout (model) (result[chi2 p]), name(quad_tests)
+collect export "quad_test_results_table.tex", name(quad_tests) as(tex) tableonly replace
 
 texdoc stlog close
 
@@ -1664,6 +1678,8 @@ texdoc stlog close
 /*tex
 
 \input{reg_results_table}
+
+\input{quad_test_results_table}
 
 \section{Welfare effects estimation}
 
