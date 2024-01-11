@@ -1708,8 +1708,27 @@ The \ac{FBS} product registry, albeit very detailed, could use improvements. The
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\tdILY{You will need to tweak those missing foreign characters in your bib entries and secure the capitalizations too}
 
-\tdILR{NOV 18 2023: Your references list should go ahead of your appendices}
+\tdIL{could you try to generate the ugly URL codes as embedded in hyperlinks, using the relevant tex tag (I think it is $\backslash$href or something). That would still work as a URL hyperlink without the massive ugliness of having to show verbatim the whole URL}
+
+
+\tdILY{NOV 18 2023  Something strange is going on with \citet{AlmeidaJustoOliveiraSilva2016}'s bib entry. Fix capitals in \citet{TeixidoVerde2017}, \citet{NikodinoskaSchroder2016}, for example: check them all. }
+
+\tdILY{NOV 18 2023  delete the ``month'' field from your bib entries}
+
+\tdILY{NOV 18 2023: Your references list should go ahead of your appendices}
+
+
+
+\bibliographystyle{chicago}
+\bibliography{ClaraMAEssaybibfile}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \appendix
 
@@ -1787,6 +1806,7 @@ The master sample excludes the following areas: military bases, camping sites, p
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \chapter{Demographic attribute variables in the \ac{FBS}} \label{ap:demographic_attribute_variables}
 
 Table \ref{tab:attribute_vars} shows the variable in the \ac{FBS} datasets for each attribute used to scale demand in the \ac{DQUAIDS}.
@@ -1816,8 +1836,8 @@ Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classi
 \end{table}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \chapter{Mapping of \ac{ACPI} groups to commodity groups} \label{ap:acpi_to_commodity_groups_map}
 
@@ -1907,23 +1927,6 @@ Estimating demand systems requires price index numbers for each commodity group 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\tdILY{You will need to tweak those missing foreign characters in your bib entries and secure the capitalizations too}
-
-\tdIL{could you try to generate the ugly URL codes as embedded in hyperlinks, using the relevant tex tag (I think it is $\backslash$href or something). That would still work as a URL hyperlink without the massive ugliness of having to show verbatim the whole URL}
-
-
-\tdILR{NOV 18 2023  Something strange is going on with \citet{AlmeidaJustoOliveiraSilva2016}'s bib entry. Fix capitals in \citet{TeixidoVerde2017}, \citet{NikodinoskaSchroder2016}, for example: check them all. }
-
-\tdILR{NOV 18 2023  delete the ``month'' field from your bib entries}
-
-\tdILR{NOV 18 2023: Your references list should go ahead of your appendices}
-
-
-
-\bibliographystyle{chicago}
-\bibliography{ClaraMAEssaybibfile}
 \end{document}
 
 tex*/
