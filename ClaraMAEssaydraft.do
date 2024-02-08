@@ -474,11 +474,11 @@ The regressivity evaluation in \cite{Poterba1991} is done over a partial equilib
 
 \tdIL{Look at Section 4.1 in \citet{NikodinoskaSchroder2016}. They have a short paragraph there about the history of demand systems and then their own methods paragraph about why they themselves use. They had to squeeze all that in only two paragraphs in the published version of their paper. You do have more space for full-fledged sections.}
 
-\cite{BanksBlundellLewbel1996a} have shown that the bias in estimating a first-order approximation of welfare effects from a price change (1) will be large if the change in question is large; (2) depends on the own-price elasticity of demand, which may vary across demographic groups and (3) \tr{that it} \tdeFL varies systematically over the logarithm of income. Figure \ref{fig:fuel_prices_over_time} suggests \tr{(1)} may be the case of the fuel price policy in Brazil. \tr{(2) and (3)} raise equity concerns.
+\cite{BanksBlundellLewbel1996} have shown that the bias in estimating a first-order approximation of welfare effects from a price change (1) will be large if the change in question is large; (2) depends on the own-price elasticity of demand, which may vary across demographic groups and (3) \tr{that it} \tdeFL varies systematically over the logarithm of income. Figure \ref{fig:fuel_prices_over_time} suggests \tr{(1)} may be the case of the fuel price policy in Brazil. \tr{(2) and (3)} raise equity concerns.
 
 \tdILR{This may be still just a draft, so OK. In its final version, it would need better writing. For example (1) and (2) need qualifiers like ``Concerns (2) and (3)'' or something. Or just ditch the numbering and use full words (``the former'', ``the latter'', ``the first issue'', etc.) }
 
-In order to produce second-order \tdFL{You must explain/clarify what you mean by first-order and second-order estimates, at least in a footnote.} estimates of welfare effects that address the biases found by \cite{BanksBlundellLewbel1996a}, substitution effects must be taken into account. These can be modelled with demand systems that estimate simultaneously the demand for all goods (or groups of goods) that families consume.
+In order to produce second-order \tdFL{You must explain/clarify what you mean by first-order and second-order estimates, at least in a footnote.} estimates of welfare effects that address the biases found by \cite{BanksBlundellLewbel1996}, substitution effects must be taken into account. These can be modelled with demand systems that estimate simultaneously the demand for all goods (or groups of goods) that families consume.
 
 {\cite{DeatonMuellbauer1980} \tdFL{Page numbers needed for books} defined the \ac{AIDS} to approximate any general demand function of income and preferences. \ac{AIDS} models the share of a household's total expenditure devoted to each good (or group of goods) as a function of the household's total expenditure on all goods and the prices of all goods (or groups of goods). In Equation \ref{eq:AIDS}, $w_i$ is the expenditure share on good $i$, $p_n$ is the price of good $n$ and $x$ is total expenditure on all goods.
 
@@ -490,13 +490,13 @@ w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x
 
 \cite{DeatonMuellbauer1980} also propose a linear approximation of the \ac{AIDS} model: the \ac{LA-AIDS} model \tr{was} used by \cite{AlmeidaJustoOliveiraSilva2016} with monthly aggregate consumption of gasoline, diesel and ethanol over the state of Pernambuco in Brazil, and they \tr{find} \tdFL{be consistent with verb tense} that demand for gasoline and diesel is price-inelastic \tdpFL while demand for ethanol is price-elastic. This approach, however, precludes (1) \tdFL{yeah, let us not do this} differentiating demographic groups, as consumption is aggregated over consumers and (2) regressivity analysis, as demand is modelled as a function of expenditure only on fuels.\tdFL{explain/clarify further}
 
-The \ac{AIDS} model was expanded by \cite{BanksBlundellLewbel1996b} to include a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income, or vice-versa.
+The \ac{AIDS} model was expanded by \cite{BanksBlundellLewbel1997} to include a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income, or vice-versa.
 
 \begin{equation} \label{eq:QUAIDS}
 w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)} \left [ \ln \frac{x}{a(p)} \right ]^2
 \end{equation}
 
-\cite{BanksBlundellLewbel1996b} show that in data from family budget surveys from the United Kingdom between 1970 and 1986, expenditure on alcohol and clothing exhibit non-linear relationships to the logarithm of expenditure, whereas fuel and food exhibit linear decreasing relationships. On the other hand, \cite{WaleedMirza2020} \tdFL{DEC 2023 refe missing} finds that for Pakistani families, while the coefficient of the linear log income term is negative for fuels, consistent with goods that are necessities, the coefficient of the quadratic log income term is significant and positive. The authors suggest this is due to families with higher income increasing expenditure on fuels to power luxuries such as air conditioning and heating.
+\cite{BanksBlundellLewbel1997} show that in data from family budget surveys from the United Kingdom between 1970 and 1986, expenditure on alcohol and clothing exhibit non-linear relationships to the logarithm of expenditure, whereas fuel and food exhibit linear decreasing relationships. On the other hand, \cite{WaleedMirza2020} \tdFL{DEC 2023 refe missing} finds that for Pakistani families, while the coefficient of the linear log income term is negative for fuels, consistent with goods that are necessities, the coefficient of the quadratic log income term is significant and positive. The authors suggest this is due to families with higher income increasing expenditure on fuels to power luxuries such as air conditioning and heating.
 
 
 Besides income, other household attributes affect demand. In particular, the age of a household member often translates into different needs and preferences. For example, children in general do not consume alcohol and tobacco, and may require specific goods such as disposable diapers and baby formula. Models of ``the cost of the child'' incorporate the number and age of children in a household into the demand estimation. \cite{Ray1983} \tdFL{NOV 18 2023: something is missing here, apart from the citation} demographic characteristics as scaling factors into the model. Equation \ref{eq:DQUAIDS} shows the \ac{DQUAIDS} model of expenditure shares where $\omega$ is an array of demographic characteristics.
@@ -612,14 +612,14 @@ where
 	\item{}
 \end{itemize}
 
-Following \cite{BanksBlundellLewbel1997} \tdFL{missing reference, perhaps \citet{BanksBlundellLewbel1996b}???}  the total expenditure of households is instrumented by their reported income. This, as well as ignoring certain categories of purchases, such as vehicles, mitigates the impact of unusually large expenses. \tdFL{expand, clarify further}
+Following \cite{BanksBlundellLewbel1997} \tdFL{missing reference, perhaps \citet{BanksBlundellLewbel1997}???}  the total expenditure of households is instrumented by their reported income. This, as well as ignoring certain categories of purchases, such as vehicles, mitigates the impact of unusually large expenses. \tdFL{expand, clarify further}
 
-\tdILR{Nov 18 2023: When Rober first read this about instrumenting, he thought you had actually meant ``proxying''. You do need to explain carefully why you would be needing instruments. You can start motivating this by saying why \citet{BanksBlundellLewbel1996b} used instruments themselves.}
+\tdILR{Nov 18 2023: When Rober first read this about instrumenting, he thought you had actually meant ``proxying''. You do need to explain carefully why you would be needing instruments. You can start motivating this by saying why \citet{BanksBlundellLewbel1997} used instruments themselves.}
 
 \tdILY{Nov 18 2023: Clara wrote Changed quaids to aidsills which does QUAIDS but allows instrumenting the variables, instrumented total expenditure with income as per Banks et al. }
 \tdILR{That is OK but remember that all the details of the method do need to be in Section \ref{methods} and that you havet ocitethe Stata JOurnal paper wherethe aidsill commmad is described to acknowledge its development as a Stata add-on commad}
 
-Following \cite{Poi2012, DeatonMuellbauer1980, BanksBlundellLewbel1996b}, \tdFL{Poi ref is missing and use chronological order} $\alpha_0$ is predefined as the lowest total expenditure in the dataset.
+Following \cite{Poi2012, DeatonMuellbauer1980, BanksBlundellLewbel1997}, \tdFL{Poi ref is missing and use chronological order} $\alpha_0$ is predefined as the lowest total expenditure in the dataset.
 
 The income elasticity of demand of each household for each commodity group is given by
 
@@ -719,13 +719,13 @@ See Appendix \ref{ap:demographic_attribute_variables} for the variables used to 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
 In the literature, the choice of groups of goods and services vary. Food is present in all the reviewed articles, housing and clothing are often present, and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups. Vehicle fuels may be present in "fuel", "energy" or "transportation" groups.
 
-In this essay, the following groups compose the first stage of the budget: fuels, clothing, housing, adult goods, other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \cite{Poterba1991} \tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1996b} and the observations of Rothbarth \cite{Ray1983}.
+In this essay, the following groups compose the first stage of the budget: fuels, clothing, housing, adult goods, other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \cite{Poterba1991} \tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and the observations of Rothbarth \cite{Ray1983}.
 
 Some authors separate groceries from restaurant expenses. I suspect this should probably not be done for Brazil, where workers often eat in low cost restaurants every day, with "meal vouchers" for exclusive use in restaurants being a frequent benefit provided by employers
 
 \tdILR{NOV 18 2023: Write up full paragraph below: }
 \cite{Jorgenson1990} and \cite{Slesnick2000} commodity groups: Energy, Food, Consumer Goods, Capital Services, Consumer Services
-\cite{BanksBlundellLewbel1996b}: food, clothing, fuel, alcohol, other goods
+\cite{BanksBlundellLewbel1997}: food, clothing, fuel, alcohol, other goods
 \cite{MenezesAzzoniSilveira2008}: food, housing, clothing, transportation, health and personal care, personal expenditure, education, tobacco
 
 
@@ -736,13 +736,13 @@ Some authors separate groceries from restaurant expenses. I suspect this should 
 The model for the expenditure share of each commodity group $i$ is given by Equation~\ref{eq:shares}
 
 \begin{equation}\label{eq:shares}
-w_{i} = \alpha_i + \sum_{j=1}^{n} \gamma_{ij} \ln p_j + \beta_i (\ln  x - \ln a(p) + \gamma_i \frac{ \{ \ln x - \ln a(p) \}^2 }{b(p)} \left { \ln \left [ \frac{m}{a(p)} \right ] \right }^2
+w_i = \alpha_i + \sum_{j=1}^{n} \gamma_{ij} \ln p_j + \beta_i (\ln x - \ln a(p)) + \lambda_i \frac{ (\ln x - \ln a(p))^2 }{b(p)} + e_{ih}
 \end{equation}
 
 , where $\ln x$ is the natural logarithm of total expenditure, and $\ln a(p)$ and $b(p)$ are price aggregators given by Equations \ref{eq:a_p} and \ref{eq:b_p}.
 
 \begin{equation}\label{eq:a_p}
-\ln a(p) = \alpha_0 + \sum_{i=1}^{n} \alpha_i \ln p_i + \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} \gamma_i_j \ln p_i \ln p_j
+\ln a(p) = \alpha_0 + \sum_{i=1}^{n} \alpha_i \ln p_i + \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} \gamma_{ij} \ln p_i \ln p_j
 \end{equation}
 
 \begin{equation}\label{eq:b_p}
@@ -755,6 +755,25 @@ Demographic attributes of each household $h$ are included by means of translatio
 \alpha_{ih} = \sum_{d=1}^D \alpha_id d_d
 \end{equation}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Welfare measurement}
+The welfare effects of the \ac{IPP} policy are measured as the equivalent variation of the change in the price of the ``Transportation'' group for the households. Equivalent variation is the change in total expenditure that would place the household at the same utility level as the price change, better understood with Equation~\ref{eq:EV}. After the price change, the household faces prices $p_1$ and is at utility level $u_1$, and the difference between the cost of achieving $u_1$ under the old prices $p_0$ and the new prices $p_1$ is the equivalent variation, in money terms.
+
+\begin{equation}\label{eq:EV}
+EV = c_k(u_1, p_0) - c_k(u_1, p_1)
+\end{equation}
+
+Rearranging the (logarithm) indirect utility function $\ln v(x, p)$ of QUAIDS \citep{BanksBlundellLewbel1997} shown in Equation~\ref{eq:indirect_utility_quaids} yields the (logarithm) cost function $\ln c(u, p)$ in Equation~\ref{eq:cost_quaids} \cite{ChangSerletis2012}.
+
+\begin{equation}\label{eq:indirect_utility_quaids}
+\ln v(x, p) = \left ( \left [ \frac{\ln x - \ln a(p)}{b(p)} \right ]^{-1} + \lambda(p) \right )^{-1}
+\end{equation}
+
+\begin{equation}\label{eq:cost_quaids}
+\ln c(u, p) = \ln a(p) + \frac{b(p) \ln v(x, p)}{1 - \lambda(p) \ln v(x, p)}
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1558,9 +1577,9 @@ texdoc stlog, nolog
 frame change expenditure_shares
 
 // make a throwaway copy
-capture frame drop tmp_exp_shares
-frame copy expenditure_shares tmp_exp_shares
-frame change tmp_exp_shares
+capture frame drop model_data
+frame copy expenditure_shares model_data
+frame change model_data
 
 frlink m:1 hh_id commodity_group, frame(price_indices)
 frget price_index, from(price_indices)
@@ -1652,7 +1671,7 @@ collect, name(quad_tests) tag(model["Enforced Homogeneity and Symmetry"]): test 
 // format and export regression results
 etable, estimates(quaids aids homo symm) mstat(N) column(estimates) ///
 	showstars showstarsnote cstat(_r_b) ///
-	title("Demand system estimates for the Brazilian population") ///
+	title("Demand system estimates for the Brazilian population \label{tb:regresults}") ///
 	showeq ///
 	cstat(_r_ci, nformat(%6.3f) cidelimiter(","))
 
@@ -1674,8 +1693,8 @@ collect label levels colname ///
 
 collect export "reg_results_table.tex", name(ETable) as(tex) tableonly replace
 
-
 // format and export joint test of quadratic coefficients
+collect title "Joint test statistics and p-values of quadratic terms in demand system specifications \label{tb:quad_tests}"
 collect label levels result ///
 	chi2 "chi2", ///
 	name(quad_tests) modify
@@ -1694,13 +1713,127 @@ texdoc stlog close
 
 \section{Welfare effects estimation}
 
-% get the average price of gasoline before and after october 2016 but before 2020 to avoid pandemic effects
+Choosing $u_1$ and $p_1$ as the prices and utility level of households at the base period for the 2017-2018 \ac{FBS}, the cost of achieving $u_1$ is equal to the total expenditure of household $k$ at the base period, so that Equation~\ref{eq:EV} can be computed as $EV = c_k(u_1, p_0) - x$.
 
-% get the average elasticity for each income decile in the sample
+tex*/
+texdoc stlog, nolog
 
-% estimate CV and EV for each income decile of the price changed
+// get the average price of gasoline before and after october 2016 but before 2020 to avoid pandemic effects
 
 
+/************************************
+* Get EV for each population subgroup
+*/
+
+// get u_1 from the indirect utility function
+// u_1 = 1/(b_p / (ln x - ln a_p) + lambda_p)
+// ln x is given
+// lambda_p = sum lambda_i ln p_i, lambda_i is estimated and p_i is given
+// ln a_p = alpha_0 + sum alpha_i ln p_i + 1/2 * sum of sum gamma_ij ln p_i ln p_j, alpha_0 is predetermined and gamma_ij is estimated
+// alpha_i = alpha_male * male + alpha_this * this ...
+// b_p = prod p_i ^ beta_i, beta_i are estimated
+
+scalar alpha_0 = `=_min_exp'
+
+// make a throwaway copy
+frame change model_data
+capture frame drop ev
+frame copy model_data ev
+frame change ev
+
+drop if missing(price_index1) | missing(price_index2) | missing(price_index3) | missing(price_index4) | missing(price_index5)
+
+// use the model with enforced symmetry
+estimates restore symm
+
+// a_p aux
+gen gamma_ij_times_ln_prices = 0
+gen alpha_group_times_ln_prices = 0
+
+// b_p
+gen b_p = 1
+
+// lambda_p
+gen lambda_p = 0
+
+foreach group in "1" "2" "3" "4" "5" {
+	// sum alpha_i ln p_i
+	replace alpha_group_times_ln_prices = alpha_group_times_ln_prices + ///
+		(e(alpha)["_cons", "group_expenditure_share`group'"] + ///
+		e(alpha)["male", "group_expenditure_share`group'"] * male + ///
+		e(alpha)["n_adults", "group_expenditure_share`group'"] * n_adults + ///
+		e(alpha)["n_children", "group_expenditure_share`group'"] * n_children) * ///
+		log(price_index`group')
+
+	// sum of sum gamma_ij ln p_i ln p_j
+	foreach group2 in "1" "2" "3" "4" "5" {
+		replace gamma_ij_times_ln_prices =  gamma_ij_times_ln_prices + ///
+			e(gamma)[`group', `group2'] * log(price_index`group') * log(price_index`group2')
+	}
+
+	// prod of p_i ^ beta_i
+	replace b_p = b_p * price_index`group'^(e(beta)["lnx", "group_expenditure_share`group'"])
+
+	// lambda_p
+	replace lambda_p = lambda_p + e(lambda)["lnx2", "group_expenditure_share`group'"] * log(price_index`group')
+}
+
+gen ln_a_p = `=alpha_0' + alpha_group_times_ln_prices + gamma_ij_times_ln_prices
+
+gen ln_u_1 = 1/(b_p / (log(total_expenditure) - ln_a_p) + lambda_p)
+
+
+/*****************************************
+* Calculate cost of u_1 at previous prices
+*/
+// replace transportation price
+replace price_index2 = price_index2 * 0.8
+
+// recalculate a_p, b_p and lambda_p
+// a_p aux
+replace gamma_ij_times_ln_prices = 0
+replace alpha_group_times_ln_prices = 0
+
+// b_p
+replace b_p = 1
+
+// lambda_p
+replace lambda_p = 0
+
+foreach group in "1" "2" "3" "4" "5" {
+	// sum alpha_i ln p_i
+	replace alpha_group_times_ln_prices = alpha_group_times_ln_prices + ///
+		(e(alpha)["_cons", "group_expenditure_share`group'"] + ///
+		e(alpha)["male", "group_expenditure_share`group'"] * male + ///
+		e(alpha)["n_adults", "group_expenditure_share`group'"] * n_adults + ///
+		e(alpha)["n_children", "group_expenditure_share`group'"] * n_children) * ///
+		log(price_index`group')
+
+	// sum of sum gamma_ij ln p_i ln p_j
+	foreach group2 in "1" "2" "3" "4" "5" {
+		replace gamma_ij_times_ln_prices =  gamma_ij_times_ln_prices + ///
+			e(gamma)[`group', `group2'] * log(price_index`group') * log(price_index`group2')
+	}
+
+	// prod of p_i ^ beta_i
+	replace b_p = b_p * price_index`group'^(e(beta)["lnx", "group_expenditure_share`group'"])
+
+	// lambda_p
+	replace lambda_p = lambda_p + e(lambda)["lnx2", "group_expenditure_share`group'"] * log(price_index`group')
+}
+
+replace ln_a_p = `=alpha_0' + alpha_group_times_ln_prices + (gamma_ij_times_ln_prices/2)
+
+gen ln_c_p_0 = ln_a_p + b_p * ln_u_1/(1 - lambda_p * ln_u_1)
+
+// EV!
+gen ev = exp(ln_c_p_0) - total_expenditure
+
+texdoc stlog close
+
+
+/*tex
+% multiply the CV for each subgroup by the population share to get the total losses
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
