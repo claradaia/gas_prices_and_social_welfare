@@ -679,7 +679,7 @@ Each element in the matrix is a sum $S_{ij} = \frac{\partial x_i}{\partial p_j} 
 
 If demand satisfies Walras' law and the weak axiom of revealed preferences, the Slutsky matrix will be \textit{negative semidefinite}, which implies that $\forall v \in \mathds{R}, v \cdot S(p, x) v \leq 0$ \cite[p.~34]{MWG1995}.
 
-\citet[p.~70]{MWG1995} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the second-derivative matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  \cite[p.~80]{MWG1995}, which will be used to estimate welfare effects.
+\citet[p.~70]{MWG1995} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the second-derivative matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  \cites[p.~50]{DeatonMuellbauer1980}[p.~80]{MWG1995}, which will be used to estimate welfare effects.
 
 
 \subsection{Regularity}
@@ -733,16 +733,27 @@ Some authors separate groceries from restaurant expenses. I suspect this should 
 
 
 \section {Econometric Model}
-The model for individual expenditure shares is given by:
+The model for the expenditure share of each commodity group $i$ is given by Equation~\ref{eq:shares}
 
-\begin{equation}
+\begin{equation}\label{eq:shares}
+w_{i} = \alpha_i + \sum_{j=1}^{n} \gamma_{ij} \ln p_j + \beta_i (\ln  x - \ln a(p) + \gamma_i \frac{ \{ \ln x - \ln a(p) \}^2 }{b(p)} \left { \ln \left [ \frac{m}{a(p)} \right ] \right }^2
 \end{equation}
 
-, where
-\begin{itemize}
-	\item $w_k$ is the vector of expenditure shares for each commodity group for the $k$th \tdFL{FNW: fix subscript format} household;
-	\item $x_k$ is the household expenditure on all goods;\tdFL{ENW check use of ``the''}
-\end{itemize}
+, where $\ln x$ is the natural logarithm of total expenditure, and $\ln a(p)$ and $b(p)$ are price aggregators given by Equations \ref{eq:a_p} and \ref{eq:b_p}.
+
+\begin{equation}\label{eq:a_p}
+\ln a(p) = \alpha_0 + \sum_{i=1}^{n} \alpha_i \ln p_i + \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} \gamma_i_j \ln p_i \ln p_j
+\end{equation}
+
+\begin{equation}\label{eq:b_p}
+\ln b(p) = \prod_{i=1}^n p_i^{\beta_i}
+\end{equation}
+
+Demographic attributes of each household $h$ are included by means of translation into $\alpha_i$. $\alpha_ik$ is modelled as a linear function of the demographic attributes $d_h$ as in Equation~\ref{eq:alpha_ih}.
+
+\begin{equation}\label{eq:alpha_ih}
+\alpha_{ih} = \sum_{d=1}^D \alpha_id d_d
+\end{equation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
