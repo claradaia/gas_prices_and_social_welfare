@@ -590,29 +590,14 @@ Finally, it may not be socially acceptable to attribute a lower ``weight'' to ch
 
 \tdILR{NOV 18 2023 OK, so where in your Section \ref{methods} do you explain to the reader that you are using the QUAIDS of DQUAIDS models?}
 
-In this essay I characterize the demand for gasoline across households of different compositions and attributes and use this characterization to estimate the welfare effects of a subsidy policy change.
+In this essay, consumer demand for fuels is characterized across households of different compositions and attributes, and the results are used to estimate the welfare effects of a subsidy policy change. Demand is estimated with \ref{eq:QUAIDS} using data from the \ac{FBS} and the \ac{ACPI}.
 
-Demand is estimated with \ref{eq:QUAIDS} using data from the \ac{FBS} and the \ac{ACPI}.
-
-Assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have a utility function of the form:
+Assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have an indirect utility function of the form:
 
 \begin{equation}
 \end{equation}
 
-where, ???  . By maximizing this utility function and incorporating differences related to demographic characteristics of the households, we \tdFL{Again, try to reword, it is not ``we''...use the passive voice perhaps.} obtain an indirect utility function \citep{JorgensonSlesnick1987}:
-
-\begin{equation}
-\end{equation}
-
-
-\tdIL{NOV 18 2023: Unless you have a long list of  `items', I suggest that you do not make use of the itemize environment. Simply maintain the flow of te paragraph through the equation and describe the notation elements in a regular paragraph }
-
-where
-\begin{itemize}
-	\item{}
-\end{itemize}
-
-Following \cite{BanksBlundellLewbel1997} \tdFL{missing reference, perhaps \citet{BanksBlundellLewbel1997}???}  the total expenditure of households is instrumented by their reported income. This, as well as ignoring certain categories of purchases, such as vehicles, mitigates the impact of unusually large expenses. \tdFL{expand, clarify further}
+Following \cite{BanksBlundellLewbel1997} \tdFLY{missing reference, perhaps \citet{BanksBlundellLewbel1997}???}  the total expenditure of households is instrumented by their reported income. This, as well as ignoring certain categories of purchases, such as vehicles, mitigates the impact of unusually large expenses. \tdFL{expand, clarify further}
 
 \tdILR{Nov 18 2023: When Rober first read this about instrumenting, he thought you had actually meant ``proxying''. You do need to explain carefully why you would be needing instruments. You can start motivating this by saying why \citet{BanksBlundellLewbel1997} used instruments themselves.}
 
@@ -620,30 +605,6 @@ Following \cite{BanksBlundellLewbel1997} \tdFL{missing reference, perhaps \citet
 \tdILR{That is OK but remember that all the details of the method do need to be in Section \ref{methods} and that you havet ocitethe Stata JOurnal paper wherethe aidsill commmad is described to acknowledge its development as a Stata add-on commad}
 
 Following \cite{Poi2012, DeatonMuellbauer1980, BanksBlundellLewbel1997}, \tdFL{Poi ref is missing and use chronological order} $\alpha_0$ is predefined as the lowest total expenditure in the dataset.
-
-The income elasticity of demand of each household for each commodity group is given by
-
-\begin{equation}
-\varepsilon_mi = \frac{\partial w_i}{\partial \ln m} \frac{1}{w_i} + 1
-\end{equation}
-
-The uncompensated price elasticity of demand is given by
-\begin{equation} \label{eq:uncompensated_e}
-\varepsilon_{ij}^u = \frac{\partial w_i}{\partial \ln m} \frac{1}{w_i} - \delta_{ij}
-\end{equation}
-
-The Slutsky equation for the compensated price elasticities is $\varepsilon_{ij}^c = \varepsilon_{ij}^u + \varepsilon_{m} m$, the compensated price-elasticity of demand of each household for each commodity group is then given by
-\begin{equation}
-\varepsilon_h^c = 
-\end{equation}
-
-The compensating variation for each household is obtained from the cost or expenditure function in equation \ref{eq:cost}:
-
-\begin{equation}
-CV \approx \sum_{i=1}w_i \Delta \ln p_i + \frac{1}{2} \sum_{i=1} \sum_{j=1} w_i \varepsilon_{ij} \Delta \ln p_i \Delta \ln p_j
-\end{equation}
-
-with $p_0$ being the price vector with the gasoline price set to the average price without the price control policy, and $p_1$ being the price vector with the price control. Then the compensating variation for each household is equalized by means of the OECD modified equivalence scale.
 
 
 \tdILR{NOV 18 2023: OK so this section needs completing and polishing. ALso make sure you fix the missing references}
@@ -721,7 +682,7 @@ In the literature, the choice of groups of goods and services vary. Food is pres
 
 In this essay, the following groups compose the first stage of the budget: fuels, clothing, housing, adult goods, other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \cite{Poterba1991} \tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and the observations of Rothbarth \cite{Ray1983}.
 
-Some authors separate groceries from restaurant expenses. I suspect this should probably not be done for Brazil, where workers often eat in low cost restaurants every day, with "meal vouchers" for exclusive use in restaurants being a frequent benefit provided by employers
+Some authors separate groceries from restaurant expenses, which is likely not applicable for the Brazilian population. The Brazilian government subsidises food programs for workers that often consist in meal vouchers for exclusive use in restaurants.
 
 \tdILR{NOV 18 2023: Write up full paragraph below: }
 \cite{Jorgenson1990} and \cite{Slesnick2000} commodity groups: Energy, Food, Consumer Goods, Capital Services, Consumer Services
