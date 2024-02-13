@@ -680,7 +680,7 @@ See Appendix \ref{ap:demographic_attribute_variables} for the variables used to 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
 In the literature, the choice of groups of goods and services vary. Food is present in all the reviewed articles, housing and clothing are often present, and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups. Vehicle fuels may be present in "fuel", "energy" or "transportation" groups.
 
-In this essay, the following groups compose the first stage of the budget: fuels, clothing, housing, adult goods, other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \cite{Poterba1991} \tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and the observations of Rothbarth \cite{Ray1983}.
+For the present analysis, the following groups compose the first stage of the budget: fuels, housing and maintenance services, adult goods, services, and other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \cite{Poterba1991} \tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and the observations of Rothbarth \cite{Ray1983}.
 
 Some authors separate groceries from restaurant expenses, which is likely not applicable for the Brazilian population. The Brazilian government subsidises food programs for workers that often consist in meal vouchers for exclusive use in restaurants.
 
@@ -743,7 +743,7 @@ Rearranging the (logarithm) indirect utility function $\ln v(x, p)$ of QUAIDS \c
 
 \tdILR{NOV18 2023: Rober thinks that the DATA SECTION should be a ``chapter'' itself, separate from the Methodology}
 
-\subsection {Data Source}
+\subsection {Data Source} \label{sec:data_source}
 
 The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23\textsuperscript{rd} 2018.
 
@@ -950,11 +950,12 @@ frames reset
 frame create expenditures
 frame change expenditures
 
-local Energy 2
 local Food 1
-local ConsumerServices 4
-local ConsumerGoods 3
-local CapitalServices 5
+local FuelsTransportation 2
+local OtherGoods 3
+local Services 4
+local Housing 5
+local AdultGoods 6
 
 
 // open individual expenditure data
@@ -999,13 +1000,14 @@ gen stage2_commodity_group = ""
 
 
 //*************
-// Energy group
+// Fuels & Transportation group
 
 /*
 quadro		purchase
 ---------|----------------------------------------------------------
 	06		power, water & sewage fees, piped natural gas, phone, internet, tv
 	07		domestic fuels and water
+	23		transportation
 
 Within quadro 06
 code			purchase
@@ -1026,10 +1028,9 @@ code			purchase
 2301801			natural gas for vehicles
 */
 
-replace commodity_group = `Energy' if inlist(item_code, 2301401, 2301501, 2301502, 700801)
-
-replace commodity_group = `Energy' if ///
-	inlist(item_code, 600101, 600301, 601801, 699901) | ///
+replace commodity_group = `FuelsTransportation' if ///
+	inlist(item_code, 600101, 600301, 601801, 699901, 700801) | ///
+	QUADRO == 23 | ///
 	(QUADRO == 7 & ~inlist(item_code, 700201, 700202, 700801))
 
 unique hh_id if item_code == 700801
@@ -1074,24 +1075,60 @@ replace commodity_group = `Food' if ///
 	inrange(item_code, 9000101, 9000928)
 
 
+//******************
+// Adult goods group
+/*
 
-//************************
-// Consumer services group
+quadro		purchase
+---------|----------------------------------------------------------
+	21		tobacco and other recreational drugs
+	24		eating out
+
+code range				purchase
+---------------------|----------------------------------------------
+2402601 - 2402902		wine, beer and cachaça
+2403501 - 2403801		other liquor and cocktails
+2405805					beer with food
+2405813					beer with food
+2407001					light beer
+2407401 - 2407501		organic alcoholic beverages
+2410101					unspecified alcoholic beverage
+2411101 - 2411301		champagne and other alcoholic beverages
+2411601					catuaba
+2411801					rum
+6601716					açai wine
+6602302					buriti wine
+6602604					pataua wine
+8218401					alcoholic beverage "ice"
+8300101 - 8305201		alcoholic beverages (not purchased at restaurants)
+9000921					beer and meat (??????)
+
+*/
+
+// item codes for adult goods
+replace commodity_group = `AdultGoods' if ///
+	QUADRO == 21 | ///
+	inrange(item_code, 2402601, 2402902) | ///
+	inrange(item_code, 2403501, 2403801) | ///
+	inrange(item_code, 2407401, 2407501) | ///
+	inrange(item_code, 2411101, 2411301) | ///
+	inrange(item_code, 8300101, 8305201) | ///
+	inlist(item_code, 2405805, 2405813, 2407001, 2410101, 2411601, 2411801, 2411801, 6601716, 6602302, 6602604, 8218401)
+
+
+//***************
+// Services group
 /*
 quadro  	purchase
 ---------|----------------------------------------------------------
-	09		repair, maintenance and rent of furniture and appliances
 	19		domestic services (cleaning, cooking, gardening, etc)
 	22		games, bets
-	23		transportation
 	25		communication
 	31		services like barber/salon, massage, tattoos
 	40		lawyer, notary services
 	41		travelling
 	42		health care services
-	42B		health care services NOT ACQUIRED
 	45		parties and ceremonies
-	50		vehicle-related fees for docs, insurance, etc
 
 Items from quadros 07 and 06 that are not energy-related are included here.
 
@@ -1099,18 +1136,19 @@ Within group 9, there are item codes both for goods purchased to fix/maintain an
 
 */
 
-replace commodity_group = `ConsumerServices' if ///
-	inlist(QUADRO, 9, 19, 22, 25, 31, 40, 41, 42, 45, 50) | ///
+replace commodity_group = `Services' if ///
+	inlist(QUADRO, 19, 22, 25, 31, 40, 41, 42, 45) | ///
 	(QUADRO == 6 & ~inlist(item_code, 600101, 600301, 601801, 699901)) | /// water, sewage, internet
-	(QUADRO == 7 & inlist(item_code, 700201, 700202)) | /// water
-	(QUADRO == 23 & missing(commodity_group)) /// transportation excluding fuels
+	(QUADRO == 7 & inlist(item_code, 700201, 700202)) // water
 
 
-//*********************
-// Consumer goods group
+//******************
+// Other goods group
 /*
 quadro  	purchase
 ---------|----------------------------------------------------------
+	12		other house items
+	13		pets and pet care
 	15		electric appliances
 	16		non-electric appliances
 	17		furniture
@@ -1118,7 +1156,7 @@ quadro  	purchase
 	21		smoking stuff
 	27 		newspaper, magazines
 	29		health products, including medication
-	29B		health products NOT ACQUIRED
+	28		tickets to museums, purchase of photography supplies, games
 	30 		make up and hygiene stuff
 	32		stationary
 	34		purchase/renting male clothing
@@ -1130,25 +1168,27 @@ quadro  	purchase
 	43		toys, games, hunting, fishing, sports, music materials
 	44		cell phones and accessories
 	46		jewelry and watch purchases
+	49		courses, textbooks, other education goods
 
 
 Includes items from the 63 to 69 quadros that are not food items.
 
 */
 
-replace commodity_group = `ConsumerGoods' if ///
-	inlist(QUADRO, 15, 16, 17, 18, 21, 27, 29, 30, 32, 34, 35, 36, ///
-		   37, 38, 39, 43, 44, 46) | ///
+replace commodity_group = `OtherGoods' if ///
+	inlist(QUADRO, 12, 13, 15, 16, 17, 18, 21, 27, 28, 29, 30, 32, 34, 35, 36, ///
+		   37, 38, 39, 43, 44, 46, 49) | ///
 	inrange(item_code, 8600101, 8900101)
 
 
-//***********************
-// Capital services group
+//******************************
+// Housing and maintenance group
 /*
 
 quadro  	purchase
 ---------|----------------------------------------------------------
 	08		small repair/maintenance of house or tomb
+	09		repair, maintenance and rent of furniture and appliances
 	10		rent, house taxes and other house fees
 	11		building/renovating of house or tomb
 	33		car maintenance and accessories
@@ -1165,27 +1205,24 @@ code range				purchase
 
 */
 
-replace commodity_group = `CapitalServices' if ///
-	inlist(QUADRO, 8, 10, 11, 33) | ///
+replace commodity_group = `Housing' if ///
+	inlist(QUADRO, 8, 9, 10, 11, 33) | ///
 	item_code == 000101
 
 
-// Quadros that still need to be mapped
-// This is taking forever so I will leave it out for now and work on one category at a time
+// Ignored Quadros
 /*
 quadro  	purchase
-	12		other house items
-	13		pets and pet care
 	26		credit card/loan interest and fees
-	28		tickets to museums, purchase of photography supplies, games
+	29B		health products NOT ACQUIRED
+	42B		health care services NOT ACQUIRED
 	47		real estate (not the one they live in)
 	48		loans, securities
-	49		courses, textbooks, other education goods
+	50		vehicle-related fees for docs, insurance, etc
 	51		vehicle purchase payments
-
 */
 
-drop if inlist(QUADRO, 12, 13, 26, 28, 47, 48, 49, 51)
+drop if inlist(QUADRO, 26, 47, 48, 50, 51)
 
 assert ~missing(commodity_group)
 
@@ -1483,7 +1520,7 @@ texdoc stlog close
 % Data cleaning and expense mapping
 Of the original $`purchase_ct'$ purchases recorded, $`unknown_amt'$ were excluded from the analysis as the amount spent was not informed.
 
-Some expenses on services like renting of clothes or appliance repairs have been included in the ``Consumer Goods'' group, as they are likely not separable from the goods associated.
+Some expenses on services like renting of clothes or appliance repairs have been included in the ``Other Goods'' group, as they are likely not separable from the goods associated.
 
 The periods of reference vary by purchase group, with food registry being done over a period of seven days, income and health expenses done over the previous 30 days, durable goods over the last twelve months and other expenses over the previous 90 days. Total expenses reported were extrapolated or averaged into 30-day periods, as formal income is usually paid monthly.
 
@@ -1551,15 +1588,15 @@ merge m:1 hh_id using "Data\hh_head_size.dta"
 keep if _merge==3
 
 // ensure that the sum of expenditure shares is close enough to 1...
-gen sum_of_exp_shares = group_expenditure_share`Food' + group_expenditure_share`Energy' + group_expenditure_share`ConsumerServices' + group_expenditure_share`ConsumerGoods' + group_expenditure_share`CapitalServices'
+gen sum_of_exp_shares = group_expenditure_share`Food' + group_expenditure_share`FuelsTransportation' + group_expenditure_share`AdultGoods' + group_expenditure_share`Services' + group_expenditure_share`OtherGoods' + group_expenditure_share`Housing'
 assert inrange(sum_of_exp_shares, 0.999999, 1.000001)
 drop sum_of_exp_shares
 
 // ...but replace the 5th one with the complement of the others, as quaids does not accept the small difference
-replace group_expenditure_share`Food' = 1 - (group_expenditure_share`Energy' + group_expenditure_share`ConsumerServices' + group_expenditure_share`ConsumerGoods' + group_expenditure_share`CapitalServices')
+replace group_expenditure_share`Food' = 1 - (group_expenditure_share`FuelsTransportation' + group_expenditure_share`AdultGoods' + group_expenditure_share`Services' + group_expenditure_share`OtherGoods' + group_expenditure_share`Housing')
 
 // drop households for which one of the price_indices is 0 (i.e. there were no expenditure on any of the goods in the group)
-drop if price_index`Food' == 0 | price_index`Energy' == 0 | price_index`ConsumerServices' == 0 | price_index`ConsumerGoods' == 0 | price_index`CapitalServices' == 0
+drop if price_index`Food' == 0 | price_index`FuelsTransportation' == 0 | price_index`Services' == 0 | price_index`OtherGoods' == 0 | price_index`Housing' == 0 | price_index`AdultGoods' == 0
 
 // unpack categorical variables because aidsills can't handle i.var_name :)
 gen male = gender
@@ -1577,11 +1614,11 @@ gen ln_disposable_income = log(disposable_income)
 collect create quad_tests, replace
 
 // now we should have all the expenditure shares, total expenditures and price indices, so we can run the main model!
-aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
+aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportation' group_expenditure_share`Services' group_expenditure_share`OtherGoods' group_expenditure_share`Housing'  group_expenditure_share`AdultGoods', ///
 	expenditure(total_expenditure) ///
 	ivexpenditure(ln_disposable_income) ///
-	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
-	intercept(n_adults n_children male region_1-region_4) ///
+	prices(price_index`Food' price_index`FuelsTransportation' price_index`Services' price_index`OtherGoods' price_index`Housing' price_index`AdultGoods') ///
+	intercept(n_adults n_children male) ///
 	alpha_0(`=_min_exp') ///
 	quadratic
 
@@ -1591,21 +1628,21 @@ estimates store quaids
 collect, name(quad_tests) tag(model["Unconstrained"]): test lambda_lnx2
 
 // run the non-quadratic version
-aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
+aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportation' group_expenditure_share`Services' group_expenditure_share`OtherGoods' group_expenditure_share`Housing' group_expenditure_share`AdultGoods', ///
 	expenditure(total_expenditure) ///
 	ivexpenditure(ln_disposable_income) ///
-	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
-	intercept(n_adults n_children male region_1-region_4) ///
+	prices(price_index`Food' price_index`FuelsTransportation' price_index`Services' price_index`OtherGoods' price_index`Housing' price_index`AdultGoods') ///
+	intercept(n_adults n_children male) ///
 	alpha_0(`=_min_exp')
 
 estimates store aids
 
 // enforce homogeneity, test for symmetry
-aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
+aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportation' group_expenditure_share`Services' group_expenditure_share`OtherGoods' group_expenditure_share`Housing' group_expenditure_share`AdultGoods', ///
 	expenditure(total_expenditure) ///
 	ivexpenditure(ln_disposable_income) ///
-	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
-	intercept(n_adults n_children male region_1-region_4) ///
+	prices(price_index`Food' price_index`FuelsTransportation' price_index`Services' price_index`OtherGoods' price_index`Housing' price_index`AdultGoods') ///
+	intercept(n_adults n_children male) ///
 	alpha_0(`=_min_exp') ///
 	quadratic homogeneity
 
@@ -1615,11 +1652,11 @@ estimates store homo
 collect, name(quad_tests) tag(model["Enforced Homogeneity"]): test lambda_lnx2
 
 // enforce symmetry and homogeneity
-aidsills group_expenditure_share`Food' group_expenditure_share`Energy' group_expenditure_share`ConsumerServices' group_expenditure_share`ConsumerGoods' group_expenditure_share`CapitalServices', ///
+aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportation' group_expenditure_share`Services' group_expenditure_share`OtherGoods' group_expenditure_share`Housing' group_expenditure_share`AdultGoods', ///
 	expenditure(total_expenditure) ///
 	ivexpenditure(ln_disposable_income) ///
-	prices(price_index`Food' price_index`Energy' price_index`ConsumerServices' price_index`ConsumerGoods' price_index`CapitalServices') ///
-	intercept(n_adults n_children male region_1-region_4) ///
+	prices(price_index`Food' price_index`FuelsTransportation' price_index`Services' price_index`OtherGoods' price_index`Housing' price_index`AdultGoods') ///
+	intercept(n_adults n_children male) ///
 	alpha_0(`=_min_exp') ///
 	quadratic symmetry
 
@@ -1638,18 +1675,20 @@ etable, estimates(quaids aids homo symm) mstat(N) column(estimates) ///
 
 collect label levels coleq ///
 	group_expenditure_share1 "w_{Food}" ///
-	group_expenditure_share2 "w_{Energy}" ///
+	group_expenditure_share2 "w_{FuelsTransportation}" ///
 	group_expenditure_share3 "w_{Services}" ///
-	group_expenditure_share3 "w_{Goods}" ///
-	group_expenditure_share3 "w_{Housing}", ///
+	group_expenditure_share4 "w_{Goods}" ///
+	group_expenditure_share5 "w_{Housing}" ///
+	group_expenditure_share6 "w_{AdultGoods}", ///
 	name(ETable) modify
 
 collect label levels colname ///
 	gamma_lnprice_index1 "gamma_{Food}" ///
-	gamma_lnprice_index2 "gamma_{Energy}" ///
+	gamma_lnprice_index2 "gamma_{FuelsTransportation}" ///
 	gamma_lnprice_index3 "gamma_{Services}" ///
 	gamma_lnprice_index4 "gamma_{Goods}" ///
-	gamma_lnprice_index5 "gamma_{Housing}", ///
+	gamma_lnprice_index5 "gamma_{Housing}" ///
+	gamma_lnprice_index6 "gamma_{AdultGoods}", ///
 	name(ETable) modify
 
 collect export "reg_results_table.tex", name(ETable) as(tex) tableonly replace
@@ -1663,6 +1702,48 @@ collect label levels result ///
 collect layout (model) (result[chi2 p]), name(quad_tests)
 collect export "quad_test_results_table.tex", name(quad_tests) as(tex) tableonly replace
 
+
+/************************************************
+* count and plot households missing price indices
+*/
+
+// make a throwaway copy
+frame change model_data
+capture frame drop missing_indices
+frame copy model_data missing_indices
+frame change missing_indices
+
+// count missing indices for each household
+egen missing_indices = rowmiss(price_index1-price_index6)
+// tag deciles
+egen x_decile = cut(total_expenditure), group(10) //label
+
+replace x_decile = x_decile + 1 // graph bar ignores zeroes :)
+
+// plot mean count of missing indices by decile
+graph bar (mean) missing_indices, ///
+	over(x_decile, relabel (1 "1st" 2 "2nd" 3 "3rd" 4 "4th" 5 "5th" 6 "6th" 7 "7th" 8 "8th" 9 "9th" 10 "10th")) ///
+	  ytitle("Mean count of missing price indices") ///
+	  graphregion(color(white) margin(zero)) bgcolor(white)
+
+graph export "graphs\missing_indices.png", as(png) replace
+
+// count % households missing indices
+gen missing_one = 0
+replace missing_one = 1 if missing_indices > 0
+
+collapse (count) hh_id, by (missing_one x_decile)
+bys x_decile: egen total_households = total(hh_id)
+gen pct_missing_one = 100*hh_id/total_households
+
+// plot pct of households missing one index by decile
+graph bar pct_missing_one if missing_one == 1, ///
+	over(x_decile, relabel (1 "1st" 2 "2nd" 3 "3rd" 4 "4th" 5 "5th" 6 "6th" 7 "7th" 8 "8th" 9 "9th" 10 "10th")) ///
+	  ytitle("Percentage of households missing at least one price index") ///
+	  graphregion(color(white) margin(zero)) bgcolor(white)
+
+graph export "graphs\missing_one_or_more_indices.png", as(png) replace
+
 texdoc stlog close
 
 
@@ -1675,6 +1756,26 @@ texdoc stlog close
 \section{Welfare effects estimation}
 
 Choosing $u_1$ and $p_1$ as the prices and utility level of households at the base period for the 2017-2018 \ac{FBS}, the cost of achieving $u_1$ is equal to the total expenditure of household $k$ at the base period, so that Equation~\ref{eq:EV} can be computed as $EV = c_k(u_1, p_0) - x$.
+
+
+\section{Limitations}
+Having zero expenditure in one or more commodity groups would not ordinarily require that a household not be included in the estimation. However, due to the procedure described in Section~\ref{sec:data_source}, if within a household's price group there was no aggregate expenditure on the commodity group in question, there will also be no price index for said commodity group. The absence of price index information does mean the household data will be discarded.
+
+Figure~\ref{fig:missing_indices} shows that the mean count of commodity groups for which the price index could not be computed is higher for lower income households. Lower income households are also more likely to have at least one missing index, as shown in Figure~\ref{fig:missing_one_or_more_indices}. This implies lower income homes are more likely to be omitted from the sample.
+
+\begin{figure}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/missing_indices.png}
+    \caption{Mean count of missing price indices by total expenditure decile}
+    \label{fig:missing_indices}
+\end{figure}
+
+
+\begin{figure}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/missing_one_or_more_indices.png}
+    \caption{Percentage of households missing at least one price index by total expenditure decile}
+    \label{fig:missing_one_or_more_indices}
+\end{figure}
+
 
 tex*/
 texdoc stlog, nolog
@@ -1974,50 +2075,50 @@ Food and Beverages       &                                &                     
    &
   Capital Services \\
                          &                                & Repairs               &                   & Capital Services  \\
-                         &                                & Cleaning Products     &                   & Consumer Goods    \\ \cmidrule(l){2-5}
+                         &                                & Cleaning Products     &                   & Other Goods    \\ \cmidrule(l){2-5}
                          & Domestic fuels and electricity &                       &                   & Energy            \\ \midrule
 Appliances and Furniture &                                &                       &                   & Capital Services  \\ \midrule
-Clothing                 &                                &                       &                   & Consumer Goods    \\ \midrule
+Clothing                 &                                &                       &                   & Other Goods    \\ \midrule
 \multirow{3}{=}{Transportation} &
   \multirow{3}{=}{Transportation} &
   Public Transportation &
    &
-  Consumer Services \\
+  Services \\
                          &                                & Private Vehicle       &                   & Capital Services  \\
                          &                                & Vehicle Fuels         &                   & Energy            \\ \midrule
 \multirow{3}{=}{Health Goods and Services} &
   Pharmaceutical and Optical Goods &
    &
    &
-  Consumer Goods \\
-                         & Health Services                &                       &                   & Consumer Services \\
-                         & Personal Care                  &                       &                   & Consumer Goods    \\ \midrule
+  Other Goods \\
+                         & Health Services                &                       &                   & Services \\
+                         & Personal Care                  &                       &                   & Other Goods    \\ \midrule
 \multirow{9}{=}{Personal Expenses} &
   Personal Services &
    &
    &
-  Consumer Services \\ \cmidrule(l){2-5}
+  Services \\ \cmidrule(l){2-5}
  &
   \multirow{8}{=}{Recreation and Smoking} &
   \multirow{7}{=}{Recreation} &
   Musical Instrument &
-  Consumer Goods \\
-                         &                                &                       & Bicycle           & Consumer Goods    \\
-                         &                                &                       & Toys              & Consumer Goods    \\
-                         &                                &                       & Fishing Materials & Consumer Goods    \\
-                         &                                &                       & Sports Materials  & Consumer Goods    \\
-                         &                                &                       & Pet Food          & Consumer Goods    \\
-                         &                                &                       & All Others *      & Consumer Services \\ \cmidrule(l){3-5}
-                         &                                & Smoking               &                   & Consumer Goods    \\ \midrule
+  Other Goods \\
+                         &                                &                       & Bicycle           & Other Goods    \\
+                         &                                &                       & Toys              & Other Goods    \\
+                         &                                &                       & Fishing Materials & Other Goods    \\
+                         &                                &                       & Sports Materials  & Other Goods    \\
+                         &                                &                       & Pet Food          & Other Goods    \\
+                         &                                &                       & All Others *      & Services \\ \cmidrule(l){3-5}
+                         &                                & Smoking               &                   & Other Goods    \\ \midrule
 \multirow{4}{=}{Education} &
   \multirow{4}{=}{Courses, Reading and Stationary} &
   Regular Courses &
    &
-  Consumer Services \\
-                         &                                & Miscellaneous Courses &                   & Consumer Services \\
-                         &                                & Reading Materials     &                   & Consumer Goods    \\
-                         &                                & Stationary            &                   & Consumer Goods    \\ \midrule
-Communication            &                                &                       &                   & Consumer Services \\ \bottomrule
+  Services \\
+                         &                                & Miscellaneous Courses &                   & Services \\
+                         &                                & Reading Materials     &                   & Other Goods    \\
+                         &                                & Stationary            &                   & Other Goods    \\ \midrule
+Communication            &                                &                       &                   & Services \\ \bottomrule
 \end{longtable}
 
 
