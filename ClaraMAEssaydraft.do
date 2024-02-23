@@ -1269,8 +1269,8 @@ restore
 // this gives us 600101 as the item code that "covers" the most households
 // in future iterations, we can try to "cover" other households by choosing other items and attempting to match their deflators to existing groups
 gen price_group = DEFLATOR if item_code == max_hhs_item_code
-drop if missing(price_group)
 keep hh_id price_group
+drop if missing(price_group)
 duplicates drop
 
 // save for joins
@@ -1325,7 +1325,9 @@ drop price_group price_indices_count
 save "Data\hh_price_indices.dta", replace
 
 // check how many families the 3,249 groups cover
-frame change price_groups
+capture frame drop second_check
+frame copy price_groups second_check
+frame change second_check
 joinby price_group using "Data\missing_price_indices_by_price_group.dta"
 count if missing_indices == 0 // yields 46,085
 scalar hhs_complete2 = r(N)
@@ -1338,16 +1340,13 @@ assert hhs_complete == hhs_complete2
 frame change expenditures
 
 // drop frame if it exists from previous runs
-capture frame drop missing_groups
+capture frame drop present_groups
+frame put hh_id commodity_group, into(present_groups)
+frame change present_groups
 
-frame put hh_id commodity_group, into(missing_groups)
-frame change missing_groups
-
-gen _count = 1
-collapse (count) _count, by (hh_id commodity_group)
-drop commodity_group
-collapse (count) _count, by (hh_id)
-
+duplicates drop // keep only one row for each hh_id commodity_group pair
+gen commodity_groups_count = 1
+collapse (count) commodity_groups_count, by (hh_id) // count rows by household, yields commodity group count
 
 **********************
 * expenditure shares *
@@ -1516,8 +1515,6 @@ keep hh_id commodity_group group_expenditure group_expenditure_share total_expen
 capture frame drop expenditure_shares
 frame put hh_id commodity_group group_expenditure group_expenditure_share total_expenditure, into(expenditure_shares)
 
-
-
 merge m:1 hh_id using "Data\hh_head_size.dta"
 gen n_people = n_adults + n_children
 gen pc_exp = total_expenditure / n_people
@@ -1598,8 +1595,6 @@ If price elasticity of demand for fuels does not vary significantly across expen
 tex*/
 
 texdoc stlog, nolog
-
-frame change expenditure_shares
 
 // make a throwaway copy
 capture frame drop model_data
@@ -1725,46 +1720,63 @@ collect layout (model) (result[chi2 p]), name(quad_tests)
 collect export "quad_test_results_table.tex", name(quad_tests) as(tex) tableonly replace
 
 
-/************************************************
-* count and plot households missing price indices
+/******************************************************************
+* count and plot households missing expenditure on commodity groups
 */
+frame change expenditure_shares
 
 // make a throwaway copy
-frame change model_data
-capture frame drop missing_indices
-frame copy model_data missing_indices
-frame change missing_indices
+capture frame drop missing_groups
+frame put hh_id total_expenditure, into(missing_groups)
+frame change missing_groups
 
-// count missing indices for each household
-egen missing_indices = rowmiss(price_index1-price_index6)
+keep hh_id total_expenditure
+duplicates drop
+
+// get price_group
+joinby hh_id using "Data\hh_price_groups.dta", unmatched(master)
+
+// get count of commodity groups present
+frlink 1:1 hh_id, frame(present_groups)
+frget commodity_groups_count, from(present_groups)
+
+// get commodity groups not present
+gen missing_commodity_groups = 6 - commodity_groups_count
+
 // tag deciles
 egen x_decile = cut(total_expenditure), group(10) //label
 
 replace x_decile = x_decile + 1 // graph bar ignores zeroes :)
 
-// plot mean count of missing indices by decile
-graph bar (mean) missing_indices, ///
+// plot mean count of missing commodity groups by decile
+graph bar (mean) missing_commodity_groups, ///
 	over(x_decile, relabel (1 "1st" 2 "2nd" 3 "3rd" 4 "4th" 5 "5th" 6 "6th" 7 "7th" 8 "8th" 9 "9th" 10 "10th")) ///
-	  ytitle("Mean count of missing price indices") ///
+	  ytitle("Mean count of commodity groups with zero expenditure") ///
 	  graphregion(color(white) margin(zero)) bgcolor(white)
 
-graph export "graphs\missing_indices.png", as(png) replace
+graph export "graphs\missing_commodity_groups.png", as(png) replace
 
-// count % households missing indices
-gen missing_one = 0
-replace missing_one = 1 if missing_indices > 0
+// join with price indices
 
-collapse (count) hh_id, by (missing_one x_decile)
+frlink 1:1 hh_id, frame(model_data)
+frget price_index*, from(model_data)
+
+// count % households without a price group or with an incomplete price index set
+// the price indices table only has indices for complete sets, so we don't need to check all the indices
+gen omitted = 0
+replace omitted = 1 if missing(price_group) | missing(price_index1)
+
+collapse (count) hh_id, by (omitted x_decile)
 bys x_decile: egen total_households = total(hh_id)
-gen pct_missing_one = 100*hh_id/total_households
+gen pct_omitted = 100*hh_id/total_households
 
-// plot pct of households missing one index by decile
-graph bar pct_missing_one if missing_one == 1, ///
+// plot pct of households missing one group by decile
+graph bar pct_omitted if omitted == 1, ///
 	over(x_decile, relabel (1 "1st" 2 "2nd" 3 "3rd" 4 "4th" 5 "5th" 6 "6th" 7 "7th" 8 "8th" 9 "9th" 10 "10th")) ///
-	  ytitle("Percentage of households missing at least one price index") ///
+	  ytitle("Percentage of households omitted") ///
 	  graphregion(color(white) margin(zero)) bgcolor(white)
 
-graph export "graphs\missing_one_or_more_indices.png", as(png) replace
+graph export "graphs\missing_one_or_more_commodity_groups.png", as(png) replace
 
 texdoc stlog close
 
@@ -1781,21 +1793,21 @@ Choosing $u_1$ and $p_1$ as the prices and utility level of households at the ba
 
 
 \section{Limitations}
-Having zero expenditure in one or more commodity groups would not ordinarily require that a household not be included in the estimation. However, due to the procedure described in Section~\ref{sec:data_source}, if within a household's price group there was no aggregate expenditure on the commodity group in question, there will also be no price index for said commodity group. The absence of price index information does mean the household data will be discarded.
+Having zero expenditure in one or more commodity groups does not ordinarily require that a household not be included in the estimation. However, due to the procedure described in Section~\ref{sec:data_source}, if within a household's price group there was no aggregate expenditure on the commodity group in question, there will also be no price index for said commodity group. The absence of price index information does mean the household data will be discarded.
 
-Figure~\ref{fig:missing_indices} shows that the mean count of commodity groups for which the price index could not be computed is higher for lower income households. Lower income households are also more likely to have at least one missing index, as shown in Figure~\ref{fig:missing_one_or_more_indices}. This implies lower income homes are more likely to be omitted from the sample.
+Figure~\ref{fig:missing_commodity_groups} shows that the mean count of commodity groups with zero expenditure is higher for lower income households. This is likely due to ``corner solutions'' at low levels of income, and potentially to sparse purchases that fall outside of the survey period.\footnote{For example, the survey registers food purchases for seven days. If the household typically buys groceries in bulk once a month, their (adjusted) monthly expenditure would be incorrectly represented as zero.} It also means lower income families are more likely to be ommited from the sample, as shown in Figure~\ref{fig:missing_one_or_more_commodity_groups}.
 
 \begin{figure}
-    \centering   \includegraphics[width=0.9\textwidth]{graphs/missing_indices.png}
-    \caption{Mean count of missing price indices by total expenditure decile}
-    \label{fig:missing_indices}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/missing_commodity_groups.png}
+    \caption{Mean count of commodity groups with zero expenditure by total expenditure decile}
+    \label{fig:missing_commodity_groups}
 \end{figure}
 
 
 \begin{figure}
-    \centering   \includegraphics[width=0.9\textwidth]{graphs/missing_one_or_more_indices.png}
-    \caption{Percentage of households missing at least one price index by total expenditure decile}
-    \label{fig:missing_one_or_more_indices}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/missing_one_or_more_commodity_groups.png}
+    \caption{Percentage of households omitted from the estimation by total expenditure decile}
+    \label{fig:missing_one_or_more_commodity_groups}
 \end{figure}
 
 
