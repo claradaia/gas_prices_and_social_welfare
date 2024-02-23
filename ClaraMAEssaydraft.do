@@ -1176,7 +1176,7 @@ Includes items from the 63 to 69 quadros that are not food items.
 */
 
 replace commodity_group = `OtherGoods' if ///
-	inlist(QUADRO, 12, 13, 15, 16, 17, 18, 21, 27, 28, 29, 30, 32, 34, 35, 36, ///
+	inlist(QUADRO, 12, 13, 15, 16, 17, 18, 27, 28, 29, 30, 32, 34, 35, 36, ///
 		   37, 38, 39, 43, 44, 46, 49) | ///
 	inrange(item_code, 8600101, 8900101)
 
@@ -1273,6 +1273,9 @@ drop if missing(price_group)
 keep hh_id price_group
 duplicates drop
 
+// save for joins
+save "Data\hh_price_groups.dta", replace
+
 
 /****************************************************
 * calculate the price index for each group identified
@@ -1300,9 +1303,33 @@ egen max_DEFLATOR = max(DEFLATOR)
 egen min_DEFLATOR = min(DEFLATOR)
 assert (price_index >= min_DEFLATOR & price_index <= max_DEFLATOR)
 
+// each price group gets a price index for each commodity group
+collapse (first) price_index, by(price_group commodity_group)
 
-collapse (first) price_index, by(hh_id commodity_group)
+// show that of a total of 4,904 price groups, 3,249 have indices for all commodity groups
+preserve
+reshape wide price_index, i(price_group) j(commodity_group)
+egen missing_indices = rowmiss(price_index*)
+tab missing_indices
+keep price_group missing_indices
+save "Data\missing_price_indices_by_price_group.dta", replace
+restore
 
+// join with household ids
+joinby price_group using "Data\hh_price_groups.dta"
+egen price_indices_count = count(price_index), by(hh_id price_group)
+unique hh_id if price_indices_count == 6 // should yield 46,085
+scalar hhs_complete = r(unique)
+drop if price_indices_count < 6
+drop price_group price_indices_count
+save "Data\hh_price_indices.dta", replace
+
+// check how many families the 3,249 groups cover
+frame change price_groups
+joinby price_group using "Data\missing_price_indices_by_price_group.dta"
+count if missing_indices == 0 // yields 46,085
+scalar hhs_complete2 = r(N)
+assert hhs_complete == hhs_complete2
 
 /*************************************************
 * count households with expenditures in all groups
@@ -1579,9 +1606,7 @@ capture frame drop model_data
 frame copy expenditure_shares model_data
 frame change model_data
 
-frlink m:1 hh_id commodity_group, frame(price_indices)
-frget price_index, from(price_indices)
-drop price_indices
+joinby hh_id commodity_group using "Data\hh_price_indices.dta"
 
 reshape wide group_expenditure_share group_expenditure price_index, i(hh_id total_expenditure) j(commodity_group)
 merge m:1 hh_id using "Data\hh_head_size.dta"
@@ -1594,9 +1619,6 @@ drop sum_of_exp_shares
 
 // ...but replace the 5th one with the complement of the others, as quaids does not accept the small difference
 replace group_expenditure_share`Food' = 1 - (group_expenditure_share`FuelsTransportation' + group_expenditure_share`AdultGoods' + group_expenditure_share`Services' + group_expenditure_share`OtherGoods' + group_expenditure_share`Housing')
-
-// drop households for which one of the price_indices is 0 (i.e. there were no expenditure on any of the goods in the group)
-drop if price_index`Food' == 0 | price_index`FuelsTransportation' == 0 | price_index`Services' == 0 | price_index`OtherGoods' == 0 | price_index`Housing' == 0 | price_index`AdultGoods' == 0
 
 // unpack categorical variables because aidsills can't handle i.var_name :)
 gen male = gender
@@ -1818,7 +1840,7 @@ gen b_p = 1
 // lambda_p
 gen lambda_p = 0
 
-foreach group in "1" "2" "3" "4" "5" {
+foreach group in "1" "2" "3" "4" "5" "6"{
 	// sum alpha_i ln p_i
 	replace alpha_group_times_ln_prices = alpha_group_times_ln_prices + ///
 		(e(alpha)["_cons", "group_expenditure_share`group'"] + ///
@@ -1862,7 +1884,7 @@ replace b_p = 1
 // lambda_p
 replace lambda_p = 0
 
-foreach group in "1" "2" "3" "4" "5" {
+foreach group in "1" "2" "3" "4" "5" "6" {
 	// sum alpha_i ln p_i
 	replace alpha_group_times_ln_prices = alpha_group_times_ln_prices + ///
 		(e(alpha)["_cons", "group_expenditure_share`group'"] + ///
