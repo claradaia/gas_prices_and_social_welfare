@@ -79,7 +79,7 @@ graph set window fontface "Palatino Linotype"
 }
 
 
-\Title{Clara's MA Essay texdoc template for ECON6999 REQUIRES a better title} %% it shall not include LaTeX macros
+\Title{Welfare changes from fuels pricing in Brazil} %% it shall not include LaTeX macros
 \Author{Clara Daia Hilgenberg Daru}        %% ibidem
 \DocumentType{essay}      % for research based degrees
 \University{Memorial University of Newfoundland}
@@ -258,7 +258,7 @@ The Informatics Department of UFPR Faculty. \todo[fancyline, color= red]{NOV 18 
 \tdILY{That is OK. It will have to go in some form to the ``limitations'' as well}
 
 
-\tdIL{3. The model runs with demographic vars. I still need to figure out why there are so many missing values in the price index, 2/5 of the households are not being included because of it.}
+\tdILY{3. The model runs with demographic vars. I still need to figure out why there are so many missing values in the price index, 2/5 of the households are not being included because of it.}
 
 \tdILY{NOV 18 2023: Clara wrote ``Counted the groups present in the expense records for each family and found that the missing price indices are due to families not having any consumption for some commodity groups. I don't think this can be overcome, maybe I can show what demographics they belong to so the reader knows those estimates may be wrong?}
 
@@ -292,15 +292,14 @@ Having a low price-elasticity of demand and representing a large share of expend
 
 In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term implicit subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices charged within the country the same as the prices in the international market for oil. In 2023, the change was reversed and price controls were put back in place.
 
-\citet{LinPrince2013} find that high price volatility yields lower aggregate demand for gasoline.\tdFL{This should be fleshed out and moved to the literature review}
-
 From \tr{the} \tdFL{ENW: English needs work: from ``a''} methodological standpoint, \tr{I find} \tdFL{reword} that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or \tr{investigate} \tdFL{ENW grammar} effects on specific regions rather than a nation-wide study.
 
 \tdIL{We will need a few references to back this up}
 
 There are also political aspects of interest in analysing the effect of gas price changes. \tdFL{As explained above: bring examples from other countries too?} Politicians often use gas price regulations as a popularity tool, especially near elections. \tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. \tr{Better understanding of demand \tde for gasoline and welfare effect of price} changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
 
-By properly identifying ``winners'' and ``losers'' from a policy change, the government can decide whether the change should happen and, if so, whether further action must be taken to counteract negative effects on protected groups. In this essay, I will investigate how fuel prices affect different population groups to support future decisions.
+By properly identifying ``winners'' and ``losers'' from a policy change, and the magnitude of their outcomes, the government can decide whether the change should happen and, if so, whether further action must be taken to counteract negative effects on protected groups. In this essay, I will investigate how fuel prices affect different population groups to support future decisions.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -308,16 +307,14 @@ By properly identifying ``winners'' and ``losers'' from a policy change, the gov
 \tdILR{Eventually, this Section \ref{chap:background} will need much more of further detailing of the motivation you would have inserted in the Introduction. Only in Section \ref{chap:background} you can be more detailed, use numbers, use tables and graphs (you have some already), comparisons with the situation in other countries, etc.}
 
 % Why are we interested in the effects of changes in the price of oil?
-Petroleum derivates are used to produce electricity, to power vehicles used in farming, to power machines in several industries, in public transportation and directly by consumers for heating and in vehicles.
+The majority of economic activity depends on electricity or thermal energy sources. Despite initiatives toward decarbonization, renewables and sustainability in general, petroleum derivates still dominate the energy market in most countries.
 * Oil prices are not stable in the international market
 
 % Why were the policies that changed the prices effected?
+\tdILY{NOV 18 2023 Rober: watch out for truncated sentences if a \% sign is not preceded by  a $\backslash$}
+The Brazilian petroleum company Petrobras is partially nationalized -- 51\% of its stock is owned by the Brazilian federal government -- and is responsible for over 65\% of the petroleum market in the country. It is subject to a lot of political influence, as the company's president is appointed by the government, \tr{and political parties usually  From corruption scandals to debates regarding its profitability, political parties} \tdFL{NOV 18 2023 Rober: must be fully written up}
 
-\tdILR{NOV 18 2023 Rober: watch out for truncated sentences if a \% sign is not preceded by  a $\backslash$}
-
-The Brazilian petroleum company Petrobras is partially nationalized -- 51\% of its stock is owned by the Brazilian federal government and is responsible for over 65\% of the petroleum market in the country. It is subject to a lot of political influence, as the company's president is appointed by the government, \tr{and political parties usually  From corruption scandals to debates regarding its profitability, political parties} \tdFL{NOV 18 2023 Rober: must be fully written up}
-
-In 2016, the \ac{IPP} was implemented under the argument that it would increase the profits of Petrobras. This meant higher government revenue that could be used to lower taxes on other areas. Revenues increased and so did fuel prices.
+In 2016, the \ac{IPP} was implemented under the argument that it would increase the profits of Petrobras. This meant higher government revenue that could be used to lower taxes on other areas. Fuel prices increased, as well as the revenue.
 
 In 2023, the price control returned with the purpose of ``nationalizing'' prices. The argument is that the abundance of oil and gas in Brazilian territory should mean easier access to fuels to citizens and national industries regardless of international trends in the oil market.
 
@@ -354,36 +351,62 @@ texdoc stlog close
     \label{fig:fuel_prices_over_time}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Fuel price interventions}\label{gas_policy_history}
 
-In 2002, the anti-trust ... \tdFL{NOV 18 2023: write it up}
+\tdFLY{NOV 18 2023: write it up}
+The Brazilian national patroleum extraction and refining company Petrobras was founded in 1953, establishing a state monopoly of the petroleum market. In 1967, Brazil reached self-sufficiency in almost all fuels used in the country. During the military regime installed in 1964, fuel prices were under state control and were set low as a way to reduce inflation.
 
-In June of 2022, Brazilian president Jair Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%. This was part of a series of attempts to keep inflation under control.
+After the end of the military regime, the fuels market was progressively deregulated in the country. In 1995, a constitutional amendment enabled the state to hire private companies for oil extration. The Law of Petroleum, proposed in 1997 and installed in December 31st of 2001, mandated the state to outsource extraction and refining operations. Petrobras still controlled oil prices, and used this control to stimulate the ethanol industry. \cite states between and gasoline prices were 9\% higher than expected market price, as a way to make ethanol more competitive.
 
-In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula \tr{da Silva \tdFL{missing genitive here} (elected in 2022) campaign} suggestions \citep{SantanaRamalho2023}.
+In 2016, the \ac{IPP} was implemented to increase the profits of Petrobras. This meant higher government revenue that could be used to lower taxes on other areas. Fuel prices increased, as well as the revenue.
+
+In 2021, a surge in soy prices led the government to temporarily change the mandated amount of of biodiesel in retail diesel from 13\% to 10\%, to prevent ``an excess increase'' in the price of diesel to consumers. https://agenciabrasil.ebc.com.br/economia/noticia/2021-09/publicada-resolucao-que-reduz-percentual-de-biodiesel-no-oleo-diesel#:~:text=O%20presidente%20Jair%20Bolsonaro%20aprovou%20a%20decis%C3%A3o%20do,dos%20meses%20de%20novembro%20e%20dezembro%20de%202021.
+
+As part of a series of attempts to keep inflation under control, in June of 2022, Brazilian president Jair Messias Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%. In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula \tr{da Silva's \tdFLY{missing genitive here} (elected in 2022) campaign} suggestions \citep{SantanaRamalho2023}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Expected changes}
-
+% development x climate change
 \tdILR{NOV 18 2023: write it up and make sure you have the references, even if they are to newspaper articles or new websites}
 
-2013: petrol reservoirs found in the Amazon region, recent movements towards approving extraction
+In 2013, crude oil reservoirs were found in the Amazon region. Since then, Petrobras has studied the risks and environmental impact of extraction, contacted neighbouring countries that might be affected by oil spills. Extraction is expected to begin in 2024. With the end of the \ac{IPP} policy, Petrobras may use the increase in its supply of crude oil to justify a reduction in prices. 
 
-May 2022: Carbon and methane credits regulation https://www.gov.br/mma/pt-br/assuntos/noticias/mma-anuncia-decreto-que-regulamenta-mercado-de-carbono-no-brasil
+In June 2023, the government announced temporary measures to stimulate vehicle production and lower vehicle prices. A combined growth in the vehicle fleet and potential reduction in fossil fuels would increase demand. https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2023/06/alckmin-detalha-incentivo-a-industria-automotiva-e-reducao-de-preco-de-carros-caminhoes-e-onibus
 
-June 2023: incentives to vehicle production https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2023/06/alckmin-detalha-incentivo-a-industria-automotiva-e-reducao-de-preco-de-carros-caminhoes-e-onibus
+In contrast, concern with climate change grows and Brazil slowly follows the trend of large economies in attempting to reduce GHG emissions. In May 2022, the Ministry of the Environment and Climate Change (then called ``Ministry of the Environment'') announced a decree to regulate a voluntary market of carbon dioxide and methane credits in Brazil. https://www.gov.br/mma/pt-br/assuntos/noticias/mma-anuncia-decreto-que-regulamenta-mercado-de-carbono-no-brasil In December 2023, congress approved a new bill to regulate a mandatory market for GHG credits. https://g1.globo.com/meio-ambiente/noticia/2023/12/24/entenda-o-projeto-que-quer-regulamentar-o-mercado-de-carbono-no-pais.ghtml
+
+Another, if lukewarm, initiative to reduce GHG emissions was announced in 2023: law proposal 4.516/2023 determines an increase in the mandatory fraction of ethanol added to gasoline from 22\% to 27\%, and that the fraction of biodiesel added to diesel (currently at a 15\%) must reach 20\% by 2030. https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2024/02/27/pl-preve-regulacao-de-mistura-de-25-do-biodiesel-e-27-de-etanol-a-gasolina.htm
+
+Additionally, with respect to electrical vehicles, in February 2024 the government announced increased taxes on imported electrical vehicles. The measure aleggedly aims to encourage development of national technology in electrical vehicles, but in the meantime discourages consumers from replacing vehicles powered by fuel.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{The role of ethanol}
 \tdILY{This section will need a better title}
+% long history
+Sugarcane is a major agricultural commodity in Brazil since the XVI century, and its alcohol derivates have been used as fuel for vehicles as early .
 
-% Why we must include ethanol in the analysis
-Ethanol as a standalone auto fuel is very relevant in Brazil: in 2022, Brazilians consumed 15.5 billion litres of ethanol and 43 billion litres of gasoline \citep{anp2022}. The majority of vehicles sold in the country are \textit{flex-fuel}, i.e. can run on any combination of gasoline or ethanol, making ethanol and gasoline close short-run substitutes. In 2021, for example, of the 2,104,461 new vehicles licensed, 1,633,245 or 77.6\% were \textit{flex-fuel}. The share is even larger, 83.3\%, if we exclude trucks and buses \citep{anfavea2023}.
+% oil crises, proalcool
+Following the 1973 oil crisis, president Ernesto Geisel (formerly president of Petrobras) created the Proálcool program, with the aim of reducing reliance on fossil fuels by replacing them with ethanol. The program started in 1975 and fostered this substitution through technology development on ethanol production plants, and on the motors to be powered by it. Cortez2016 p29 While the Proálcool program was officially closed with the end of the military regime in 1985, the term ``Proálcool'' continued to be used to refer to the set of private, governmental and academic initiatives to develop and promote the use of ethanol as fuel Cortez2016 p63.
 
-As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the same volume of gasoline, so online guides instruct drivers to buy ethanol when its price is 70\% of the price of gasoline or less. \cite{Iootty2009} estimates that demand for gasoline has a cross-price elasticity of 1.5 with respect to ethanol prices, while the demand for ethanol has a cross-price elasticity of 8.09 with respect to gasoline prices.
+There was a period of decline with the decrease of oil prices in the 1990s and a shortage of ethanol influenced by an increase in international sugar prices. However, the deregulation of the ethanol market in the following years and the introduction of \textit{flex-fuel} vehicles in 2003 marked the beginning of a period of increased use of ethanol.
 
+% ethanol prices vary per region
+As a rule of thumb, ethanol is considered to yield 70\% of the mileage of the same volume of gasoline, so online guides instruct drivers to buy ethanol when its price is 70\% of the price of gasoline or less. \cite{CardosoBittencourtLittIrwin2019} show, from data ranging between 2001 and 2014, that ethanol prices are more often favourable (i.e. lower than 70\% of the price of gasoline) in the southern region, near locations that produce the majority of the fuel. \cite{Iootty2009} estimates that demand for gasoline has a cross-price elasticity of 1.5 with respect to ethanol, while the demand for ethanol has a cross-price elasticity of 8.09 relative to gasoline.
+
+% current state
+Ethanol remains relevant in the Brazilian fuel market: in 2022, Brazilians consumed 15.5 billion litres of ethanol and 43 billion litres of gasoline \citep{anp2022}. The majority of vehicles sold in the country are \textit{flex-fuel}, i.e. can run on any combination of gasoline or ethanol, making ethanol and gasoline close short-run substitutes. In 2021, for example, of the 2,104,461 new vehicles licensed, 1,633,245 or 77.6\% were \textit{flex-fuel}. The share is even larger, 83.3\%, if considering only light vehicles \citep{anfavea2023}. Moreover, recent legislation to increase the percentage of ethanol in the gasoline sold within the country will likely affect relative prices between ethanol and gasoline.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Protected groups/fairness}
 % Why we want to look at differences between groups
 % In decision making algorithms, predictive parity says error rates should be the same for protected categories. what is the name of the analogous principle for preference modelling?
 
@@ -689,7 +712,6 @@ Some authors separate groceries from restaurant expenses, which is likely not ap
 \cite{BanksBlundellLewbel1997}: food, clothing, fuel, alcohol, other goods
 \cite{MenezesAzzoniSilveira2008}: food, housing, clothing, transportation, health and personal care, personal expenditure, education, tobacco
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -739,7 +761,7 @@ Rearranging the (logarithm) indirect utility function $\ln v(x, p)$ of QUAIDS \c
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section {Data}\label{datasection}
+\section {Data}\label{sec:data}
 
 \tdILR{NOV18 2023: Rober thinks that the DATA SECTION should be a ``chapter'' itself, separate from the Methodology}
 
@@ -1787,9 +1809,14 @@ texdoc stlog close
 
 \input{quad_test_results_table}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \section{Welfare effects estimation}
 
 Choosing $u_1$ and $p_1$ as the prices and utility level of households at the base period for the 2017-2018 \ac{FBS}, the cost of achieving $u_1$ is equal to the total expenditure of household $k$ at the base period, so that Equation~\ref{eq:EV} can be computed as $EV = c_k(u_1, p_0) - x$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Limitations}
@@ -2155,7 +2182,7 @@ Clothing                 &                                &                     
 Communication            &                                &                       &                   & Services \\ \bottomrule
 \end{longtable}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Price index transformation}
