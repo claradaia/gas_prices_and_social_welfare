@@ -361,11 +361,11 @@ The Brazilian national patroleum extraction and refining company Petrobras was f
 
 After the end of the military regime, the fuels market was progressively deregulated in the country. In 1995, a constitutional amendment enabled the state to hire private companies for oil extration. The Law of Petroleum, proposed in 1997 and installed in December 31st of 2001, mandated the state to outsource extraction and refining operations. Petrobras still controlled oil prices, and used this control to stimulate the ethanol industry. \cite states between and gasoline prices were 9\% higher than expected market price, as a way to make ethanol more competitive.
 
-In 2016, the \ac{IPP} was implemented to increase the profits of Petrobras. This meant higher government revenue that could be used to lower taxes on other areas. Fuel prices increased, as well as the revenue.
+The \ac{IPP} policy was implemented in 2016 to increase the profits of Petrobras. This meant higher government revenue that could be used to lower taxes on other areas. Fuel prices increased, as well as the revenue.
 
-In 2021, a surge in soy prices led the government to temporarily change the mandated amount of of biodiesel in retail diesel from 13\% to 10\%, to prevent ``an excess increase'' in the price of diesel to consumers. https://agenciabrasil.ebc.com.br/economia/noticia/2021-09/publicada-resolucao-que-reduz-percentual-de-biodiesel-no-oleo-diesel#:~:text=O%20presidente%20Jair%20Bolsonaro%20aprovou%20a%20decis%C3%A3o%20do,dos%20meses%20de%20novembro%20e%20dezembro%20de%202021.
+In 2021, a surge in soy prices led the government to temporarily change the mandated amount of of biodiesel in retail diesel from 13\% to 10\%, to prevent ``an excess increase'' in the price of diesel to consumers. https://agenciabrasil.ebc.com.br/economia/noticia/2021-09/publicada-resolucao-que-reduz-percentual-de-biodiesel-no-oleo-diesel.
 
-As part of a series of attempts to keep inflation under control, in June of 2022, Brazilian president Jair Messias Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%. In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula \tr{da Silva's \tdFLY{missing genitive here} (elected in 2022) campaign} suggestions \citep{SantanaRamalho2023}.
+As part of a series of attempts to reduce inflation, in June of 2022, Brazilian president Jair Messias Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%. In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula \tr{da Silva's \tdFLY{missing genitive here} (elected in 2022) campaign} suggestions \citep{SantanaRamalho2023}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -424,17 +424,12 @@ Ethanol remains relevant in the Brazilian fuel market: in 2022, Brazilians consu
 Assuming that governments, especially representative ones, must work to improve or maintain the well-being of their citizens, policy development requires some measure of that well-being \cite{AdlerPosner1999}. In the decision making process, the consequences of different policies on the well-being are compared and, ideally, the option that produces the highest level of well-being is implemented.
 
 % Utility, revealed preference
-For economic policy, individual well-being is usually represented by utility, a measure of the degree to which individuals satisfy their preferences through consumption. Welfare analysis typically measures changes in utility as a result of policies or other shocks in markets. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences, so revealed preference methods characterize demand by inferring utility functions from observed consumption.
+Pn the second half of the XIX century, the concept of utility was introduced by  individual well-being is usually explicitly modeled as \textit{utility}, a measure of the degree to which individuals satisfy their preferences through consumption. Welfare analysis typically measures changes in utility as a result of policies or other shocks in markets. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences, so revealed preference methods characterize demand by inferring utility functions from observed consumption.
 
 % Pareto, ordinalism
 Individual preferences can be inferred from individual behaviour, such that state $A$ of the world can be said to be preferred by an individual to state $B$. However, if we introduce a second individual that prefers state $B$ to state $A$, it is not immediately clear which state should be preferred from a decision maker point of view. Provided the decision maker is able to adequately measure the individual changes in utility for all afected parties, an unambiguous decision process still requires aggregating these measures into an index that allows them to fully rank the possible states of the world.
 
-The Pareto principle provides a starting point: if between states $A$ and $B$ of the world one individual prefers state $A$ to state $B$ and the others are indifferent between them, it is fairly straightforward to presume state $A$ is preferred to state $B$.
-
-The ordinalist view suggests that interpersonal comparisons of well-being are not possible. If we take this to be true, it leaves a policy analyst with a limited ability to determine whether a policy is desirable.
-
-% Hicks-Kaldor, money-metric measures
-Enter Hicks and Kaldor. To determine whether the winners could compensate the losers and still be better off, one needs a comparable, cardinal, measure of gains and losses. Enter money-metric measures of welfare.
+The Pareto principle provides a starting point: if between states $A$ and $B$ of the world one individual prefers state $A$ to state $B$ and the others are indifferent between them, it is fairly straightforward to presume state $A$ is preferred to state $B$. However, economic policy rarely produces pure Pareto improvements, which makes this principle insufficient as a guide for policymaking. Within the ordinalist framework, \cite introduces the Hicks and Kaldor criterion, that allows for ``winners'' and ``losers'' of a change, as long as the winners could potentially compensate the losers and still be better off. To evaluate the adequate compensation for the losers and whether the winners would be better off after the hypothetical compensation transaction, one needs a comparable, cardinal, measure of gains and losses. Enter money-metric measures of welfare.
 
 % Compensated demand, EV & CV, substitution
 The change in utility following a price change of a certain good or service depends also on the consumer's willigness or ability to substitute for other goods and services.
@@ -460,29 +455,38 @@ EV = e(p_1, u_1) - e(p_0, u_1)
 Consumer surplus is not always great. Blundell et al have shown this can be an issue.
 
 % Inequality concerns
-Welfare changes may vary systematically over population groups. Because of diminishing marginal utility of income, price changes will not affect poorer families the same way as richer families. Policies can be analysed under this framework as regressive or progressive. Section \ref{sec:income} covers that. \tdFL{NOV 18 2023: but where is it???}
+Welfare changes may vary systematically over population groups. Because of diminishing marginal utility of income, price changes will not affect poorer families the same way as richer families. Policies can be analysed under this framework as regressive or progressive. Section \ref{sec:regressivity} covers that. \tdFL{NOV 18 2023: but where is it???}
 
 % Equivalence scales
 Other household characteristics affect demand. Children of different ages, working-age adults, retired adults and the elderly have different needs. Family composition also affects economies of scale in consumption, and policymakers may have targets for groups based on other protected characteristics, such as gender or race identities. Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
 
-\section{Efficiency and consumer surplus}\label{sec:dwl}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Price distortions in otherwise competitive markets lead to deadweight loss. From an ordinalist point of view, it matters not who ``wins'' after a change, but whether there was a potential Pareto improvement and how large it was. By maintaining domestic prices artificially low, Petrobras subsidizes consumption implicitly through forgone revenue and directly when it needs to import fuel to satisfy the domestic demand.\tdFL{This paragraph is more background than literature review}
+
+\section{Demand elasticities, efficiency and consumer surplus}\label{sec:dwl}
+
+Price distortions in otherwise competitive markets lead to deadweight loss. By maintaining domestic prices artificially low, Petrobras subsidizes consumption implicitly through forgone revenue and directly when it needs to import fuel to satisfy the domestic demand.\tdFL{This paragraph is more background than literature review}
 
 With Petrobras being partly nationalized, the loss incurred by consumers from increased prices can be counteracted by a decrease in the tax burden accounting for the government increased revenue. \tdFL{First sentence is background still} \cite{Moreira2017} uses a static open economy macroeconomic model of Brazil to estimate the impact of removing fuel subsidies on output, aggregate consumption and labour demand for the years 2011-2014. \cite{Moreira2017} finds that if accompanied by an equivalent reduction on major taxes, the removal of the subsidy increases output, consumption and employment.
 
 \tr{An aggregate demand function that yields dead-weight loss estimates} \tdFL{needs rewording} typically uses a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. The welfare loss measured by this method reflects only efficiency losses, which the author considers to be insufficient for policy analysis because needs, access and ability to pay vary a lot between families.\tdFLY{``between'' two people but ``among'' more than two people}
 
+Collusion among retailers may also generate dead-weight loss. \cite{FernandesPeixoto2017} estimate average losses of 11.73% of total yearly revenue from gasoline sales in the state of Minas Gerais between 2008 and 2010.
+
+\citet{LinPrince2013} find that high price volatility yields lower aggregate demand for gasoline.\tdFL{This should be fleshed out and moved to the literature review}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Income, Engel curves, and regressivity/progressivity analysis} \label{sec:regressivity}
-One way to incorporate income differences into the analysis is to use regressivity measures. If fuels comprise a larger share of the expenditure of families with lower income, a tax on them can be considered regressive as it disproportionately affects those families. Similarly, a subsidy will be progressive.
+One way to incorporate income differences into the analysis is to use regressivity measures. If fuels comprise a larger share of the expenditure of families with lower income, a tax on them is considered regressive as it disproportionately affects those families. Similarly, a subsidy will be progressive.
 
 % consumption != expenditure != income
-While inequality is usually measured through differences in income, consumption need not be equivalent to income, and the difference tends to be higher the shorter the period under analysis is. Goods purchased in one period may be consumed over many subsequent periods, income received in one period may be saved for future use, and credit lines may allow consumption in one period to be paid for in the future. \cite{Poterba1991} suggests that consumption is determined by expected lifetime earnings, and that using income leads to overestimating the regressivity of a gasoline tax. \cite{Poterba1991} shows this by estimating demand as a function of total expenditure rather than income, relying on \tdFL{explain this further} the assumption that poverty is in general temporary. In this context, expenditure patterns in a period of low or no income reflect the expectation of a higher income in the near future, so that the effect of the recorded income is . \tdFL{NOV 18 2023 must finish sentence}
+While inequality is usually measured through differences in income, consumption need not be equivalent to income, and the difference tends to be higher the shorter the period under analysis is. Goods purchased in one period may be consumed over many subsequent periods, income received in one period may be saved for future use, and credit lines may allow consumption in one period to be paid for in the future. In this context, \cite{Poterba1991} suggests that using income leads to overestimating the regressivity of a gasoline tax. \cite{Poterba1991} considers that consumption is affected by expected lifetime earnings, life-cycle patterns and general backward- or forward-looking behaviours, and also that poverty is often temporary; which means income at any point in time is an imperfect, noisy measure of living standards. Expenditures during periods of lower income reflect either existing assets and savings, or the expectation of a higher income in the near future; in particular, this results in gasoline purchases representing a larger share of income for households in the lower income deciles, than of total expenditure for households in the lower expenditure deciles. Moreover, because income may be indexed by price indices (e.g. transfers to low income families or social security recipients), the tax burden for lower income households tends to be partly offset by higher income. Taking indexing into account, \cite{Poterba1991} finds that households in the lowest three deciles of total expenditure bear a lower tax burden than the higher expenditure deciles. \tdFLY{NOV 18 2023 must finish sentence}
 
-\citet[p.~88]{WorldBank2022} \tdFLY{rethink author field to reqd ``World Bank'' and use \citet[p.~88]{WorldBank2022} not \cite[p.~88]{WorldBank2022}} estimates ``transient poverty''\footnote{Transient poverty is the condition of households that have a low income but do not fall into ``poverty traps'' due to lack of education or infrastructure, making them more likely to be poor only temporarily.} reached 10\% of the Brazilian population in 2019, while \cite{OECD2018} shows income mobility is higher in Brazil relative to OECD countries, which is likely to produce the type of bias described by \cite{Poterba1991}.
+\citet[p.~88]{WorldBank2022} \tdFLY{rethink author field to read ``World Bank'' and use \citet[p.~88]{WorldBank2022} not \cite[p.~88]{WorldBank2022}} estimates ``transient poverty''\footnote{Transient poverty is the condition of households that have a low income but do not fall into ``poverty traps'' due to lack of education or infrastructure, making them more likely to be poor only temporarily.} reached 10\% of the Brazilian population in 2019, while \cite{OECD2018} shows income mobility is higher in Brazil relative to OECD countries, which is likely to produce the type of bias described by \cite{Poterba1991}.
 
-\cite{TeixidoVerde2017} argue that wealth has the opposite effect. Between two similar families with the same level of income but different levels of wealth, the demand of the more wealthy family is likely to be less elastic to prices due to wealth providing a ``safety net'' in the event \tdFL{NOV 18 2023: ENW in the event, in the case, etc.} of income losses. By omitting this factor, the price-elasticity of demand of the wealthier family will be biased upwards, thus overstating their welfare losses in the case of a price increase. \cite{TeixidoVerde2017} \tdFL{NOV 18 2023:  fix capitals in bib entry} thus include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
+\cite{TeixidoVerde2017} show that wealth has the opposite effect. Between two similar families with the same level of income but different levels of wealth, the demand of the more wealthy family is likely to be less elastic to prices due to wealth providing a ``safety net'' in the event \tdFLY{NOV 18 2023: ENW in the event, in the case, etc.} of income losses. By omitting this factor, the price-elasticity of demand of the wealthier family will be biased upwards, thus overstating their welfare losses in the case of a price increase. \cite{TeixidoVerde2017} \tdFL{NOV 18 2023:  fix capitals in bib entry} thus include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
 
 \cite{Sterner2012} \tdFL{Fix bib entry} argues that whether a tax is regressive will vary among countries and in particular that cars in developing countries are luxury goods. However, fuels can have a large impact on industry costs and output. For example, in Brazil, the transportation of consumer goods is largely made by trucks powered by diesel, so a tax on diesel can increase the prices of all goods. In this case, even if cars are luxuries, the tax may be regressive if the price of goods consumed by low-income families is more sensitive to transportation costs than the price of goods consumed by high-income families.
 
@@ -490,10 +494,16 @@ While inequality is usually measured through differences in income, consumption 
 
 \cite{FreitasRibeiroSouzaHewings2016} analyse the distributional effects of taxing \ac{GHG} in Brazil using an input-output model of the production chains and find that food and transportation bear the largest changes in output. Because low-income households also spend the greatest shares in these goods, a fuel tax is found to be regressive.
 
+Engel's seminal work on food expenditure showed that the fraction of income spent on food decreased with total income. This evolved into the the classification of goods as luxuries or necessities according to the income elasticity of demand. A luxury good has income elasticity of demand larger than one. In Brazil, income elasticity of demand for gasoline are typically smaller than one. It's worth noting, however, that these estimates are for aggregated demand.
+
+\cite{Carvalho2014} analyses expenditure patterns by \textit{per capita} income on public transportation, and on private vehicles and fuels, for families in urban areas in Brazil. Using the 2008-2009 \ac{FBS}, \cite{Carvalho2014} estimated the income-elasticity of expenditure on public transportation to be positive for lower income families and negative for higher income families; on the other hand, expenditure on vehicles and fuels increase with income at all levels, and have elasticity larger than one.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Demand systems, other sources of heterogeneity and welfare computation}\label{sec:demand_sys}
 
-The regressivity evaluation in \cite{Poterba1991} is done over a partial equilibrium analysis, and comes with the caveat that gasoline (as other fuels) are \tdFL {NOV 18 2023:  is} also used as an input in the production and transportation of many other consumer goods. A more complete evaluation, as suggested in \cite{Poterba1991}, would use I/O tables and a general equilibrium model to compute the effects of a change in gasoline prices on all production sectors. This approach is used by \cite{JorgensonSlesnick1987b} along with a social welfare function that accounts for both efficiency and distribution effects. \cite{JorgensonSlesnick1987b} evaluate a policy of price controls on natural gas in the United States and conclude that decontrol would increase efficiency but decrease equity. \tdILR{DEC 2023 there is no JorgensonSlesnick1987b in your bib file only JorgensonSlesnick1987b}
+The regressivity evaluation in \cite{Poterba1991} is done over a partial equilibrium analysis, and comes with the caveat that gasoline (as other fuels) is \tdFLY{NOV 18 2023:  is} also used as an input in the production and transportation of many other consumer goods. A more complete evaluation, as suggested in \cite{Poterba1991}, would use I/O tables and a general equilibrium model to compute the effects of a change in gasoline prices on all production sectors. This approach is used by \cite{JorgensonSlesnick1987b} along with a social welfare function that accounts for both efficiency and distribution effects. \cite{JorgensonSlesnick1987b} evaluate a policy of price controls on natural gas in the United States and conclude that decontrol would increase efficiency and decrease equity. \tdILY{DEC 2023 there is no JorgensonSlesnick1987b in your bib file only JorgensonSlesnick1987b}
 
 \tdIL{Look at Section 4.1 in \citet{NikodinoskaSchroder2016}. They have a short paragraph there about the history of demand systems and then their own methods paragraph about why they themselves use. They had to squeeze all that in only two paragraphs in the published version of their paper. You do have more space for full-fledged sections.}
 
@@ -511,7 +521,7 @@ w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x
 \end{equation}
 
 
-\cite{DeatonMuellbauer1980} also propose a linear approximation of the \ac{AIDS} model: the \ac{LA-AIDS} model \tr{was} used by \cite{AlmeidaJustoOliveiraSilva2016} with monthly aggregate consumption of gasoline, diesel and ethanol over the state of Pernambuco in Brazil, and they \tr{find} \tdFL{be consistent with verb tense} that demand for gasoline and diesel is price-inelastic \tdpFL while demand for ethanol is price-elastic. This approach, however, precludes (1) \tdFL{yeah, let us not do this} differentiating demographic groups, as consumption is aggregated over consumers and (2) regressivity analysis, as demand is modelled as a function of expenditure only on fuels.\tdFL{explain/clarify further}
+\cite{DeatonMuellbauer1980} also propose a linear approximation of the \ac{AIDS} model: the \ac{LA-AIDS} model is used by \cite{AlmeidaJustoOliveiraSilva2016} with monthly aggregate consumption of gasoline, diesel and ethanol over the state of Pernambuco in Brazil, and they find that demand for gasoline and diesel is price-inelastic \tdpFL while demand for ethanol is price-elastic. This approach, however, precludes differentiating demographic groups, as consumption is aggregated over consumers and regressivity analysis, as demand is modelled as a function of expenditure only on fuels, which is itself affected but not fully determined by income.\tdFL{explain/clarify further}
 
 The \ac{AIDS} model was expanded by \cite{BanksBlundellLewbel1997} to include a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income, or vice-versa.
 
@@ -536,7 +546,7 @@ w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x
 
 \cite{SpillerStephensChen2017} consider that households in rural areas do not have access to public transportation, reducing their ability to substitute driving.\tdFL{and what was the result? what changed?}
 
-\cite{JorgensonSlesnick1987} use a transcendental logarithm demand system and incorporate demographic attributes (number of people. age, gender, race and whether the family lives in a rural area) into commodity-specific household equivalence scales.
+\cite{JorgensonSlesnick1987a} use a transcendental logarithm demand system and incorporate demographic attributes (number of people. age, gender, race and whether the family lives in a rural area) into commodity-specific household equivalence scales.
 
 
 % Adler 2019, Jorgenson1990, JorgensonSlesnick2014
@@ -545,10 +555,13 @@ w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x
 
 \tdILR{All these last paragraphs above must be polished, written more fully, etc.}
 
-\section{Equivalence scales}\label{sec:equivalence_scales}
-Once we start looking \tr{at disaggregated demand for welfare analysis}\tdFL{rewrite!}, either within a regressivity framework or a demand system, the issue of comparability between \tde households arises. For example, \tdp total income, if used as a measure of welfare, will underestimate the well-being of a family of two adults relative to that same family with a child at the same level of income, as satisfying the needs of the child will reduce the consumption of the parents.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A common correction to this issue is to use the income \textit{per capita} instead. In fact, the \ac{FBS} provides in all its expense datasets a column with the per capita income of the household. However, per capita income disregards that members may have different needs and that there are economies of scale in consumption. Children, for example, consume less food than adults in general. Demand for goods such as lighting and water does not increase proportionally to the number of people in a household. Family members will usually share appliances and vehicles, and can purchase larger quantities of goods at a discount.
+
+\section{Equivalence scales}\label{sec:equivalence_scales}
+When using models of disaggregated demand, either within a regressivity framework or a demand system, the issue of comparability between \tde households arises. For example, \tdp total income, if used as a measure of welfare, will underestimate the well-being of a family of two adults relative to that same family with a child at the same level of income, as satisfying the needs of the child will reduce the consumption of the parents.
+
+A common correction to this issue is to use the income \textit{per capita} instead. In fact, the \ac{FBS} provides in all its expense datasets a column with the per capita income of the household, and this is the chosen explanatory variable in the income-elasticity models of \cite{Carvalho2014}. However, per capita income disregards that members may have different needs and that there are economies of scale in consumption. Children, for example, consume less food than adults in general. Demand for goods such as lighting and water does not increase proportionally to the number of people in a household. Family members will usually share appliances and vehicles, and can purchase larger quantities of goods at a discount.
 
 \tdIL{See if you can add references to support all this. For example, there are studies of water demand that document carefully this economies of scale. That is just one example. Indeed some of the literature on economics of the family will point out that those economics of scale and the non-rivalness and of goods and services in a household are one of the advantages of getting married. You can mention that but, in any event, you want tor backup your statements with references.}
 
@@ -576,13 +589,15 @@ Subjective scales are constructed by surveying families and asking what they wou
 
 \subsubsection{Behavioural scales}
 
-These are based on observed consumption patterns of families. \to{* Started with Engel's observations of food expenditures. Richer families tend to spend lower fractions of their income on food than poorer families, so we can use the fraction of income spent on food as an approximation of welfare.
-* Rothbarth: consider ``adult goods'': goods such as alcohol are not purchased by children, so when a family has a child, the ``cost of the child'' is the additional income necessary to restore the consumption of said ``adult goods'' to their initial levels.
-* Prais and Houthakker: generalize the Engel method to allow for different scales for each good
-* \cite{VazVaz2007} estimate equivalence scales for Brazil from the 2002-2003 FBS. The estimates are in general non-significant but they find that children are cheaper than adults.
-* The translog demand system of \cite{JorgensonSlesnick1987} yields commodity-specific household equivalence scales.}
-* \cite{Mancero2011} estimates behavioural equivalence scales for LatAm and finds high variability in the marginal cost of a child, ultimately recommending the use of parametric equivalence scales instead.
-* \cite{PollakWales1979} point out that equivalence scales obtained from demand system estimates are not appropriate for welfare comparisons. These scales assume demographic parameters are fixed, which may be true for attributes such as gender and race but not so for others like the number of children or the location of the household. Consumption patterns do not reveal the ``direct'' utility contribution of children or location and are instead conditional on the demographic parameters being fixed, whereas equivalence scales used for welfare comparisons should be unconditional. \cite{PollakWales1979} mention that their estimates of equivalence scales from observed consumption in the UK would suggest that larger families require less money than smaller families to reach the same level of utility, as an example of how the use of conditional equivalence scales may lead to spurious results.
+These are based on observed consumption patterns of families.
+
+Engel's work on food expenditures in England showed that richer families tend to spend lower fractions of their income on food than poorer families. This suggests the fraction of income spent on food can be used as an approximation of welfare; Hamilton 2014 used food shares to estimate CPI bias.
+The Rothbarth method considers ``adult goods'': goods such as alcohol are not purchased by children, so when a family has a child, the ``cost of the child'' can be estimated as the additional income necessary to restore the consumption of said ``adult goods'' to their initial levels.
+
+Prais and Houthakker generalized the Engel method to allow for different scales for each good. Demand systems like the AIDS or the translog demand system \citep{JorgensonSlesnick1987a} may be used to estimate commodity-specific household equivalence scales.
+\cite{VazVaz2007} use the Prais and Houthakker method to estimate equivalence scales for Brazil from the 2002-2003 FBS. The estimates are in general non-significant but \cite{VazVaz2007} find that children are ``cheaper'' than adults. \cite{Mancero2011} estimates behavioural equivalence scales for Latin American countries using a similar method, and finds high variability in the marginal cost of a child, ultimately recommending the use of parametric equivalence scales instead.
+
+\cite{PollakWales1979} point out that equivalence scales obtained from demand system estimates are not appropriate for welfare comparisons. These scales assume demographic parameters are fixed, which may be true for attributes such as gender and race but not so for others like the number of children or the location of the household. Consumption patterns do not reveal the ``direct'' utility contribution of children or location and are instead conditional on the demographic parameters being fixed, whereas equivalence scales used for welfare comparisons should be unconditional. \cite{PollakWales1979} mention that their estimates of equivalence scales from observed consumption in the UK would suggest that larger families require less money than smaller families to reach the same level of utility, as an example of how the use of conditional equivalence scales may lead to spurious results.
 
 \subsection{Criticism of equivalence scales}
 % preferences are constructed, not innate
@@ -613,7 +628,7 @@ Finally, it may not be socially acceptable to attribute a lower ``weight'' to ch
 
 \tdILR{NOV 18 2023 OK, so where in your Section \ref{methods} do you explain to the reader that you are using the QUAIDS of DQUAIDS models?}
 
-In this essay, consumer demand for fuels is characterized across households of different compositions and attributes, and the results are used to estimate the welfare effects of a subsidy policy change. Demand is estimated with \ref{eq:QUAIDS} using data from the \ac{FBS} and the \ac{ACPI}.
+In this essay, consumer demand for fuels is characterized across households of different compositions and attributes, and the results are used to estimate the welfare effects of a subsidy policy change. Demand is estimated with \ref{eq:QUAIDS} using data from the 2017-2018 \ac{FBS} and the \ac{ACPI}.
 
 Assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have an indirect utility function of the form:
 
@@ -648,7 +663,7 @@ Aggregating goods into groups has the additional advantages of improving the sta
 Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \citep[p124]{DeatonMuellbauer1980}. \tdFLY{pages for books}
 
 \subsection{Consistency with the theory of demand}
-Demand theory yields negativity and symmetry restrictions that are best explained in light of the Slutsky matrix definition. The Slutsky matrix is formatted as follows:
+Demand theory yields \textit{negativity} and \textit{symmetry} restrictions that are best explained in light of the Slutsky matrix definition. The Slutsky matrix is formatted as follows:
 
 $$S(p, w) =
 \begin{pmatrix}
@@ -701,7 +716,7 @@ See Appendix \ref{ap:demographic_attribute_variables} for the variables used to 
 
 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
-In the literature, the choice of groups of goods and services vary. Food is present in all the reviewed articles, housing and clothing are often present, and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups. Vehicle fuels may be present in "fuel", "energy" or "transportation" groups.
+In the literature, the choice of groups of goods and services vary. Food is present in all the reviewed articles that aim to estimate demand systems for all or most of households' spending; housing and clothing are often present; and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups. Vehicle fuels may be present in "fuel", "energy" or "transportation" groups.
 
 For the present analysis, the following groups compose the first stage of the budget: fuels, housing and maintenance services, adult goods, services, and other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \cite{Poterba1991} \tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and the observations of Rothbarth \cite{Ray1983}.
 
