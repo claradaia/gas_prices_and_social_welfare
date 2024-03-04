@@ -794,40 +794,6 @@ Rearranging the (logarithm) indirect utility function $\ln v(x, p)$ of QUAIDS \c
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section {Data}\label{sec:data}
-
-\tdILR{NOV18 2023: Rober thinks that the DATA SECTION should be a ``chapter'' itself, separate from the Methodology}
-
-\subsection {Data Source} \label{sec:data_source}
-
-The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23\textsuperscript{rd} 2018.
-
-\tdILY{NOV 18 2023  The footnote numbers go after the punctuation mark: check throughout }
-
-The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed,\footnote{\cite{WaleedMirza2020}, for example, match their family budget survey data to the weekly Pakistan Bureau of Statistics price index using the date of collection.} while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
-
-\tdILR{NOV 18 2023  I bet your macros do not work because of the mistranslation of underscores between Stata and \LaTeX}
-
-\tdILY{there are a lot of ``I's' in this section: use the passive voice more: NOV 18 2023  still must fix this. The passive voice goes ``The type of expense was identified...''}
-
-The grouping was done as follows. First, the type of expense that was present more frequently among the households surveyed was identified: in the case of the 2017-2018 \ac{FBS} this was rent or estimated rent, $`pct_rent'$\% \tdFL{these macros will work in the end right?} of households recorded a value. The second step is done under the assumption that two households that paid rent on the same date and location, or were interviewed on the same date and location, would have the same deflator value. Under this assumption, households that have the same deflator value for rent were grouped and treated as facing the same prices. Third, a Stone price index was produced from all expenses reported by all households in each group.
-
-This exploitation made it possible to obtain estimates but, given that the procedure by which the deflators are generated and mapped onto observations is not transparent and I did not have the dates of collection, the results are not reliable. The reader should take the estimates, their discussion and conclusions as an example of the use of the method to address the question rather than an actual answer.
-
-If the deflator values had been solely determined by the date of the payment or the survey, we would expect to find at most 395 different values (365 for each day of the survey plus 30 for the days prior to the first day of the survey). Instead, $`price_group_count'$ values were found, and the \ac{FBS} documentation informs us that location and time period are both used to produce the deflator values. This means the groups do not reflect only a time dimension. Additionally, \tr{even though inflation records for housing grew every month} \tdFL{reword/clarify, more records? higher prices? more inflation?} in the period of the survey, the absence of definitive information on the deflator source leaves open the possibility that households surveyed at different periods and locations would have the same deflator value.
-
-
-\tdILY{Rober SEPT 19: you do not name a variable "urban\_or\_rural" (also because the underscores tend to be a nuisance in \LaTeX), since that is not going to help: name it EITHER urban OR rural and label the 0 and 1 values accordingly. Same with "gender" "marital status" etc. Use male (or female, or additional binary indicators) and "married", "single", "divorced", etc. }
-\tdILY{Clara: ok, I changed it. I used the categories as variable names and let Stata interpret them with i.var\_name when possible, but the quaids command does not support it. Also snake\_case is \href{https://www.cs.kent.edu/~jmaletic/papers/ICPC2010-CamelCaseUnderScoreClouds.pdf}{the superior naming convention} so I will keep it unless there is no way to fix the \LaTeX\ output}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\tdILY{so can we start seeing tables of descriptives of whatever data you already have, you do have some data.}
-
-\subsection{Population sample description}
-
 tex*/
 
 texdoc stlog, nolog
@@ -862,7 +828,7 @@ label values region brazil_regions
 // Total households surveyed are total unique combinations of these
 egen hh_id = group(COD_UPA NUM_DOM NUM_UC), label
 unique hh_id
-texdoc local household_count = strofreal(r(unique), "%9.0gc")
+scalar hh_count = r(unique)
 
 // Type of residence
 rename TIPO_SITUACAO_REG residence_type
@@ -921,11 +887,11 @@ collect export demographic_summary_table.tex, tableonly replace
 // Save some individual percentages for comments
 estpost tab residence_type
 matrix pct = e(pct)
-texdoc local rural_hh_pct = strofreal(round(pct[1,"Rural"], .01), "%9.2f")
+scalar rural_hh_pct = pct[1,"Rural"]
 
 estpost tab gender
 matrix pct = e(pct)
-texdoc local female_head_hh_pct = strofreal(round(pct[1,"Female"], .01), "%9.2f")
+scalar female_head_hh_pct = pct[1,"Female"]
 
 estpost tab race
 matrix pct = e(pct)
@@ -975,27 +941,6 @@ scalar hh_vehicle_pct = r(N)*100/hh_count
 // save for merging later
 // note not all households have any items in the inventory
 save "Data\hh_vehicle.dta", replace
-
-texdoc stlog close
-
-/*tex
-The 2017-2018 \ac{FBS} surveyed $`household_count'$ households. Table \ref{tab:demographic_frequencies} \tdFL{is this table mislabelled? there is no caption in the table!!!} shows how observations are distributed by gender of household head, residence type \tdFL{consider using Oxford commas} and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
-
-\input{demographic_summary_table}
-
-% Now we show the data is somewhat reliable
-
-% Compare it with census data
-% While we wait for the 2022 census results, which I believe should be available by the end of January, I'm using the 2010 census.
-In the 2010 census data, 18\% of the households surveyed were in a rural area, while the percentage in the 2017-2018 \ac{FBS} is of $`rural_hh_pct'$\%. In 2010, 38.74\% of households were headed by a woman, versus $`female_head_hh_pct'$\% in 2017-2018. With respect to race, in 2010 49.4\% of the surveyed households were headed by a person self-declared ``white'', 40\% by a person self-declared ``mixed'' and 8.97\% by a person self-declared ``black''. In the 2017-2018 data, we have $`White_head_hh_pct'$\% self-declared ``white'', $`Mixed_head_hh_pct'$\% self-declared ``mixed'' and $`Black_head_hh_pct'$\% self-declared ``black''.
-\tdILB{The \% for mixed and white seem to be "switched" between the 2010 census and the POF. Double check.}
-
-% Explain the sampling process
-\ac{BIGS} uses a master sample framework to select households for surveys, including the \ac{FBS}. The master sample is a sample of the census sectors drawn using stratification and probability weighted by the number of households in the sector, and grouped into \acp{PSU} so that each \ac{PSU} has at least 60 households \citep{ibge2008}. The \ac{FBS} uses a subsample of the master sample in two stages: first drawing \acp{PSU} randomly from each strata, then drawing households randomly from each \ac{PSU}. See Appendix \ref{ap:sampling_fbs} for more details.
-
-tex*/
-
-texdoc stlog, nolog
 
 
 /*******************
@@ -1324,8 +1269,20 @@ restore
 // this gives us 600101 as the item code that "covers" the most households
 // in future iterations, we can try to "cover" other households by choosing other items and attempting to match their deflators to existing groups
 gen price_group = DEFLATOR if item_code == max_hhs_item_code
+
+// count price groups
+unique price_group
+scalar price_group_count = r(unique)
+
+// count households with rent deflator values
 keep hh_id price_group
+unique hh_id
+scalar hh_count = r(unique)
 drop if missing(price_group)
+unique hh_id
+scalar hh_rent = r(unique)
+scalar pct_rent = hh_rent*100/hh_count
+
 duplicates drop
 
 // save for joins
@@ -1388,9 +1345,13 @@ count if missing_indices == 0 // yields 46,085
 scalar hhs_complete2 = r(N)
 assert hhs_complete == hhs_complete2
 
+
 /*************************************************
 * count households with expenditures in all groups
+* does not produce any output, just useful for
+* verification
 */
+
 
 frame change expenditures
 
@@ -1402,6 +1363,7 @@ frame change present_groups
 duplicates drop // keep only one row for each hh_id commodity_group pair
 gen commodity_groups_count = 1
 collapse (count) commodity_groups_count, by (hh_id) // count rows by household, yields commodity group count
+
 
 **********************
 * expenditure shares *
@@ -1591,10 +1553,61 @@ collect export demographic_summary_table.tex, tableonly replace
 // create macros for texdoc
 texdoc local hh_vehicle_count = strofreal(hh_vehicle_count, "%9.0gc")
 texdoc local hh_vehicle_pct = strofreal(hh_vehicle_pct, "%9.2f")
+texdoc local hh_count = strofreal(hh_count, "%9.0gc")
+texdoc local rural_hh_pct = strofreal(round(rural_hh_pct, .01), "%9.2f")
+texdoc local female_head_hh_pct = strofreal(round(female_head_hh_pct, .01), "%9.2f")
+texdoc local hh_rent = strofreal(hh_rent, "%12.0gc")
+texdoc local pct_rent = strofreal(round(pct_rent, .01), "%9.2f")
+texdoc local price_group_count = strofreal(price_group_count, "%12.0gc")
 
 texdoc stlog close
 
 /*tex
+\section {Data}\label{sec:data}
+
+\tdILR{NOV18 2023: Rober thinks that the DATA SECTION should be a ``chapter'' itself, separate from the Methodology}
+
+\subsection {Data Source} \label{sec:data_source}
+
+The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23\textsuperscript{rd} 2018.
+
+\tdILY{NOV 18 2023  The footnote numbers go after the punctuation mark: check throughout }
+
+The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed,\footnote{\cite{WaleedMirza2020}, for example, match their family budget survey data to the weekly Pakistan Bureau of Statistics price index using the date of collection.} while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
+
+\tdILR{NOV 18 2023  I bet your macros do not work because of the mistranslation of underscores between Stata and \LaTeX}
+
+\tdILY{there are a lot of ``I's' in this section: use the passive voice more: NOV 18 2023  still must fix this. The passive voice goes ``The type of expense was identified...''}
+
+The grouping was done as follows. First, the type of expense that was present more frequently among the households surveyed was identified: in the case of the 2017-2018 \ac{FBS} this was rent or estimated rent, from the $`hh_count'$ surveyed, $`hh_rent'$ or $`pct_rent'$\% \tdFL{these macros will work in the end right?} of households recorded a value. The second step is done under the assumption that two households that paid rent on the same date and location, or were interviewed on the same date and location, would have the same deflator value. Under this assumption, households that have the same deflator value for rent were grouped and treated as facing the same prices. Third, a Stone price index was produced from all expenses reported by all households in each group.
+
+This exploitation made it possible to obtain estimates but, given that the procedure by which the deflators are generated and mapped onto observations is not transparent and I did not have the dates of collection, the results are not reliable. The reader should take the estimates, their discussion and conclusions as an example of the use of the method to address the question rather than an actual answer.
+
+If the deflator values had been solely determined by the date of the payment or the survey, we would expect to find at most 395 different values (365 for each day of the survey plus 30 for the days prior to the first day of the survey). Instead, $`price_group_count'$ values were found, and the \ac{FBS} documentation informs us that location and time period are both used to produce the deflator values. This means the groups do not reflect only a time dimension. Additionally, \tr{even though inflation records for housing grew every month} \tdFL{reword/clarify, more records? higher prices? more inflation?} in the period of the survey, the absence of definitive information on the deflator source leaves open the possibility that households surveyed at different periods and locations would have the same deflator value.
+
+
+\tdILY{Rober SEPT 19: you do not name a variable "urban\_or\_rural" (also because the underscores tend to be a nuisance in \LaTeX), since that is not going to help: name it EITHER urban OR rural and label the 0 and 1 values accordingly. Same with "gender" "marital status" etc. Use male (or female, or additional binary indicators) and "married", "single", "divorced", etc. }
+\tdILY{Clara: ok, I changed it. I used the categories as variable names and let Stata interpret them with i.var\_name when possible, but the quaids command does not support it. Also snake\_case is \href{https://www.cs.kent.edu/~jmaletic/papers/ICPC2010-CamelCaseUnderScoreClouds.pdf}{the superior naming convention} so I will keep it unless there is no way to fix the \LaTeX\ output}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\tdILY{so can we start seeing tables of descriptives of whatever data you already have, you do have some data.}
+
+\subsection{Population sample description}
+
+The 2017-2018 \ac{FBS} surveyed $`hh_count'$ households. Table \ref{tab:demographic_frequencies} \tdFL{is this table mislabelled? there is no caption in the table!!!} shows how observations are distributed by gender of household head, residence type \tdFL{consider using Oxford commas} and race. Overall, the majority of the sampled households are headed by men self-declared as ``mixed race'' and lives in urban areas.
+
+\input{demographic_summary_table}
+
+% Now we show the data is somewhat reliable
+
+% Compare it with census data
+% While we wait for the 2022 census results, which I believe should be available by the end of January, I'm using the 2010 census.
+In the 2010 census data, 18\% of the households surveyed were in a rural area, while the percentage in the 2017-2018 \ac{FBS} is of $`rural_hh_pct'$\%. In 2010, 38.74\% of households were headed by a woman, versus $`female_head_hh_pct'$\% in 2017-2018.
+
+% Explain the sampling process
+\ac{BIGS} uses a master sample framework to select households for surveys, including the \ac{FBS}. The master sample is a sample of the census sectors drawn using stratification and probability weighted by the number of households in the sector, and grouped into \acp{PSU} so that each \ac{PSU} has at least 60 households \citep{ibge2008}. The \ac{FBS} uses a subsample of the master sample in two stages: first drawing \acp{PSU} randomly from each strata, then drawing households randomly from each \ac{PSU}. See Appendix \ref{ap:sampling_fbs} for more details.
 
 % Data cleaning and expense mapping
 Of the original $`purchase_ct'$ purchases recorded, $`unknown_amt'$ were excluded from the analysis as the amount spent was not informed.
@@ -1608,7 +1621,7 @@ The distribution of income and total expenditure is strongly right-skewed: Figur
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{graphs/boxplot_exp_inc.png}
-    \caption{Boxplots of total income and expenditure by Brazilian households from the 2017-2018 \ac{FBS}}
+    \caption{Boxplots of monthly total income and expenditure by Brazilian households from the 2017-2018 \ac{FBS}}
     \label{fig:boxplot_exp_inc}
 \end{figure}
 
@@ -1922,7 +1935,7 @@ foreach group in "1" "2" "3" "4" "5" "6"{
 		log(price_index`group')
 
 	// sum of sum gamma_ij ln p_i ln p_j
-	foreach group2 in "1" "2" "3" "4" "5" {
+	foreach group2 in "1" "2" "3" "4" "5" "6"{
 		replace gamma_ij_times_ln_prices =  gamma_ij_times_ln_prices + ///
 			e(gamma)[`group', `group2'] * log(price_index`group') * log(price_index`group2')
 	}
@@ -1966,7 +1979,7 @@ foreach group in "1" "2" "3" "4" "5" "6" {
 		log(price_index`group')
 
 	// sum of sum gamma_ij ln p_i ln p_j
-	foreach group2 in "1" "2" "3" "4" "5" {
+	foreach group2 in "1" "2" "3" "4" "5" "6"{
 		replace gamma_ij_times_ln_prices =  gamma_ij_times_ln_prices + ///
 			e(gamma)[`group', `group2'] * log(price_index`group') * log(price_index`group2')
 	}
