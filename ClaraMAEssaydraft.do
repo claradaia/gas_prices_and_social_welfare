@@ -930,8 +930,6 @@ collapse (count) vehicle, by(hh_id)
 replace vehicle = 1 if vehicle >= 1
 
 // count and % of households with vehicles
-count
-scalar hh_count = r(N)
 count if vehicle == 1
 
 // texdoc local only works by section, so we need to save this separately
@@ -1276,8 +1274,6 @@ scalar price_group_count = r(unique)
 
 // count households with rent deflator values
 keep hh_id price_group
-unique hh_id
-scalar hh_count = r(unique)
 drop if missing(price_group)
 unique hh_id
 scalar hh_rent = r(unique)

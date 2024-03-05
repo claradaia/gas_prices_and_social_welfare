@@ -58,13 +58,16 @@ aaaMUN/SUPERVISION/2022/Clara/Data/Dados_20210304/*.txt
 *.eps
 morepricelengthsummarymeasures.txt
 aaaMUN/SUPERVISION/2022/Clara/Data/hh_*.dta
+aaaMUN/SUPERVISION/2022/Clara/Data/missing_price_indices_by_price_group.dta
+aaaMUN/SUPERVISION/2022/Clara/Data/price_indices_by_price_group.dta
 aaaMUN/SUPERVISION/2022/Clara/graphs/*
 aaaMUN/SUPERVISION/2022/Clara/Data/IPCA/*.dta
 aaaMUN/SUPERVISION/2022/Clara/Data/fuel_prices/*.dta
 aaaMUN/SUPERVISION/2022/Clara/Data/fuel_prices/basketDayArchives.csv
 
-# deliverables
+# deliverables, temp files etc
 deliverables
+aux
 
 # libreoffice lock files
 .~lock*
