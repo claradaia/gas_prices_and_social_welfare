@@ -111,14 +111,16 @@ graph set window fontface "Palatino Linotype"
 % Abstract is mandatory. It should not exceed 100 words
 \abstract
 
-Fossil fuels represent a large share of expenditure for Brazilian households. Demand is inelastic in the short-term, and pricing policies implemented by Petrobras. Frequent price changes affect families well-being, and it does so heterogeneously. To understand these heterogeneous effects, we use a social welfare function framework. We analyse the effect of gasoline prices on social welfare in Brazil using the transcendental logarithm social welfare function, and use those estimates to evaluate the import parity price policy implemented by Petrobras. We find that the policy affected families of median and above income x times more than families under the median income, and that families living in rural areas were x times more affected than families in urban areas.
+Fossil fuels represent a large share of expenditure for Brazilian households. Demand is inelastic in the short-term, and pricing policies implemented by Petrobras. Frequent price changes affect families well-being, and do so heterogeneously. To understand these heterogeneous effects, we use a social welfare function framework. We analyse the effect of gasoline prices on social welfare in Brazil using the transcendental logarithm social welfare function, and use those estimates to evaluate the import parity price policy implemented by Petrobras. We find that the policy affected families of median and above income x times more than families under the median income, and that families living in rural areas were x times more affected than families in urban areas.
+
+\todo[inline,color=yellow,size=\large]{This version is from \today}
 
 \todo[inline]{Eventually, this abstract will need some further ``sell'' or motivation. Why are we interested in the effects of changes in the price of oil? Why would they keep changing or change more in the future? Why were the policies that changed the prices effected? Climate change? International Pressure? Sustainable Development Goals? The IMF requiring it? Will this happen again? That is, is there a policy situation to solve? A problem to deal with? Is it getting better? worse? }
 
 \todo[inline]{Eventually, this abstract will need some policy conclusions. Now that ``thankfully for the World or at least Brazil, you completed this work, what can you say that will inform policy, make things better, help solve the original problem?'' }
 
 
-\todo[inline, color=red]{NOV 18 2023: Where did the keywords go? You have them up there (two of them) but the ydo not show up in the compiled pdf anywhere. Please ensure that gets fixed}
+\todo[inline, color=red]{NOV 18 2023: Where did the keywords go? You have them up there (two of them) but they do not show up in the compiled pdf anywhere. Please ensure that gets fixed}
 
 
 
@@ -253,25 +255,19 @@ The Informatics Department of UFPR Faculty. \todo[fancyline, color= red]{NOV 18 
 
 \tdILG{Rober: We want all floats to be almost fully self-explanatory, so you need more detail/context in the caption itself.}
 
-\tdIL{2. The explanation of how I "extracted" price variability from the dataset, in the Data Source section.}
+\tdILG{2. The explanation of how I ``extracted'' price variability from the dataset, in the Data Source section.}
+\tdILG{That is OK. It will have to go in some form to the ``limitations'' as well}
 
-\tdILY{That is OK. It will have to go in some form to the ``limitations'' as well}
+\tdIL{3. The model runs with demographic vars. I still need to figure out why there are so many missing values in the price index, 2/5 of the households are not being included because of it.}
 
+\tdILG{NOV 18 2023: Clara wrote ``Counted the groups present in the expense records for each family and found that the missing price indices are due to families not having any consumption for some commodity groups. I don't think this can be overcome, maybe I can show what demographics they belong to so the reader knows those estimates may be wrong?}
 
-\tdILY{3. The model runs with demographic vars. I still need to figure out why there are so many missing values in the price index, 2/5 of the households are not being included because of it.}
-
-\tdILY{NOV 18 2023: Clara wrote ``Counted the groups present in the expense records for each family and found that the missing price indices are due to families not having any consumption for some commodity groups. I don't think this can be overcome, maybe I can show what demographics they belong to so the reader knows those estimates may be wrong?}
-
-\tdILR{Yes, you cannot overcome that and we should not go into missing value imputation here. Explain that and, even better if possible, try to work out in which direction, how, the results you suspect will be ``wrong''}
-
-
+\tdILR{March 1 2014 This has now solved to a great extent correct?}
 
 
 \chapter{Introduction}\label{intro}
 
-\tdILY{Rober suggests italicizing the original Portuguese, currently missing a special c or a z or something in the acronym definition, translating it here into English and creating the acronym for FBS instead or POF. Same with IBGE}
-
-\tdIL{checkspelling in bib entries, remember the accents in \TeX: Estatística will yield a missing vowel, use Estat\'{i}stica. }
+\tdILG{Check spelling in bib entries, remember the accents in \TeX: Estatística will yield a missing vowel, use Estat\'{i}stica. }
 
 \tdILY{Also consider using the acronyms in the author field of your bib file, so it looks more tidy. That is, use ``{I}nstituto {B}rasileiro de {G}eografia e {E}statística'' in a ``note'' but only IBGE in the ``author'' field }
 
@@ -286,15 +282,13 @@ According to the 2017-2018 \ac{FBS} run by the \ac{BIGS} \citep{ibgePOF}, transp
 
 \tdIL{Obviously, all these paragraphs will need a lot of rewriting as you go in order to thread a story together...}
 
-Having a low price-elasticity of demand and representing a large share of expenditure means the impact of gasoline price fluctuations is severe on consumers' well-being. Reflecting that relevance, in the past two decades the pricing of petroleum and its products in Brazil has been the target of several important policy interventions. Section \ref{gas_policy_history} provides a brief history of these interventions.
-
-\tdILY{perhaps also add that the price of oil can fluctuate a lot?}
+Having a low price-elasticity of demand and representing a large share of expenditure means the impact of gasoline price fluctuations is severe on consumers' well-being. Reflecting that relevance, in the past two decades the pricing of petroleum and its products in Brazil has been the target of several important policy interventions. Section \ref{gas_policy_history} provides a brief history of these interventions. \tdFL{March 1st 2024 See is you can fix the hyphenation of at least common words like ``Section''}
 
 In particular, in 2016, the Brazilian national petroleum company, Petrobras, implemented a new pricing policy, ending a long-term implicit subsidy on the price of oil that had kept it up to 20\% lower for national distributors than the international average price \citep{Ramalho2021}. The \ac{IPP} policy\footnote{The Brazilian media uses the acronym ``PPI'' along with a variety of phrases such as ``International Parity Price'', ``International Parity Policy'' and ``International Prices Parity''. The Government webpage that tracks import prices of fossil fuels uses the name ``Import Parity Prices''. In the text, I use ``the IPP policy'' when referring to the policy implemented in 2016, and ``IPP'' when referring to prices.} made prices charged within the country the same as the prices in the international market for oil. In 2023, the change was reversed and price controls were put back in place.
 
 From \tr{the} \tdFL{ENW: English needs work: from ``a''} methodological standpoint, \tr{I find} \tdFL{reword} that previous work on the impact on welfare of gas prices uses measures such as dead-weight loss, which precludes an evaluation of effects on population subgroups, or \tr{investigate} \tdFL{ENW grammar} effects on specific regions rather than a nation-wide study.
 
-\tdIL{We will need a few references to back this up}
+\tdILR{We will need a few references to back this up}
 
 There are also political aspects of interest in analysing the effect of gas price changes. \tdFL{As explained above: bring examples from other countries too?} Politicians often use gas price regulations as a popularity tool, especially near elections. \tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. \tr{Better understanding of demand \tde for gasoline and welfare effect of price} changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
 
@@ -311,8 +305,7 @@ The majority of economic activity depends on electricity or thermal energy sourc
 * Oil prices are not stable in the international market
 
 % Why were the policies that changed the prices effected?
-\tdILY{NOV 18 2023 Rober: watch out for truncated sentences if a \% sign is not preceded by  a $\backslash$}
-The Brazilian petroleum company Petrobras is partially nationalized -- 51\% of its stock is owned by the Brazilian federal government -- and is responsible for over 65\% of the petroleum market in the country. It is subject to a lot of political influence, as the company's president is appointed by the government, \tr{and political parties usually  From corruption scandals to debates regarding its profitability, political parties} \tdFL{NOV 18 2023 Rober: must be fully written up}
+The Brazilian petroleum company Petrobras is partially nationalized -- 51\% of its stock is owned by the Brazilian federal government and is responsible for over 65\% of the petroleum market in the country. It is subject to a lot of political influence, as the company's president is appointed by the government, \tr{and political parties usually  From corruption scandals to debates regarding its profitability, political parties} \tdFL{NOV 18 2023 Rober: must be fully written up}
 
 In 2016, the \ac{IPP} was implemented under the argument that it would increase the profits of Petrobras. This meant higher government revenue that could be used to lower taxes on other areas. Fuel prices increased, as well as the revenue.
 
@@ -420,47 +413,58 @@ Ethanol remains relevant in the Brazilian fuel market: in 2022, Brazilians consu
 
 
 \chapter{Literature Review}\label{litreview}
+
+
 \todo[color=green, inline]{To start with, there should be a whole bit about what is welfare in terms of economics, why it is measured, what are the original ways to measure it, etc. We would have said a thing or two about this in CBA class ; ) Then look at the welfare effects of price changes and then criticize those more conventional ways to look at the welfare effects of price changes and motivate the new strategies. Bu Rober misses the terms consumer surplus, equivalent variation, etc. Remember not only how but why the seminal contributors to welfare economics conceived of the effects of a policy (a regulation, a project, a price change, etc. ) and the assumptions they made. For example they would originally treat a household as a unit, they would assume that the marginal utility of income was the same for everyone… We need an explanation about why the analysis of a change in price brought about by a policy is not straightforward and a few paragraphs of description of the evolution of this type of analysis. You do not need to use the latest state-of-the-art analysis but you must who us that you have a good understanding of why new techniques have been developed through the decades. }
-\tdILR{NOV 18 2023: What you have for now must be further developed and references must be carefully inserted. You have a few missing bib tags (a tachnical issue to fix) but you must further acknowledge that the ideas about welfare economics in this first paragrpahs are not yours. Other authors came up with them.}
+\tdILR{NOV 18 2023: What you have for now must be further developed and references must be carefully inserted. You have a few missing bib tags (a tachnical issue to fix) but you must further acknowledge that the ideas about welfare economics in this first paragraphs are not yours. Other authors came up with them.}
 
 % Welfare intro
-Assuming that governments, especially representative ones, must work to improve or maintain the well-being of their citizens, policy development requires some measure of that well-being \cite{AdlerPosner1999}. In the decision making process, the consequences of different policies on the well-being are compared and, ideally, the option that produces the highest level of well-being is implemented.
+Assuming that governments, especially representative ones, must work to improve or maintain the well-being of their citizens, policy development requires some measure of that well-being \cite{AdlerPosner1999}. \tdFL{March 1st 2024 missing ref in bib file} In the decision making \tdFL{March 1st 2024 decision-making} process, the consequences of \tdFL{March 1st 2024 the different} different policies on the well-being are compared and, ideally, the option that produces the highest level of well-being is implemented.
 
 % Utility, revealed preference
 Pn the second half of the XIX century, the concept of utility was introduced by  individual well-being is usually explicitly modeled as \textit{utility}, a measure of the degree to which individuals satisfy their preferences through consumption. Welfare analysis typically measures changes in utility as a result of policies or other shocks in markets. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences, so revealed preference methods characterize demand by inferring utility functions from observed consumption.
 
+\tdILR{March 1st 2024 You may want to reword, to avoid suggesting that nowadays utility is ``measured''}
+
+
 % Pareto, ordinalism
-Individual preferences can be inferred from individual behaviour, such that state $A$ of the world can be said to be preferred by an individual to state $B$. However, if we introduce a second individual that prefers state $B$ to state $A$, it is not immediately clear which state should be preferred from a decision maker point of view. Provided the decision maker is able to adequately measure the individual changes in utility for all afected parties, an unambiguous decision process still requires aggregating these measures into an index that allows them to fully rank the possible states of the world.
+Individual preferences can be inferred from individual behaviour, such that state $A$ of the world can be said to be preferred by an individual to state $B$. However, if we introduce a second individual that prefers state $B$ to state $A$, it is not immediately clear which state should be preferred from a decision maker \tdFL{March 1st 2024 hyphen} point of view. Provided the decision maker \tdFL{March 1st 2024 hyphen} is able to adequately measure the individual changes in utility for all afected \tdFL{March 1st 2024 affected} parties, an unambiguous decision process still requires aggregating these measures into an index that allows them to fully rank the possible states of the world.
 
 The Pareto principle provides a starting point: if between states $A$ and $B$ of the world one individual prefers state $A$ to state $B$ and the others are indifferent between them, it is fairly straightforward to presume state $A$ is preferred to state $B$. However, economic policy rarely produces pure Pareto improvements, which makes this principle insufficient as a guide for policymaking. Within the ordinalist framework, \cite introduces the Hicks and Kaldor criterion, that allows for ``winners'' and ``losers'' of a change, as long as the winners could potentially compensate the losers and still be better off.
 
+\tdILR{March 1st 2024, we need more references throughout these paragraphs}
+
 To evaluate the hypothetical compensation for the losers and whether the winners would be better off after the compensation transaction, one needs a comparable, cardinal, measure of gains and losses. As utility is not directly measurable and To that end, Hicks 1939 introduces two money-metric measures of welfare, based on indifference curves: compensating variation and equivalent variation.
+
+\tdILR{March 1st 2024, we to enlarge and enhance these paragraphs, also references}
 
 % Compensated demand, EV & CV, substitution
 Consider a price change situation such as the fuel price policy change by Petrobras. Compensating variation is the change in income that would restore the utility of an individual to the level it was before the change (hence ``compensating'' the individual for the change). It can be described as the amount of money the individual would pay to effect the change, in the case of a change that increases their utility, or the amount the individual would require to accept the change, in the case of a change that decreases their utility.
 
-Define $e(p, u)$ as the minimum expenditure needed to achieve utility $u$ under prices $p$.\footnote{Also referred to as the ``cost function'', as in ``the cost of achieving $u$''.} In equation \ref{eq:CV}, the compensating variation ($CV$) is the difference in expenditure that would allow the individual to afford $u_0$ under the new prices $p_1$.
+Define $e(p, u)$ as the minimum expenditure needed to achieve utility $u$ under prices $p$.\footnote{Also referred to as the ``cost function'', as in ``the cost of achieving $u$''.} In Equation \ref{eq:CV}, the compensating variation ($CV$) is the difference in expenditure that would allow the individual to afford $u_0$ under the new prices $p_1$.
+
+\tdILR{March 1st 2024, check throughout Equation x, Table Y, Section Z, etc. in capitals}
 
 \begin{equation} \label{eq:CV}
 CV = e(p_0, u_0) - e(p_1, u_0)
 \end{equation}
 
-Equivalent variation is the monetary value that would be ``equivalent'', in terms of utility change to the individual, as the price change. It can be described as the amount of money the individual would accept to forgo the change, in the case of a change that increases their utility, or the amount the individual would be willing to pay to avoid the change, in the case of a change that decreases their utility. In equation \ref{eq:EV}, the equivalent variation ($EV$) is the difference in expenditure that would allow the individual to afford $u_1$ under the original prices $p_0$.
+Equivalent variation is the monetary value that would be ``equivalent'', in terms of utility change to the individual, as the price change. It can be described as the amount of money the individual would accept to forgo the change, in the case of a change that increases their utility, or the amount the individual would be willing to pay to avoid the change, in the case of a change that decreases their utility. In Equation \ref{eq:EV}, the equivalent variation ($EV$) is the difference in expenditure that would allow the individual to afford $u_1$ under the original prices $p_0$.
 
 \begin{equation} \label{eq:EV}
 EV = e(p_1, u_1) - e(p_0, u_1)
 \end{equation}
 
 % Marshallian demand, first-order approximation
-\cite{Willig1976} showed that for small enough variations in income elasticities of demand and price changes, $EV$ and $CV$ can be closely approximated by the difference in compensated demand following the price change. Social surplus measured that way is often used as a measure of welfare, and Section \ref{sec:dwl} covers research on this.
+\cite{Willig1976} \tdFL{March 1st 2024 missing ref in bib file} showed that for small enough variations in income elasticities of demand and price changes, $EV$ and $CV$ can be closely approximated by the difference in compensated demand following the price change. Social surplus measured that way is often used as a measure of welfare, and Section \ref{sec:dwl} covers research on this.
 
 % Substitution effects and other stuff
 The change in utility following a price change of a certain good or service depends also on the consumer's willigness or ability to substitute for other goods and services.
 
-Consumer surplus is not always great. Blundell et al have shown this can be an issue.
+Consumer surplus is not always great. Blundell et al have shown this can be an issue.\tdFL{March 1st 2024 missing ref in bib file and you need to write this up further}
 
 % Inequality concerns
-Welfare changes may vary systematically over population groups. Because of diminishing marginal utility of income, price changes will not affect poorer families the same way as richer families. Policies can be analysed under this framework as regressive or progressive. Section \ref{sec:regressivity} covers that. \tdFL{NOV 18 2023: but where is it???}
+Welfare changes may vary systematically over population groups. Because of diminishing marginal utility of income, price changes will not affect poorer families the same way as richer families. Policies can be analysed under this framework as regressive or progressive. Section \ref{sec:regressivity} covers that. \tdFL{March 1st 2024: but where is it???}
 
 % Equivalence scales
 Other household characteristics affect demand. Children of different ages, working-age adults, retired adults and the elderly have different needs. Family composition also affects economies of scale in consumption, and policymakers may have targets for groups based on other protected characteristics, such as gender or race identities. Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
@@ -493,9 +497,9 @@ Engel's work on food expenditure showed that the fraction of income spent on foo
 % consumption != expenditure != income
 While income is often used as the explanatory variable for demand, and income distribution is used to produce inequality measures, it is worth noting that consumption need not be equivalent to income, and the difference tends to be higher the shorter the period under analysis is. Goods purchased in one period may be consumed over many subsequent periods, income received in one period may be saved for future use, and credit lines may allow consumption in one period to be paid for in the future. In this context, \cite{Poterba1991} suggests that using income leads to overestimating the regressivity of a gasoline tax. \cite{Poterba1991} considers that consumption is affected by expected lifetime earnings, life-cycle patterns and general backward- or forward-looking behaviours, and also that poverty is often temporary; which means income at any point in time is an imperfect, noisy measure of living standards. Expenditures during periods of lower income may reflect either existing assets and savings, or the expectation of a higher income in the near future; in particular, this results in gasoline purchases representing a larger share of income for households in the lower income deciles, than of total expenditure for households in the lower expenditure deciles. Moreover, because income may be indexed by price indices (e.g. transfers to low income families or social security recipients), the tax burden for lower income households tends to be partly offset by higher income. Taking indexing into account, \cite{Poterba1991} finds that households in the lowest three deciles of total expenditure bear a lower tax burden than the higher expenditure deciles. \tdFLY{NOV 18 2023 must finish sentence}
 
-\citet[p.~88]{WorldBank2022} \tdFLY{rethink author field to read ``World Bank'' and use \citet[p.~88]{WorldBank2022} not \cite[p.~88]{WorldBank2022}} estimates ``transient poverty''\footnote{Transient poverty is the condition of households that have a low income but do not fall into ``poverty traps'' due to lack of education or infrastructure, making them more likely to be poor only temporarily.} reached 10\% of the Brazilian population in 2019, while \cite{OECD2018} shows income mobility is higher in Brazil relative to OECD countries, which is likely to produce the type of bias described by \cite{Poterba1991}.
+\citet[p.~88]{WorldBank2022} estimates ``transient poverty''\footnote{Transient poverty is the condition of households that have a low income but do not fall into ``poverty traps'' due to lack of education or infrastructure, making them more likely to be poor only temporarily.} reached 10\% of the Brazilian population in 2019, while \cite{OECD2018} shows income mobility is higher in Brazil relative to OECD countries, which is likely to produce the type of bias described by \cite{Poterba1991}.
 
-\cite{TeixidoVerde2017} show that wealth has the opposite effect. Between two similar families with the same level of income but different levels of wealth, the demand of the more wealthy family is likely to be less elastic to prices due to wealth providing a ``safety net'' in the event \tdFLY{NOV 18 2023: ENW in the event, in the case, etc.} of income losses. By omitting this factor, the price-elasticity of demand of the wealthier family will be biased upwards, thus overstating their welfare losses in the case of a price increase. \cite{TeixidoVerde2017} \tdFL{NOV 18 2023:  fix capitals in bib entry} thus include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
+\cite{TeixidoVerde2017} show that wealth has the opposite effect. Between two similar families with the same level of income but different levels of wealth, the demand of the more wealthy family is likely to be less elastic to prices due to wealth providing a ``safety net'' in the event of income losses. By omitting this factor, the price-elasticity of demand of the wealthier family will be biased upwards, thus overstating their welfare losses in the case of a price increase. \cite{TeixidoVerde2017} \tdFL{March 1st 2024:  fix capitals in bib entry} thus include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
 
 \cite{Sterner2012} \tdFL{Fix bib entry} argues that whether a tax is regressive will vary among countries and in particular that cars in developing countries are luxury goods. The findings in \cite{Carvalho2014} support that argument; however, it must be taken into consideration that fuels have also a large impact on industry costs and output. For example, in Brazil, the transportation of consumer goods is largely made by trucks powered by diesel, so a tax on diesel can increase the prices of all goods. In this case, even if vehicles and fuels are luxuries, the tax may be regressive if the price of goods consumed by low-income families is more sensitive to transportation costs than the price of goods consumed by high-income families.
 
@@ -642,7 +646,7 @@ Following experimental results that suggest the Oxford scale overstates the cost
 
 \chapter{Methodology and Data}\label{methods}
 
-\tdILY{NOV 18 2023 OK, so where in your Section \ref{methods} do you explain to the reader that you are using the QUAIDS of DQUAIDS models?}
+\tdILR{NOV 18 2023 OK, so where in your Section \ref{methods} do you explain to the reader that you are using the QUAIDS of DQUAIDS models?}
 
 In this essay, consumer demand for six commodity groups is characterized across households of different compositions and attributes, and the results are used to estimate the welfare effects of a subsidy policy change. The commodity groups and household characteristics selected are described in Section~\ref{sec:variables}. Section~\ref{sec:welfare} explains the procedure to obtain welfare measures.
 
@@ -727,19 +731,25 @@ $$
 
 Each element in the matrix is a sum $S_{ij} = \frac{\partial x_i}{\partial p_j} + \frac{\partial x_i}{\partial x} x_j(p, x)$ that represents the substitution effect of a price change if the consumer was compensated just enough to afford their initial bundle.
 
-If demand satisfies Walras' law and the weak axiom of revealed preferences, the Slutsky matrix will be \textit{negative semidefinite}, which implies that $\forall v \in \mathds{R}, v \cdot S(p, x) v \leq 0$ \cite[p.~34]{MWG1995}.
 
-\citet[p.~70]{MWG1995} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the second-derivative matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  (\citealp[p.~50]{DeatonMuellbauer1980}; [p.~80]{MWG1995}), which will be used to estimate welfare effects.
+\tdIL{March 1 Rober omits the fancy dsfonted R below}
 
+If demand satisfies Walras' law and the weak axiom of revealed preferences, the Slutsky matrix will be \textit{negative semidefinite}, which implies that $\forall v \in $R$, v \cdot S(p, x) v \leq 0$ \cite[p.~34]{MWG1995}.
+
+\citet[p.~70]{MWG1995} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the second-derivative matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  (\citealp[p.~50]{DeatonMuellbauer1980}; \citealp[p.~80]{MWG1995}), which will be used to estimate welfare effects.
+
+\tdILR{Rober fixed the last citation format but you sjhould check tha what you mean to produce in terms of format indeed formats the correct way}
 
 \subsection{Regularity}
-Demand is subject to a budget constraint, which in the model of Equation \ref{eq:shares} becomes the \textit{additivity} constraint: the expenditure shares of all goods for any given family must add up to 1. This will be true if conditions \ref{eq:additivity} are satisfied, and is enforced on estimation of the \ac{AIDS} and its extensions by dropping one of the share equations and computing its parameters such that they satisfy these conditions.
+Demand is subject to a budget constraint, which in the model of Equation \ref{eq:shares} becomes the \textit{additivity} constraint: the expenditure shares of all goods for any given family must add up to 1. This will be true if \tr{conditions \ref{eq:additivity} are} \tde satisfied, and is enforced on estimation of the \ac{AIDS} and its extensions by dropping one of the share equations and computing its parameters such that they satisfy these conditions.
 
 \begin{equation}\label{eq:additivity}
 \sum_{i=1}^n \alpha_i = 1 \hspace{2em} \sum_{i=1}^n \gamma_{ij} = 0 \hspace{2em} \sum_{i=1}^n \beta_{i} = 0
 \end{equation}
 
-Additionally, families are expected to not have money illusion, which translates into the property of \textit{homogeneity}: changing prices and total expenditure by the same rate should not change quantities demanded. This will be true of the system if condition \ref{eq:homogeneity} is satisfied.
+Additionally, families are expected to not have money illusion, which translates into the property of \textit{homogeneity}: changing prices and total expenditure by the same rate should not change quantities demanded. This will be true of the system if \tr{c}ondition \ref{eq:homogeneity} is satisfied.
+
+\tdILR{Still needs references, and check object capitals for ``Condition'' too}
 
 \begin{equation}\label{eq:homogeneity}
 \sum_{j} \gamma_{ij} = 0
@@ -761,6 +771,8 @@ See Appendix \ref{ap:demographic_attribute_variables} for the variables used to 
 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
 In the literature, the choice of groups of goods and services vary. Food is present in all the reviewed articles that aim to estimate demand systems for all or most of households' spending; housing and clothing are often present; and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups. Vehicle fuels may be present in "fuel", "energy" or "transportation" groups.
+
+\tdILR{March 1st 2024: fix the quotation marks throughout}
 
 For the present analysis, the following groups compose the first stage of the budget: fuels, housing and maintenance services, adult goods, services, and other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \cite{Poterba1991} \tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and the observations of Rothbarth \cite{Ray1983}.
 
@@ -1567,7 +1579,7 @@ texdoc stlog close
 
 The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23\textsuperscript{rd} 2018.
 
-\tdILY{NOV 18 2023  The footnote numbers go after the punctuation mark: check throughout }
+\tdILG{NOV 18 2023  The footnote numbers go after the punctuation mark: check throughout }
 
 The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed,\footnote{\cite{WaleedMirza2020}, for example, match their family budget survey data to the weekly Pakistan Bureau of Statistics price index using the date of collection.} while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
 
@@ -1856,7 +1868,11 @@ texdoc stlog close
 
 \section{Welfare effects estimation}
 
+\tdILR{March 1 2024 Obviously this now requires an ``intro'' or something to bring back the context. At least you should cross-reference the notation you mention here to the earlier sections. Otherwise, the reader will not know what, say, $u_1$ and $p_1$  mean}
+
 Choosing $u_1$ and $p_1$ as the prices and utility level of households at the base period for the 2017-2018 \ac{FBS}, the cost of achieving $u_1$ is equal to the total expenditure of household $k$ at the base period, so that Equation~\ref{eq:EV} can be computed as $EV = c_k(u_1, p_0) - x$.
+
+\tdIL{display this last equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1999,6 +2015,11 @@ texdoc stlog close
 
 /*tex
 % multiply the CV for each subgroup by the population share to get the total losses
+
+\tdILR{March 1st 2024 The table of results will eventallly need to be made smaller, the model names will need correct capitalization, the Greek symbols will need to be Greek etc.  You might need to span the table over several pages by using the supertabular environment}
+
+\tdILR{March 1st 2024 We need careful commentary of the results}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
