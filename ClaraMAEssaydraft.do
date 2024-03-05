@@ -186,6 +186,8 @@ The Informatics Department of UFPR Faculty. \todo[fancyline, color= red]{NOV 18 
 \acro{BRL}{Brazilian Real}
 \acro{GHG}{Greenhouse effect Gases}
 \acro{OECD}{Organisation for Economic Co-operation and Development}
+\acro{OPEC}{Organisation of the Petroleum Exporting Countries}
+\acro{USD}{American Dollar}
 
 \end{acronym}
 
@@ -323,7 +325,7 @@ In 2023, the price control returned with the purpose of ``nationalizing'' prices
 \tdILR{NOV 18 2023 Rober: add references below when possible:}
 One argument against the price control policy is that it is regressive, because it benefits people with higher incomes, who are more likely to own vehicles, more than people with lower incomes. This argument is muddied by the fact that fuels impact consumers of all levels of income indirectly, as inputs of production and transportation of other goods. For policymakers that promote progressive values, it is important to know whether the price control aligns with those values, and if so, to what degree.
 
-Figure \ref{fig:fuel_prices_over_time} shows average monthly retail prices of gasoline, ethanol \tdFL{PNW, use Oxford commas} and diesel in Brazil, as well as the OPEC \tdFL{tag ALL acronyms} crude oil monthly prices between 2003 and 2023, all in \ac{BRL} and normalized to 1 in the first time period. \tr{The graph} Figure \ref{fig:fuel_prices_over_time} \tdFL{NOV 18 2023: Or reword some other way but using the cross-reference} shows that Petrobras' price policy before 2016 cushioned fuel prices against international market price variations, and that since the policy change prices have followed crude oil price trends, increasing over time and becoming more volatile.
+Figure \ref{fig:fuel_prices_over_time} shows average monthly retail prices of gasoline, ethanol, \tdFLY{PNW, use Oxford commas} and diesel in Brazil, as well as the \ac{OPEC} \tdFLY{tag ALL acronyms} crude oil monthly prices between 2003 and 2023, all in \ac{BRL} and normalized to 1 in the first time period. The relative changes over time \tdFLY{NOV 18 2023: Or reword some other way but using the cross-reference.} show that Petrobras' price policy before 2016 cushioned national fuel prices against international market price variations, and led also to a divergence between national and international prices -- made even larger due to the devaluation of the \ac{BRL} relative to the \ac{USD}. Between the policy change and 2022, prices have followed crude oil price trends, increasing over time and becoming more volatile.
 
 tex*/
 
@@ -353,13 +355,13 @@ texdoc stlog close
 The Brazilian national petroleum extraction and refining company Petrobras was founded in 1953, establishing a state monopoly of the petroleum market. In 1967, Brazil reached self-sufficiency in almost all fuels used in the country. During the military regime installed in 1964, fuel prices were under state control and were set low as a way to reduce inflation.
 
 % deregulation + ethanol
-After the end of the military regime, the fuels market was progressively deregulated in the country. In 1995, a constitutional amendment enabled the state to hire private companies for oil extration. The Law of Petroleum, proposed in 1997 and installed in December 31st of 2001, mandated the state to outsource extraction and refining operations. Petrobras still controlled oil prices, and used this control to stimulate the ethanol industry. \cite states between and gasoline prices were 9\% higher than expected market price, as a way to make ethanol more competitive.
+After the end of the military regime, the market for fuels was progressively deregulated in the country. In 1995, a constitutional amendment enabled the state to hire private companies for oil extration. The Law of Petroleum, proposed in 1997 and installed in December 31st of 2001, mandated the state to outsource extraction and refining operations. Petrobras still controlled oil prices, and used this control to stimulate the ethanol industry. \cite states between and gasoline prices were 9\% higher than expected market price, as a way to make ethanol more competitive.
 
 % IPP
 The \ac{IPP} policy was implemented in 2016 to increase the profits of Petrobras. This meant higher government revenue that could be used to lower taxes on other areas. Fuel prices increased, as well as the revenue.
 
-% very recent interventions
-In 2021, a surge in soy prices led the government to temporarily change the mandated amount of of biodiesel in retail diesel from 13\% to 10\%, to prevent ``an excess increase'' in the price of diesel to consumers. https://agenciabrasil.ebc.com.br/economia/noticia/2021-09/publicada-resolucao-que-reduz-percentual-de-biodiesel-no-oleo-diesel. As part of a series of attempts to reduce inflation, in June of 2022, Brazilian president Jair Messias Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%.
+% more recent interventions
+In 2021, a surge in soy prices led the government to temporarily change the mandated amount of of biodiesel in retail diesel from 13\% to 10\%, to prevent ``an excess increase'' in the price of diesel to consumers \citep{Verdelio2021}. As part of a series of attempts to reduce inflation, in June of 2022, Brazilian president Jair Messias Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%.
 
 % end of IPP
 In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula \tr{da Silva's \tdFLY{missing genitive here} (elected in 2022) campaign} suggestions \citep{SantanaRamalho2023}.
@@ -374,9 +376,9 @@ Fuels are inputs for most economic activity, either directly in production, or i
 
 In 2013, crude oil reservoirs were found in the Amazon region. Since then, Petrobras has studied the risks and environmental impact of extraction, contacted neighbouring countries that might be affected by oil spills. Extraction is expected to begin in 2024. With the end of the \ac{IPP} policy, Petrobras may use the increase in its supply of crude oil to justify a reduction in prices.
 
-In June 2023, the government announced temporary measures to stimulate vehicle production and lower vehicle prices.\footnote{This echoes similar policies implemented during the first presidential mandates of Partido dos Trabalhadores (Worker's Party), which resulted in significant growth in private vehicle ownership and usage.} A combined growth in the vehicle fleet and potential reduction in fossil fuel prices would increase demand. https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2023/06/alckmin-detalha-incentivo-a-industria-automotiva-e-reducao-de-preco-de-carros-caminhoes-e-onibus
+In June 2023, the government announced temporary measures to stimulate vehicle production and lower vehicle prices \citep{Planalto2023}.\footnote{This echoes similar policies implemented during the first presidential mandates of Partido dos Trabalhadores (Worker's Party) in the 2000s, which resulted in significant growth in private vehicle ownership and usage \citep{CarvalhoPereira2012}.} The combined growth in the vehicle fleet and potential reduction in fossil fuel prices would increase demand.
 
-In contrast, concern with climate change grows and Brazil slowly follows the trend of large economies in attempting to reduce GHG emissions. In May 2022, the Ministry of the Environment and Climate Change (then called ``Ministry of the Environment'') announced a decree to regulate a voluntary market of carbon dioxide and methane credits in Brazil. https://www.gov.br/mma/pt-br/assuntos/noticias/mma-anuncia-decreto-que-regulamenta-mercado-de-carbono-no-brasil In December 2023, congress approved a new bill to regulate a mandatory market for GHG credits. https://g1.globo.com/meio-ambiente/noticia/2023/12/24/entenda-o-projeto-que-quer-regulamentar-o-mercado-de-carbono-no-pais.ghtml
+In contrast, concern with climate change grows and Brazil slowly follows the trend of large economies in attempting to reduce GHG emissions. In May 2022, the Ministry of the Environment and Climate Change (then called ``Ministry of the Environment'') announced a decree to regulate a voluntary market of carbon dioxide and methane credits in Brazil \citep{MMA2022}. In December 2023, congress approved a new bill to regulate a mandatory market for GHG credits \citep{Peixoto2023}.
 
 Another, if lukewarm, initiative to reduce GHG emissions was announced in 2023: law proposal 4.516/2023 determines an increase in the mandatory fraction of ethanol added to gasoline from 22\% to 27\%, and that the fraction of biodiesel added to diesel (currently at a 15\%) must reach 20\% by 2030. https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2024/02/27/pl-preve-regulacao-de-mistura-de-25-do-biodiesel-e-27-de-etanol-a-gasolina.htm
 
@@ -391,7 +393,7 @@ Additionally, with respect to electrical vehicles, in February 2024 the governme
 Sugarcane is a major agricultural commodity in Brazil since the XVI century, and its alcohol derivates have been used as fuel for vehicles as early .
 
 % oil crises, proalcool
-Following the 1973 oil crisis, president Ernesto Geisel (formerly president of Petrobras) created the Proálcool program, with the aim of reducing reliance on fossil fuels by replacing them with ethanol. The program started in 1975 and fostered this substitution through technology development on ethanol production plants, and on the motors to be powered by it. Cortez2016 p29 While the Proálcool program was officially closed with the end of the military regime in 1985, the term ``Proálcool'' continued to be used to refer to the set of private, governmental and academic initiatives to develop and promote the use of ethanol as fuel Cortez2016 p63.
+Following the 1973 oil crisis, president Ernesto Geisel (formerly president of Petrobras) created the Proálcool program, with the aim of reducing reliance on fossil fuels by replacing them with ethanol. The program started in 1975 and fostered this substitution through technology development on ethanol production plants, and on the motors to be powered by it \citep[p29]{Cortez2016}. While the Proálcool program was officially closed with the end of the military regime in 1985, the term ``Proálcool'' continued to be used to refer to the set of private, governmental and academic initiatives to develop and promote the use of ethanol as fuel \citep[p63]{Cortez2016}.
 
 There was a period of decline with the decrease of oil prices in the 1990s and a shortage of ethanol influenced by a rise in international sugar prices. However, the deregulation of the ethanol market in the following years and the introduction of \textit{flex-fuel} vehicles in 2003 marked the beginning of a period of increased use of ethanol.
 
@@ -612,7 +614,7 @@ The Rothbarth method considers ``adult goods'': goods such as alcohol are not pu
 
 
 Prais and Houthakker generalized the Engel method to allow for different scales for each good. Demand systems like the AIDS or the translog demand system \citep{JorgensonSlesnick1987a} may be used to estimate commodity-specific household equivalence scales.
-\cite{VazVaz2007} use the Prais and Houthakker method to estimate equivalence scales for Brazil from the 2002-2003 FBS. The estimates are in general non-significant but \cite{VazVaz2007} find that children are ``cheaper'' than adults. \cite{Mancero2011} estimates behavioural equivalence scales for Latin American countries using a similar method, and finds high variability in the marginal cost of a child, ultimately recommending the use of parametric equivalence scales instead.
+\cite{VazVaz2007} use the Prais and Houthakker method to estimate equivalence scales for Brazil from the 2002-2003 FBS. The estimates are in general non-significant but \cite{VazVaz2007} find that children are ``cheaper'' than adults. \cite{Mancero2001} estimates behavioural equivalence scales for Latin American countries using a similar method, and finds high variability in the marginal cost of a child, ultimately recommending the use of parametric equivalence scales instead.
 
 \cite{PollakWales1979} point out that equivalence scales obtained from demand system estimates are not appropriate for welfare comparisons. These scales assume demographic parameters are fixed, which may be true for attributes such as gender and race but not so for others like the number of children or the location of the household. Consumption patterns do not reveal the ``direct'' utility contribution of children or location and are instead conditional on the demographic parameters being fixed, whereas equivalence scales used for welfare comparisons should be unconditional. \cite{PollakWales1979} mention that their estimates of equivalence scales from observed consumption in the UK would suggest that larger families require less money than smaller families to reach the same level of utility, as an example of how the use of conditional equivalence scales may lead to spurious results.
 
@@ -646,11 +648,11 @@ Following experimental results that suggest the Oxford scale overstates the cost
 
 \chapter{Methodology and Data}\label{methods}
 
-\tdILR{NOV 18 2023 OK, so where in your Section \ref{methods} do you explain to the reader that you are using the QUAIDS of DQUAIDS models?}
+\tdILY{NOV 18 2023 OK, so where in your Section \ref{methods} do you explain to the reader that you are using the QUAIDS of DQUAIDS models?}
 
 In this essay, consumer demand for six commodity groups is characterized across households of different compositions and attributes, and the results are used to estimate the welfare effects of a subsidy policy change. The commodity groups and household characteristics selected are described in Section~\ref{sec:variables}. Section~\ref{sec:welfare} explains the procedure to obtain welfare measures.
 
-Demand is modelled with \ref{eq:QUAIDS} and estimated using data from the 2017-2018 \ac{FBS} and the \ac{ACPI}. Section~\ref{sec:model} shows the model and the estimation method, with Section~\ref{sec:assumptions} containing the assumptions involved and restrictions imposed on the model. Section~\ref{sec:data} provides details on the \ac{FBS} data, cleaning procedures and summary statistics.
+Demand is modelled with \ac{QUAIDS}, the system is estimated using data from the 2017-2018 \ac{FBS} and the \ac{ACPI}. Section~\ref{sec:model} shows the model and the estimation method, with Section~\ref{sec:assumptions} containing the assumptions involved and restrictions imposed on the model. Section~\ref{sec:data} provides details on the \ac{FBS} data, cleaning procedures and summary statistics.
 
 \tdILR{NOV 18 2023: OK so this section needs completing and polishing. ALso make sure you fix the missing references}
 
