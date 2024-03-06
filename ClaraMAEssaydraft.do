@@ -421,7 +421,7 @@ Ethanol remains relevant in the Brazilian fuel market: in 2022, Brazilians consu
 \tdILR{NOV 18 2023: What you have for now must be further developed and references must be carefully inserted. You have a few missing bib tags (a tachnical issue to fix) but you must further acknowledge that the ideas about welfare economics in this first paragraphs are not yours. Other authors came up with them.}
 
 % Welfare intro
-Assuming that governments, especially representative ones, must work to improve or maintain the well-being of their citizens, policy development requires some measure of that well-being \cite{AdlerPosner1999}. \tdFL{March 1st 2024 missing ref in bib file} In the decision making \tdFL{March 1st 2024 decision-making} process, the consequences of \tdFL{March 1st 2024 the different} different policies on the well-being are compared and, ideally, the option that produces the highest level of well-being is implemented.
+Assuming that governments, especially representative ones, must work to improve or maintain the well-being of their citizens, policy development requires some measure of that well-being \cite{AdlerPosner1999}. \tdFLY{March 1st 2024 missing ref in bib file} In the decision-making \tdFLY{March 1st 2024 decision-making} process, the consequences of the prospective policies \tdFLY{March 1st 2024 the different} on the well-being are compared and, ideally, the option that produces the highest level of well-being is implemented.
 
 % Utility, revealed preference
 Pn the second half of the XIX century, the concept of utility was introduced by  individual well-being is usually explicitly modeled as \textit{utility}, a measure of the degree to which individuals satisfy their preferences through consumption. Welfare analysis typically measures changes in utility as a result of policies or other shocks in markets. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences, so revealed preference methods characterize demand by inferring utility functions from observed consumption.
@@ -445,7 +445,7 @@ Consider a price change situation such as the fuel price policy change by Petrob
 
 Define $e(p, u)$ as the minimum expenditure needed to achieve utility $u$ under prices $p$.\footnote{Also referred to as the ``cost function'', as in ``the cost of achieving $u$''.} In Equation \ref{eq:CV}, the compensating variation ($CV$) is the difference in expenditure that would allow the individual to afford $u_0$ under the new prices $p_1$.
 
-\tdILR{March 1st 2024, check throughout Equation x, Table Y, Section Z, etc. in capitals}
+\tdILY{March 1st 2024, check throughout Equation x, Table Y, Section Z, etc. in capitals}
 
 \begin{equation} \label{eq:CV}
 CV = e(p_0, u_0) - e(p_1, u_0)
@@ -466,10 +466,10 @@ The change in utility following a price change of a certain good or service depe
 Consumer surplus is not always great. Blundell et al have shown this can be an issue.\tdFL{March 1st 2024 missing ref in bib file and you need to write this up further}
 
 % Inequality concerns
-Welfare changes may vary systematically over population groups. Because of diminishing marginal utility of income, price changes will not affect poorer families the same way as richer families. Policies can be analysed under this framework as regressive or progressive. Section \ref{sec:regressivity} covers that. \tdFL{March 1st 2024: but where is it???}
+Welfare changes may vary systematically over population groups. If, within a utilitarian framework, we consider that income has diminishing marginal utility, or if otherwise we take into account a social aversion to inequality; we may want to distinguish how price changes will affect poorer families relative to richer families, and how the policy affects the overall wealth distribution. Section \ref{sec:regressivity} covers research on such distributional effects and the framing of policies as regressive or progressive. \tdFLY{March 1st 2024: but where is it???}
 
 % Equivalence scales
-Other household characteristics affect demand. Children of different ages, working-age adults, retired adults and the elderly have different needs. Family composition also affects economies of scale in consumption, and policymakers may have targets for groups based on other protected characteristics, such as gender or race identities. Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
+Finally, other household characteristics affect demand. Children of different ages, working-age adults, retired adults and the elderly have different needs. Family composition also affects economies of scale in consumption, and policymakers may have targets for groups based on other protected characteristics, such as gender or race identities. Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -482,7 +482,7 @@ With Petrobras being partly nationalized, the loss incurred by consumers from in
 
 \tr{Demand models used to estimate dead-weight loss} \tdFLY{needs rewording} typically use a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. \cite{FernandesPeixoto2017} use such a model to estimate dead-weight loss from collusion among retailers in the state of Minas Gerais. estimate average losses of 11.73% of total yearly revenue from gasoline sales in the state of Minas Gerais between 2008 and 2010.
 
- The welfare loss measured by this method reflects only efficiency losses, which the author considers to be insufficient for policy analysis because needs, access and ability to pay vary a lot between families.\tdFLY{``between'' two people but ``among'' more than two people}
+ The welfare loss measured by this method reflects only efficiency losses, which the author considers to be insufficient for policy analysis because needs, access and ability to pay vary a lot among families.\tdFLY{``between'' two people but ``among'' more than two people}
 
 \citet{LinPrince2013} find that high price volatility yields lower aggregate demand for gasoline.\tdFL{This should be fleshed out and moved to the literature review}
 
@@ -529,7 +529,6 @@ In order to produce second-order \tdFL{You must explain/clarify what you mean by
 
 {\cite{DeatonMuellbauer1980} \tdFL{Page numbers needed for books} defined the \ac{AIDS} to approximate any general demand function of income and preferences. \ac{AIDS} models the share of a household's total expenditure devoted to each good (or group of goods) as a function of the household's total expenditure on all goods and the prices of all goods (or groups of goods). In Equation \ref{eq:AIDS}, $w_i$ is the expenditure share on good $i$, $p_n$ is the price of good $n$ and $x$ is total expenditure on all goods.
 
-
 \begin{equation} \label{eq:AIDS}
 w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)}
 \end{equation}
@@ -537,14 +536,14 @@ w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x
 
 \cite{DeatonMuellbauer1980} also propose a linear approximation of the \ac{AIDS} model: the \ac{LA-AIDS} model is used by \cite{AlmeidaJustoOliveiraSilva2016} with monthly aggregate consumption of gasoline, diesel and ethanol over the state of Pernambuco in Brazil, and they find that demand for gasoline and diesel is price-inelastic \tdpFL while demand for ethanol is price-elastic. This approach, however, precludes differentiating demographic groups, as consumption is aggregated over consumers, and regressivity analysis, as demand is modelled as a function of expenditure only on fuels, which is itself affected but not fully determined by income.\tdFL{explain/clarify further}
 
-The \ac{AIDS} model was expanded by \cite{BanksBlundellLewbel1997} to include a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income, or vice-versa.
+The \ac{AIDS} model was expanded into \ac{QUAIDS} by \cite{BanksBlundellLewbel1997}. The \ac{QUAIDS} model includes a quadratic term that allows for goods to be luxuries at low levels of income and necessities at higher levels of income, or vice-versa, as shown in Equation~\ref{eq:QUAIDS}.
 
 \begin{equation} \label{eq:QUAIDS}
 w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)} \left [ \ln \frac{x}{a(p)} \right ]^2
 \end{equation}
 
-\cite{BanksBlundellLewbel1997} show that in data from family budget surveys from the United Kingdom between 1970 and 1986, expenditure on alcohol and clothing exhibit non-linear relationships to the logarithm of expenditure, whereas fuel and food exhibit linear decreasing relationships. On the other hand, \cite{WaleedMirza2020} \tdFL{DEC 2023 refe missing} finds that for Pakistani families, while the coefficient of the linear log income term is negative for fuels, consistent with goods that are necessities, the coefficient of the quadratic log income term is significant and positive. The authors suggest this is due to families with higher income increasing expenditure on fuels to power luxuries such as air conditioning and heating. For Brazil, \cite{Carvalho2014} findings show vehicle expenditure to increase with income with elasticity larger than 1, whereas public transportation characterizes as a normal good for lower income families and as an inferior good for higher income families.
 
+\cite{BanksBlundellLewbel1997} show that in data from family budget surveys from the United Kingdom between 1970 and 1986, expenditure on alcohol and clothing exhibit non-linear relationships to the logarithm of expenditure, whereas fuel and food exhibit linear decreasing relationships. On the other hand, \cite{WaleedMirza2020} \tdFL{DEC 2023 refe missing} finds that for Pakistani families, while the coefficient of the linear log income term is negative for fuels, consistent with goods that are necessities, the coefficient of the quadratic log income term is significant and positive. The authors suggest this is due to families with higher income increasing expenditure on fuels to power luxuries such as air conditioning and heating. For Brazil, \cite{Carvalho2014} findings suggest public transportation characterizes as a normal good for lower income families and as an inferior good for higher income families, so that \ac{QUAIDS} would be a better model than \ac{AIDS}.
 
 Besides income, other household attributes affect demand. In particular, the age of a household member often translates into different needs and preferences. For example, children in general do not consume alcohol and tobacco, and may require specific goods such as disposable diapers and baby formula. Models of ``the cost of the child'' incorporate the number and age of children in a household into the demand estimation. \cite{Ray1983} \tdFL{NOV 18 2023: something is missing here, apart from the citation} demographic characteristics as scaling factors into the model. Equation \ref{eq:DQUAIDS} shows the \ac{DQUAIDS} model of expenditure shares where $\omega$ is an array of demographic characteristics.
 
@@ -564,6 +563,7 @@ Besides scaling, \cite{PollakWales1981} describe three other methods of includin
 
 \cite{JorgensonSlesnick1987a} use a transcendental logarithm demand system and incorporate demographic attributes (number of people. age, gender, race and whether the family lives in a rural area) into commodity-specific household equivalence scales.
 
+\cite{FiuzaAsano2003} estimate an AIDS using a subsample of the 1986 and the 1995 \acp{FBS}, comprised of households headed by married men under 60 years of age, and aggregating over per capita expenditure 20\textsuperscript{th} quantiles. Elasticities computed at mean sample values for total expenditures suggest food and housing are necessities; furnishings, clothing, transportation, health care and personal experiences are found to be luxuries. \cite{FiuzaAsano2003} note that purchases of private vehicles may be driving up the price-elasticity of the transportation group.
 
 % Adler 2019, Jorgenson1990, JorgensonSlesnick2014
 
@@ -581,9 +581,13 @@ A common correction to this issue is to use the income \textit{per capita} inste
 
 \tdIL{See if you can add references to support all this. For example, there are studies of water demand that document carefully this economies of scale. That is just one example. Indeed some of the literature on economics of the family will point out that those economics of scale and the non-rivalness and of goods and services in a household are one of the advantages of getting married. You can mention that but, in any event, you want tor backup your statements with references.}
 
-If we determine how children's consumption must be relative to an adult so that they achieve the same level of well-being, it becomes possible to compare households based on the number of \textit{adult equivalents} \cite[p.~242]{Deaton1997}. Incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor that equivalizes \tdFL{NOV 18 2023: is that a real word???} family incomes or wealth \citep{DeatonMuellbauer1980}.\tdFL{pages missing?}
+In 1895, Ernst Engel studies food expenditure patterns in Belgium and finds that richer families tend to spend lower fractions of their income on food than poorer families \citep{Stigler1954}. This suggests the fraction of income spent on food can be used as an approximation of welfare, which is the starting point of behavioural equivalence scales, see Section \ref{ssec:behavioural_scales}.
 
-Formally, assume that utility as a measure of well-being is comparable between households, so that it is possible to say that two households at utility level $u$ experience the same level of well-being. Assume also that households with the same characteristics $d$ require the same expenditure to reach any level $u$ of utility, so that the expenditure function of all households differs only with respect to $d$. Then the equivalence scale between two households is the ratio $$\frac{e(p, \bar{u}, d_1)}{e(p, \bar{u}, d_2)}$$. By choosing an array $d_0$ of characteristics as the base (e.g. an array of ones for binary variables), the equivalence scale for any household $k$ will be $$\frac{e(p, \bar{u}, d_k)}{e(p, \bar{u}, d_0)}$$ \cite{Lewbel1989}.
+Engel is also responsible for introducing the term \textit{adult equivalents}, following from his investigation of the ``cost of the child''\citep{Stigler1954}. If we determine how children's consumption must be relative to an adult so that they achieve the same level of well-being, it becomes possible to compare households based on the number of adult equivalents \citep[p.~242]{Deaton1997}.
+
+Taking this further and incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor that equivalizes \tdFL{NOV 18 2023: is that a real word???} family incomes or wealth \citep{DeatonMuellbauer1980}.\tdFL{pages missing?}
+
+Formally, assume that utility is comparable to a degree between households, so that it is possible to say that two identical households at utility level $u$ experience the same level of well-being. Assume also that households with the same characteristics $d$ require the same expenditure to reach any level $u$ of utility, so that the expenditure function of households differs only with respect to $d$. Then the equivalence scale between two households is the ratio $$\frac{e(p, \bar{u}, d_1)}{e(p, \bar{u}, d_2)}$$. By choosing an array $d_R$ of characteristics as the reference (e.g. an array of ones for binary variables), the equivalence scale for any household $k$ will be $$\frac{e(p, \bar{u}, d_k)}{e(p, \bar{u}, d_R)}$$ \cite{Lewbel1989}.
 
 
 \subsection{\tr{Types of equivalence scales}}
@@ -605,16 +609,17 @@ Subjective scales are constructed by surveying families and asking what they wou
 
 \tr{These scales} start from a functional form that incorporates economies of scale and differences in members needs according to their attributes as parameters. Such scales are useful as standards of comparison between studies in different countries, for example. \cite{NikodinoskaSchroder2016} uses the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers. \tdFL{Any more examples of use of this type? Could you quote the numbers used by \cite{NikodinoskaSchroder2016}, so we get a better idea of how this scale works?}
 
-\subsubsection{Behavioural scales}
+\subsubsection{Behavioural scales} \label{ssec:behavioural_scales}
 
-These are based on observed consumption patterns of families.
+Behavioural scales are constructed from observed consumption patterns of families, and originate in the work of Ernst Engel. After observing that families with higher income tend to spend a lower fraction of it on food, Engel hypothesized that this fraction could be used as an indicator of well-being common between households \citep{Stigler1954}. Engel's equivalence scales were based on the difference in income that would yield the same proportion of expenditure on food for families of different compositions. \cite{Hamilton2014} uses this to estimate CPI bias. Engel also analyses the ``cost of a child'' question, and in 1883 defines the number of ``equivalent adults'' as a unit for income comparisons among households.
 
-Engel's work on food expenditures in England showed that richer families tend to spend lower fractions of their income on food than poorer families. This suggests the fraction of income spent on food can be used as an approximation of welfare; Hamilton 2014 used food shares to estimate CPI bias.
-The Rothbarth method considers ``adult goods'': goods such as alcohol are not purchased by children, so when a family has a child, the ``cost of the child'' can be estimated as the additional income necessary to restore the consumption of said ``adult goods'' to their initial levels.
+The Rothbarth method considers ``adult goods'': goods such as alcohol are not purchased by children, so when a family has a child, the ``cost of the child'' can be estimated as the additional income necessary to restore the consumption of said ``adult goods'' to their initial levels. Rothbarth scales are less general than the Engel scales in that they can only be used to estimate the cost of children, so that families with different numbers of adults cannot be compared \citep{Vaz2012}.
 
+\cite{VazVaz2007} use the Engel and Rothbarth methods to estimate equivalence scales for Brazil from the 2002-2003 \ac{FBS}. The estimates are in general non-significant but \cite{VazVaz2007} find that children are ``cheaper'' than adults. \cite{AlonzoMancero2011} estimate Engel and Rothbarth equivalence scales for Latin American countries, finding high variability in the marginal cost of a child, ultimately recommending the use of parametric equivalence scales instead.
 
 Prais and Houthakker generalized the Engel method to allow for different scales for each good. Demand systems like the AIDS or the translog demand system \citep{JorgensonSlesnick1987a} may be used to estimate commodity-specific household equivalence scales.
-\cite{VazVaz2007} use the Prais and Houthakker method to estimate equivalence scales for Brazil from the 2002-2003 FBS. The estimates are in general non-significant but \cite{VazVaz2007} find that children are ``cheaper'' than adults. \cite{Mancero2001} estimates behavioural equivalence scales for Latin American countries using a similar method, and finds high variability in the marginal cost of a child, ultimately recommending the use of parametric equivalence scales instead.
+
+\cite{Vaz2012} estimates Engel, Rothbarth, Barten and Prais-Houthakker scales from the 2002-2003 \ac{FBS}.
 
 \cite{PollakWales1979} point out that equivalence scales obtained from demand system estimates are not appropriate for welfare comparisons. These scales assume demographic parameters are fixed, which may be true for attributes such as gender and race but not so for others like the number of children or the location of the household. Consumption patterns do not reveal the ``direct'' utility contribution of children or location and are instead conditional on the demographic parameters being fixed, whereas equivalence scales used for welfare comparisons should be unconditional. \cite{PollakWales1979} mention that their estimates of equivalence scales from observed consumption in the UK would suggest that larger families require less money than smaller families to reach the same level of utility, as an example of how the use of conditional equivalence scales may lead to spurious results.
 
@@ -623,7 +628,7 @@ Prais and Houthakker generalized the Engel method to allow for different scales 
 \cite{Fisher1987} raises an important issue regarding behavioural equivalence scales: systematic differences between the tastes of black and white people may reflect past differences in income and education. \tdFL{ NOV 18 2023  Please expand and clarify this  bit further}
 
 % gendered differences
-Another challenge arises if we consider studies that show women tend to spend more on children than men \tdFL{add refs}. This means a sample of households headed by women will overestimate \tdFL{maybe some other word that does not suggest ``wrongness''?}) the cost of a child relative to a sample of households headed by men.
+Another challenge arises if we consider studies that show women tend to spend more on children than men \tdFL{add refs}. This means the estimated ``cost of a child'' will depend on the proportion of households headed by women in a sample.
 
 \tdIL{It is not the households headed by women that will overestimate things, it is the use of those households in a sample. In any case, you can reword that to avoid any impression of wrongness. You should be able to add references to the literature on economics of the family, health, labour, gender economics...especially in developing countries, women tend to spend more on things for the children (education health, perhaps clothes and toys?...)}
 
@@ -743,13 +748,13 @@ If demand satisfies Walras' law and the weak axiom of revealed preferences, the 
 \tdILR{Rober fixed the last citation format but you sjhould check tha what you mean to produce in terms of format indeed formats the correct way}
 
 \subsection{Regularity}
-Demand is subject to a budget constraint, which in the model of Equation \ref{eq:shares} becomes the \textit{additivity} constraint: the expenditure shares of all goods for any given family must add up to 1. This will be true if \tr{conditions \ref{eq:additivity} are} \tde satisfied, and is enforced on estimation of the \ac{AIDS} and its extensions by dropping one of the share equations and computing its parameters such that they satisfy these conditions.
+Demand is subject to a budget constraint, which in the model of Equation \ref{eq:shares} becomes the \textit{additivity} constraint: the expenditure shares of all goods for any given family must add up to 1. This will be true if Conditions \ref{eq:additivity} are \tde satisfied, and is enforced on estimation of the \ac{AIDS} and its extensions by dropping one of the share equations and computing its parameters such that they satisfy these conditions.
 
 \begin{equation}\label{eq:additivity}
 \sum_{i=1}^n \alpha_i = 1 \hspace{2em} \sum_{i=1}^n \gamma_{ij} = 0 \hspace{2em} \sum_{i=1}^n \beta_{i} = 0
 \end{equation}
 
-Additionally, families are expected to not have money illusion, which translates into the property of \textit{homogeneity}: changing prices and total expenditure by the same rate should not change quantities demanded. This will be true of the system if \tr{c}ondition \ref{eq:homogeneity} is satisfied.
+Additionally, families are expected to not have money illusion, which translates into the property of \textit{homogeneity}: changing prices and total expenditure by the same rate should not change quantities demanded. This will be true of the system if Condition \ref{eq:homogeneity} is satisfied.
 
 \tdILR{Still needs references, and check object capitals for ``Condition'' too}
 
@@ -772,7 +777,7 @@ See Appendix \ref{ap:demographic_attribute_variables} for the variables used to 
 
 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
-In the literature, the choice of groups of goods and services vary. Food is present in all the reviewed articles that aim to estimate demand systems for all or most of households' spending; housing and clothing are often present; and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups. Vehicle fuels may be present in "fuel", "energy" or "transportation" groups.
+In the literature, the choice of groups of goods and services vary. Food is present in all the reviewed articles that aim to estimate demand systems for all or most of households' spending \cite{Jorgenson1990} \cite{BanksBlundellLewbel1997} \cite{MenezesAzzoniSilveira2008} \citep{FiuzaAsano2003}; housing and clothing are often present \citep{FiuzaAsano2003} \cite{MenezesAzzoniSilveira2008}; and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups \cite{BanksBlundellLewbel1997} \cite{MenezesAzzoniSilveira2008}. Vehicle fuels may be present in "fuel", "energy" or "transportation" groups \cite{Jorgenson1990} \cite{MenezesAzzoniSilveira2008}\cite{BanksBlundellLewbel1997}.
 
 \tdILR{March 1st 2024: fix the quotation marks throughout}
 
