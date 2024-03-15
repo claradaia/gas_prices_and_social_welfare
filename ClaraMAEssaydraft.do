@@ -311,7 +311,7 @@ The Brazilian petroleum company Petrobras is partially nationalized -- 51\% of i
 
 In 2016, the \ac{IPP} was implemented under the argument that it would increase the profits of Petrobras. This meant higher government revenue that could be used to lower taxes on other areas. Fuel prices increased, as well as the revenue.
 
-In 2023, the price control returned with the purpose of ``nationalizing'' prices. The argument is that the abundance of oil and gas in Brazilian territory should mean easier access to fuels to citizens and national industries regardless of international trends in the oil market.
+In 2023, the price control returned with the purpose of ``nationalizing'' prices. The argument is that the abundance of oil and gas in Brazilian territory should mean easier access to fuels to citizens and national industries regardless of international trends in oil prices.
 
 
 
@@ -423,20 +423,23 @@ Ethanol remains relevant in the Brazilian fuel market: in 2022, Brazilians consu
 % Welfare intro
 Assuming that governments, especially representative ones, must work to improve or maintain the well-being of their citizens, policy development requires some measure of that well-being \cite{AdlerPosner1999}. \tdFLY{March 1st 2024 missing ref in bib file} In the decision-making \tdFLY{March 1st 2024 decision-making} process, the consequences of the prospective policies \tdFLY{March 1st 2024 the different} on the well-being are compared and, ideally, the option that produces the highest level of well-being is implemented.
 
-% Utility, revealed preference
-Pn the second half of the XIX century, the concept of utility was introduced by  individual well-being is usually explicitly modeled as \textit{utility}, a measure of the degree to which individuals satisfy their preferences through consumption. Welfare analysis typically measures changes in utility as a result of policies or other shocks in markets. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences, so revealed preference methods characterize demand by inferring utility functions from observed consumption.
+This task requires first a model of individual well-being, and second a way to aggregate the information on individuals into a criterion that can rank outcomes by their effects on social well-being.
 
-\tdILR{March 1st 2024 You may want to reword, to avoid suggesting that nowadays utility is ``measured''}
+% Utility, revealed preference
+On the second half of the XIX century, the ``Marginal Revolution'' introduces the concept of ``utility'' as the well-being individuals aim to maximize under budget constraints. As well-being is hardly measurable, the concept evolved over time into an ordinal representation of preferences rather than a unit of well-being. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences, so revealed preference methods characterize demand by inferring preference models from observed consumption. (?) showed that revealed preference methods are consistent with ordinal utility.
+
+Utility is ordinal, but everyone speaks money, so if we can translate everything into money values we can go from there.
+\tdILY{March 1st 2024 You may want to reword, to avoid suggesting that nowadays utility is ``measured''}
 
 
 % Pareto, ordinalism
-Individual preferences can be inferred from individual behaviour, such that state $A$ of the world can be said to be preferred by an individual to state $B$. However, if we introduce a second individual that prefers state $B$ to state $A$, it is not immediately clear which state should be preferred from a decision maker \tdFL{March 1st 2024 hyphen} point of view. Provided the decision maker \tdFL{March 1st 2024 hyphen} is able to adequately measure the individual changes in utility for all afected \tdFL{March 1st 2024 affected} parties, an unambiguous decision process still requires aggregating these measures into an index that allows them to fully rank the possible states of the world.
+Individual preferences can be inferred from individual behaviour, but the decision process still requires aggregating information on preferences into an index that allows the policymaker to fully rank the possible states of the world. The Pareto principle provides a starting point: if between states $A$ and $B$ of the world one individual prefers state $A$ to state $B$ and the others are indifferent between them, it is fairly straightforward to presume state $A$ is preferred to state $B$. However, policies rarely produce pure Pareto improvements: if we introduce an individual that prefers state $B$ to state $A$, it is not immediately clear which state should be preferred from a decision-maker \tdFLY{March 1st 2024 hyphen} point of view.
 
-The Pareto principle provides a starting point: if between states $A$ and $B$ of the world one individual prefers state $A$ to state $B$ and the others are indifferent between them, it is fairly straightforward to presume state $A$ is preferred to state $B$. However, economic policy rarely produces pure Pareto improvements, which makes this principle insufficient as a guide for policymaking. Within the ordinalist framework, \cite introduces the Hicks and Kaldor criterion, that allows for ``winners'' and ``losers'' of a change, as long as the winners could potentially compensate the losers and still be better off.
+Within the ordinalist framework, (?) introduce the Hicks and Kaldor criterion, that allows for ``winners'' and ``losers'' of a change, as long as the winners could potentially compensate the losers and still be better off.
 
 \tdILR{March 1st 2024, we need more references throughout these paragraphs}
 
-To evaluate the hypothetical compensation for the losers and whether the winners would be better off after the compensation transaction, one needs a comparable, cardinal, measure of gains and losses. As utility is not directly measurable and To that end, Hicks 1939 introduces two money-metric measures of welfare, based on indifference curves: compensating variation and equivalent variation.
+To evaluate the hypothetical compensation for the losers and whether the winners would be better off after the compensation transaction, one needs a comparable, cardinal, measure of gains and losses. To that end, Hicks 1939 introduces two money-metric measures of welfare change, based on indifference curves: the compensating variation and the equivalent variation.
 
 \tdILR{March 1st 2024, we to enlarge and enhance these paragraphs, also references}
 
@@ -457,8 +460,10 @@ Equivalent variation is the monetary value that would be ``equivalent'', in term
 EV = e(p_1, u_1) - e(p_0, u_1)
 \end{equation}
 
+According to the Hicks-Kaldor criterion, a positive sum of all CVs (or EVs) means the change is socially desirable, as once the change was effected the ``winners'' would be willing to pay the ``losers'' enough to compensate them for the change and still be better off (or, for EVs, in order for the ``winners'' to be as well off as they would with the change, they would have to be paid more than the ``losers'' were willing to pay to prevent the change).
+
 % Marshallian demand, first-order approximation
-\cite{Willig1976} \tdFL{March 1st 2024 missing ref in bib file} showed that for small enough variations in income elasticities of demand and price changes, $EV$ and $CV$ can be closely approximated by the difference in compensated demand following the price change. Social surplus measured that way is often used as a measure of welfare, and Section \ref{sec:dwl} covers research on this.
+\cite{Willig1976} \tdFLY{March 1st 2024 missing ref in bib file} showed that for small enough variations in income elasticities of demand and price changes, $EV$ and $CV$ can be closely approximated by the difference in compensated demand following the price change. Social surplus measured that way is often used as a measure of welfare, and Section \ref{sec:dwl} covers research on this.
 
 % Substitution effects and other stuff
 The change in utility following a price change of a certain good or service depends also on the consumer's willigness or ability to substitute for other goods and services.
@@ -466,7 +471,7 @@ The change in utility following a price change of a certain good or service depe
 Consumer surplus is not always great. Blundell et al have shown this can be an issue.\tdFL{March 1st 2024 missing ref in bib file and you need to write this up further}
 
 % Inequality concerns
-Welfare changes may vary systematically over population groups. If, within a utilitarian framework, we consider that income has diminishing marginal utility, or if otherwise we take into account a social aversion to inequality; we may want to distinguish how price changes will affect poorer families relative to richer families, and how the policy affects the overall wealth distribution. Section \ref{sec:regressivity} covers research on such distributional effects and the framing of policies as regressive or progressive. \tdFLY{March 1st 2024: but where is it???}
+Welfare changes may vary systematically over population groups. If, within a utilitarian framework, we consider that income has diminishing marginal utility \citep[p.35]{Adler2019}, or if otherwise we take into account social aversion to inequality; we may want to distinguish how price changes will affect poorer families relative to richer families, and how the policy affects the overall wealth distribution. Section \ref{sec:regressivity} covers research on such distributional effects and the framing of policies as regressive or progressive. \tdFLY{March 1st 2024: but where is it???}
 
 % Equivalence scales
 Finally, other household characteristics affect demand. Children of different ages, working-age adults, retired adults and the elderly have different needs. Family composition also affects economies of scale in consumption, and policymakers may have targets for groups based on other protected characteristics, such as gender or race identities. Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
@@ -482,7 +487,7 @@ With Petrobras being partly nationalized, the loss incurred by consumers from in
 
 \tr{Demand models used to estimate dead-weight loss} \tdFLY{needs rewording} typically use a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. \cite{FernandesPeixoto2017} use such a model to estimate dead-weight loss from collusion among retailers in the state of Minas Gerais. estimate average losses of 11.73% of total yearly revenue from gasoline sales in the state of Minas Gerais between 2008 and 2010.
 
- The welfare loss measured by this method reflects only efficiency losses, which the author considers to be insufficient for policy analysis because needs, access and ability to pay vary a lot among families.\tdFLY{``between'' two people but ``among'' more than two people}
+The welfare loss measured by this method reflects only efficiency losses, which the author considers to be insufficient for policy analysis because needs, access and ability to pay vary a lot among families.\tdFLY{``between'' two people but ``among'' more than two people}
 
 \citet{LinPrince2013} find that high price volatility yields lower aggregate demand for gasoline.\tdFL{This should be fleshed out and moved to the literature review}
 
@@ -583,35 +588,55 @@ A common correction to this issue is to use the income \textit{per capita} inste
 
 In 1895, Ernst Engel studies food expenditure patterns in Belgium and finds that richer families tend to spend lower fractions of their income on food than poorer families \citep{Stigler1954}. This suggests the fraction of income spent on food can be used as an approximation of welfare, which is the starting point of behavioural equivalence scales, see Section \ref{ssec:behavioural_scales}.
 
-Engel is also responsible for introducing the term \textit{adult equivalents}, following from his investigation of the ``cost of the child''\citep{Stigler1954}. If we determine how children's consumption must be relative to an adult so that they achieve the same level of well-being, it becomes possible to compare households based on the number of adult equivalents \citep[p.~242]{Deaton1997}.
+Engel is also responsible for introducing the concept of \textit{adult equivalents} in 1883, following from his investigation of the ``cost of the child''\citep{Stigler1954}. If we determine how children's consumption must be relative to an adult so that they achieve the same level of well-being, it becomes possible to compare households based on the number of adult equivalents \citep[p.~242]{Deaton1997}.
 
-Taking this further and incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor that equivalizes \tdFL{NOV 18 2023: is that a real word???} family incomes or wealth \citep{DeatonMuellbauer1980}.\tdFL{pages missing?}
+Taking this further and incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor for \tdFLY{NOV 18 2023: is that a real word??? Clara: ``equivalize'', ``equivalised'' and friends show up in the lit, but I agree it's not pretty, changed it} family income or wealth, so that the transformed values are comparable among families of different compositions.  \citep{DeatonMuellbauer1980}.\tdFL{pages missing?}
 
-Formally, assume that utility is comparable to a degree between households, so that it is possible to say that two identical households at utility level $u$ experience the same level of well-being. Assume also that households with the same characteristics $d$ require the same expenditure to reach any level $u$ of utility, so that the expenditure function of households differs only with respect to $d$. Then the equivalence scale between two households is the ratio $$\frac{e(p, \bar{u}, d_1)}{e(p, \bar{u}, d_2)}$$. By choosing an array $d_R$ of characteristics as the reference (e.g. an array of ones for binary variables), the equivalence scale for any household $k$ will be $$\frac{e(p, \bar{u}, d_k)}{e(p, \bar{u}, d_R)}$$ \cite{Lewbel1989}.
+Formally, assume that utility is comparable between households, so that it is possible to say that two households at utility level $u$ experience the same level of well-being. Assume also that households with the same characteristics $d$ require the same expenditure to reach any level $u$ of utility, so that the expenditure function of households differs only with respect to $d$. Then the equivalence scale between two households is the ratio $$\frac{e(p, \bar{u}, d_1)}{e(p, \bar{u}, d_2)}$$. By choosing an array $d_R$ of characteristics as the reference (e.g. an array of ones for binary variables), the equivalence scale for any household $k$ will be $$m_k = \frac{e(p, \bar{u}, d_k)}{e(p, \bar{u}, d_R)}$$ \cite{Lewbel1989}.
 
 
 \subsection{\tr{Types of equivalence scales}}
 
-\cite{Mancero2001} classifies equivalence scales into four categories according to the method of construction: behavioural scales, parametric scales, expert scales and subjective scales. \cite{Hagenaars1990} produces a similar list, but refers to both parametric and expert scales as ``normative'' scales, to ``behavioural scales'' as ``based on consumption'', and to ``subjective scales'' as ``based on direct welfare measurement''. See below a summary of each approach.
+\cite{Mancero2001} classifies equivalence scales into four categories according to the method of construction: behavioural scales, parametric scales, expert scales and subjective scales. \cite{HagenaarsZaidi1994} produces a somewhat similar classification: parametric and expert scales as ``normative'' scales, to ``behavioural scales'' as ``based on consumption'', and to ``subjective scales'' as ``based on direct welfare measurement''. Sections \ref{sssec:expert} to \ref{sssec:parametric} contain a summary of each approach and, as we shall see, the methods can be combined.
 
-\subsubsection{Expert scales}
+\cite{HagenaarsZaidi1994} consider additionally ``social security scales'', which are implied in eligibility criteria for assistance programs or in transfer amounts dependent on family composition\footnote{See for example the varying transfer amounts of the Canada Carbon Rebate for each household member \cite{Canada2024}.}. This cannot be considered as a method of construction, however, as the equivalence criteria must have been defined prior to or along with the regulation. As \cite{HagenaarsZaidi1994} point out, accepting such scales (as inferred from the regulation rather than the original method of construction) results in a circular definition. Moreover, transfer programs are subject to budget constraints and political influences of their own, whereby the implicit scales may not allow a direct interpretation as living cost differences.\footnote{For example, \cite{TroncoRamos2017} note that the poverty line used to evaluate the program Brasil Sem Miséria, which aimed to erradicate extreme poverty in Brazil, was linked to the transfer program Bolsa Família. The eligibility criteria for the Bolsa Família program are updated according to federal budget constraints, but were then used to measure poverty rates for the Brasil Sem Miséria Program, which was convenient in practice but added a layer of arbitrariness to the measure.}
 
-Expert scales are developed for particular purposes by ``experts'' of a field. The main example provided by \cite{Mancero2001} is based on how dietary needs vary between individuals according to age and gender. \tdFL{Any examples of use of this type?} \to{Fuels are not physiological needs, so it is unlikely an ``expert'' could provide such a scale based on anything but observed behaviour, so we'll skip that.} \tdFL{reword but keep this stuff in \to{orange}}
+\tdILY{Little thing: but in the end, we will be using none of these bold fonts etc. for subheadings. If needed used subsections and subsubsections, so \LaTeX will do the formatting in a consistent way that will probably also look better}
+
+\subsubsection{Expert scales} \label{sssec:expert}
+
+Expert scales are developed for particular purposes by ``experts'' of a field. This description is a general way of describing the common approach of using minimum dietary needs in the construction of poverty lines. As such needs vary with age and sex, family composition will affect the total nutrition requirements. Food prices also vary among regions, so that the cost of satisfying the requirements of otherwise identical families will vary with region. Finally, home production of food (in rural areas, for example), may partially offset the necessary expenditure.
+
+% how this becomes an equivalence scale
+This information can be used to produce food expenditure equivalence scales by estimating the cost of achieving dietary adequacy for a family with $d_h$ attributes relative to a reference family $d_R$.
+
+\tdFLY{Any examples of use of this type?}
+
+For non-food goods and services, there is no exogenous way to determine adequate minimum consumption.\footnote{Presumably for this reason, \cite{Vaz2012} mentions the classification in \cite{Mancero2001}, but does not refer to general ``expert'' scales, using ``nutritional scales'' instead.} Some authors or programs may still produce minimum consumption baskets not restricted to food to determine poverty lines. The official poverty measure in Canada, for example, derives poverty thresholds from the localized cost of acquiring a predefined set of necessities that includes food, transportation, clothing and shelter \citep{StatsCanada2019}. However, it does not actually yield expert \texit{scales}: rather than complete baskets for all possible family compositions, a single basket is defined for a reference family of two adults and two children, and the corresponding cost is then extrapolated to different family compositions by using a square root equivalence scale, which is parametric (see Section \ref{sssec:parametric}).
+
+\cite{Rocha2000} notes that while it is possible to calculate the minimum cost of achieving adequate nutrition, families food purchase choices are typically not consistent with it. The method proposed by \cite{Rocha2000} finds instead the minimum observed food expenditure at which families reach the minimum per capita caloric intake, by region. Then, to establish a poverty line, the average fraction of income spent on food is used to establish the minimum expenditure on non-food goods and services.
+
+Clearly, this procedure does not yield ``expert scales'' either, but rather combines ``expert'' nutrition standards with a behavioural approach (see Section \ref{sssec:behavioural}). It also does not differentiate family members with respect to sex or age (as it uses per capita caloric needs).
+
+\tdFLY{reword but keep this stuff in \to{orange} -- Clara: I rewrote the whole section.}
 
 \subsubsection{Subjective scales}
 
-Subjective scales are constructed by surveying families and asking what they would consider the minimum expenditure they would require to satisfy the needs of all members. \tdFL{Any examples of use of this type?} \to{We'll also skip this as ``needs'' are socially defined and families' estimates of how much income they would require as a minimum tends to increase as their actual income increases.}\tdFL{reword but keep this stuff in \to{orange}}
+Subjective scales are constructed from surveys that ask direct questions on well-being, happiness or income adequacy. These questions may be qualitative, ``economic ladder'' types of questions, where families rate their well-being (in general or financial) on an ordinal scale; or money-metric questions, where respondents provide money amounts \citep{Ravallion2012}.
 
-\tdILR{Little thing: but in the end, we will be using none of these bold fonts etc. for subheadings. If needed used subsections and subsubsections, so \LaTeX will do the formatting in a consistent way that will probably also look better}
-\tdILR{Ok but I need a way to return to the scope of the section to conclude "considering this and that I'll be using the X scale", and subsections don't allow that. Any other options?}
+\tdFLY{Any examples of use of this type?}
+For example, the Leyden method as described by \cite{Vaz2012} utilizes the \ac{MIQ}: asking respondents what they believe is the minimum income $y^{min}$ needed to ``make ends meet''. The collected values are used to estimate a model of $\ln y^{min}$ as a function of actual income and household characteristics.
 
-\subsubsection{Parametric scales}
+% how this becomes an equivalence scale
+A key assumption of the Leyden method is that the answers to the \ac{MIQ} are distorted by respondents' reference point: very poor families are likely to underestimate their minimum income, whereas richer families are likely to overestimate it \citep[p.348]{Vaz2012}. The poverty line is thus chosen at the intercept of (logarithm) actual family income $y$ and the self-assessed (logarithm) $y^{min}$. In this case, equivalence scales can be derived as the ratio between the estimated poverty line for a household with a set $d_h$ of characteristics and the poverty line for a reference household with set $d_R$ of characteristics.
 
-\tr{These scales} start from a functional form that incorporates economies of scale and differences in members needs according to their attributes as parameters. Such scales are useful as standards of comparison between studies in different countries, for example. \cite{NikodinoskaSchroder2016} uses the \ac{OECD} modified equivalence scale that weights the number of adults and children with fixed numbers. \tdFL{Any more examples of use of this type? Could you quote the numbers used by \cite{NikodinoskaSchroder2016}, so we get a better idea of how this scale works?}
+This distortion of the self-assessed minimum income is related to the more general issue of bias in subjective surveys. As discussed by \cite{Ravallion2012}, individuals' evaluation of their economic well-being often includes a ``relative deprivation'' component, so that answers are anchored by a perceived norm (for example, the living standards of neighbours, which may result in spatial autocorrelation). Respondents are also found to be highly sensitive to variations in the way questions are posed, and may have different understandings of terms like ``income'' or ``adequate'' than intended by the survey creator. These and other issues warrant careful crafting of surveys to minimize bias.
+
+The \ac{FBS} includes a well-being questionnaire that can be used to estimate subjective scales for Brazil. To the best of my knowledge, only \cite{Vaz2012} has done so, using the Leyden method and two other subjective methods (namely Antwerp and Minimum Income) methods. \cite{Vaz2012} finds that all three yield implausibly high economies of scale, including occasional \textit{negative} values for the ``cost of the child''. While surely children can be a blessing, these results undermine the validity of the scales.
 
 \subsubsection{Behavioural scales} \label{ssec:behavioural_scales}
 
-Behavioural scales are constructed from observed consumption patterns of families, and originate in the work of Ernst Engel. After observing that families with higher income tend to spend a lower fraction of it on food, Engel hypothesized that this fraction could be used as an indicator of well-being common between households \citep{Stigler1954}. Engel's equivalence scales were based on the difference in income that would yield the same proportion of expenditure on food for families of different compositions. \cite{Hamilton2014} uses this to estimate CPI bias. Engel also analyses the ``cost of a child'' question, and in 1883 defines the number of ``equivalent adults'' as a unit for income comparisons among households.
+Behavioural scales are constructed from observed consumption patterns of families, and originate in the work of Ernst Engel. After observing that families with higher income tend to spend a lower fraction of it on food, Engel hypothesized that this fraction could be used as an indicator of well-being common among households \citep{Stigler1954}. Considering this hypothesis, data on family expenditures can be used to estimate, for example, how much income $m_1$ brings a family of three people to spend the same fraction of income on food as a family of two people with an income $m_2$, and the ratio $m_1/m_2$ is the equivalence scale between the two families.
 
 The Rothbarth method considers ``adult goods'': goods such as alcohol are not purchased by children, so when a family has a child, the ``cost of the child'' can be estimated as the additional income necessary to restore the consumption of said ``adult goods'' to their initial levels. Rothbarth scales are less general than the Engel scales in that they can only be used to estimate the cost of children, so that families with different numbers of adults cannot be compared \citep{Vaz2012}.
 
@@ -621,9 +646,8 @@ Prais and Houthakker generalized the Engel method to allow for different scales 
 
 \cite{Vaz2012} estimates Engel, Rothbarth, Barten and Prais-Houthakker scales from the 2002-2003 \ac{FBS}.
 
-\cite{PollakWales1979} point out that equivalence scales obtained from demand system estimates are not appropriate for welfare comparisons. These scales assume demographic parameters are fixed, which may be true for attributes such as gender and race but not so for others like the number of children or the location of the household. Consumption patterns do not reveal the ``direct'' utility contribution of children or location and are instead conditional on the demographic parameters being fixed, whereas equivalence scales used for welfare comparisons should be unconditional. \cite{PollakWales1979} mention that their estimates of equivalence scales from observed consumption in the UK would suggest that larger families require less money than smaller families to reach the same level of utility, as an example of how the use of conditional equivalence scales may lead to spurious results.
+\cite{PollakWales1979} point out that equivalence scales obtained from demand system estimates are not appropriate for welfare comparisons. These scales assume demographic parameters are fixed, which may be true for attributes such as gender and race but not so for others like the number of children or the location of the household. Consumption patterns do not reveal the ``direct'' utility contribution of children or location and are instead conditional on the demographic parameters being fixed, whereas equivalence scales used for welfare comparisons should be unconditional. \cite{PollakWales1979} mention that their estimates of equivalence scales from observed consumption in the UK would suggest that larger families require less money than smaller families to reach the same level of utility (a similar result to the subjective scales estimated by \cite{Vaz2012}), as an example of how the use of conditional equivalence scales may lead to spurious results.
 
-\subsection{Criticism of equivalence scales}
 % preferences are constructed, not innate
 \cite{Fisher1987} raises an important issue regarding behavioural equivalence scales: systematic differences between the tastes of black and white people may reflect past differences in income and education. \tdFL{ NOV 18 2023  Please expand and clarify this  bit further}
 
@@ -634,19 +658,30 @@ Another challenge arises if we consider studies that show women tend to spend mo
 
 \tdIL{There may be issues related to race, ethnicity, country of origin , for immigrants, etc. The same household with the same age composition might have a systematically different pattern of expenses than another family if the families have different cultural backgrounds. For example, in the case of use of bottled water, US households behave very different depending on whether they are recent immigrants/second generation Americans versus households with a longer history of immigration to the US. Latinos and African Americans also purchase more bottled water. Could there be similar issues in your case? At least, when it comes to the lit review, it might make a difference to mention/discuss this. Even if you do not have the time/data to investigate this yourself. And if you find someone doing it and you cannot, that goes in to the limitations and suggestions for further research. Ideally, you would be able to also comment on what you suspect you might be missing (or being misled about) for non doing something that others did…}
 
-Finally, it may not be socially acceptable to attribute a lower ``weight'' to children in welfare analysis. \tdFL{Any references to back this up?}
 
-
-\subsection{Parametric Equivalence Scales}
+\subsubsection{Parametric scales} \label{sssec:parametric}
 \tdILR{OK so these parametric scales are going to be what you  focus on, right? OK: so I suggest that you leave a brief paragraph (even it is a bit longer than what you now have) here, but as the last type of scale and then flesh out a full new subsection of lit review dealing more in depth with this type of scale: more examples, more developments, more criticisms. }
 
-Parametric equivalence scales use predefined parameters to adjust a family's income according to its composition or other factors.
+\tr{Parametric scales} use a predefined functional form that allows the incorporation of economies of scale and/or differences in members' needs according to their attributes through parameters.  \tdFL{Any more examples of use of this type? Could you quote the numbers used by \cite{NikodinoskaSchroder2016}, so we get a better idea of how this scale works?}
+
+Besides simplicity, parametric scales have the advantage of functioning as standards of comparison between studies in different countries. This, however, may be misleading. If, for example, it is not common to estimate equivalence scales in Brazil, it e main issue, clearly, is that the weights are determined arbitrarily. One could argue they are constructed both by behavioural and expert methods, as the parameters are informed by empirical observations of the ``cost of the child'' and economies of scale. The OECD modified scale, for example, was introduced by \cite{HagenaarsZaidi1994} following behavioural studies that suggested the old OECD scale attributed too much weight to additional family members. \cite{NikodinoskaSchroder2016} use the \ac{OECD} modified equivalence scale for their welfare analysis.
+
+\cite{HagenaarsZaidi1994} concludes its survey of equivalence scales by saying there is no ultimate choice of scale and that the best one can do is compare the results (in their case, headcount poverty rates) from using different scales.
 
 * OECD or Oxford scale: $1 \times$ First adult + $0.7 \times$ additional adults + $0.5 \times$ children
-Following experimental results that suggest the Oxford scale overstates the cost of additional members, \cite{Hagenaars1994} introduces the modified OECD scale: $1 \times$ First adult + $0.5 \times$ additional adults + $0.3 \times$ children.
-* Square root: $\sqrt(household members)$
+Following experimental results that suggest the Oxford scale overstates the cost of additional members, \cite{HagenaarsZaidi1994} introduces the modified OECD scale: $1 \times$ First adult + $0.5 \times$ additional adults + $0.3 \times$ children.
+Another common form is exponential, which accounts only for economies of scale. E.g. square root: $\sqrt(household members)$ \cite{MaiaSakamoto2016}
 
 
+\subsection{Additional concerns and choice scale}
+It may not be socially acceptable to attribute a lower ``weight'' to children in welfare analysis. \tdFL{Any references to back this up?}
+
+Considering
+* the scarcity of studies on behavioural or subjective scales for Brazil
+* the high specificity of nutritional scales and the lack of a good candidate in Brazil
+* the lit doesn't trust behavioural scales terribly, they vary a lot in estimates from other countries
+* there is no consensus on method anyway
+I'll be using the modified OECD and the square root scales and compare both.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
