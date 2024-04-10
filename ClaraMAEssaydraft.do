@@ -292,7 +292,7 @@ From \tr{the} \tdFL{ENW: English needs work: from ``a''} methodological standpoi
 
 \tdILR{We will need a few references to back this up}
 
-There are also political aspects of interest in analysing the effect of gas price changes. \tdFL{As explained above: bring examples from other countries too?} Politicians often use gas price regulations as a popularity tool, especially near elections. \tdFL{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. \tr{Better understanding of demand \tde for gasoline and welfare effect of price} changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
+There are also political aspects of interest in analysing the effect of gas price changes. \tdFL{As explained above: bring examples from other countries too?} Politicians may use gas price regulations as a  popularity tool, especially near elections.\footnote{For example, \cite{VasconcelosFerreiraNogueira2010} and \cite{NakagumaBender2006} find evidence of ``rational political business cycles'' in Brazil after the redemocratization of the 1980s. The rationale is that governments deviate from usual budget patterns in the periods before an election to signal competence, spending more on public goods or welfare programs, and reducing taxation. These measures tend to boost the domestic product and employment temporarily, and lead to contractionary measures after elections. In a survey run in July 2022 among Brazilian voters, the Exame magazine queried respondents on their perception of recent fuel price changes, as a potential explanatory factor for vote intentions \citep{Exame2022}.} \tdFLY{refes needed} For environmental reasons, it is likely we will see an increase in gasoline consumption interventions in the near future, as countries strive to reduce their carbon footprints. \tr{Better understanding of demand \tde for gasoline and welfare effect of price} changes can yield more effective policies. As for the 2016 \ac{IPP} policy, the benefits (more government revenue, more profit for stock owners) can be weighted against a detailed account of the costs in social welfare loss.
 
 By properly identifying ``winners'' and ``losers'' from a policy change, and the magnitude of their outcomes, the government can decide whether the change should happen and, if so, whether further action must be taken to counteract negative effects on protected groups. In this essay, I will investigate how fuel prices affect different population groups to support future decisions.
 
@@ -504,7 +504,7 @@ Engel's work on food expenditure showed that the fraction of income spent on foo
 % consumption != expenditure != income
 While income is often used as the explanatory variable for demand, and income distribution is used to produce inequality measures, it is worth noting that consumption need not be equivalent to income, and the difference tends to be higher the shorter the period under analysis is. Goods purchased in one period may be consumed over many subsequent periods, income received in one period may be saved for future use, and credit lines may allow consumption in one period to be paid for in the future. In this context, \cite{Poterba1991} suggests that using income leads to overestimating the regressivity of a gasoline tax. \cite{Poterba1991} considers that consumption is affected by expected lifetime earnings, life-cycle patterns and general backward- or forward-looking behaviours, and also that poverty is often temporary; which means income at any point in time is an imperfect, noisy measure of living standards. Expenditures during periods of lower income may reflect either existing assets and savings, or the expectation of a higher income in the near future; in particular, this results in gasoline purchases representing a larger share of income for households in the lower income deciles, than of total expenditure for households in the lower expenditure deciles. Moreover, because income may be indexed by price indices (e.g. transfers to low income families or social security recipients), the tax burden for lower income households tends to be partly offset by higher income. Taking indexing into account, \cite{Poterba1991} finds that households in the lowest three deciles of total expenditure bear a lower tax burden than the higher expenditure deciles. \tdFLY{NOV 18 2023 must finish sentence}
 
-\citet[p.~88]{WorldBank2022} estimates ``transient poverty''\footnote{Transient poverty is the condition of households that have a low income but do not fall into ``poverty traps'' due to lack of education or infrastructure, making them more likely to be poor only temporarily.} reached 10\% of the Brazilian population in 2019, while \cite{OECD2018} shows income mobility is higher in Brazil relative to OECD countries, which is likely to produce the type of bias described by \cite{Poterba1991}.
+\citet[p.~88]{WorldBank2022} estimates ``transient poverty''\footnote{Transient poverty is the condition of households that have a low income but do not fall into ``poverty traps'' due to lack of education or infrastructure, making them more likely to be poor only temporarily.} reached 10\% of the Brazilian population in 2019, while \cite{OECD2018} shows income mobility is higher in Brazil relative to \ac{OECD} countries, which is likely to produce the type of bias described by \cite{Poterba1991}.
 
 \cite{TeixidoVerde2017} show that wealth has the opposite effect. Between two similar families with the same level of income but different levels of wealth, the demand of the more wealthy family is likely to be less elastic to prices due to wealth providing a ``safety net'' in the event of income losses. By omitting this factor, the price-elasticity of demand of the wealthier family will be biased upwards, thus overstating their welfare losses in the case of a price increase. \cite{TeixidoVerde2017} \tdFL{March 1st 2024:  fix capitals in bib entry} thus include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
 
@@ -580,9 +580,9 @@ Besides scaling, \cite{PollakWales1981} describe three other methods of includin
 
 
 \section{Equivalence scales}\label{sec:equivalence_scales}
-When using models of disaggregated demand, either within a regressivity framework or a demand system, the issue of comparability between \tde households arises. For example, \tdp total income, if used as a measure of welfare, will underestimate the well-being of a family of two adults relative to that same family with a child at the same level of income, as satisfying the needs of the child will reduce the consumption of the parents.
+When using models of disaggregated demand, either within a regressivity framework or a demand system, the issue of comparability among \tde households arises. For example, \tdp total household income, if used as a measure of welfare, will underestimate the well-being of a family of two adults relative to that same family with a child at the same level of income, as satisfying the needs of the child will reduce the consumption of the parents.
 
-A common correction to this issue is to use the income \textit{per capita} instead. In fact, the \ac{FBS} provides in all its expense datasets a column with the per capita income of the household, and this is the chosen explanatory variable in the income-elasticity models of \cite{Carvalho2014}. However, per capita income disregards that members may have different needs and that there are economies of scale in consumption. Children, for example, consume less food than adults in general. Demand for goods such as lighting and water does not increase proportionally to the number of people in a household. Family members will usually share appliances and vehicles, and can purchase larger quantities of goods at a discount.
+A common correction to this issue is to use the income \textit{per capita} of the household instead. In fact, the \ac{FBS} provides in all its expense datasets a column with the per capita income of the household, and this is the chosen explanatory variable in the income-elasticity models of \cite{Carvalho2014}. However, per capita income disregards that members may have different needs and that there are economies of scale in consumption. Children, for example, consume less food than adults in general. Demand for goods such as lighting and water does not increase proportionally to the number of people in a household. Family members will usually share appliances and vehicles, and can purchase larger quantities of goods at a discount.
 
 \tdIL{See if you can add references to support all this. For example, there are studies of water demand that document carefully this economies of scale. That is just one example. Indeed some of the literature on economics of the family will point out that those economics of scale and the non-rivalness and of goods and services in a household are one of the advantages of getting married. You can mention that but, in any event, you want tor backup your statements with references.}
 
@@ -612,7 +612,7 @@ This information can be used to produce food expenditure equivalence scales by e
 
 \tdFLY{Any examples of use of this type?}
 
-For non-food goods and services, there is no exogenous way to determine adequate minimum consumption.\footnote{Presumably for this reason, \cite{Vaz2012} mentions the classification in \cite{Mancero2001}, but does not refer to general ``expert'' scales, using ``nutritional scales'' instead.} Some authors or programs may still produce minimum consumption baskets not restricted to food to determine poverty lines. The official poverty measure in Canada, for example, derives poverty thresholds from the localized cost of acquiring a predefined set of necessities that includes food, transportation, clothing and shelter \citep{StatsCanada2019}. However, it does not actually yield expert \texit{scales}: rather than complete baskets for all possible family compositions, a single basket is defined for a reference family of two adults and two children, and the corresponding cost is then extrapolated to different family compositions by using a square root equivalence scale, which is parametric (see Section \ref{sssec:parametric}).
+For non-food goods and services, there is no exogenous way to determine adequate minimum consumption.\footnote{Presumably for this reason, \cite{Vaz2012} mentions the classification in \cite{Mancero2001}, but does not refer to general ``expert'' scales, using ``nutritional scales'' instead.} Some authors or programs may still produce minimum consumption baskets not restricted to food to determine poverty lines. The official poverty measure in Canada, for example, derives poverty thresholds from the localized cost of acquiring a predefined set of necessities that includes food, transportation, clothing and shelter \citep{StatsCanada2019}. However, it does not actually yield expert \textit{scales}: rather than complete baskets for all possible family compositions, a single basket is defined for a reference family of two adults and two children, and the corresponding cost is then extrapolated to different family compositions by using a square root equivalence scale, which is parametric (see Section \ref{sssec:parametric}).
 
 \cite{Rocha2000} notes that while it is possible to calculate the minimum cost of achieving adequate nutrition, families food purchase choices are typically not consistent with it. The method proposed by \cite{Rocha2000} finds instead the minimum observed food expenditure at which families reach the minimum per capita caloric intake, by region. Then, to establish a poverty line, the average fraction of income spent on food is used to establish the minimum expenditure on non-food goods and services.
 
@@ -664,12 +664,12 @@ Another challenge arises if we consider studies that show women tend to spend mo
 
 \tr{Parametric scales} use a predefined functional form that allows the incorporation of economies of scale and/or differences in members' needs according to their attributes through parameters.  \tdFL{Any more examples of use of this type? Could you quote the numbers used by \cite{NikodinoskaSchroder2016}, so we get a better idea of how this scale works?}
 
-Besides simplicity, parametric scales have the advantage of functioning as standards of comparison between studies in different countries. This, however, may be misleading. If, for example, it is not common to estimate equivalence scales in Brazil, it e main issue, clearly, is that the weights are determined arbitrarily. One could argue they are constructed both by behavioural and expert methods, as the parameters are informed by empirical observations of the ``cost of the child'' and economies of scale. The OECD modified scale, for example, was introduced by \cite{HagenaarsZaidi1994} following behavioural studies that suggested the old OECD scale attributed too much weight to additional family members. \cite{NikodinoskaSchroder2016} use the \ac{OECD} modified equivalence scale for their welfare analysis.
+Besides simplicity, parametric scales have the advantage of functioning as standards of comparison between studies in different countries. This, however, may be misleading. If, for example, it is not common to estimate equivalence scales in Brazil, it e main issue, clearly, is that the weights are determined arbitrarily. One could argue they are constructed both by behavioural and expert methods, as the parameters are informed by empirical observations of the ``cost of the child'' and economies of scale. The \ac{OECD} modified scale, for example, was introduced by \cite{HagenaarsZaidi1994} following behavioural studies that suggested the ``old'' \ac{OECD} scale attributed too much weight to additional family members. \cite{NikodinoskaSchroder2016} use the \ac{OECD} modified equivalence scale for their welfare analysis.
 
 \cite{HagenaarsZaidi1994} concludes its survey of equivalence scales by saying there is no ultimate choice of scale and that the best one can do is compare the results (in their case, headcount poverty rates) from using different scales.
 
 * OECD or Oxford scale: $1 \times$ First adult + $0.7 \times$ additional adults + $0.5 \times$ children
-Following experimental results that suggest the Oxford scale overstates the cost of additional members, \cite{HagenaarsZaidi1994} introduces the modified OECD scale: $1 \times$ First adult + $0.5 \times$ additional adults + $0.3 \times$ children.
+Following experimental results that suggest the Oxford scale overstates the cost of additional members, \cite{HagenaarsZaidi1994} introduces the modified \ac{OECD} scale: $1 \times$ First adult + $0.5 \times$ additional adults + $0.3 \times$ children.
 Another common form is exponential, which accounts only for economies of scale. E.g. square root: $\sqrt(household members)$ \cite{MaiaSakamoto2016}
 
 
@@ -678,10 +678,10 @@ It may not be socially acceptable to attribute a lower ``weight'' to children in
 
 Considering
 * the scarcity of studies on behavioural or subjective scales for Brazil
-* the high specificity of nutritional scales and the lack of a good candidate in Brazil
+* That the only actual ``expert scales'' are nutritional, which are only potentially useful in this context as a starting point for more comprehensive scales.
 * the lit doesn't trust behavioural scales terribly, they vary a lot in estimates from other countries
 * there is no consensus on method anyway
-I'll be using the modified OECD and the square root scales and compare both.
+I'll be using the modified \ac{OECD} and the square root scales and compare both.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -780,7 +780,7 @@ If demand satisfies Walras' law and the weak axiom of revealed preferences, the 
 
 \citet[p.~70]{MWG1995} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the second-derivative matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  (\citealp[p.~50]{DeatonMuellbauer1980}; \citealp[p.~80]{MWG1995}), which will be used to estimate welfare effects.
 
-\tdILR{Rober fixed the last citation format but you sjhould check tha what you mean to produce in terms of format indeed formats the correct way}
+\tdILY{Rober fixed the last citation format but you sjhould check that what you mean to produce in terms of format indeed formats the correct way.}
 
 \subsection{Regularity}
 Demand is subject to a budget constraint, which in the model of Equation \ref{eq:shares} becomes the \textit{additivity} constraint: the expenditure shares of all goods for any given family must add up to 1. This will be true if Conditions \ref{eq:additivity} are \tde satisfied, and is enforced on estimation of the \ac{AIDS} and its extensions by dropping one of the share equations and computing its parameters such that they satisfy these conditions.
@@ -802,7 +802,11 @@ Additionally, families are expected to not have money illusion, which translates
 
 \section{Study Variables}\label{sec:variables}
 \subsection{Cohort Attributes} \label{ssec:cohort_attributes}
-Taking into consideration the demographic attributes used by \cite{Slesnick2000,NikodinoskaSchroder2016,SpillerStephensChen2017}, I use the following for translation of demand in the \ac{QUAIDS} model: the number of adults and the number of children in the household\footnote{for the purposes of demand modelling, ``children'' are members under 16 years of age, and adults are members over 16 years of age.}, the sex of the head of the household, and the type of residence\footnote{\cite{Slesnick2000} uses ``farm or nonfarm'' for the type of residence, while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{FBS} classifies households as ``urban or rural'', so I use this classification.}
+Taking into consideration the demographic attributes used by \cite{Slesnick2000,NikodinoskaSchroder2016,SpillerStephensChen2017}, I use the following for translation of demand in the \ac{QUAIDS} model: the number of adults and the number of children in the household, the sex of the head of the household, and the type of residence.
+
+The cut-off age for a household member to be considered a ``child'' varies in the literature. However, the age can be as low as 10 years \citep{MarianoFigueiredo2010}, as high as 18 \citep{Ray1983}, or the ``child'' category may be subdivided into younger and and older children \citep{Ray1983,HagenaarsZaidi1994}. I defined ``children'' as members under 16 years of age, and ``adults'' as members 16 years old or higher.
+
+``Type of residence'' refers to whether the family resides in an urban or rural area. \cite{Slesnick2000} uses ``farm or nonfarm'', while \cite{Jorgenson1990} uses ``urban or rural''. The \ac{FBS} classifies households as ``urban or rural'', so I use this classification.
 
 \tdFLY{NOV 18 2023  You mention the DQUAIDS here but I am not sure you mention it before in your Section \ref{methods}.}
 
@@ -812,7 +816,7 @@ See Appendix \ref{ap:demographic_attribute_variables} for the variables used to 
 
 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
-In the literature, the choice of groups of goods and services vary. Food is present in all the reviewed articles that aim to estimate demand systems for all or most of households' spending \cite{Jorgenson1990} \cite{BanksBlundellLewbel1997} \cite{MenezesAzzoniSilveira2008} \citep{FiuzaAsano2003}; housing and clothing are often present \citep{FiuzaAsano2003} \cite{MenezesAzzoniSilveira2008}; and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups \cite{BanksBlundellLewbel1997} \cite{MenezesAzzoniSilveira2008}. Vehicle fuels may be present in "fuel", "energy" or "transportation" groups \cite{Jorgenson1990} \cite{MenezesAzzoniSilveira2008}\cite{BanksBlundellLewbel1997}.
+In the literature, the choice of groups of goods and services also vary. Food is present in all the reviewed articles that aim to estimate demand systems for all or most of households' spending \citep{Jorgenson1990,BanksBlundellLewbel1997,FiuzaAsano2003,MenezesAzzoniSilveira2008}; housing and clothing are often present \citep{FiuzaAsano2003,MenezesAzzoniSilveira2008}; and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups \citep{BanksBlundellLewbel1997,MenezesAzzoniSilveira2008}. Vehicle fuels may be present in ``fuel'', ``energy'' or ``transportation'' groups \citep{Jorgenson1990,BanksBlundellLewbel1997,MenezesAzzoniSilveira2008}.
 
 \tdILR{March 1st 2024: fix the quotation marks throughout}
 
@@ -2050,10 +2054,55 @@ replace ln_a_p = `=alpha_0' + alpha_group_times_ln_prices + (gamma_ij_times_ln_p
 gen ln_c_p_0 = ln_a_p + b_p * ln_u_1/(1 - lambda_p * ln_u_1)
 
 // EV!
-gen ev = exp(ln_c_p_0) - total_expenditure
+gen cost_p_0 = exp(ln_c_p_0)
+gen ev = cost_p_0 - total_expenditure
+
+// parametric equivalence scales
+gen sqrt_scale = sqrt(n_adults + n_children)
+gen mod_oecd_scale = 1 + 0.5*(n_adults - 1) + 0.3*n_children
+
+gen sqrt_scaled_ev = ev/sqrt_scale
+gen mod_oecd_scaled_ev = ev/mod_oecd_scale
+gen sqrt_scaled_x = total_expenditure/sqrt_scale
+gen mod_oecd_scaled_x = total_expenditure/mod_oecd_scale
+gen rate = ev/total_expenditure
+
+// tag deciles
+egen x_decile = cut(total_expenditure), group(10)
+replace x_decile = x_decile + 1
+
+// consumer surplus: sum of evs by decile
+graph bar (sum) sqrt_scaled_ev (sum) mod_oecd_scaled_ev, ///
+	over(x_decile, relabel (1 "1st" 2 "2nd" 3 "3rd" 4 "4th" 5 "5th" 6 "6th" 7 "7th" 8 "8th" 9 "9th" 10 "10th")) ///
+	  ytitle("Sum of (deflated) equivalent variations") ///
+	  graphregion(color(white) margin(zero)) bgcolor(white)
+
+// regressivity: ratio of EV to total expenditure
+graph bar (mean) rate, ///
+	over(x_decile, relabel (1 "1st" 2 "2nd" 3 "3rd" 4 "4th" 5 "5th" 6 "6th" 7 "7th" 8 "8th" 9 "9th" 10 "10th")) ///
+	  ytitle("Mean ratio of EV to total expenditure") ///
+	  graphregion(color(white) margin(zero)) bgcolor(white)
+
+// regressivity: gini coefficients
+ineqdeco sqrt_scaled_x
+scalar gini_sqrt_scaled_x = r(gini) * 100
+ineqdeco mod_oecd_scaled_x
+scalar gini_mod_oecd_scaled_x = r(gini) * 100
+
+
+gen sqrt_scaled_cost_p_0 = cost_p_0/sqrt_scale
+gen mod_oecd_scaled_cost_p_0 = cost_p_0/mod_oecd_scale
+ineqdeco sqrt_scaled_cost_p_0
+scalar gini_sqrt_scaled_cost_p_0 = r(gini) * 100
+ineqdeco mod_oecd_scaled_cost_p_0
+scalar gini_mod_oecd_scaled_cost_p_0 = r(gini) * 100
+
 
 texdoc stlog close
-
+texdoc local gini_sqrt_scaled_x = strofreal(round(gini_sqrt_scaled_x, .001), "%9.2f")
+texdoc local gini_mod_oecd_scaled_x = strofreal(round(gini_mod_oecd_scaled_x, .001), "%9.2f")
+texdoc local gini_sqrt_scaled_cost_p_0 = strofreal(round(gini_sqrt_scaled_cost_p_0, .001), "%9.2f")
+texdoc local gini_mod_oecd_scaled_cost_p_0 = strofreal(round(gini_mod_oecd_scaled_cost_p_0, .001), "%9.2f")
 
 /*tex
 % multiply the CV for each subgroup by the population share to get the total losses
@@ -2061,6 +2110,15 @@ texdoc stlog close
 \tdILR{March 1st 2024 The table of results will eventallly need to be made smaller, the model names will need correct capitalization, the Greek symbols will need to be Greek etc.  You might need to span the table over several pages by using the supertabular environment}
 
 \tdILR{March 1st 2024 We need careful commentary of the results}
+% consumer surplus
+Aggregate losses to consumers due to the price increase are shown in Figure~\ref{fig:ev_sums}. Higher income deciles show bigger losses, which is expected as transportation is not an inferior good.
+
+% regressivity
+Figure~\ref{fig:ev_rates} shows the mean ratio of EV to total expenditure by total expenditure decile. Despite the fact that higher income families consume more fuels than lower income families, the price increase is found to be regressive up until the 9th total expenditure decile, as the increase in consumption is not large enough to offset the price increase.
+
+Alternatively, the distributional impact of the price change can be evaluated through the Gini index before and after the change. Applying the modified OECD equivalence scale to the sample, the Gini index is calculated at $`gini_mod_oecd_scaled_x'$ after the price increase, and estimated at $`gini_mod_oecd_scaled_cost_p_0'$ before the price change. A similar result is found by applying the square root equivalence scale, with the Gini index is calculated at $`gini_sqrt_scaled_x'$ after the price increase, and estimated at $`gini_sqrt_scaled_cost_p_0'$ before the price change. Both point to an increase in inequality.
+
+% demographics
 
 
 
