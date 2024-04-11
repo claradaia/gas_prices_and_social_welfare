@@ -59,6 +59,7 @@ graph set window fontface "Palatino Linotype"
 \usepackage{acronym}
 \usepackage[title]{appendix}
 \usepackage{bookmark}
+\usepackage{dcolumn}
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{multirow}
@@ -140,7 +141,7 @@ Dr. Locke, who first presented me to the concept of the social welfare function 
 Dr. Daniela Verzola Vaz and Dr. Rodolfo Hoffmann for their advice on the use of the \ac{FBS} dataset.
 Dr. Hexsel.
 
-The Informatics Department of UFPR Faculty. \todo[fancyline, color= red]{NOV 18 2023: spell acronym UFPR}
+The faculty of the Informatics Department at the Federal University of Paraná. \todo[fancyline, color= yellow]{NOV 18 2023: spell acronym UFPR}
 
 \pagebreak
 
@@ -1719,6 +1720,7 @@ tex*/
 texdoc stlog, nolog
 
 // make a throwaway copy
+frame change expenditure_shares
 capture frame drop model_data
 frame copy expenditure_shares model_data
 frame change model_data
@@ -1740,6 +1742,8 @@ replace group_expenditure_share`Food' = 1 - (group_expenditure_share`FuelsTransp
 // unpack categorical variables because aidsills can't handle i.var_name :)
 gen male = gender
 replace male = 0 if gender == 2
+gen rural = residence_type
+replace rural = 0 if residence_type == 1
 tab region, g(region_)
 
 // a_0 is the minimum total expenditure
@@ -1757,11 +1761,11 @@ aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportati
 	expenditure(total_expenditure) ///
 	ivexpenditure(ln_disposable_income) ///
 	prices(price_index`Food' price_index`FuelsTransportation' price_index`Services' price_index`OtherGoods' price_index`Housing' price_index`AdultGoods') ///
-	intercept(n_adults n_children male) ///
+	intercept(n_adults n_children male rural) ///
 	alpha_0(`=_min_exp') ///
 	quadratic
 
-estimates store quaids
+estimates store QUAIDS
 
 // test quadratic coefficients
 collect, name(quad_tests) tag(model["Unconstrained"]): test lambda_lnx2
@@ -1771,21 +1775,21 @@ aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportati
 	expenditure(total_expenditure) ///
 	ivexpenditure(ln_disposable_income) ///
 	prices(price_index`Food' price_index`FuelsTransportation' price_index`Services' price_index`OtherGoods' price_index`Housing' price_index`AdultGoods') ///
-	intercept(n_adults n_children male) ///
+	intercept(n_adults n_children male rural) ///
 	alpha_0(`=_min_exp')
 
-estimates store aids
+estimates store AIDS
 
 // enforce homogeneity, test for symmetry
 aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportation' group_expenditure_share`Services' group_expenditure_share`OtherGoods' group_expenditure_share`Housing' group_expenditure_share`AdultGoods', ///
 	expenditure(total_expenditure) ///
 	ivexpenditure(ln_disposable_income) ///
 	prices(price_index`Food' price_index`FuelsTransportation' price_index`Services' price_index`OtherGoods' price_index`Housing' price_index`AdultGoods') ///
-	intercept(n_adults n_children male) ///
+	intercept(n_adults n_children male rural) ///
 	alpha_0(`=_min_exp') ///
 	quadratic homogeneity
 
-estimates store homo
+estimates store Homogeneity
 
 // test quadratic coefficients
 collect, name(quad_tests) tag(model["Enforced Homogeneity"]): test lambda_lnx2
@@ -1795,45 +1799,56 @@ aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportati
 	expenditure(total_expenditure) ///
 	ivexpenditure(ln_disposable_income) ///
 	prices(price_index`Food' price_index`FuelsTransportation' price_index`Services' price_index`OtherGoods' price_index`Housing' price_index`AdultGoods') ///
-	intercept(n_adults n_children male) ///
+	intercept(n_adults n_children male rural) ///
 	alpha_0(`=_min_exp') ///
 	quadratic symmetry
 
-estimates store symm
+estimates store Symmetry
 
 // test quadratic coefficients
 collect, name(quad_tests) tag(model["Enforced Homogeneity and Symmetry"]): test lambda_lnx2
 
+label variable group_expenditure_share1 "DOLLARSIGNw_{Food}DOLLARSIGN"
+label variable group_expenditure_share2 "DOLLARSIGNw_{FuelsTransportation}DOLLARSIGN"
+label variable group_expenditure_share3 "DOLLARSIGNw_{Services}DOLLARSIGN"
+label variable group_expenditure_share4 "DOLLARSIGNw_{Goods}DOLLARSIGN"
+label variable group_expenditure_share5 "DOLLARSIGNw_{Housing}DOLLARSIGN"
+label variable group_expenditure_share6 "DOLLARSIGNw_{AdultGoods}DOLLARSIGN"
 
-// format and export regression results
-etable, estimates(quaids aids homo symm) mstat(N) column(estimates) ///
-	showstars showstarsnote cstat(_r_b) ///
+local indent "0.3cm"
+esttab QUAIDS AIDS Homogeneity Symmetry ///
+	using "reg_results_table.tex", replace ///
+	booktabs longtable alignment(D{.}{.}{6}) ///
+	nonumbers not noobs ///
 	title("Demand system estimates for the Brazilian population \label{tb:regresults}") ///
-	showeq ///
-	cstat(_r_ci, nformat(%6.3f) cidelimiter(","))
-
-collect label levels coleq ///
-	group_expenditure_share1 "w_{Food}" ///
-	group_expenditure_share2 "w_{FuelsTransportation}" ///
-	group_expenditure_share3 "w_{Services}" ///
-	group_expenditure_share4 "w_{Goods}" ///
-	group_expenditure_share5 "w_{Housing}" ///
-	group_expenditure_share6 "w_{AdultGoods}", ///
-	name(ETable) modify
-
-collect label levels colname ///
-	gamma_lnprice_index1 "gamma_{Food}" ///
-	gamma_lnprice_index2 "gamma_{FuelsTransportation}" ///
-	gamma_lnprice_index3 "gamma_{Services}" ///
-	gamma_lnprice_index4 "gamma_{Goods}" ///
-	gamma_lnprice_index5 "gamma_{Housing}" ///
-	gamma_lnprice_index6 "gamma_{AdultGoods}", ///
-	name(ETable) modify
-
-collect export "reg_results_table.tex", name(ETable) as(tex) tableonly replace
+	mtitles("QUAIDS" "AIDS" "Homogeneity" "Symmetry") ///
+	label ///
+	coeflabels( ///
+		gamma_lnprice_index1 "\hspace{`indent'}$\gamma_{Food}$" ///
+		gamma_lnprice_index2 "\hspace{`indent'}$\gamma_{FuelsTransportation}$" ///
+		gamma_lnprice_index3 "\hspace{`indent'}$\gamma_{Services}$" ///
+		gamma_lnprice_index4 "\hspace{`indent'}$\gamma_{Goods}$" ///
+		gamma_lnprice_index5 "\hspace{`indent'}$\gamma_{Housing}$" ///
+		gamma_lnprice_index6 "\hspace{`indent'}$\gamma_{AdultGoods}$" ///
+		alpha_cons "\hspace{`indent'}$\alpha_{i0}$" ///
+		alpha_male "\hspace{`indent'}$\alpha_{Male}$" ///
+		alpha_n_adults "\hspace{`indent'}$\alpha_{Adults}$" ///
+		alpha_n_children "\hspace{`indent'}$\alpha_{Children}$" ///
+		alpha_rural "\hspace{`indent'}$\alpha_{Rural}$" ///
+		beta_lnx "\hspace{`indent'}$\beta_{\ln x}$" ///
+		lambda_lnx2 "\hspace{`indent'}$\lambda_{\ln x^2}$" ///
+		rho_vtotal_expenditure "\hspace{`indent'}$\rho_{v_x}$" ///
+	) ///
+	substitute( ///
+		\_ _ ///
+		DOLLARSIGN "$" ///
+		"\endfirsthead" "\endfirsthead\caption* {Table \ref{tb:regresults} Continued:} \\" ///
+		"\endhead" "&\multicolumn{1}{c}{QUAIDS}&\multicolumn{1}{c}{AIDS}&\multicolumn{1}{c}{Homogeneity}&\multicolumn{1}{c}{Symmetry}\\\midrule\endhead" ///
+		"\endfoot" "\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\\endfoot" ///
+	)
 
 // format and export joint test of quadratic coefficients
-collect title "Joint test statistics and p-values of quadratic terms in demand system specifications \label{tb:quad_tests}"
+collect title "Joint test statistics and p-values of quadratic terms in demand system specifications \label{tb:quadtests}"
 collect label levels result ///
 	chi2 "chi2", ///
 	name(quad_tests) modify
@@ -1904,8 +1919,9 @@ texdoc stlog close
 
 
 /*tex
-
+\singlespacing
 \input{reg_results_table}
+\doublespacing
 
 \input{quad_test_results_table}
 
@@ -1988,6 +2004,7 @@ foreach group in "1" "2" "3" "4" "5" "6"{
 	replace alpha_group_times_ln_prices = alpha_group_times_ln_prices + ///
 		(e(alpha)["_cons", "group_expenditure_share`group'"] + ///
 		e(alpha)["male", "group_expenditure_share`group'"] * male + ///
+		e(alpha)["rural", "group_expenditure_share`group'"] * rural + ///
 		e(alpha)["n_adults", "group_expenditure_share`group'"] * n_adults + ///
 		e(alpha)["n_children", "group_expenditure_share`group'"] * n_children) * ///
 		log(price_index`group')
@@ -2031,6 +2048,7 @@ foreach group in "1" "2" "3" "4" "5" "6" {
 	// sum alpha_i ln p_i
 	replace alpha_group_times_ln_prices = alpha_group_times_ln_prices + ///
 		(e(alpha)["_cons", "group_expenditure_share`group'"] + ///
+		e(alpha)["rural", "group_expenditure_share`group'"] * rural + ///
 		e(alpha)["male", "group_expenditure_share`group'"] * male + ///
 		e(alpha)["n_adults", "group_expenditure_share`group'"] * n_adults + ///
 		e(alpha)["n_children", "group_expenditure_share`group'"] * n_children) * ///
@@ -2074,7 +2092,7 @@ replace x_decile = x_decile + 1
 // consumer surplus: sum of evs by decile
 graph bar (sum) sqrt_scaled_ev (sum) mod_oecd_scaled_ev, ///
 	over(x_decile, relabel (1 "1st" 2 "2nd" 3 "3rd" 4 "4th" 5 "5th" 6 "6th" 7 "7th" 8 "8th" 9 "9th" 10 "10th")) ///
-	  ytitle("Sum of (deflated) equivalent variations") ///
+	  ytitle("Sum of (descaled) equivalent variations") ///
 	  graphregion(color(white) margin(zero)) bgcolor(white)
 
 // regressivity: ratio of EV to total expenditure
