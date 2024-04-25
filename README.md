@@ -8,6 +8,8 @@ The POF data uses fixed-width columns and comes with an R script for conversion 
 
 I used the `pdfathesis` package provided by the MUN Math department, see [MUN - Thesis Help](https://www.mun.ca/math/graduate-students/thesis-help/) for more information.
 
+Install the `booktabs` package from [booktabs](https://github.com/daniel-alves-fernandes/booktabs) used to export the summary statistics tables.
+
 ## Setting up the paths
 
 Edit the `Dropbox.ado` file and replace the path with the repository path. Copy this file into the .ado source you use for Stata ("C:/Users/\<your user\>/ado/plus/" should work).

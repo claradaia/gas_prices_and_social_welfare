@@ -131,17 +131,21 @@ Fossil fuels represent a large share of expenditure for Brazilian households. De
 
 \acknowledgements
 
-Thiago.
-Samia and Nahida.
-My mother and father.
+I want to thank Thiago for his endless support that took many forms.
 
-Dr. Martinez-Espi\~{n}eira who taught me about welfare economics and to stay humble about our assumptions.
-Dr. Locke, who first presented me to the concept of the social welfare function and to the translog utility function.
+I want to thank also Samia and Nahida, for all the afternoons in the library and in the resource room, learning over hot chocolate.
 
-Dr. Daniela Verzola Vaz and Dr. Rodolfo Hoffmann for their advice on the use of the \ac{FBS} dataset.
-Dr. Hexsel.
+I thank my mother and father for showing me education was the most valuable, and pleasurable, thing in the world.
 
-The faculty of the Informatics Department at the Federal University of Paraná. \todo[fancyline, color= yellow]{NOV 18 2023: spell acronym UFPR}
+I thank my supervisor, Dr. Martinez-Espi\~{n}eira, for teaching me about welfare economics and to stay humble about our assumptions, and also for his patience.
+
+I thank also Dr. Locke, who first presented me to the concept of the social welfare function and to the translog utility function.
+
+I appreciate the advice of Dr. Daniela Verzola Vaz and Dr. Rodolfo Hoffmann on the use of the \ac{FBS} dataset.
+
+I extend my thanks to Dr. Hexsel, who included lectures on politics in his advising on computer architecture, and to the faculty of the Informatics Department at the Federal University of Paraná. \todo[fancyline, color= yellow]{NOV 18 2023: spell acronym UFPR}
+
+I would not be here without all of you, and I know I stand on the shoulders of giants.
 
 \pagebreak
 
@@ -897,13 +901,14 @@ keep if V0306 == 1
 
 // Gender and type frequencies
 collect: table residence_type gender, ///
-	stat(freq) stat(percent) /// show counts and % of each count
-	nformat(%7.0fc freq) nformat(%3.2f percent) sformat("(%s%%)" percent) /// 1,234 (43,21%)
-	nototals
+       stat(freq) stat(percent) /// show counts and % of each count
+       nformat(%7.0fc freq) nformat(%3.2f percent) sformat("(%s%%)" percent) /// 1,234 (43,21%)
+       nototals
 collect title "Sample distribution by gender and residence type \label{tab:genderTypeFrequencies}"
 collect style header result, level(hide)
 collect style row stack, nodelimiter spacer
-collect export gender_type_frequencies.tex, tableonly replace
+booktabs export using gender_type_frequencies.tex, tableonly replace
+
 
 // Number of adults and children with frequencies
 preserve
@@ -931,7 +936,7 @@ collect label dim n_children "Children"
 collect label dim n_adults "Adults"
 collect label levels n_children 4 "$\leq 4$"
 collect label levels n_adults 5 "$\leq 5$"
-collect export adults_children_frequencies_tmp.tex, tableonly replace
+booktabs export using adults_children_frequencies_tmp.tex, tableonly replace
 filefilter "adults_children_frequencies_tmp.tex" "adults_children_frequencies.tex" , from("\BS$") to("$") replace
 restore
 
