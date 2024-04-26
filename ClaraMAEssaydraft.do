@@ -1545,9 +1545,9 @@ assert total_expenditure != .
 // keep only one observation per household
 bysort hh_id: keep if _n == 1
 
-label variable total_expenditure "Household expenditure"
+label variable total_expenditure "Household expenditure*"
 label variable hh_income "Household income"
-graph hbox total_expenditure hh_income, nooutsides showyvars legend(off) graphregion(color(white) margin(zero)) bgcolor(white)
+graph hbox total_expenditure hh_income, nooutsides showyvars legend(off) graphregion(color(white) margin(zero)) bgcolor(white) note("* Expenditure on services and non-durable goods.")
 graph export "graphs\boxplot_exp_inc.png", as(png) replace
 
 // skewness
