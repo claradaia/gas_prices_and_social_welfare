@@ -86,7 +86,7 @@ graph set window fontface "Palatino Linotype"
 \University{Memorial University of Newfoundland}
 \AcademicUnit{Department of Economics}
 \Degree{Master of Arts}
-\Keywords{social welfare function\sep fuel prices} 
+\Keywords{demand systems \sep welfare \sep fuel prices} 
 \Subject{MSC-xxxx subject descriptor}
 %\DateSubmitted{}    % default: current month and year
 %\ConvocationYear{}  % default: the nearest coming convocation year
@@ -120,8 +120,13 @@ Fossil fuels represent a large share of expenditure for Brazilian households. De
 
 \todo[inline]{Eventually, this abstract will need some policy conclusions. Now that ``thankfully for the World or at least Brazil, you completed this work, what can you say that will inform policy, make things better, help solve the original problem?'' }
 
-
-\todo[inline, color=red]{NOV 18 2023: Where did the keywords go? You have them up there (two of them) but they do not show up in the compiled pdf anywhere. Please ensure that gets fixed}
+\textbf{Keywords:} \textit{demand systems}, \textit{welfare}, \textit{fuel prices}
+\todo[inline, color=yellow]{NOV 18 2023: Where did the keywords go? You have them up there (two of them) but they do not show up in the compiled pdf anywhere. Please ensure that gets fixed}
+\todo[inline, color=orange]{Clara: Is there a command to display them?  I think they are missing from the template. I investigated a bit and \\
+1. there are no keywords shown on the \href{https://www.dropbox.com/sh/gxth1fyil60rnal/AAAauQPvIOkFeI-bTGEzglpta?dl=0&e=1&preview=MAEssaytemplateFEB2024.pdf}{Dropbox pdf}  \\
+2. the \textbf{pdfathesis.cls}  and \textbf{pdfathesis.sty} files don't seem to set up anything to display them \\
+3. from the \textbf{pdfx} package docs, the \textbf{\textbackslash Keywords} command seems to only add the keywords to the metadata of the file. \\
+So I did it manually.}
 
 
 
@@ -180,11 +185,13 @@ I would not be here without all of you, and I know I stand on the shoulders of g
 \acro{BIGS}{Brazilian Institute of Geography and Statistics}
 \acro{BRL}{Brazilian Real}
 \acro{DQUAIDS}{Demographically-Scaled Quadratic Almost Ideal Demand System}
+\acro{ECID}{Economic Domain Intervention Contribution}
 \acro{FBS}{Family Budgets Survey}
 \acro{GHG}{Greenhouse effect Gases}
 \acro{GSFT}{Goods and Services Flow Tax}
 \acro{IPP}{Import Parity Price}
 \acro{LA-AIDS}{Linear Approximate Almost Ideal Demand System}
+\acro{MIQ}{Minimum Income Question}
 \acro{NSCPI}{National System of Consumer Price Indices}
 \acro{NSHS}{National Sample Household Survey}
 \acro{OECD}{Organisation for Economic Co-operation and Development}
