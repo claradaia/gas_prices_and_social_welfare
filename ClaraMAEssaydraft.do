@@ -696,7 +696,7 @@ It may not be socially acceptable to attribute a lower ``weight'' to children in
 
 In this essay, consumer demand for six commodity groups is characterized across households of different compositions and attributes, and the results are used to estimate the welfare effects of a subsidy policy change. The commodity groups and household characteristics selected are described in Section~\ref{sec:variables}. Section~\ref{sec:welfare} explains the procedure to obtain welfare measures.
 
-Demand is modelled with \ac{QUAIDS}, the system is estimated using data from the 2017-2018 \ac{FBS} and the \ac{ACPI}. Section~\ref{sec:model} shows the model and the estimation method, with Section~\ref{sec:assumptions} containing the assumptions involved and restrictions imposed on the model. Section~\ref{sec:data} provides details on the \ac{FBS} data, cleaning procedures and summary statistics.
+Demand is modelled with \ac{QUAIDS}, the system is estimated using data from the 2017-2018 \ac{FBS} and the \ac{ACPI}. Section~\ref{sec:model} shows the model and the estimation method, with Section~\ref{sec:assumptions} containing the assumptions involved and restrictions imposed on the model.
 
 \tdILR{NOV 18 2023: OK so this section needs completing and polishing. ALso make sure you fix the missing references}
 
@@ -1600,19 +1600,18 @@ texdoc local five_adults_pct = strofreal(five_adults_pct, "%9.2f")
 texdoc stlog close
 
 /*tex
-\section {Data}\label{sec:data}
+\chapter{Data} \label{sec:data}
 
-\tdILR{NOV18 2023: Rober thinks that the DATA SECTION should be a ``chapter'' itself, separate from the Methodology}
+\tdILY{NOV18 2023: Rober thinks that the DATA SECTION should be a ``chapter'' itself, separate from the Methodology}
 
-\subsection {Data Source} \label{sec:data_source}
-
-The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. The most recent survey was run between 2017 and 2018 and contains both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23\textsuperscript{rd} 2018.
+\section{Data Source} \label{sec:data_source}
+For the demand system estimation, data from the 2017-2018 \ac{FBS} was used. The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. It both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23\textsuperscript{rd} 2018.
 
 \tdILG{NOV 18 2023  The footnote numbers go after the punctuation mark: check throughout }
 
 The \ac{FBS} is meant to be used as cross-sectional data and does not contain the dates each household was surveyed,\footnote{\cite{WaleedMirza2020}, for example, match their family budget survey data to the weekly Pakistan Bureau of Statistics price index using the date of collection.} while other surveys run in Brazil that follow population and economic trends more frequently do not include family expenses in the level of detail required by the model. However, estimating a demand system requires price variation. To obtain some price variation information, I exploit the fact that the \ac{FBS} data was collected over a period of 12 months and that the dataset includes the deflation factors used for each recorded expense.
 
-\tdILR{NOV 18 2023  I bet your macros do not work because of the mistranslation of underscores between Stata and \LaTeX}
+\tdILY{NOV 18 2023  I bet your macros do not work because of the mistranslation of underscores between Stata and \LaTeX}
 
 \tdILY{there are a lot of ``I's' in this section: use the passive voice more: NOV 18 2023  still must fix this. The passive voice goes ``The type of expense was identified...''}
 
@@ -1631,7 +1630,7 @@ If the deflator values had been solely determined by the date of the payment or 
 
 \tdILY{so can we start seeing tables of descriptives of whatever data you already have, you do have some data.}
 
-\subsection{Population sample description}
+\section{Population sample description}
 
 The 2017-2018 \ac{FBS} surveyed $`hh_count'$ households. Table \ref{tab:genderTypeFrequencies} \tdFLY{is this table mislabelled? there is no caption in the table!!!} shows how observations are distributed by gender of household head and residence type \tdFL{consider using Oxford commas}. Overall, the majority of the sampled households are headed by men living in urban areas.
 
@@ -1670,7 +1669,7 @@ The distribution of income and total expenditure is strongly right-skewed: Figur
 % More useful info
 $`hh_vehicle_count'$ of the households surveyed, or $`hh_vehicle_pct'$\%, report owning one vehicle. A small number, $`domestic_use_count'$, or $`domestic_use_pct'$\%, of households, report purchasing gasoline for domestic use.
 
-\subsection{Expenditure patterns on fuel and transportation}
+\section{Expenditure patterns on fuel and transportation}
 
 Figure \ref{fig:exp_shares_gasoline} shows the shares of a households \tdeFL total expenditure spent on gasoline. For households that consumed any gasoline during the period of the survey, the clusters' shapes suggest Engel curves linear on the logarithm of total expenditure, which is expected of goods that are not luxuries.
 
