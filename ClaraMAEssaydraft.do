@@ -1925,30 +1925,6 @@ EV = c_k(u_1, p_0) - x
 
 \tdILY{display this last equation}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\section{Limitations}
-As mentioned in Section~\ref{sec:data_source}, the \ac{QUAIDS} estimates are obtained by using unofficial price variation information, which renders the results not reliable.
-
-The price variation matter introduces another issue. Having zero expenditure in one or more commodity groups does not ordinarily require that a household not be included in the estimation. However, due to the procedure described in Section~\ref{sec:data_source}, if within a household's price group there was no aggregate expenditure on the commodity group in question, there will also be no price index for said commodity group. The absence of price index information does mean the household data will be discarded.
-
-Figure~\ref{fig:missing_commodity_groups} shows that the mean count of commodity groups with zero expenditure is higher for lower income households. This is likely due to ``corner solutions'' at low levels of income, and potentially to sparse purchases that fall outside of the survey period.\footnote{For example, the survey registers food purchases for seven days. If the household typically buys groceries in bulk once a month, their (adjusted) monthly expenditure would be incorrectly represented as zero.} It also means lower income families are more likely to be ommited from the sample, as shown in Figure~\ref{fig:missing_one_or_more_commodity_groups}.
-
-\begin{figure}
-    \centering   \includegraphics[width=0.9\textwidth]{graphs/missing_commodity_groups.png}
-    \caption{Mean count of commodity groups with zero expenditure by total expenditure decile}
-    \label{fig:missing_commodity_groups}
-\end{figure}
-
-
-\begin{figure}
-    \centering   \includegraphics[width=0.9\textwidth]{graphs/missing_one_or_more_commodity_groups.png}
-    \caption{Percentage of households omitted from the estimation by total expenditure decile}
-    \label{fig:missing_one_or_more_commodity_groups}
-\end{figure}
-
-
 tex*/
 texdoc stlog, nolog
 
@@ -2129,6 +2105,30 @@ Alternatively, the distributional impact of the price change can be evaluated th
 
 % demographics
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Limitations}
+As mentioned in Section~\ref{sec:data_source}, the \ac{QUAIDS} estimates are obtained by using unofficial price variation information, which renders the results not reliable.
+
+The price variation matter introduces another issue. Having zero expenditure in one or more commodity groups does not ordinarily require that a household not be included in the estimation. However, due to the procedure described in Section~\ref{sec:data_source}, if within a household's price group there was no aggregate expenditure on the commodity group in question, there will also be no price index for said commodity group. The absence of price index information does mean the household data will be discarded.
+
+Figure~\ref{fig:missing_commodity_groups} shows that the mean count of commodity groups with zero expenditure is higher for lower income households. This is likely due to ``corner solutions'' at low levels of income, and potentially to sparse purchases that fall outside of the survey period.\footnote{For example, the survey registers food purchases for seven days. If the household typically buys groceries in bulk once a month, their (adjusted) monthly expenditure would be incorrectly represented as zero.} It also means lower income families are more likely to be ommited from the sample, as shown in Figure~\ref{fig:missing_one_or_more_commodity_groups}.
+
+\begin{figure}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/missing_commodity_groups.png}
+    \caption{Mean count of commodity groups with zero expenditure by total expenditure decile}
+    \label{fig:missing_commodity_groups}
+\end{figure}
+
+
+\begin{figure}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/missing_one_or_more_commodity_groups.png}
+    \caption{Percentage of households omitted from the estimation by total expenditure decile}
+    \label{fig:missing_one_or_more_commodity_groups}
+\end{figure}
+
+Finally, the model with enforced symmetry must be used for the welfare computations, but the symmetry and homogeneity hypotheses are rejected.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
