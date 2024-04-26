@@ -317,30 +317,28 @@ Properly identifying ``winners'' and ``losers'' from a policy change, and the ma
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Background}\label{chap:background}
-\tdILR{Eventually, this Section \ref{chap:background} will need much more of further detailing of the motivation you would have inserted in the Introduction. Only in Section \ref{chap:background} you can be more detailed, use numbers, use tables and graphs (you have some already), comparisons with the situation in other countries, etc.}
+\tdILY{Eventually, this Section \ref{chap:background} will need much more of further detailing of the motivation you would have inserted in the Introduction. Only in Section \ref{chap:background} you can be more detailed, use numbers, use tables and graphs (you have some already), comparisons with the situation in other countries, etc.}
 
 % Why are we interested in the effects of changes in the price of oil?
 The majority of economic activity depends on electricity or thermal energy sources. Despite initiatives toward decarbonization, renewables and sustainability in general, petroleum derivates still dominate the energy market in most countries.
 
-% Why were the policies that changed the prices effected?
 The Brazilian petroleum company Petrobras is partially nationalized -- 51\% of its stock is owned by the Brazilian federal government and it is responsible for over 65\% of the petroleum market in the country. It is subject to a lot of political influence, as the company's president is appointed by the government, and has faced multiple corruption investigations over the years. \tdFLY{NOV 18 2023 Rober: must be fully written up}
 
-In 2023, the price control returned with the purpose of ``nationalizing'' prices. The argument is that the abundance of oil and gas in Brazilian territory should mean easier access to fuels to citizens and national industries regardless of international trends in oil prices.
+Price distortions in otherwise competitive markets lead to dead-weight loss. By maintaining domestic prices artificially low, Petrobras subsidizes consumption implicitly through forgone revenue and directly when it needs to import fuel to satisfy the domestic demand.\tdFLY{This paragraph is more background than literature review}
 
+% Why were the policies that changed the prices effected?
+Between 2011 and 2014, imports of petroleum derivates by Petrobras increased significantly to meet the domestic demand. This represented large losses to the company: according to \cite{AlmeidaOliveiraLosekann2015}, between 2011 and 2014, the cost of imports by Petrobras was of \ac{BRL} 21 billion, while the losses in revenue were of \ac{BRL} 98 billion.
 
-In 2023, the IPP policy was reversed with the purpose of ``nationalizing'' prices. The argument is that the abundance of oil and gas in Brazilian territory warrants an expansion of domestic refining, and should result in easier access to fuels to citizens and national industries regardless of international trends in oil prices.
+The increase in Petrobras' debt led to the adoption, in 2016, of the \ac{IPP} policy. The \ac{IPP} policy redefined the composition of prices effected by Petrobras to include the cost of imports, the \ac{BRL}-\ac{USD} exchange rate and a ``risk fee''. The policy also determined that prices could be adjusted monthly.
 
-\tdILR{NOV 18 2023 Rober: must be fully written up and references added when possible:}
-% Why would they keep changing or change more in the future? Climate change? International Pressure? Sustainable Development Goals? The IMF requiring it?
-* Sale of refining facilities may further change the market share of Petrobras and decrease its market power
-* The same forces that led to the IPP policy in 2016 are likely to start putting pressure again after the change in policy in 2023
-* Hopefully more people will start taking climate change seriously in Brazil --- which could come with a carbon tax. (Does not seem to be happening, though. We're looking at extracting oil from the Amazon and expanding vehicle production.)
+In 2023, the \ac{IPP} policy was reversed with the purpose of ``nationalizing'' prices. The argument is that the abundance of oil and gas in Brazilian territory warrants an expansion of domestic refining, and should result in easier access to fuels to citizens and national industries regardless of international trends in oil prices \citep{EliasMalardoSalles2022}.
 
-% Will this happen again? That is, is there a policy situation to solve? A problem to deal with? Is it getting better? worse?
-\tdILR{NOV 18 2023 Rober: add references below when possible:}
-One argument against the price control policy is that it is regressive, because it benefits people with higher incomes, who are more likely to own vehicles, more than people with lower incomes.\footnote{For example, \cite{Exame2022b} reports that a reduction on gasoline prices benefitted the middle class more than lower-income families, due to the fraction of income spent on transportation being higher for higher-income families.} This argument is muddied by the fact that fuels impact consumers of all levels of income indirectly, as inputs of production and transportation of other goods. For policymakers that promote progressive values, it is important to know whether the price control aligns with those values, and if so, to what degree.
+While the \ac{IPP} policy is the most notable, many other policy changes over fuels prices have been effected by the federal government. Section~\ref{sec:gas_policy_history} provides a brief history of relevant interventions.
 
-Figure \ref{fig:fuel_prices_over_time} shows average monthly retail prices of gasoline, ethanol, \tdFLY{PNW, use Oxford commas} and diesel in Brazil, as well as the \ac{OPEC} \tdFLY{tag ALL acronyms} crude oil monthly prices between 2003 and 2023, all in \ac{BRL} and normalized to 1 in the first time period. The relative changes over time \tdFLY{NOV 18 2023: Or reword some other way but using the cross-reference.} show that Petrobras' price policy before 2016 cushioned national fuel prices against international market price variations, and led also to a divergence between national and international prices -- made even larger due to the devaluation of the \ac{BRL} relative to the \ac{USD}. Between the policy change and 2022, prices have followed crude oil price trends, increasing over time and becoming more volatile.
+\tdILY{NOV 18 2023 Rober: must be fully written up and references added when possible:}
+With the end of the \ac{IPP} policy, unless the domestic demand for fuels can be satisfied by domestic production, there will be a new round of increased imports and losses to Petrobras, with accompanying lower government revenue. Other factors that may affect the fuels market in the near future are described in Section~\ref{sec:fuels_markets_prospects}.
+
+Figure \ref{fig:fuel_prices_over_time} shows average monthly retail prices of gasoline, ethanol, \tdFLY{PNW, use Oxford commas} and diesel in Brazil, as well as the \ac{OPEC} \tdFLY{tag ALL acronyms} crude oil monthly prices between 2003 and 2023, all in \ac{BRL} and normalized to 1 in the first time period. The relative changes over time \tdFLY{NOV 18 2023: Or reword some other way but using the cross-reference.} show that Petrobras' price policy before 2016 cushioned national fuel prices against international market price variations, and led also to a divergence between national and international prices -- made even larger due to the devaluation of the \ac{BRL} relative to the \ac{USD}. Between the policy change and 2022, prices followed crude oil price trends, increasing over time and becoming more volatile.
 
 tex*/
 
@@ -361,10 +359,12 @@ texdoc stlog close
     \label{fig:fuel_prices_over_time}
 \end{figure}
 
+It is also visible in Figure \ref{fig:fuel_prices_over_time} how the price of ethanol follows the price of gasoline, although with more fluctuation due to harvest seasons. Section~\ref{sec:ethanol} provides more information on the use of ethanol as fuel in Brazil.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Fuel price interventions}\label{gas_policy_history}
+\section{Fuel price interventions} \label{sec:gas_policy_history}
 \tdFLY{NOV 18 2023: write it up}
 % petrobras
 The Brazilian national petroleum extraction and refining company Petrobras was founded in 1953, establishing a state monopoly of the petroleum market. In 1967, Brazil reached self-sufficiency in almost all fuels used in the country. During the military regime installed in 1964, fuel prices were under state control and were set low as a way to reduce inflation.
@@ -372,26 +372,29 @@ The Brazilian national petroleum extraction and refining company Petrobras was f
 % deregulation + ethanol
 After the end of the military regime, the market for fuels was progressively deregulated in the country. In 1995, a constitutional amendment enabled the state to hire private companies for oil extration. The Law of Petroleum, proposed in 1997 and installed in December 31st of 2001, mandated the state to outsource extraction and refining operations. Petrobras still controlled oil prices, and used this control to stimulate the ethanol industry. \cite states between and gasoline prices were 9\% higher than expected market price, as a way to make ethanol more competitive.
 
-% IPP
-The \ac{IPP} policy was implemented in 2016 to increase the profits of Petrobras. This meant higher government revenue that could be used to lower taxes on other areas. Fuel prices increased, as well as the revenue.
+% Truckers' strike
+After the implementation of the \ac{IPP} policy in 2016, the higher volatility of fuel prices, and overall increases in prices produced unrest among consumers. Diesel price increases culminated in a ten-day strike by truck drivers in 2018, which led the federal government to subsidize a reduction in diesel prices by Petrobras; to eliminate the \ac{ECID} tax on diesel until 2020; and to change the rules of toll payments for trucks.
 
 % more recent interventions
-In 2021, a surge in soy prices led the government to temporarily change the mandated amount of of biodiesel in retail diesel from 13\% to 10\%, to prevent ``an excess increase'' in the price of diesel to consumers \citep{Verdelio2021}. As part of a series of attempts to reduce inflation, in June of 2022, Brazilian president Jair Messias Bolsonaro sanctioned a bill setting the ceiling for the consumption tax (\ac{GSFT}) on fuels, to a maximum of 18\%.
+In 2021, a surge in soy prices led the government to temporarily change the mandated amount of of biodiesel in retail diesel from 13\% to 10\%, to prevent ``an excess increase'' in the price of diesel to consumers \citep{Verdelio2021}. As part of an attempt to reduce inflation, in June of 2022, Brazilian president Jair Messias Bolsonaro sanctioned a bill setting the ceiling for the consumption tax on fuels (\ac{GSFT}), to a maximum of 18\%.
 
 % end of IPP
-In May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula \tr{da Silva's \tdFLY{missing genitive here} (elected in 2022) campaign} suggestions \citep{SantanaRamalho2023}.
+Finally, in May 2023, Petrobras announced the end of the \ac{IPP} policy, in alignment with Brazilian president Luiz Inácio Lula \tr{da Silva's \tdFLY{missing genitive here} (elected in 2022) campaign} suggestions \citep{SantanaRodrigues2023}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Expected changes}
-% development x climate change
-\tdILR{NOV 18 2023: write it up and make sure you have the references, even if they are to newspaper articles or new websites}
-Fuels are inputs for most economic activity, either directly in production, or indirectly in distribution and for thermal power plants. Fossil fuels in particular are also responsible for a large fraction of pollution and associated climate issues. Therefore, governments face tradeoffs between economic development and environmental goals. Recent events and prospects in the supply of fossil fuels, as well as growing concern with climate change, continue to exert influence onto policymaking.
+\section{Additional prospects for fuels markets} \label{sec:fuels_markets_prospects}
+\tdILY{NOV 18 2023: write it up and make sure you have the references, even if they are to newspaper articles or new websites}
+% Why would they keep changing or change more in the future? Climate change? International Pressure? Sustainable Development Goals? The IMF requiring it?
+
+Apart from changes in existing tax schedules and Petrobras' pricing, three factors will affect the market for fuels in the near future: changes in the supply of refined products of oil, environmental concerns, and changes in the number and type of vehicles in Brazil.
+
+Fuels are inputs for most economic activity, either directly in production, or indirectly in distribution and for thermal power plants. Fuels are also responsible for a large fraction of pollution and associated climate issues. Therefore, governments face tradeoffs between economic development and environmental goals.
 
 In 2013, crude oil reservoirs were found in the Amazon region. Since then, Petrobras has studied the risks and environmental impact of extraction, contacted neighbouring countries that might be affected by oil spills. Extraction is expected to begin in 2024. With the end of the \ac{IPP} policy, Petrobras may use the increase in its supply of crude oil to justify a reduction in prices.
 
-In June 2023, the government announced temporary measures to stimulate vehicle production and lower vehicle prices \citep{Planalto2023}.\footnote{This echoes similar policies implemented during the first presidential mandates of Partido dos Trabalhadores (Worker's Party) in the 2000s, which resulted in significant growth in private vehicle ownership and usage \citep{CarvalhoPereira2012}.} The combined growth in the vehicle fleet and potential reduction in fossil fuel prices would increase demand.
+In June 2023, the government announced temporary measures to stimulate vehicle production and lower vehicle prices \citep{Planalto2023}.\footnote{This echoes similar policies implemented during the first presidential mandates of Partido dos Trabalhadores (Worker's Party) in the 2000s, which resulted in significant growth in private vehicle ownership and usage \citep{CarvalhoPereira2012}.} The combined growth in the vehicle fleet and potential reduction in fossil fuel prices would increase demand, which \textit{ceteris paribus} would cause imports to continue to rise and increase costs to Petrobras.
 
 In contrast, concern with climate change grows and Brazil slowly follows the trend of large economies in attempting to reduce GHG emissions. In May 2022, the Ministry of the Environment and Climate Change (then called ``Ministry of the Environment'') announced a decree to regulate a voluntary market of carbon dioxide and methane credits in Brazil \citep{MMA2022}. In December 2023, congress approved a new bill to regulate a mandatory market for GHG credits \citep{Peixoto2023}.
 
@@ -399,10 +402,11 @@ Another, if lukewarm, initiative to reduce GHG emissions was announced in 2023: 
 
 Additionally, with respect to electrical vehicles, in February 2024 the government announced increased taxes on imported electrical vehicles. The measure aleggedly aims to encourage development of national technology in electrical vehicles, but in the meantime discourages consumers from replacing vehicles powered by fuel.
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{The role of ethanol}
+\section{The role of ethanol} \label{sec:ethanol}
 \tdILY{This section will need a better title}
 % long history
 Sugarcane is a major agricultural commodity in Brazil since the XVI century, and its alcohol derivates have been used as fuel for vehicles as early .
@@ -489,8 +493,6 @@ Finally, other household characteristics affect demand. Children of different ag
 
 
 \section{Demand elasticities, efficiency and consumer surplus}\label{sec:dwl}
-
-Price distortions in otherwise competitive markets lead to dead-weight loss. By maintaining domestic prices artificially low, Petrobras subsidizes consumption implicitly through forgone revenue and directly when it needs to import fuel to satisfy the domestic demand.\tdFL{This paragraph is more background than literature review}
 
 With Petrobras being partly nationalized, the loss incurred by consumers from increased prices can be counteracted by a reduction in the tax burden accounting for the government increased revenue. \tdFL{First sentence is background still} \cite{Moreira2017} uses a static open economy macroeconomic model of Brazil to estimate the impact of removing fuel subsidies on output, aggregate consumption and labour demand for the years 2011-2014. \cite{Moreira2017} finds that if accompanied by an equivalent reduction on major taxes, the removal of the subsidy increases output, consumption and employment.
 
