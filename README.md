@@ -8,7 +8,19 @@ The POF data uses fixed-width columns and comes with an R script for conversion 
 
 I used the `pdfathesis` package provided by the MUN Math department, see [MUN - Thesis Help](https://www.mun.ca/math/graduate-students/thesis-help/) for more information.
 
-Install the `booktabs` package from [booktabs](https://github.com/daniel-alves-fernandes/booktabs) used to export the summary statistics tables.
+The following Stata packages are needed:
+* the `aidsills` command by [Lecocq & Robin](https://journals.sagepub.com/doi/pdf/10.1177/1536867X1501500214);
+* the `booktabs` command from [booktabs](https://github.com/daniel-alves-fernandes/booktabs) used to export the summary statistics tables;
+* the `grc1leg` command by Vince Wiggins used to generate combined graphs with a single legend;
+* the `sepscatter` command by [Kit Baum](https://www.statalist.org/forums/forum/general-stata-discussion/general/3803-sepscatter-available-from-ssc) used to generate graphs with one line for each value of a discrete variable.
+
+Install them with
+```
+ssc install aidsills
+net install booktabs, from("https://raw.githubusercontent.com/daniel-alves-fernandes/booktabs/main/")
+net install grc1leg, from(http://www.stata.com/users/vwiggins/)
+ssc install sepscatter
+```
 
 ## Setting up the paths
 

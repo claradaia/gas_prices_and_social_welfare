@@ -2061,6 +2061,7 @@ graph bar (sum) ev, ///
 	over(x_decile, relabel (1 "1st" 2 "2nd" 3 "3rd" 4 "4th" 5 "5th" 6 "6th" 7 "7th" 8 "8th" 9 "9th" 10 "10th")) ///
 	  ytitle("Sum of equivalent variations") ///
 	  graphregion(color(white) margin(zero)) bgcolor(white)
+graph export "graphs\ev_sums.png", as(png) replace
 
 // regressivity: ratio of EV to total expenditure
 graph bar (mean) rate, ///
@@ -2074,13 +2075,70 @@ scalar gini_sqrt_scaled_x = r(gini) * 100
 ineqdeco mod_oecd_scaled_x
 scalar gini_mod_oecd_scaled_x = r(gini) * 100
 
-
 gen sqrt_scaled_cost_p_0 = cost_p_0/sqrt_scale
 gen mod_oecd_scaled_cost_p_0 = cost_p_0/mod_oecd_scale
 ineqdeco sqrt_scaled_cost_p_0
 scalar gini_sqrt_scaled_cost_p_0 = r(gini) * 100
 ineqdeco mod_oecd_scaled_cost_p_0
 scalar gini_mod_oecd_scaled_cost_p_0 = r(gini) * 100
+
+// demographics
+set scheme clara
+
+preserve
+collapse (mean) mod_oecd_scaled_ev (mean) sqrt_scaled_ev, by(gender residence_type x_decile)
+sort x_decile
+
+egen gender_type = group(gender residence_type), label
+graph bar mod_oecd_scaled_ev, ///
+	over(gender_type) asyvar over(x_decile) ///
+    ytitle("Mean EV (modified OECD scale)") ///
+	name(gender_type_oecd, replace)
+
+graph bar sqrt_scaled_ev, ///
+	over(gender_type) asyvar over(x_decile) ///
+    ytitle("Mean EV (square root scale)") ///
+    name(gender_type_sqrt, replace)
+
+grc1leg gender_type_oecd gender_type_sqrt, legendfrom(gender_type_sqrt) ycommon
+graph export "graphs\ev_gender_type_scaled.png", as(png) replace
+restore
+
+preserve
+collapse (mean) mod_oecd_scaled_ev (mean) ev, by(n_adults n_children x_decile)
+drop if n_adults > 5 | n_children > 3 | x_decile > 4
+sort n_adults
+
+sepscatter mod_oecd_scaled_ev n_adults, ///
+	separate(n_children) recast(line) by(x_decile)
+
+sepscatter mod_oecd_scaled_ev n_adults, ///
+	separate(n_children) recast(line) by(x_decile) ///
+	legend( ///
+		label(1 "No children") ///
+		label(2 "1 child") ///
+		label(3 "2 children") ///
+		label(4 "3 children") ///
+		label(5 "4 children")) ///
+	ytitle("Mean EV (modified OECD scale)") ///
+	xtitle("Number of adults")
+
+graph export "graphs\ev_adults_children_scaled.png", as(png) replace
+
+sepscatter ev n_adults, ///
+	separate(n_children) recast(line) by(x_decile) ///
+	legend( ///
+		label(1 "No children") ///
+		label(2 "1 child") ///
+		label(3 "2 children") ///
+		label(4 "3 children") ///
+		label(5 "4 children")) ///
+	ytitle("Mean EV") ///
+	xtitle("Number of adults")
+
+graph export "graphs\ev_adults_children.png", as(png) replace
+
+restore
 
 
 texdoc stlog close
@@ -2094,9 +2152,15 @@ texdoc local gini_mod_oecd_scaled_cost_p_0 = strofreal(round(gini_mod_oecd_scale
 
 \tdILY{March 1st 2024 The table of results will eventallly need to be made smaller, the model names will need correct capitalization, the Greek symbols will need to be Greek etc.  You might need to span the table over several pages by using the supertabular environment}
 
-\tdILR{March 1st 2024 We need careful commentary of the results}
+\tdILY{March 1st 2024 We need careful commentary of the results}
 % consumer surplus
 Aggregate losses to consumers due to the price increase are shown in Figure~\ref{fig:ev_sums}. Higher income deciles show bigger losses, which is expected as transportation is not an inferior good.
+
+\begin{figure}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_sums.png}
+    \caption{Sum of $EV$s by total expenditure decile.}
+    \label{fig:ev_sums}
+\end{figure}
 
 % regressivity
 Figure~\ref{fig:ev_rates} shows the mean ratio of EV to total expenditure by total expenditure decile. Despite the fact that higher income families consume more fuels than lower income families, the price increase is found to be regressive up until the 9th total expenditure decile, as the increase in consumption is not large enough to offset the price increase.
@@ -2104,6 +2168,33 @@ Figure~\ref{fig:ev_rates} shows the mean ratio of EV to total expenditure by tot
 Alternatively, the distributional impact of the price change can be evaluated through the Gini index before and after the change. Applying the modified OECD equivalence scale to the sample, the Gini index is calculated at $`gini_mod_oecd_scaled_x'$ after the price increase, and estimated at $`gini_mod_oecd_scaled_cost_p_0'$ before the price change. A similar result is found by applying the square root equivalence scale, with the Gini index is calculated at $`gini_sqrt_scaled_x'$ after the price increase, and estimated at $`gini_sqrt_scaled_cost_p_0'$ before the price change. Both point to an increase in inequality.
 
 % demographics
+The estimated $\alpha_{rural}$ and $\alpha_{male}$ are significant but small in magnitude for the $w_{FuelsTransportation}$ equation. This is reflected in the small differences found in the estimated EVs between households headed by women and men, or between households in rural and urban areas, shown by total expenditure decile in Figure~\ref{fig:ev_gender_type}. Households headed by women show sligthly smaller losses than households headed by men, and households in urban areas show slightly higher losses than households in rural areas.
+
+Figure~\ref{fig:ev_gender_type} also shows that $EV$s scaled with the square root scale tend to be larger in magnitude than those scaled with the modified OECD scale.
+
+\begin{figure}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_gender_type_scaled.png}
+    \caption{Mean $EV$ by gender and residence type, by total expenditure decile, scaled with the modified OECD and the square root scales.}
+    \label{fig:ev_gender_type}
+\end{figure}
+
+With respect to the number of adults and children in the household, the estimated $\alpha_{Children}$ is much smaller than $\alpha_{Adults}$. As a result, Figure~\ref{fig:ev_adults_children} shows roughly equal mean $EV$s among households with 0-3 children, while more adults imply higher losses.\footnote{Only the first four expenditure deciles are represented, but the trend is the same present on all deciles.}
+
+Applying equivalence scales, it is assumed that larger households benefit from economies of scale. Since the non-scaled $EV$s do not vary significantly with the number of children, scaling results in families with more children showing lower equivalent losses, as shown in Figure~\ref{fig:ev_adults_children_scaled}. The scaling also changes the relationship between the number of adults and the size of the losses: families with more adults also display lower equivalent losses.
+
+
+\begin{figure}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_adults_children.png}
+    \caption{Mean $EV$ by number of children and adults, by total expenditure decile.}
+    \label{fig:ev_gender_type}
+\end{figure}
+
+\begin{figure}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_adults_children_scaled.png}
+    \caption{Mean $EV$ by number of children and adults, by total expenditure decile, scaled with the modified OECD scale.}
+    \label{fig:ev_adults_children_scaled}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
