@@ -398,9 +398,9 @@ In June 2023, the government announced temporary measures to stimulate vehicle p
 
 In contrast, concern with climate change grows and Brazil slowly follows the trend of large economies in attempting to reduce GHG emissions. In May 2022, the Ministry of the Environment and Climate Change (then called ``Ministry of the Environment'') announced a decree to regulate a voluntary market of carbon dioxide and methane credits in Brazil \citep{MMA2022}. In December 2023, congress approved a new bill to regulate a mandatory market for GHG credits \citep{Peixoto2023}.
 
-Another, if lukewarm, initiative to reduce GHG emissions was announced in 2023: law proposal 4.516/2023 determines an increase in the mandatory fraction of ethanol added to gasoline from 22\% to 27\%, and that the fraction of biodiesel added to diesel (currently at a 15\%) must reach 20\% by 2030. https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2024/02/27/pl-preve-regulacao-de-mistura-de-25-do-biodiesel-e-27-de-etanol-a-gasolina.htm
+Another, if lukewarm, initiative to reduce GHG emissions was announced in 2023: law proposal 4.516/2023 determines an increase in the mandatory fraction of ethanol added to gasoline from 22\% to 27\%, and that the fraction of biodiesel added to diesel (currently at a 15\%) must reach 20\% by 2030 \citep{Exame2024}.
 
-Additionally, with respect to electrical vehicles, in February 2024 the government announced increased taxes on imported electrical vehicles. The measure aleggedly aims to encourage development of national technology in electrical vehicles, but in the meantime discourages consumers from replacing vehicles powered by fuel.
+Additionally, with respect to electrical vehicles, in November 2023 the government announced increased taxes on imported electrical vehicles \citep{MDICS2023}. The measure aleggedly aims to encourage development of national technology in electrical vehicles, but in the meantime discourages consumers from replacing vehicles powered by fuel.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -438,8 +438,7 @@ Assuming that governments, especially representative ones, must work to improve 
 This task requires first a model of individual well-being, and second a way to aggregate the information on individuals into a criterion that can rank outcomes by their effects on social well-being.
 
 % Utility, revealed preference
-On the second half of the XIX century, the ``Marginal Revolution'' introduces the concept of \textit{utility} as the well-being individuals aim to maximize under budget constraints. As well-being is hardly measurable, the concept evolved over time into an ordinal representation of preferences rather than a unit of well-being. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences, so revealed preference methods characterize demand by inferring preference models from observed consumption. (?) showed that revealed preference methods are consistent with ordinal utility.
-
+On the second half of the XIX century, the ``Marginal Revolution'' introduces the concept of \textit{utility} as the well-being individuals aim to maximize under budget constraints. As well-being is hardly measurable, the concept evolved over time into an ordinal representation of preferences rather than a unit of well-being. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences \citep{Moscati2020}.
 
 % Pareto, ordinalism
 Individual preferences can be inferred from individual behaviour, but the decision process still requires aggregating information on preferences into an index that allows the policymaker to fully rank the possible states of the world. The Pareto principle provides a starting point: if between states $A$ and $B$ of the world one individual prefers state $A$ to state $B$ and the others are indifferent between them, it is fairly straightforward to presume state $A$ is preferred to state $B$. However, policies rarely produce pure Pareto improvements: if we introduce an individual that prefers state $B$ to state $A$, it is not immediately clear which state should be preferred from a decision-maker \tdFLY{March 1st 2024 hyphen} point of view.
@@ -448,18 +447,18 @@ Individual preferences can be inferred from individual behaviour, but the decisi
 % Utility is ordinal, but everyone speaks money
 \tdILY{March 1st 2024 You may want to reword, to avoid suggesting that nowadays utility is ``measured''}
 
-Within the ordinalist framework, (?) introduce the Hicks and Kaldor criterion, that allows for ``winners'' and ``losers'' of a change, as long as the winners could potentially compensate the losers and still be better off.
+Within the ordinalist framework, in 1939 John Hicks and Nicholas Kaldor introduce the Hicks-Kaldor criterion, that allows for ``winners'' and ``losers'' of a change, as long as the winners could potentially compensate the losers and still be better off \citep[p.~33,53]{BoardmanGreenbergViningWeimer2018}.
 
-\tdILR{March 1st 2024, we need more references throughout these paragraphs}
+\tdILY{March 1st 2024, we need more references throughout these paragraphs}
 
-To evaluate the hypothetical compensation for the losers and whether the winners would be better off after the compensation transaction, one needs a comparable, cardinal, measure of gains and losses. To that end, Hicks 1939 introduces two money-metric measures of welfare change, based on indifference curves: the \textit{compensating variation} and the \textit{equivalent variation}.
+To evaluate the hypothetical compensation for the losers and whether the winners would be better off after the compensation transaction, one needs a comparable, cardinal, measure of gains and losses. To that end, \cite[pp.~40-41]{Hicks1939} introduces two money-metric measures of welfare change, based on indifference curves: the \textit{compensating variation} and the \textit{equivalent variation}.
 
-\tdILR{March 1st 2024, we to enlarge and enhance these paragraphs, also references}
+\tdILY{March 1st 2024, we to enlarge and enhance these paragraphs, also references}
 
 % Compensated demand, EV & CV, substitution
 Consider a price change situation such as the fuel price policy change by Petrobras. Compensating variation is the change in income that would restore the utility of an individual to the level it was before the change (hence ``compensating'' the individual for the change). It can be described as the amount of money the individual would pay to effect the change, in the case of a change that increases their utility, or the amount the individual would require to accept the change, in the case of a change that decreases their utility.
 
-Define $e(p, u)$ as the minimum expenditure needed to achieve utility $u$ under prices $p$.\footnote{Also referred to as the ``cost function'', as in ``the cost of achieving $u$''.} In Equation \ref{eq:CV}, the compensating variation ($CV$) is the difference in expenditure that would allow the individual to afford $u_0$ under the new prices $p_1$.
+Formally, define $e(p, u)$ as the minimum expenditure needed to achieve utility $u$ under prices $p$.\footnote{Also referred to as the ``cost function'', as in ``the cost of achieving $u$''.} In Equation \ref{eq:CV}, the compensating variation ($CV$) is the difference in expenditure that would allow the individual to afford $u_0$ under the new prices $p_1$ \citep[p.~186]{DeatonMuellbauer1980}.
 
 \tdILY{March 1st 2024, check throughout Equation x, Table Y, Section Z, etc. in capitals}
 
@@ -467,7 +466,7 @@ Define $e(p, u)$ as the minimum expenditure needed to achieve utility $u$ under 
 CV = e(p_0, u_0) - e(p_1, u_0)
 \end{equation}
 
-Equivalent variation is the monetary value that would be ``equivalent'', in terms of utility change to the individual, as the price change. It can be described as the amount of money the individual would accept to forgo the change, in the case of a change that increases their utility, or the amount the individual would be willing to pay to avoid the change, in the case of a change that decreases their utility. In Equation \ref{eq:EV}, the equivalent variation ($EV$) is the difference in expenditure that would allow the individual to afford $u_1$ under the original prices $p_0$.
+Equivalent variation is the monetary value that would be ``equivalent'', in terms of utility change to the individual, as the price change. It can be described as the amount of money the individual would accept to forgo the change, in the case of a change that increases their utility, or the amount the individual would be willing to pay to avoid the change, in the case of a change that decreases their utility. In Equation \ref{eq:EV}, the equivalent variation ($EV$) is the difference in expenditure that would allow the individual to afford $u_1$ under the original prices $p_0$  \citep[p.~186]{DeatonMuellbauer1980}.
 
 \begin{equation} \label{eq:EV}
 EV = e(p_1, u_1) - e(p_0, u_1)
@@ -476,18 +475,17 @@ EV = e(p_1, u_1) - e(p_0, u_1)
 According to the Hicks-Kaldor criterion, a positive sum of all CVs (or EVs) means the change is socially desirable, as once the change was effected the ``winners'' would be willing to pay the ``losers'' enough to compensate them for the change and still be better off (or, for EVs, in order for the ``winners'' to be as well off as they would with the change, they would have to be paid more than the ``losers'' were willing to pay to prevent the change).
 
 % Marshallian demand, first-order approximation
-\cite{Willig1976} \tdFLY{March 1st 2024 missing ref in bib file} showed that for small enough variations in income elasticities of demand and price changes, $EV$ and $CV$ can be closely approximated by the difference in compensated demand following the price change. Social surplus measured that way is often used as a measure of welfare, and Section \ref{sec:dwl} covers research on this.
-
-% Substitution effects and other stuff
-The change in utility following a price change of a certain good or service depends also on the consumer's willigness or ability to substitute for other goods and services.
-
-Consumer surplus is not always great. Blundell et al have shown this can be an issue.\tdFL{March 1st 2024 missing ref in bib file and you need to write this up further}
+\cite{Willig1976} \tdFLY{March 1st 2024 missing ref in bib file} showed that for small enough variations in income elasticities of demand and price changes, $EV$ and $CV$ can be closely approximated by the difference in compensated demand following the price change. Social surplus measured that way is often used as a measure of welfare, and Section~\ref{sec:dwl} covers research on this.
 
 % Inequality concerns
-Welfare changes may vary systematically over population groups. If, within a utilitarian framework, we consider that income has diminishing marginal utility \citep[p.35]{Adler2019}, or if otherwise we take into account social aversion to inequality; we may want to distinguish how price changes will affect poorer families relative to richer families, and how the policy affects the overall wealth distribution. Section \ref{sec:regressivity} covers research on such distributional effects and the framing of policies as regressive or progressive. \tdFLY{March 1st 2024: but where is it???}
+Welfare changes may vary systematically over population groups. If, within a utilitarian framework, we consider that income has diminishing marginal utility \citep[p.35]{Adler2019}, or otherwise taking into account social aversion to inequality \citep{BanksBlundellLewbel1996}; we shall want to distinguish how price changes will affect poorer families relative to richer families, and how the policy affects the overall wealth distribution. Section~\ref{sec:regressivity} covers research on such distributional effects and the framing of policies as regressive or progressive. \tdFLY{March 1st 2024: but where is it???}
+
+% Substitution effects and other stuff
+% Consumer surplus isn't always great
+The change in utility following a price change of a certain good or service depends also on the consumer's willigness or ability to substitute for other goods and services. In consumer surplus analysis, substitution effects are typically averaged, often due to a lack of detailed individual data. \cite{BanksBlundellLewbel1996} show this may lead to overestimation of the social welfare effect of a price change. More importantly, \cite{BanksBlundellLewbel1996} show that it imposes implausible assumptions on consumer preferences and produce systematic errors. Section~\ref{sec:demand_sys} discusses demand system methods that use micro data to improve welfare approximations. \tdFLY{March 1st 2024 missing ref in bib file and you need to write this up further}
 
 % Equivalence scales
-Finally, other household characteristics affect demand. Children of different ages, working-age adults, retired adults and the elderly have different needs. Family composition also affects economies of scale in consumption, and policymakers may have targets for groups based on other protected characteristics, such as gender or race identities. Section \ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to improve welfare comparisons between households.
+Finally, household characteristics other than income affect demand. Children of different ages, working-age adults, retired adults and the elderly have different needs. Family composition also affects economies of scale in consumption, and policymakers may have targets for groups based on other protected characteristics, such as gender or race identities. Section~\ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to further improve welfare comparisons between households.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -537,7 +535,7 @@ The regressivity evaluation in \cite{Poterba1991} is done over a partial equilib
 
 \tdIL{Look at Section 4.1 in \citet{NikodinoskaSchroder2016}. They have a short paragraph there about the history of demand systems and then their own methods paragraph about why they themselves use. They had to squeeze all that in only two paragraphs in the published version of their paper. You do have more space for full-fledged sections.}
 
-\cite{BanksBlundellLewbel1996} analyse the bias present in first-order approximations of welfare effects from a price change. The bias increases in magnitude the larger the price change in question, Figure \ref{fig:fuel_prices_over_time} suggests this may be the case of the \ac{IPP} policy in Brazil. The bias also varies with own-price elasticity of demand, which may vary across demographic groups, and it varies systematically over the logarithm of income; Both of these factors raise distribution concerns.
+\cite{BanksBlundellLewbel1996} analyse the bias present in first-order approximations of welfare effects from a price change. The bias increases in magnitude the larger the price change in question, Figure \ref{fig:fuel_prices_over_time} suggests this may be the case of the \ac{IPP} policy in Brazil. The bias also varies with own-price elasticity of demand, which may vary across demographic groups, and it varies systematically over the logarithm of income; both of these factors raise distribution concerns.
 
 \tdILY{This may be still just a draft, so OK. In its final version, it would need better writing. For example (1) and (2) need qualifiers like ``Concerns (2) and (3)'' or something. Or just ditch the numbering and use full words (``the former'', ``the latter'', ``the first issue'', etc.) }
 
@@ -598,13 +596,13 @@ A common correction to this issue is to use the income \textit{per capita} of th
 
 \tdIL{See if you can add references to support all this. For example, there are studies of water demand that document carefully this economies of scale. That is just one example. Indeed some of the literature on economics of the family will point out that those economics of scale and the non-rivalness and of goods and services in a household are one of the advantages of getting married. You can mention that but, in any event, you want tor backup your statements with references.}
 
-In 1895, Ernst Engel studies food expenditure patterns in Belgium and finds that richer families tend to spend lower fractions of their income on food than poorer families \citep{Stigler1954}. This suggests the fraction of income spent on food can be used as an approximation of welfare, which is the starting point of behavioural equivalence scales, see Section \ref{ssec:behavioural_scales}.
+In 1895, Ernst Engel studies food expenditure patterns in Belgium and finds that richer families tend to spend lower fractions of their income on food than poorer families \citep{Stigler1954}. This suggests the fraction of income spent on food can be used as an approximation of welfare, which is the starting point of behavioural equivalence scales, see Section~\ref{ssec:behavioural_scales}.
 
 Engel is also responsible for introducing the concept of \textit{adult equivalents} in 1883, following from his investigation of the ``cost of the child''\citep{Stigler1954}. If we determine how children's consumption must be relative to an adult so that they achieve the same level of well-being, it becomes possible to compare households based on the number of adult equivalents \citep[p.~242]{Deaton1997}.
 
-Taking this further and incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor for \tdFLY{NOV 18 2023: is that a real word??? Clara: ``equivalize'', ``equivalised'' and friends show up in the lit, but I agree it's not pretty, changed it} family income or wealth, so that the transformed values are comparable among families of different compositions.  \citep{DeatonMuellbauer1980}.\tdFL{pages missing?}
+Taking this further and incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor for \tdFLY{NOV 18 2023: is that a real word??? Clara: ``equivalize'', ``equivalised'' and its friends show up in the lit, but I agree it's not pretty, changed it} family income or wealth, so that the transformed values are comparable among families of different compositions.  \citep{DeatonMuellbauer1980}.\tdFL{pages missing?}
 
-Formally, assume that utility is comparable between households, so that it is possible to say that two households at utility level $u$ experience the same level of well-being. Assume also that households with the same characteristics $d$ require the same expenditure to reach any level $u$ of utility, so that the expenditure function of households differs only with respect to $d$. Then the equivalence scale between two households is the ratio $$\frac{e(p, \bar{u}, d_1)}{e(p, \bar{u}, d_2)}$$. By choosing an array $d_R$ of characteristics as the reference (e.g. an array of ones for binary variables), the equivalence scale for any household $k$ will be $$m_k = \frac{e(p, \bar{u}, d_k)}{e(p, \bar{u}, d_R)}$$ \cite{Lewbel1989}.
+Formally, assume that utility is comparable between households, so that it is possible to say that two households at utility level $u$ experience the same level of well-being. Assume also that households with the same characteristics $d$ require the same expenditure to reach any level $u$ of utility, so that the expenditure function of households differs only with respect to $d$. Then the equivalence scale between two households is the ratio $$\frac{m_1}{m_2} = \frac{e(p, \bar{u}, d_1)}{e(p, \bar{u}, d_2)}$$. By choosing an array $d_R$ of characteristics as the reference (e.g. an array of ones for binary variables), the equivalence scale for any household $k$ will be $$m_k = \frac{e(p, \bar{u}, d_k)}{e(p, \bar{u}, d_R)}$$ \citep{Lewbel1989}.
 
 
 \subsection{\tr{Types of equivalence scales}}
@@ -624,11 +622,11 @@ This information can be used to produce food expenditure equivalence scales by e
 
 \tdFLY{Any examples of use of this type?}
 
-For non-food goods and services, there is no exogenous way to determine adequate minimum consumption.\footnote{Presumably for this reason, \cite{Vaz2012} mentions the classification in \cite{Mancero2001}, but does not refer to general ``expert'' scales, using ``nutritional scales'' instead.} Some authors or programs may still produce minimum consumption baskets not restricted to food to determine poverty lines. The official poverty measure in Canada, for example, derives poverty thresholds from the localized cost of acquiring a predefined set of necessities that includes food, transportation, clothing and shelter \citep{StatsCanada2019}. However, it does not actually yield expert \textit{scales}: rather than complete baskets for all possible family compositions, a single basket is defined for a reference family of two adults and two children, and the corresponding cost is then extrapolated to different family compositions by using a square root equivalence scale, which is parametric (see Section \ref{sssec:parametric}).
+For non-food goods and services, there is no exogenous way to determine adequate minimum consumption.\footnote{Presumably for this reason, \cite{Vaz2012} mentions the classification in \cite{Mancero2001}, but does not refer to general ``expert'' scales, using ``nutritional scales'' instead.} Some authors or programs may still produce minimum consumption baskets not restricted to food to determine poverty lines. The official poverty measure in Canada, for example, derives poverty thresholds from the localized cost of acquiring a predefined set of necessities that includes food, transportation, clothing and shelter \citep{StatsCanada2019}. However, it does not actually yield expert \textit{scales}: rather than complete baskets for all possible family compositions, a single basket is defined for a reference family of two adults and two children, and the corresponding cost is then extrapolated to different family compositions by using a square root equivalence scale, which is parametric (see Section~\ref{sssec:parametric}).
 
 \cite{Rocha2000} notes that while it is possible to calculate the minimum cost of achieving adequate nutrition, families food purchase choices are typically not consistent with it. The method proposed by \cite{Rocha2000} finds instead the minimum observed food expenditure at which families reach the minimum per capita caloric intake, by region. Then, to establish a poverty line, the average fraction of income spent on food is used to establish the minimum expenditure on non-food goods and services.
 
-Clearly, this procedure does not yield ``expert scales'' either, but rather combines ``expert'' nutrition standards with a behavioural approach (see Section \ref{sssec:behavioural}). It also does not differentiate family members with respect to sex or age (as it uses per capita caloric needs).
+Clearly, this procedure does not yield ``expert scales'' either, but rather combines ``expert'' nutrition standards with a behavioural approach (see Section~\ref{sssec:behavioural}). It also does not differentiate family members with respect to sex or age (as it uses per capita caloric needs).
 
 \tdFLY{reword but keep this stuff in \to{orange} -- Clara: I rewrote the whole section.}
 
@@ -674,7 +672,7 @@ Another challenge arises if we consider studies that show women tend to spend mo
 \subsubsection{Parametric scales} \label{sssec:parametric}
 \tdILR{OK so these parametric scales are going to be what you  focus on, right? OK: so I suggest that you leave a brief paragraph (even it is a bit longer than what you now have) here, but as the last type of scale and then flesh out a full new subsection of lit review dealing more in depth with this type of scale: more examples, more developments, more criticisms. }
 
-\tr{Parametric scales} use a predefined functional form that allows the incorporation of economies of scale and/or differences in members' needs according to their attributes through parameters. A common scale in older \ac{OECD} works is the Oxford scale: $1 \times$ First adult + $0.7 \times$ additional adults + $0.5 \times$ children. Another common form is exponential, which accounts only for economies of scale, e.g. the square root scale: $\sqrt(M)$ where $M$ is the number of individuals in the household \citep{MaiaSakamoto2016}.
+\tr{Parametric scales} use a predefined functional form that allows the incorporation of economies of scale and/or differences in members' needs according to their attributes through parameters. A common scale in older \ac{OECD} works is the Oxford scale: $1 \times$ First adult + $0.7 \times$ additional adults + $0.5 \times$ children. Another common form is exponential, which accounts only for economies of scale, e.g. the square root scale: $\sqrt{M}$ where $M$ is the number of individuals in the household \citep{MaiaSakamoto2016}.
 \tdFLY{Any more examples of use of this type? Could you quote the numbers used by \cite{NikodinoskaSchroder2016}, so we get a better idea of how this scale works?}
 
 It could be argued that such scales are constructed both by behavioural and expert methods, as the parameters are informed by empirical observations of the ``cost of the child'' and economies of scale. The \ac{OECD} modified scale, for example, was introduced by \cite{HagenaarsZaidi1994} following behavioural studies that suggested the Oxford scale\footnote{Also known as the ``old'' \ac{OECD} scale.} attributed too much weight to additional family members. \cite{NikodinoskaSchroder2016} use the \ac{OECD} modified equivalence scale for their welfare analysis.
@@ -703,7 +701,7 @@ Demand is modelled with \ac{QUAIDS}, the system is estimated using data from the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section {Econometric Model} \label{sec:model}
+\section{Econometric Model} \label{sec:model}
 Assume that households behave as individuals when it comes to maximizing utility and that households with the same attributes have an indirect utility function of the form shown in Equation~\ref{eq:quaids_indirect_utility}.
 
 \begin{equation} \label{eq:quaids_indirect_utility}
@@ -855,7 +853,7 @@ Rearranging the (logarithm) indirect utility function $\ln v(x, p)$ of QUAIDS \c
 
 With the estimated cost of attaining the reference level of utility before and after the price change, it is possible to estimate the aggregate losses faced by consumers; to evaluate the regressivity of the change through the relative burden of the change, and also through an inequality measure such as the Gini index; and to observe how the burden changes according to family characteristics.
 
-The interpersonal comparisons of the effects are refined through the use of two equivalence scales. Studies estimating behavioural and subjective scales for Brazil are scarce and the results not particularly reliable. Additionaly the only actual ``expert scales'' are nutritional, which are only potentially useful in this context as a starting point for more comprehensive scales. Considering this, the scales chosen are parametric: the modified \ac{OECD} and square root scales.
+The interpersonal comparisons of the effects are refined through the use of two equivalence scales. Studies estimating behavioural and subjective scales for Brazil are scarce and the results not particularly reliable. Moreover, the only actual ``expert scales'' are nutritional, which are only potentially useful in this context as a starting point for more comprehensive scales. Considering this, the scales chosen are parametric: the modified \ac{OECD} and square root scales.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -947,8 +945,8 @@ collect style header result, level(hide)
 collect style row stack, nodelimiter spacer
 collect label dim n_children "Children"
 collect label dim n_adults "Adults"
-collect label levels n_children 4 "$\leq 4$"
-collect label levels n_adults 5 "$\leq 5$"
+collect label levels n_children 4 "$\geq 4$"
+collect label levels n_adults 5 "$\geq 5$"
 booktabs export using adults_children_frequencies_tmp.tex, tableonly replace
 filefilter "adults_children_frequencies_tmp.tex" "adults_children_frequencies.tex" , from("\BS$") to("$") replace
 restore
@@ -1605,7 +1603,7 @@ texdoc stlog close
 \tdILY{NOV18 2023: Rober thinks that the DATA SECTION should be a ``chapter'' itself, separate from the Methodology}
 
 \section{Data Source} \label{sec:data_source}
-For the demand system estimation, data from the 2017-2018 \ac{FBS} was used. The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section \ref{ssec:cohort_attributes}. It both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23\textsuperscript{rd} 2018.
+For the demand system estimation, data from the 2017-2018 \ac{FBS} was used. The \ac{FBS} provides detailed data on individual household expenditure on particular goods and services, as well as the cohort attributes mentioned in Section~\ref{ssec:cohort_attributes}. It both the levels of expenditure as recorded at the time of the survey and the expenditure values deflated to the baseline date of January 23\textsuperscript{rd} 2018.
 
 \tdILG{NOV 18 2023  The footnote numbers go after the punctuation mark: check throughout }
 
@@ -1698,7 +1696,7 @@ If price elasticity of demand for fuels does not vary significantly across expen
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Results}\label{sec:results}
+\chapter{Results}\label{chap:results}
 
 tex*/
 
@@ -1903,11 +1901,16 @@ texdoc stlog close
 
 
 /*tex
+Table~\ref{tb:regresults} shows estimates for an \ac{AIDS}, an unconstrained \ac{QUAIDS}, a \ac{QUAIDS} with homogeneity enforced, and a \ac{QUAIDS} with homogeneity and symmetry enforced.
+
 \singlespacing
 \input{reg_results_table}
 \doublespacing
 
+Table~\ref{tb:quadtests} shows the results of $\chi^2$ tests of the models with a quadratic component against the $AIDS$ model. The hypothesis of a linear specification is rejected at the usual significance levels.
+
 \input{quad_test_results_table}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1915,7 +1918,7 @@ texdoc stlog close
 \section{Welfare effects estimation}
 
 \tdILY{March 1 2024 Obviously this now requires an ``intro'' or something to bring back the context. At least you should cross-reference the notation you mention here to the earlier sections. Otherwise, the reader will not know what, say, $u_1$ and $p_1$  mean}
-The demand system estimates in Section~\ref{sec:results} provide the necessary information for the derivation of each household's cost function, which can then be used to compute the equivalent variation measure described in Section~\ref{litreview}.
+The demand system estimates in Section~\ref{chap:results} provide the necessary information for the derivation of each household's cost function, which can then be used to compute the equivalent variation measure described in Section~\ref{litreview}.
 
 Choosing $u_1$ and $p_1$ as the prices and utility level of households at the base period for the 2017-2018 \ac{FBS}, the cost of achieving $u_1$ is equal to the total expenditure of household $k$ at the base period, so that Equation~\ref{eq:EV} can be computed as in Equation~\ref{eq:EV_simplified}.
 
@@ -2235,7 +2238,7 @@ With respect to other demographic characteristics, it was found that the gender 
 
 \tdILY{THe stuff below is too detailed to go into Section \ref{conclusions} as limitations. It is too detailed but you can but it in details in the data section etc. and then mention it again without the details here }
 
-Additionally, estimation of complete demand systems requires better data than currently provided by \ac{BIGS}. This could be achieved by including, on the dataset, the date of collection -- to the extent that this does not represent a privacy infringement -- so that price variation can be obtained from the \ac{NSCPI}. Alternatively, the yearly population surveys could include a simplified budget questionnaire.
+Additionally, estimation of complete demand systems requires better data than currently provided by \ac{BIGS}. This could be achieved by including, on the dataset, the date of collection --- to the extent that this does not produce a privacy breach hazard --- so that price variation can be obtained from the \ac{NSCPI}. Another possibility would be to include a simplified budget questionnaire into existing yearly population surveys, so that yearly price changes could be linked to expenditure pattern changes.
 
 \tdILY{Eventually, you should of course have some conclusions and some description of the limitations of your study, together with some policy recommendations. But bear in mind that the limitations are about YOUR own work, not the shortcomings of the dataset, etc. If you can somehow phrase your issues about faulty/incomplete datasets as policy recommendations, then those would be OK here}
 
