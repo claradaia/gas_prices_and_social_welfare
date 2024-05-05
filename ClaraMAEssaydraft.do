@@ -136,15 +136,15 @@ So I did it manually.}
 
 \acknowledgements
 
-I want to thank Thiago for his endless support that took many forms.
+I want to express my deepest gratitude to Thiago, my husband. It was in a conversation with him that I realized I should study Economics. He helped me apply for the program; then supported me emotionally and financially through it, taking over other responsibilities so I could focus on studying, much of this throughout the COVID-19 pandemic.
+
+I am also profoundly grateful to my supervisor, Dr.\ Martinez-Espi\~{n}eira. For introducing me to welfare economics and econometrics, for teaching me to stay humble about my assumptions, and also for his patience.
 
 I want to thank also Samia and Nahida, for all the afternoons in the library and in the resource room, learning over hot chocolate.
 
 I thank my mother and father for showing me education was the most valuable, and pleasurable, thing in the world.
 
-I thank my supervisor, Dr. Martinez-Espi\~{n}eira, for teaching me about welfare economics and to stay humble about our assumptions, and also for his patience.
-
-I thank also Dr. Locke, who first presented me to the concept of the social welfare function and to the translog utility function.
+I thank also Dr. Locke, who first presented me to the concept of the social welfare function and to the translog utility function; and Dr. Messacar, who taught me the foundations of microeconomics required for this work.
 
 I appreciate the advice of Dr. Daniela Verzola Vaz and Dr. Rodolfo Hoffmann on the use of the \ac{FBS} dataset.
 
