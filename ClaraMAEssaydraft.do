@@ -768,7 +768,24 @@ Aggregating goods into groups has the additional advantages of improving the sta
 Grouping requires assuming \textit{separability}: a group is separable when the ordering of consumption of goods within the group is independent of consumption of goods outside the group. This implies effects of substitutability or complementarity between goods in different groups only happen through the substitutability or complementarity of the groups themselves \citep[p.~124]{DeatonMuellbauer1980a}. \tdFLY{pages for books}
 
 \subsection{Consistency with the theory of demand}
-Demand theory yields \textit{negativity} and \textit{symmetry} restrictions that are best explained in light of the Slutsky matrix definition. The Slutsky matrix is formatted as follows:
+
+Demand is subject to a budget constraint, which in the model of Equation~\ref{eq:shares} becomes the \textit{adding-up} constraint: the expenditure shares of all goods for any given family must add up to 1. This will be true if Conditions~\ref{eq:addingup} are \tdey satisfied \citep{DeatonMuellbauer1980b}.
+
+\begin{equation}\label{eq:addingup}
+\sum_{i=1}^n \alpha_i = 1 \hspace{2em} \sum_{i=1}^n \gamma_{ij} = 0 \hspace{2em} \sum_{i=1}^n \beta_{i} = 0
+\end{equation}
+
+Adding-up is enforced on estimation of the \ac{AIDS} and its extensions by dropping one of the share equations and computing its parameters such that they satisfy these conditions.
+
+Additionally, families are expected to not have money illusion, which translates into the property of \textit{homogeneity}: changing prices and total expenditure by the same rate should not change quantities demanded. This will be true of the system if Condition~\ref{eq:homogeneity} is satisfied \citep{DeatonMuellbauer1980b}.
+
+\tdILR{Still needs references, and check object capitals for ``Condition'' too}
+
+\begin{equation}\label{eq:homogeneity}
+\sum_{j} \gamma_{ij} = 0
+\end{equation}
+
+Finally, there are the \textit{negativity} and \textit{symmetry} restrictions that are best explained in light of the Slutsky matrix definition. The Slutsky matrix is formatted as follows:
 
 $$S(p, w) =
 \begin{pmatrix}
@@ -786,26 +803,14 @@ Each element in the matrix is a sum $S_{ij} = \frac{\partial x_i}{\partial p_j} 
 
 If demand satisfies Walras' law and the weak axiom of revealed preferences, the Slutsky matrix will be \textit{negative semidefinite}, which implies that $\forall v \in $R$, v \cdot S(p, x) v \leq 0$ \cite[p.~34]{MWG1995}.
 
-\citet[p.~70]{MWG1995} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the second-derivative matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  (\citealp[p.~50]{DeatonMuellbauer1980a}; \citealp[p.~80]{MWG1995}), which will be used to estimate welfare effects.
+\citet[p.~70]{MWG1995} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the second-derivative matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  (\citealp[p.~50]{DeatonMuellbauer1980a}; \citealp[p.~80]{MWG1995}), which will be used to estimate welfare effects. Symmetry in the requires Condition~\ref{eq:symmetry} \citep{DeatonMuellbauer1980b}.
+
+\begin{equation}\label{eq:symmetry}
+\gamma_{ij} = \gamma_{ji}
+\end{equation}
 
 \tdILY{Rober fixed the last citation format but you sjhould check that what you mean to produce in terms of format indeed formats the correct way.}
 
-\subsection{Regularity}
-Demand is subject to a budget constraint, which in the model of Equation~\ref{eq:shares} becomes the \textit{additivity} constraint: the expenditure shares of all goods for any given family must add up to 1. This will be true if Conditions~\ref{eq:additivity} are \tdey satisfied.
-
-\begin{equation}\label{eq:additivity}
-\sum_{i=1}^n \alpha_i = 1 \hspace{2em} \sum_{i=1}^n \gamma_{ij} = 0 \hspace{2em} \sum_{i=1}^n \beta_{i} = 0
-\end{equation}
-
-Additivity is enforced on estimation of the \ac{AIDS} and its extensions by dropping one of the share equations and computing its parameters such that they satisfy these conditions.
-
-Additionally, families are expected to not have money illusion, which translates into the property of \textit{homogeneity}: changing prices and total expenditure by the same rate should not change quantities demanded. This will be true of the system if Condition~\ref{eq:homogeneity} is satisfied.
-
-\tdILR{Still needs references, and check object capitals for ``Condition'' too}
-
-\begin{equation}\label{eq:homogeneity}
-\sum_{j} \gamma_{ij} = 0
-\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -828,7 +833,7 @@ See Appendix~\ref{ap:demographic_attribute_variables} for the variables used to 
 \subsection{Commodity Groups} \label{ssec:commodity_groups}
 In the literature, the choice of groups of goods and services also vary. Food is present in all the reviewed articles that aim to estimate demand systems for all or most of households' spending \citep{Jorgenson1990,BanksBlundellLewbel1997,FiuzaAsano2003,MenezesAzzoniSilveira2008}; housing and clothing are often present \citep{FiuzaAsano2003,MenezesAzzoniSilveira2008}; and ``adult goods'' such as tobacco and alcohol sometimes appear as their own groups \citep{BanksBlundellLewbel1997,MenezesAzzoniSilveira2008}. Vehicle fuels may be present in ``fuel'', ``energy'' or ``transportation'' groups \citep{Jorgenson1990,BanksBlundellLewbel1997,MenezesAzzoniSilveira2008}.
 
-\tdILR{March 1st 2024: fix the quotation marks throughout}
+\tdILY{March 1st 2024: fix the quotation marks throughout}
 
 For the present analysis, the following groups compose the first stage of the budget: fuels, housing and maintenance services, adult goods, services, and other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \citep{Poterba1991}\tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and the observations of Rothbarth \citep{Ray1983}.
 
