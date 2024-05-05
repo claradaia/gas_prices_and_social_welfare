@@ -1405,6 +1405,47 @@ scalar hhs_complete2 = r(N)
 assert hhs_complete == hhs_complete2
 
 
+
+/*********************************************************************
+* calculate weights for each subgroup in the FuelsTransportation group
+*/
+
+frame change expenditures
+
+// drop frame if it exists from previous runs
+capture frame drop FT_weights
+
+frame put * , into(FT_weights)
+frame change FT_weights
+
+drop if commodity_group != 2
+
+gen commodity_group_s2 = "Everything else"
+
+// 23* are for vehicles, 700801 is for domestic use
+replace commodity_group_s2 = "gasoline" if inlist(item_code, 2301401, 2301501, 2301502, 700801)
+
+replace commodity_group_s2 = "ethanol" if item_code == 2301601
+replace commodity_group_s2 = "diesel" if item_code == 2301701
+replace commodity_group_s2 = "pt" if inlist(item_code, 2300101, 2300201, 2300301, 2300401, 2300402, 2300403, 2300404, 2300405,  2300406, 2300407, 2300408, 2300409, 2300501, 2300502, 2300601, 2300602, 2300701, 2300801, 2301101, 2301201, 2301301, 2303201)
+
+// for each subgroup, get the weight as the ratio of total expenditure on the subgroup by the aggregate expenditure on the group
+keep amount_spent commodity_group_s2
+collapse (sum) amount_spent, by(commodity_group_s2)
+egen agg_group_expenditure = total(amount_spent)
+gen weight = amount_spent/agg_group_expenditure
+assert (weight >= 0 & weight <= 1)
+
+// save as scalars
+foreach subgroup in "ethanol" "gasoline" "diesel" "pt" {
+	preserve
+	keep if commodity_group_s2 == "`subgroup'"
+	scalar `subgroup'_weight = weight[1]
+	restore
+}
+
+
+
 /*************************************************
 * count households with expenditures in all groups
 * does not produce any output, just useful for
@@ -1563,6 +1604,11 @@ texdoc local total_inc_skew = strofreal(r(skewness), "%9.2f")
 */
 frame change expenditures
 
+// drop frame if it exists from previous runs
+capture frame drop expenditure_shares
+frame put *, into(expenditure_shares)
+frame change expenditure_shares
+
 egen group_expenditure = total(amount_spent), by(hh_id commodity_group)
 assert group_expenditure != .
 
@@ -1582,9 +1628,6 @@ gen group_expenditure_share = group_expenditure/total_expenditure
 // save for the main model
 keep hh_id commodity_group group_expenditure group_expenditure_share total_expenditure
 
-// drop frame if it exists from previous runs
-capture frame drop expenditure_shares
-frame put hh_id commodity_group group_expenditure group_expenditure_share total_expenditure, into(expenditure_shares)
 
 // create macros for texdoc
 texdoc local hh_vehicle_count = strofreal(hh_vehicle_count, "%9.0gc")
@@ -1738,7 +1781,7 @@ scalar _min_exp = min_exp
 gen ln_disposable_income = log(disposable_income)
 
 // collect tests for the quadratic coefficients
-collect create quad_tests, replace
+collect create quad_endo_tests, replace
 
 // now we should have all the expenditure shares, total expenditures and price indices, so we can run the main model!
 aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportation' group_expenditure_share`Services' group_expenditure_share`OtherGoods' group_expenditure_share`Housing'  group_expenditure_share`AdultGoods', ///
@@ -1751,8 +1794,10 @@ aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportati
 
 estimates store QUAIDS
 
-// test quadratic coefficients
-collect, name(quad_tests) tag(model["Unconstrained"]): test lambda_lnx2
+// test quadratic coefficients and endogeneity of total expenditure
+collect, name(quad_endo_tests) tag(model["QUAIDS (unconstrained)"] test["Quadratic terms"]): test lambda_lnx2
+collect, name(quad_endo_tests) tag(model["QUAIDS (unconstrained)"] test["Endogeneity of $\ln x$"]): test rho_vtotal_expenditure
+
 
 // run the non-quadratic version
 aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportation' group_expenditure_share`Services' group_expenditure_share`OtherGoods' group_expenditure_share`Housing' group_expenditure_share`AdultGoods', ///
@@ -1763,6 +1808,11 @@ aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportati
 	alpha_0(`=_min_exp')
 
 estimates store AIDS
+
+// test endogeneity of total expenditure
+collect, name(quad_endo_tests) tag(model["AIDS"]): test rho_vtotal_expenditure
+collect, name(quad_endo_tests) tag(model["AIDS"] test["Endogeneity of $\ln x$"]): test rho_vtotal_expenditure
+
 
 // enforce homogeneity, test for symmetry
 aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportation' group_expenditure_share`Services' group_expenditure_share`OtherGoods' group_expenditure_share`Housing' group_expenditure_share`AdultGoods', ///
@@ -1776,7 +1826,9 @@ aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportati
 estimates store Homogeneity
 
 // test quadratic coefficients
-collect, name(quad_tests) tag(model["Enforced Homogeneity"]): test lambda_lnx2
+collect, name(quad_endo_tests) tag(model["QUAIDS (homogeneous)"] test["Quadratic terms"]): test lambda_lnx2
+collect, name(quad_endo_tests) tag(model["QUAIDS (homogeneous)"] test["Endogeneity of $\ln x$"]): test rho_vtotal_expenditure
+
 
 // enforce symmetry and homogeneity
 aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportation' group_expenditure_share`Services' group_expenditure_share`OtherGoods' group_expenditure_share`Housing' group_expenditure_share`AdultGoods', ///
@@ -1789,8 +1841,10 @@ aidsills group_expenditure_share`Food' group_expenditure_share`FuelsTransportati
 
 estimates store Symmetry
 
-// test quadratic coefficients
-collect, name(quad_tests) tag(model["Enforced Homogeneity and Symmetry"]): test lambda_lnx2
+// test quadratic coefficients and endogeneity of total expenditure
+collect, name(quad_endo_tests) tag(model["QUAIDS (symmetric)"] test["Quadratic terms"]): test lambda_lnx2
+collect, name(quad_endo_tests) tag(model["QUAIDS (symmetric)"] test["Endogeneity of $\ln x$"]): test rho_vtotal_expenditure
+
 
 label variable group_expenditure_share1 "DOLLARSIGNw_{Food}DOLLARSIGN"
 label variable group_expenditure_share2 "DOLLARSIGNw_{FuelsTransportation}DOLLARSIGN"
@@ -1826,19 +1880,25 @@ esttab QUAIDS AIDS Homogeneity Symmetry ///
 	substitute( ///
 		\_ _ ///
 		DOLLARSIGN "$" ///
-		"\endfirsthead" "\endfirsthead\caption* {Table \ref{tb:regresults} Continued:} \\" ///
+		"\endfirsthead" "\endfirsthead\caption* {Table~\ref{tb:regresults} Continued:} \\" ///
 		"\endhead" "&\multicolumn{1}{c}{QUAIDS}&\multicolumn{1}{c}{AIDS}&\multicolumn{1}{c}{Homogeneity}&\multicolumn{1}{c}{Symmetry}\\\midrule\endhead" ///
 		"\endfoot" "\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\\endfoot" ///
 	)
 
 // format and export joint test of quadratic coefficients
-collect title "Joint test statistics and p-values of quadratic terms in demand system specifications \label{tb:quadtests}"
+collect set quad_endo_tests
+collect title "Joint tests of the quadratic model specification and endogeneity tests \label{tb:quadendotests}"
 collect label levels result ///
-	chi2 "chi2", ///
-	name(quad_tests) modify
+	chi2 "$\chi^2$", ///
+	modify
 
-collect layout (model) (result[chi2 p]), name(quad_tests)
-collect export "quad_test_results_table.tex", name(quad_tests) as(tex) tableonly replace
+collect layout (model) (test#result[chi2 p])
+collect style column, dups(center)
+collect style cell result[p], nformat(%5.4f)
+collect style cell result[chi2], nformat(%3.2f)
+
+booktabs export using "quad_endo_test_results_table_tmp.tex", tableonly replace
+filefilter "quad_endo_test_results_table_tmp.tex" "quad_endo_test_results_table.tex", from("\BS$") to("$") replace
 
 
 /******************************************************************
@@ -1909,9 +1969,9 @@ Table~\ref{tb:regresults} shows estimates for an \ac{AIDS}, an unconstrained \ac
 \input{reg_results_table}
 \doublespacing
 
-Table~\ref{tb:quadtests} shows the results of $\chi^2$ tests of the models with a quadratic component against the $AIDS$ model. The hypothesis of a linear specification is rejected at the usual significance levels.
+Table~\ref{tb:quadendotests} shows the results of Hausman specification tests for the quadratic specification, and of endogeneity tests of the logarithm of total expenditure. The hypothesis of a linear specification is rejected at the usual significance levels. The hypothesis of exogeneity of $\ln x$ is also rejected at the usual levels.
 
-\input{quad_test_results_table}
+\input{quad_endo_test_results_table}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1933,8 +1993,46 @@ EV = c_k(u_1, p_0) - x
 tex*/
 texdoc stlog, nolog
 
-// get the average price of gasoline before and after october 2016 but before 2020 to avoid pandemic effects
+// get the increase in fuel prices after october 2016 but before 2020 to avoid pandemic effects
+preserve
+use "Data\fuel_prices\fuel_prices_2013.dta", clear
+drop if month < ym(2016, 10) | month > ym(2019, 9)
+sort PRODUTO month
 
+by PRODUTO: gen norm_retail_price = mean_retail_price / mean_retail_price[1]
+
+levelsof PRODUTO, local(fuels)
+foreach prod of local fuels {
+	di "`prod'"
+	quietly sum norm_retail_price if PRODUTO == "`prod'"
+	scalar `prod'_rise = `r(max)'
+	di `prod'_rise
+}
+
+// compare with accumulated inflation
+// https://sidra.ibge.gov.br/tabela/1419#/n1/all/v/63/p/201610,201611,201612,201701,201702,201703,201704,201705,201706,201707,201708,201709,201710,201711,201712,201801,201802,201803,201804,201805,201806,201807,201808,201809,201810,201811,201812,201901,201902,201903,201904,201905,201906,201907,201908,201909/c315/7169/d/v63%202/l/,t+v,p+c315/resultado
+
+import excel "Data\Tabela 1419.xlsx", sheet("Tabela") cellrange(A6:B41) clear
+rename A month
+rename B inflation
+replace inflation = 1 + (inflation * 0.01)
+gen double cum_inflation = inflation[1]
+replace cum_inflation = cum_inflation[_n-1] * inflation if _n > 1
+scalar cum_inflation = cum_inflation[_N]
+
+foreach prod of local fuels {
+	di "`prod'"
+	scalar `prod'_deflated_rise = `prod'_rise - cum_inflation
+	di `prod'_deflated_rise
+}
+
+scalar gasoline_wt_defl_rise = Gasoline_deflated_rise * gasoline_weight
+scalar ethanol_wt_defl_rise = Ethanol_deflated_rise * ethanol_weight
+scalar diesel_wt_defl_rise = Diesel_deflated_rise * diesel_weight
+scalar pt_wt_defl_rise = Diesel_deflated_rise * 0.3 * pt_weight
+scalar ft_price_rise = gasoline_wt_defl_rise + ethanol_wt_defl_rise + diesel_wt_defl_rise + pt_wt_defl_rise
+
+restore
 
 /************************************
 * Get EV for each population subgroup
@@ -2002,8 +2100,10 @@ gen ln_u_1 = 1/(b_p / (log(total_expenditure) - ln_a_p) + lambda_p)
 /*****************************************
 * Calculate cost of u_1 at previous prices
 */
+// estimate (deflated) price change
+
 // replace transportation price
-replace price_index2 = price_index2 * 0.8
+replace price_index2 = price_index2 * 1/(1+ft_price_rise)
 
 // recalculate a_p, b_p and lambda_p
 // a_p aux
@@ -2073,6 +2173,7 @@ graph bar (mean) rate, ///
 	over(x_decile, relabel (1 "1st" 2 "2nd" 3 "3rd" 4 "4th" 5 "5th" 6 "6th" 7 "7th" 8 "8th" 9 "9th" 10 "10th")) ///
 	  ytitle("Mean ratio of EV to total expenditure") ///
 	  graphregion(color(white) margin(zero)) bgcolor(white)
+graph export "graphs\ev_rates.png", as(png) replace
 
 // regressivity: gini coefficients
 ineqdeco sqrt_scaled_x
@@ -2147,13 +2248,16 @@ restore
 
 
 texdoc stlog close
+
+texdoc local ft_price_rise = strofreal(round(100*ft_price_rise, .001), "%9.2f")
 texdoc local gini_sqrt_scaled_x = strofreal(round(gini_sqrt_scaled_x, .001), "%9.2f")
 texdoc local gini_mod_oecd_scaled_x = strofreal(round(gini_mod_oecd_scaled_x, .001), "%9.2f")
 texdoc local gini_sqrt_scaled_cost_p_0 = strofreal(round(gini_sqrt_scaled_cost_p_0, .001), "%9.2f")
 texdoc local gini_mod_oecd_scaled_cost_p_0 = strofreal(round(gini_mod_oecd_scaled_cost_p_0, .001), "%9.2f")
 
 /*tex
-% multiply the CV for each subgroup by the population share to get the total losses
+
+Even though it is not possible to determine how much of the increase in fuel prices was directly caused by the \ac{IPP} policy, the index used for the welfare effects computation is estimated as follows. First, the weight of each fuel is obtained from the ratio of the aggregate expenditure on the fuel by the aggregate expenditure on all items in the Fuels and Transportation group. Then, the price change of each fuel is estimated as the difference between the accumulated increase in the price of each fuel and the accumulated inflation as measured by the \ac{ACPI} between October 2016 and September 2019 (to avoid potential effects of the COVID-19 pandemic). Finally, the price change for the Fuels and Transportation group is computed as the weighted sum of the differences not accounted by inflation. This procedure yields an accumulated change of $`ft_price_rise'$\%.
 
 \tdILY{March 1st 2024 The table of results will eventallly need to be made smaller, the model names will need correct capitalization, the Greek symbols will need to be Greek etc.  You might need to span the table over several pages by using the supertabular environment}
 
@@ -2168,7 +2272,14 @@ Aggregate losses to consumers due to the price increase are shown in Figure~\ref
 \end{figure}
 
 % regressivity
-Figure~\ref{fig:ev_rates} shows the mean ratio of EV to total expenditure by total expenditure decile. Despite the fact that higher income families consume more fuels than lower income families, the price increase is found to be regressive up until the 9th total expenditure decile, as the increase in consumption is not large enough to offset the price increase.
+Figure~\ref{fig:ev_rates} shows the mean ratio of $EV$ to total expenditure by total expenditure decile. Despite the fact that higher income families consume more fuels than lower income families, the price increase is found to be regressive up until the 9th total expenditure decile, as the increase in consumption is not large enough to offset the price increase.
+
+
+\begin{figure}
+    \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_rates.png}
+    \caption{Mean ratio of $EV$s to total expenditure, by total expenditure decile.}
+    \label{fig:ev_rates}
+\end{figure}
 
 Alternatively, the distributional impact of the price change can be evaluated through the Gini index before and after the change. Applying the modified OECD equivalence scale to the sample, the Gini index is calculated at $`gini_mod_oecd_scaled_x'$ after the price increase, and estimated at $`gini_mod_oecd_scaled_cost_p_0'$ before the price change. A similar result is found by applying the square root equivalence scale, with the Gini index is calculated at $`gini_sqrt_scaled_x'$ after the price increase, and estimated at $`gini_sqrt_scaled_cost_p_0'$ before the price change. Both point to an increase in inequality.
 
@@ -2232,11 +2343,11 @@ Finally, the model with enforced symmetry must be used for the welfare computati
 \chapter{Conclusions}\label{conclusions}
 A complete demand system was estimated for the Brazilian population, from the 2017-2018 \ac{FBS}. The demand estimates were used to compute equivalent variations for each household in the sample, taking into consideration the number of adults and children in the household, whether it is located in a rural or urban area, and the gender of the head of the household.
 
-From the rates of equivalent variations following the price increase due to the \ac{IPP} policy, the policy is found to be regressive. Considering the accompanying increase in profits for Petrobras and hence of government revenue, there is an opportunity to reduce this impact by applying this revenue into counteracting measures such as subsidies targeted towards lower income families, or through income tax changes that reduce the tax burden for lower income families.
+From the rates of equivalent variations following the price increase due to the \ac{IPP} policy, the policy is found to be regressive, even considering only effects on the cost of transportation. Considering the accompanying increase in profits for Petrobras and hence of government revenue, there is an opportunity to reduce this impact by applying this revenue into counteracting measures such as subsidies targeted towards lower income families, or through income tax changes that reduce the tax burden for lower income families.
 
-In particular, families are more affected the larger the number of children. Given that the Bolsa Família transfer program already has information on the number of children in each household, the transfer amount per child could be corrected proportionally to the increased costs of transportation. Alternatively, taking into account the findings of \citet{Carvalho2014}, the revenue could be directed towards a national program of subsidies of urban public transportation.
+In particular, families are more affected the larger the number of adults, but in a diminishig schedule. Given that the Bolsa Família transfer program already has information on the number of adults and children in each household, the per capita transfer amounts could be changed following this schedule, with the first adult receiving an increase of close to \ac{BRL} 8 and each additional adult receiving progressively lower amounts. Alternatively, taking into account the findings of \citet{Carvalho2014}, the revenue could be directed towards a national program of subsidies of urban public transportation.
 
-With respect to other demographic characteristics, it was found that the gender of the the head of the household and whether it is situated in an urban or rural area made little difference on the welfare effect of the price increase, relative to expenditure and the number of members.
+With respect to other demographic characteristics, it was found that the number of children, the gender of the the head of the household, and whether it is situated in an urban or rural area, made little difference on the welfare effect of the price increase, relative to the total expenditure and the number of members.
 
 \tdILY{THe stuff below is too detailed to go into Section~\ref{conclusions} as limitations. It is too detailed but you can but it in details in the data section etc. and then mention it again without the details here }
 
@@ -2455,14 +2566,6 @@ Communication            &                                &                     
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\section{Price index transformation}
-\ac{BIGS} provides monthly variation by groups, subgroups, items and subitems of the \ac{ACPI}, along with each level weight in the general price index. I used the indices from July 2006 to December 2019 available at \citet{ibgeIPCA2011} and \citet{ibgeIPCA2019}. The index for groups, subgroups and items is produced with the Laspeyres method.
-
-Estimating demand systems requires price index numbers for each commodity group at each time period. First, the variation of each commodity group is obtained through the weighted average of variations of its components (groups, subgroups, items and subitems)  in the \ac{ACPI}. Then the variations are transformed into index numbers with January 2018 as the base date, with each commodity group price normalized to unity.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \end{document}
