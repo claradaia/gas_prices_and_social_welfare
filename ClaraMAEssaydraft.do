@@ -702,7 +702,10 @@ Besides simplicity, parametric scales have the advantage of functioning as stand
 
 In this essay, consumer demand for six commodity groups is characterized across households of different compositions and attributes, and the results are used to estimate the welfare effects of a subsidy policy change. The commodity groups and household characteristics selected are described in Section~\ref{sec:variables}. Section~\ref{sec:welfare} explains the procedure to obtain welfare measures.
 
-Demand is modelled with \ac{QUAIDS}, the system is estimated using data from the 2017-2018 \ac{FBS} and the \ac{ACPI}. Section~\ref{sec:model} shows the model and the estimation method, with Section~\ref{sec:assumptions} containing the assumptions involved and restrictions imposed on the model.
+\tdILY{Nov 18 2023: Clara wrote Changed quaids to aidsills which does QUAIDS but allows instrumenting the variables, instrumented total expenditure with income as per Banks et al. }
+\tdILY{That is OK but remember that all the details of the method do need to be in Section~\ref{methods} and that you havet ocitethe Stata JOurnal paper wherethe aidsill commmad is described to acknowledge its development as a Stata add-on commad}
+
+Demand is modelled with \ac{QUAIDS}, the system is estimated with the \textbf{aidsills} package \citep{LecocqRobin2015} over data from the 2017-2018 \ac{FBS}\footnote{See Chapter~\ref{chap:data}.}. Section~\ref{sec:model} shows the model and the estimation method, with Section~\ref{sec:assumptions} containing the assumptions involved and restrictions imposed on the model.
 
 \tdILR{NOV 18 2023: OK so this section needs completing and polishing. ALso make sure you fix the missing references}
 
@@ -745,11 +748,6 @@ Let $d_h$ be the vector of demographic variables for household $h$. Translation 
 Following \cite{BanksBlundellLewbel1997} \tdFLY{missing reference, perhaps \citet{BanksBlundellLewbel1997}???}  the total expenditure of households is instrumented by their reported income. This, as well as ignoring certain categories of purchases, such as vehicles, mitigates the impact of unusually large expenses. \tdFL{expand, clarify further}
 
 \tdILR{Nov 18 2023: When Rober first read this about instrumenting, he thought you had actually meant ``proxying''. You do need to explain carefully why you would be needing instruments. You can start motivating this by saying why \citet{BanksBlundellLewbel1997} used instruments themselves.}
-
-\tdILY{Nov 18 2023: Clara wrote Changed quaids to aidsills which does QUAIDS but allows instrumenting the variables, instrumented total expenditure with income as per Banks et al. }
-\tdILR{That is OK but remember that all the details of the method do need to be in Section~\ref{methods} and that you havet ocitethe Stata JOurnal paper wherethe aidsill commmad is described to acknowledge its development as a Stata add-on commad}
-
-Estimation is done using the \textbf{aidsills} package.
 
 Following \citet{DeatonMuellbauer1980b,BanksBlundellLewbel1997,Poi2012}, \tdFLY{Poi ref is missing and use chronological order} $\alpha_0$ is predefined as the lowest total expenditure in the dataset.
 
@@ -832,7 +830,7 @@ In the literature, the choice of groups of goods and services also vary. Food is
 
 \tdILR{March 1st 2024: fix the quotation marks throughout}
 
-For the present analysis, the following groups compose the first stage of the budget: fuels, housing and maintenance services, adult goods, services, and other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \citep{Poterba1991} \tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and the observations of Rothbarth \citep{Ray1983}.
+For the present analysis, the following groups compose the first stage of the budget: fuels, housing and maintenance services, adult goods, services, and other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \citep{Poterba1991}\tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and the observations of Rothbarth \citep{Ray1983}.
 
 Some authors separate groceries from restaurant expenses, which is likely not applicable for the Brazilian population. The Brazilian government subsidises food programs for workers that often consist in meal vouchers for exclusive use in restaurants.
 
@@ -1143,7 +1141,10 @@ replace commodity_group = `Food' if ///
 quadro		purchase
 ---------|----------------------------------------------------------
 	21		tobacco and other recreational drugs
+	22		games, bets
 	24		eating out
+
+Within QUADRO 24, the following are alcoholic items
 
 code range				purchase
 ---------------------|----------------------------------------------
@@ -1168,7 +1169,7 @@ code range				purchase
 
 // item codes for adult goods
 replace commodity_group = `AdultGoods' if ///
-	QUADRO == 21 | ///
+	inlist(QUADRO, 21, 22) | ///
 	inrange(item_code, 2402601, 2402902) | ///
 	inrange(item_code, 2403501, 2403801) | ///
 	inrange(item_code, 2407401, 2407501) | ///
@@ -1183,7 +1184,6 @@ replace commodity_group = `AdultGoods' if ///
 quadro  	purchase
 ---------|----------------------------------------------------------
 	19		domestic services (cleaning, cooking, gardening, etc)
-	22		games, bets
 	25		communication
 	31		services like barber/salon, massage, tattoos
 	40		lawyer, notary services
@@ -1198,7 +1198,7 @@ Within group 9, there are item codes both for goods purchased to fix/maintain an
 */
 
 replace commodity_group = `Services' if ///
-	inlist(QUADRO, 19, 22, 25, 31, 40, 41, 42, 45) | ///
+	inlist(QUADRO, 19, 25, 31, 40, 41, 42, 45) | ///
 	(QUADRO == 6 & ~inlist(item_code, 600101, 600301, 601801, 699901)) | /// water, sewage, internet
 	(QUADRO == 7 & inlist(item_code, 700201, 700202)) // water
 
@@ -1214,7 +1214,6 @@ quadro  	purchase
 	16		non-electric appliances
 	17		furniture
 	18		decoration and insulation products
-	21		smoking stuff
 	27 		newspaper, magazines
 	29		health products, including medication
 	28		tickets to museums, purchase of photography supplies, games
@@ -1643,7 +1642,7 @@ texdoc local five_adults_pct = strofreal(five_adults_pct, "%9.2f")
 texdoc stlog close
 
 /*tex
-\chapter{Data} \label{sec:data}
+\chapter{Data} \label{chap:data}
 
 \tdILY{NOV18 2023: Rober thinks that the DATA SECTION should be a ``chapter'' itself, separate from the Methodology}
 
@@ -1658,7 +1657,7 @@ The \ac{FBS} is meant to be used as cross-sectional data and does not contain th
 
 \tdILY{there are a lot of ``I's' in this section: use the passive voice more: NOV 18 2023  still must fix this. The passive voice goes ``The type of expense was identified...''}
 
-The grouping was done as follows. First, the type of expense that was present more frequently among the households surveyed was identified: in the case of the 2017-2018 \ac{FBS} this was rent or estimated rent, from the $`hh_count'$ surveyed, $`hh_rent'$ or $`pct_rent'$\% \tdFL{these macros will work in the end right?} of households recorded a value. The second step is done under the assumption that two households that paid rent on the same date and location, or were interviewed on the same date and location, would have the same deflator value. Under this assumption, households that have the same deflator value for rent were grouped and treated as facing the same prices. Third, a Stone price index was produced from all expenses reported by all households in each group.
+The grouping was done as follows. First, the type of expense that was present more frequently among the households surveyed was identified: in the case of the 2017-2018 \ac{FBS} this was rent or estimated rent, from the $`hh_count'$ surveyed, $`hh_rent'$ or $`pct_rent'$\% \tdFLY{these macros will work in the end right?} of households recorded a value. The second step is done under the assumption that two households that paid rent on the same date and location, or were interviewed on the same date and location, would have the same deflator value. Under this assumption, households that have the same deflator value for rent were grouped and treated as facing the same prices. Third, a Stone price index was produced from all expenses reported by all households in each group.
 
 This exploitation made it possible to obtain estimates but, given that the procedure by which the deflators are generated and mapped onto observations is not transparent and I did not have the dates of collection, the results are not reliable. The reader should take the estimates, their discussion and conclusions as an example of the use of the method to address the question rather than an actual answer.
 
@@ -1699,7 +1698,7 @@ Some expenses on services like renting of clothes or appliance repairs have been
 
 The periods of reference vary by purchase group, with food registry being done over a period of seven days, income and health expenses done over the previous 30 days, durable goods over the last twelve months and other expenses over the previous 90 days. Total expenses reported were extrapolated or averaged into 30-day periods, as formal income is usually paid monthly.
 
-The distribution of income and total expenditure is strongly right-skewed: Figure~\ref{fig:boxplot_exp_inc} \tdFL{Use this trick for all your cross-references} shows the boxplots for monthly total income and total expenditure. The skewness score of total expenditure is $`total_exp_skew'$, and the skewness score of total income is $`total_inc_skew'$.
+The distribution of income and total expenditure is strongly right-skewed: Figure~\ref{fig:boxplot_exp_inc} \tdFLY{Use this trick for all your cross-references} shows the boxplots for monthly total income and total expenditure. The skewness score of total expenditure is $`total_exp_skew'$, and the skewness score of total income is $`total_inc_skew'$.
 
 \begin{figure}
     \centering
@@ -2458,24 +2457,23 @@ The master sample excludes the following areas: military bases, camping sites, p
 
 \chapter{Demographic attribute variables in the \ac{FBS}} \label{ap:demographic_attribute_variables}
 
-Table~\ref{tab:attribute_vars} shows the variable in the \ac{FBS} datasets for each attribute used to scale demand in the \ac{DQUAIDS}.
+Table~\ref{tab:attribute_vars} shows the variable in the \ac{FBS} datasets for each attribute used to translate demand in the \ac{QUAIDS}.
 
 \tdILG{ENW, In Table~\ref{tab:attribute_vars} use italics for the official regions and ``and'' in English}
 
 
 \tdILG{Rober assumes that the verbatim text in Table~\ref{attribute_vars}  to denote the datasets and the original variable names will eventually be eliminated and substituted by more conventional (easier to recognise) names and regular font (in italics for the variable names). This is all OK for now for our preliminary private purposes but in the end all the variables described should have ``obvious'' names after recoding. For example, V0404 will have to be recoded into an indicator called either \textit{male} or \textit{female}. If you think it were necessary to use them in this ``raw'' format, they would go into an appendix. But it looks for now that there are only a very small number of them to consider, so just follow convention and recode, rename, and retype to make them al look good in the end.}
 \tdILG{Clara: I moved it into the appendix. I did rename all the variables, but I thought of this table as a description of how I got info from the raw datasets, for a hypothetical reader that wanted to replicate it from the raw datasets but save a trip through the docs, hence the original names.}
-\tdILR{OK that is fine but then in the table caption, add a little note to express that the original names are left in that special fontface}
+\tdILY{OK that is fine but then in the table caption, add a little note to express that the original names are left in that special fontface}
 
 
 \setlength{\extrarowheight}{3pt}
 \begin{table}[]
-\begin{tabular}{p{0.25\textwidth}p{0.75\textwidth}}
+\begin{tabular}{p{0.24\textwidth}p{0.66\textwidth}}
 \toprule
 \textbf{Attribute}                       & \textbf{Source}                                                                                                                                          \\ \midrule
-Household Size                  & The dataset \verb|MORADOR| contains one row per household member, I count the rows in each household and use 7 or more as the upper limit.                               \\
-Age of Head of the Household    & Variable \verb|V0403| in the \verb|MORADOR| dataset contains the age of each member. I grouped the ages into 5 buckets using frequencies (?).                            \\
-Region of Residence             & Variable \verb|UF| in \verb|MORADOR| contains the state where the household is located. I mapped the states into their official regions of Brazil, namely \textit{Centro-Oeste}, \textit{Nordeste}, \textit{Norte}, \textit{Sudeste} and \textit{Sul}. \\
+Number of Adults                  & The dataset \verb|MORADOR|\footnotemark[1] contains one row per household member, and the variable \verb|V0403| with each member's age. I count the rows in each household where the age is $\geq 16$.                               \\
+Number of Children                  & The dataset \verb|MORADOR| contains one row per household member, and the variable \verb|V0403| with each member's age. I count the rows in each household where the age is $< 16$. \\
 Type of Residence               & Variable \verb|TIPO_SITUACAO_REG| in \verb|MORADOR| classifies households as ``urban'' or ``rural''.                                        \\
 Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classifies the head of the household as ``male'' or ``female''.                             \\
 
@@ -2484,19 +2482,22 @@ Gender of Head of the Household & Variable \verb|V0404| in \verb|MORADOR| classi
 \caption{Source variables of household attributes in the 2017-2018 \ac{FBS}} \label{tab:attribute_vars}
 \end{table}
 
+\footnotetext[1]{This font indicates names of variables as provided in the raw dataset.}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{Mapping of \ac{ACPI} groups to commodity groups} \label{ap:acpi_to_commodity_groups_map}
 
-\tdILR{Use single spacing for Table~\ref{acpi_groups}}
+\tdILY{Use single spacing for Table~\ref{acpi_groups}}
 
-Table~\ref{acpi_groups} shows the structure of groups, subgroups, items and subitems of goods and services used by the \ac{ACPI} \citep{ibge2020}, with the respective commodity group. Less aggregated levels of the structure have been omitted when the entire parent category was mapped into a single group, for example the \ac{ACPI} group ``Food and Beverages'' is entirely included in the ``Food'' commodity group, so it is represented by a single row in the table, whereas each subgroup of the ``Health Goods and Services'' was mapped to a different commodity group, occupying a separate row.
+Table~\ref{acpi_groups} shows the structure of groups, subgroups, items and subitems of goods and services used by the \ac{ACPI} \citep[p.~20]{ibge2020}, with the respective commodity group. Less aggregated levels of the structure have been omitted when the entire parent category was mapped into a single group, for example the \ac{ACPI} group ``Communication'' is entirely included in the ``Services'' commodity group, so it is represented by a single row in the table, whereas each subgroup of the ``Health Goods and Services'' was mapped to a different commodity group, occupying a separate row.
 
-
-
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\begin{small}
+\singlespacing
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}>{\raggedright\arraybackslash}p{0.135\textwidth}>{\raggedright\arraybackslash}p{0.18\textwidth}}
 \caption {\ac{ACPI} group to commodity group mapping} \label{acpi_groups} \\ \toprule
 \textbf{Group} &
   \textbf{Subgroup} &
@@ -2511,58 +2512,41 @@ Table~\ref{acpi_groups} shows the structure of groups, subgroups, items and subi
   \textbf{Subitem} &
   \textbf{Commodity Group} \\ \midrule
 \endhead
-Food and Beverages       &                                &                       &                   & Food              \\ \midrule
-\multirow{4}{=}{Housing} &
-  \multirow{3}{=}{Fees and Maintenance} &
-  Rent and Fees &
-   &
-  Capital Services \\
-                         &                                & Repairs               &                   & Capital Services  \\
-                         &                                & Cleaning Products     &                   & Other Goods    \\ \cmidrule(l){2-5}
-                         & Domestic fuels and electricity &                       &                   & Energy            \\ \midrule
-Appliances and Furniture &                                &                       &                   & Capital Services  \\ \midrule
-Clothing                 &                                &                       &                   & Other Goods    \\ \midrule
-\multirow{3}{=}{Transportation} &
-  \multirow{3}{=}{Transportation} &
-  Public Transportation &
-   &
-  Services \\
-                         &                                & Private Vehicle       &                   & Capital Services  \\
-                         &                                & Vehicle Fuels         &                   & Energy            \\ \midrule
-\multirow{3}{=}{Health Goods and Services} &
-  Pharmaceutical and Optical Goods &
-   &
-   &
-  Other Goods \\
-                         & Health Services                &                       &                   & Services \\
-                         & Personal Care                  &                       &                   & Other Goods    \\ \midrule
-\multirow{9}{=}{Personal Expenses} &
-  Personal Services &
-   &
-   &
-  Services \\ \cmidrule(l){2-5}
- &
-  \multirow{8}{=}{Recreation and Smoking} &
-  \multirow{7}{=}{Recreation} &
-  Musical Instrument &
-  Other Goods \\
-                         &                                &                       & Bicycle           & Other Goods    \\
-                         &                                &                       & Toys              & Other Goods    \\
-                         &                                &                       & Fishing Materials & Other Goods    \\
-                         &                                &                       & Sports Materials  & Other Goods    \\
-                         &                                &                       & Pet Food          & Other Goods    \\
-                         &                                &                       & All Others *      & Services \\ \cmidrule(l){3-5}
-                         &                                & Smoking               &                   & Other Goods    \\ \midrule
-\multirow{4}{=}{Education} &
-  \multirow{4}{=}{Courses, Reading and Stationary} &
-  Regular Courses &
-   &
-  Services \\
-                         &                                & Miscellaneous Courses &                   & Services \\
-                         &                                & Reading Materials     &                   & Other Goods    \\
-                         &                                & Stationary            &                   & Other Goods    \\ \midrule
-Communication            &                                &                       &                   & Services \\ \bottomrule
+%
+\multirow{5}{0.18\textwidth}{Food and Beverages} & \multirow{3}{*}{Groceries}              & \multirow{2}{*}{Beverages}  & Alcoholic beverages\footnotemark[2] & Adult Goods                          \\
+                                   &                                  &                   & All others\footnotemark[2]      & Food                     \\* \cmidrule(l){3-5} 
+                                   &                                  & All others\footnotemark[2]      &                   & Food                     \\* \cmidrule(l){2-5} 
+                                    & \multirow{2}{*}{Eating out}             & \multirow{2}{*}{Eating out} & Alcoholic beverages\footnotemark[2] & Adult Goods                          \\
+                                   &                                  &                   & All others\footnotemark[2]      & Adult Goods              \\* \midrule
+Housing                            & Fees and Maintenance             & Rent and Fees     &                   & Housing and Maintenance  \\
+                                   &                                  & Repairs           &                   & Housing and Maintenance  \\
+                                   &                                  & Cleaning Products &                   & Other Goods              \\* \cmidrule(l){2-5} 
+\textbf{}                          & Domestic Fuels and Electricity   &                   &                   & Fuels and Transportation \\* \midrule
+Appliances and Furniture           &                                  &                   &                   & Other Goods              \\* \midrule
+Clothing                           &                                  &                   &                   & Other Goods              \\* \midrule
+\multirow{3}{*}{Transportation}     & \multirow{3}{*}{Transportation}         & Public Transportation       &                     & Fuels and Transportation             \\
+                                   &                                  & Private Vehicle   &                   & -                        \\
+                                   &                                  & Vehicle Fuels     &                   & Fuels and Transportation \\* \midrule
+\multirow{3}{0.18\textwidth}{Health Goods and Services}            & Pharmaceutical and Optical Goods &                   &                   & Other Goods              \\
+                                   & Health Services                  &                   &                   & Services                 \\
+                                   & Personal Care                    &                   &                   & Other Goods              \\* \midrule
+\multirow{9}{0.18\textwidth}{Personal Expenses} & Personal Services                &                   &                   & Services                 \\* \cmidrule(l){2-5} 
+                                    & \multirow{8}{0.18\textwidth}{Recreation and Smoking} & \multirow{7}{*}{Recreation} & Musical Instrument  & Other Goods                          \\
+                                   &                                  &                   & Bicycle           & Other Goods              \\
+                                   &                                  &                   & Toys              & Other Goods              \\
+                                   &                                  &                   & Fishing Materials & Other Goods              \\
+                                   &                                  &                   & Sports Materials  & Other Goods              \\
+                                   &                                  &                   & Pet Food          & Other Goods              \\
+                                   &                                  &                   & All others\footnotemark[2]      & Services                 \\* \cmidrule(l){3-5} 
+                                   &                                  & Smoking           &                   & Adult Goods              \\* \midrule
+Education                          &                                  &                   &                   & Other Goods              \\* \midrule
+Communication                      &                                  &                   &                   & Services                 \\* 
+
+\bottomrule
 \end{longtable}
+\end{small}
+\doublespacing
+\footnotetext[2]{These are not item names in the \ac{BIGS} registry, but groupings of convenience to avoid including many items.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
