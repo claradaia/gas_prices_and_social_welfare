@@ -400,7 +400,7 @@ In June 2023, the government announced temporary measures to stimulate vehicle p
 
 In contrast, concern with climate change grows and Brazil slowly follows the trend of large economies in attempting to reduce GHG emissions. In May 2022, the Ministry of the Environment and Climate Change (then called ``Ministry of the Environment'') announced a decree to regulate a voluntary market of carbon dioxide and methane credits in Brazil \citep{MMA2022}. In December 2023, congress approved a new bill to regulate a mandatory market for GHG credits \citep{Peixoto2023}.
 
-Another, if lukewarm, initiative to reduce GHG emissions was announced in 2023: law proposal 4.516/2023 determines an increase in the mandatory fraction of ethanol added to gasoline from 22\% to 27\%, and that the fraction of biodiesel added to diesel (currently at a 15\%) must reach 20\% by 2030 \citep{Exame2024}.
+Another, if lukewarm, initiative to reduce GHG emissions was announced in 2023: law proposal 4.516/2023 determines an increase in the mandatory fraction of ethanol added to gasoline from 22\% to 27\%, and that the fraction of biodiesel added to diesel (currently at 15\%) must reach 20\% by 2030 \citep{Exame2024}.
 
 Additionally, with respect to electrical vehicles, in November 2023 the government announced increased taxes on imported electrical vehicles \citep{MDICS2023}. The measure aleggedly aims to encourage development of national technology in electrical vehicles, but in the meantime discourages consumers from replacing vehicles powered by fuel.
 
@@ -440,7 +440,7 @@ Assuming that governments, especially representative ones, must work to improve 
 This task requires first a model of individual well-being, and second a way to aggregate the information on individuals into a criterion that can rank outcomes by their effects on social well-being.
 
 % Utility, revealed preference
-On the second half of the XIX century, the ``Marginal Revolution'' introduces the concept of \textit{utility} as the well-being individuals aim to maximize under budget constraints. As well-being is hardly measurable, the concept evolved over time into an ordinal representation of preferences rather than a unit of well-being. Being that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences \citep{Moscati2020}.
+On the second half of the XIX century, the ``Marginal Revolution'' introduces the concept of \textit{utility} as the well-being that individuals aim to maximize under budget constraints. As well-being is hardly measurable, the concept evolved over time into an ordinal representation of preferences rather than a unit of well-being. Given that consumption is limited by budget and supply, the choices that consumers make within these constraints can reveal a structure for their preferences \citep{Moscati2020}.
 
 % Pareto, ordinalism
 Individual preferences can be inferred from individual behaviour, but the decision process still requires aggregating information on preferences into an index that allows the policymaker to fully rank the possible states of the world. The Pareto principle provides a starting point: if between states $A$ and $B$ of the world one individual prefers state $A$ to state $B$ and the others are indifferent between them, it is fairly straightforward to presume state $A$ is preferred to state $B$. However, policies rarely produce pure Pareto improvements: if we introduce an individual that prefers state $B$ to state $A$, it is not immediately clear which state should be preferred from a decision-maker \tdFLY{March 1st 2024 hyphen} point of view.
@@ -484,7 +484,7 @@ Welfare changes may vary systematically over population groups. If, within a uti
 
 % Substitution effects and other stuff
 % Consumer surplus isn't always great
-The change in utility following a price change of a certain good or service depends also on the consumer's willigness or ability to substitute for other goods and services. In consumer surplus analysis, substitution effects are typically averaged, often due to a lack of detailed individual data. \cite{BanksBlundellLewbel1996} show this may lead to overestimation of the social welfare effect of a price change. More importantly, \cite{BanksBlundellLewbel1996} show that it imposes implausible assumptions on consumer preferences and produce systematic errors. Section~\ref{sec:demand_sys} discusses demand system methods that use micro data to improve welfare approximations. \tdFLY{March 1st 2024 missing ref in bib file and you need to write this up further}
+The change in utility following a price change of a certain good or service depends also on the consumer's willingness or ability to substitute for other goods and services. In consumer surplus analysis, substitution effects are typically averaged, often due to a lack of detailed individual data. \cite{BanksBlundellLewbel1996} show this may lead to overestimation of the social welfare effect of a price change. More importantly, \cite{BanksBlundellLewbel1996} show that it imposes implausible assumptions on consumer preferences and produce systematic errors. Section~\ref{sec:demand_sys} discusses demand system methods that use micro data to improve welfare approximations. \tdFLY{March 1st 2024 missing ref in bib file and you need to write this up further}
 
 % Equivalence scales
 Finally, household characteristics other than income affect demand. Children of different ages, working-age adults, retired adults and the elderly have different needs. Family composition also affects economies of scale in consumption, and policymakers may have targets for groups based on other protected characteristics, such as gender or race identities. Section~\ref{sec:equivalence_scales} describes the concept of \textit{equivalence scales} to further improve welfare comparisons between households.
@@ -496,7 +496,7 @@ Finally, household characteristics other than income affect demand. Children of 
 
 With Petrobras being partly nationalized, the loss incurred by consumers from increased prices can be counteracted by a reduction in the tax burden accounting for the government increased revenue. \tdFL{First sentence is background still} \cite{Moreira2017} uses a static open economy macroeconomic model of Brazil to estimate the impact of removing fuel subsidies on output, aggregate consumption and labour demand for the years 2011-2014. \cite{Moreira2017} finds that if accompanied by an equivalent reduction on major taxes, the removal of the subsidy increases output, consumption and employment.
 
-Demand models used to estimate dead-weight loss \tdFLY{needs rewording} typically use a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. \citet{FernandesPeixoto2017} use such a model to estimate dead-weight loss from collusion among retailers in the state of Minas Gerais. estimate average losses of 11.73\% of total yearly revenue from gasoline sales in the state of Minas Gerais between 2008 and 2010.
+Demand models used to estimate dead-weight loss \tdFLY{needs rewording} typically use a representative consumer approach: the preferences of the entire population are ``averaged out'' into the demand function. \citet{FernandesPeixoto2017} use such a model to estimate dead-weight loss from collusion among retailers in the state of Minas Gerais. \citet{FernandesPeixoto2017} estimate average losses of 11.73\% of total yearly revenue from gasoline sales in the state of Minas Gerais between 2008 and 2010.
 
 The welfare loss measured by this method reflects efficiency losses, which the author considers to be insufficient for policy analysis because needs, access and ability to pay vary a lot among families.\tdFLY{``between'' two people but ``among'' more than two people}
 
@@ -591,7 +591,7 @@ A common correction to this issue is to use the income \textit{per capita} of th
 
 \tdIL{See if you can add references to support all this. For example, there are studies of water demand that document carefully this economies of scale. That is just one example. Indeed some of the literature on economics of the family will point out that those economics of scale and the non-rivalness and of goods and services in a household are one of the advantages of getting married. You can mention that but, in any event, you want tor backup your statements with references.}
 
-In 1895, Ernst Engel studies food expenditure patterns in Belgium and finds that richer families tend to spend lower fractions of their income on food than poorer families \citep{Stigler1954}. This suggests the fraction of income spent on food can be used as an approximation of welfare, which is the starting point of behavioural equivalence scales, see Section~\ref{ssec:behavioural_scales}.
+In 1895, Ernst Engel studies food expenditure patterns in Belgium and finds that richer families tend to spend lower fractions of their income on food than poorer families \citep{Stigler1954}. This suggests the fraction of income spent on food can be used as an approximation of welfare, which is the starting point of behavioural equivalence scales, see Section~\ref{sssec:behavioural}.
 
 Engel is also responsible for introducing the concept of \textit{adult equivalents} in 1883, following from his investigation of the ``cost of the child''\citep{Stigler1954}. If we determine how children's consumption must be relative to an adult so that they achieve the same level of well-being, it becomes possible to compare households based on the number of adult equivalents \citep[p.~242]{Deaton1997}.
 
@@ -841,11 +841,11 @@ Some authors separate groceries from restaurant expenses, which is likely not ap
 
 
 \section{Welfare measurement} \label{sec:welfare}
-The welfare effects of the \ac{IPP} policy are measured as the equivalent variation of the change in the price of the ``Transportation'' group for the households. Equivalent variation is the change in total expenditure that would place the household at the same utility level as the price change, better understood with Equation~\ref{eq:EV}. After the price change, the household faces prices $p_1$ and is at utility level $u_1$, and the difference between the cost of achieving $u_1$ under the old prices $p_0$ and the new prices $p_1$ is the equivalent variation, in money terms.
+The welfare effects of the \ac{IPP} policy are measured as the equivalent variation of the change in the price of the ``Transportation'' group for the households. Equivalent variation is the change in total expenditure that would place the household at the same utility level as the price change, better understood with Equation~\ref{eq:EV}, reproduced below. After the price change, the household faces prices $p_1$ and is at utility level $u_1$, and the difference between the cost of achieving $u_1$ under the old prices $p_0$ and the new prices $p_1$ is the equivalent variation, in money terms.
 
-\begin{equation}\label{eq:EV}
+\begin{equation*}
 EV = c_k(u_1, p_0) - c_k(u_1, p_1)
-\end{equation}
+\end{equation*}
 
 Rearranging the (logarithm) indirect utility function $\ln v(x, p)$ of \ac{QUAIDS} shown in Equation~\ref{eq:quaids_indirect_utility} yields the (logarithm) cost function $\ln c(u, p)$ in Equation~\ref{eq:cost_quaids} \citep{ChangSerletis2012}.
 
@@ -2258,7 +2258,7 @@ texdoc local gini_mod_oecd_scaled_cost_p_0 = strofreal(round(gini_mod_oecd_scale
 
 /*tex
 
-Even though it is not possible to determine how much of the increase in fuel prices was directly caused by the \ac{IPP} policy, the index used for the welfare effects computation is estimated as follows. First, the weight of each fuel is obtained from the ratio of the aggregate expenditure on the fuel by the aggregate expenditure on all items in the Fuels and Transportation group. Then, the price change of each fuel is estimated as the difference between the accumulated increase in the price of each fuel and the accumulated inflation as measured by the \ac{ACPI} between October 2016 and September 2019 (to avoid potential effects of the COVID-19 pandemic). Finally, the price change for the Fuels and Transportation group is computed as the weighted sum of the differences not accounted by inflation. This procedure yields an accumulated change of $`ft_price_rise'$\%.
+Even though it is not possible to determine how much of the increase in fuel prices was directly caused by the \ac{IPP} policy, the index used for the welfare effects computation is estimated as follows. First, the weight of each fuel is obtained from the ratio of the aggregate expenditure on the fuel by the aggregate expenditure on all items in the Fuels and Transportation group. Then, the price change of each fuel is estimated as the difference between the accumulated increase in the price of each fuel and the accumulated inflation as measured by the \ac{ACPI} between October 2016 and September 2019 (to avoid potential effects of the COVID-19 pandemic) \citep{ibgeIPCA2019}. Finally, the price change for the Fuels and Transportation group is computed as the weighted sum of the differences not accounted by inflation. This procedure yields an accumulated change of $`ft_price_rise'$\%.
 
 \tdILY{March 1st 2024 The table of results will eventallly need to be made smaller, the model names will need correct capitalization, the Greek symbols will need to be Greek etc.  You might need to span the table over several pages by using the supertabular environment}
 
@@ -2303,7 +2303,7 @@ Applying equivalence scales, it is assumed that larger households benefit from e
 \begin{figure}
     \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_adults_children.png}
     \caption{Mean $EV$ by number of children and adults, by total expenditure decile.}
-    \label{fig:ev_gender_type}
+    \label{fig:ev_adults_children}
 \end{figure}
 
 \begin{figure}
@@ -2344,7 +2344,7 @@ Finally, the model with enforced symmetry must be used for the welfare computati
 \chapter{Conclusions}\label{conclusions}
 A complete demand system was estimated for the Brazilian population, from the 2017-2018 \ac{FBS}. The demand estimates were used to compute equivalent variations for each household in the sample, taking into consideration the number of adults and children in the household, whether it is located in a rural or urban area, and the gender of the head of the household.
 
-From the rates of equivalent variations following the price increase due to the \ac{IPP} policy, the policy is found to be regressive, even considering only effects on the cost of transportation. Considering the accompanying increase in profits for Petrobras and hence of government revenue, there is an opportunity to reduce this impact by applying this revenue into counteracting measures such as subsidies targeted towards lower income families, or through income tax changes that reduce the tax burden for lower income families.
+From the rates of equivalent variations following the price increase due to the \ac{IPP} policy, the policy is found to be regressive, even considering only effects on the cost of transportation. With the accompanying increase in profits for Petrobras and hence of government revenue, there is an opportunity to reduce this impact by applying this revenue into counteracting measures such as subsidies targeted towards lower income families, or through income tax changes that reduce the tax burden for lower income families.
 
 In particular, families are more affected the larger the number of adults, but in a diminishig schedule. Given that the Bolsa Família transfer program already has information on the number of adults and children in each household, the per capita transfer amounts could be changed following this schedule, with the first adult receiving an increase of close to \ac{BRL} 8 and each additional adult receiving progressively lower amounts. Alternatively, taking into account the findings of \citet{Carvalho2014}, the revenue could be directed towards a national program of subsidies of urban public transportation.
 
@@ -2360,7 +2360,7 @@ Additionally, estimation of complete demand systems requires better data than cu
 
 \tdILY{You will need to tweak those missing foreign characters in your bib entries and secure the capitalizations too}
 
-\tdIL{could you try to generate the ugly URL codes as embedded in hyperlinks, using the relevant tex tag (I think it is $\backslash$href or something). That would still work as a URL hyperlink without the massive ugliness of having to show verbatim the whole URL}
+\tdILY{could you try to generate the ugly URL codes as embedded in hyperlinks, using the relevant tex tag (I think it is $\backslash$href or something). That would still work as a URL hyperlink without the massive ugliness of having to show verbatim the whole URL}
 
 
 \tdILY{NOV 18 2023  Something strange is going on with \citet{AlmeidaJustoOliveiraSilva2016}'s bib entry. Fix capitals in \citet{TeixidoVerde2017}, \citet{NikodinoskaSchroder2016}, for example: check them all. }
@@ -2464,7 +2464,7 @@ Table~\ref{tab:attribute_vars} shows the variable in the \ac{FBS} datasets for e
 \tdILG{ENW, In Table~\ref{tab:attribute_vars} use italics for the official regions and ``and'' in English}
 
 
-\tdILG{Rober assumes that the verbatim text in Table~\ref{attribute_vars}  to denote the datasets and the original variable names will eventually be eliminated and substituted by more conventional (easier to recognise) names and regular font (in italics for the variable names). This is all OK for now for our preliminary private purposes but in the end all the variables described should have ``obvious'' names after recoding. For example, V0404 will have to be recoded into an indicator called either \textit{male} or \textit{female}. If you think it were necessary to use them in this ``raw'' format, they would go into an appendix. But it looks for now that there are only a very small number of them to consider, so just follow convention and recode, rename, and retype to make them al look good in the end.}
+\tdILG{Rober assumes that the verbatim text in Table~\ref{tab:attribute_vars}  to denote the datasets and the original variable names will eventually be eliminated and substituted by more conventional (easier to recognise) names and regular font (in italics for the variable names). This is all OK for now for our preliminary private purposes but in the end all the variables described should have ``obvious'' names after recoding. For example, V0404 will have to be recoded into an indicator called either \textit{male} or \textit{female}. If you think it were necessary to use them in this ``raw'' format, they would go into an appendix. But it looks for now that there are only a very small number of them to consider, so just follow convention and recode, rename, and retype to make them al look good in the end.}
 \tdILG{Clara: I moved it into the appendix. I did rename all the variables, but I thought of this table as a description of how I got info from the raw datasets, for a hypothetical reader that wanted to replicate it from the raw datasets but save a trip through the docs, hence the original names.}
 \tdILY{OK that is fine but then in the table caption, add a little note to express that the original names are left in that special fontface}
 
