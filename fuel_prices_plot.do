@@ -93,6 +93,8 @@ label variable month "Month"
 replace month = mofd(month)
 format month %tm
 
+save "Data\fuel_prices\fuel_prices_2013.dta", replace
+
 
 /* Merge everything and plot
 ****************************/
