@@ -1697,7 +1697,7 @@ Some expenses on services like renting of clothes or appliance repairs have been
 
 The periods of reference vary by purchase group, with food registry being done over a period of seven days, income and health expenses done over the previous 30 days, durable goods over the last twelve months and other expenses over the previous 90 days. Total expenses reported were extrapolated or averaged into 30-day periods, as formal income is usually paid monthly.
 
-The distribution of income and total expenditure is strongly right-skewed: Figure~\ref{fig:boxplot_exp_inc} \tdFLY{Use this trick for all your cross-references} shows the boxplots for monthly total income and total expenditure. The skewness score of total expenditure is $`total_exp_skew'$, and the skewness score of total income is $`total_inc_skew'$.
+The distribution of income and total expenditure is strongly right-skewed: \mbox{Figure}~\ref{fig:boxplot_exp_inc} \tdFLY{Use this trick for all your cross-references} shows the boxplots for monthly total income and total expenditure. The skewness score of total expenditure is $`total_exp_skew'$, and the skewness score of total income is $`total_inc_skew'$.
 
 \begin{figure}
     \centering
@@ -2381,7 +2381,7 @@ Additionally, estimation of complete demand systems requires better data than cu
 
 \chapter{Sampling of the \ac{FBS}} \label{ap:sampling_fbs}
 
-\tdILR{Ensure that all your footnotes have a period at the end.}
+\tdILY{Ensure that all your footnotes have a period at the end.}
 
 
 The \ac{FBS} uses \ac{BIGS}'s master Sample. The master sample is a set of households selected as follows. First, \ac{BIGS} divides the Brazilian territory into census sectors following three sets of criteria: the number of residences, the number of agricultural and livestock facilities, and the number of days needed to collect data in one sector. For urban areas, there is a subdivision between urbanized and non-urbanized areas, and the criterion for rural and non-urbanized areas includes a range of agricultural and livestock facilities. Table~\ref{census_sectors_criteria} shows the minimum, average and maximum number of residences or facilities for each category, and the number of days allocated to the data collection.
