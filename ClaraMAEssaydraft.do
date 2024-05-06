@@ -238,6 +238,7 @@ I would not be here without all of you, and I know I stand on the shoulders of g
 \newcommand{\tde}{\todo{ENW}}
 \newcommand{\tdey}{\todo[color=yellow]{ENW}}
 \newcommand{\tdeFL}{\todo[fancyline]{ENW}}
+\newcommand{\tdeFLY}{\todo[fancyline, color=yellow]{ENW}}
 \newcommand{\tdeIL}{\todo[inline]{ENW}}
 
 \newcommand{\tdp}{\todo{PNW}}
@@ -515,9 +516,9 @@ While income is often used as the explanatory variable for demand, and income di
 
 \citet[p.~88]{WorldBank2022} estimates ``transient poverty''\footnote{Transient poverty is the condition of households that have a low income but do not fall into ``poverty traps'' due to lack of education or infrastructure, making them more likely to be poor only temporarily.} reached 10\% of the Brazilian population in 2019, while \cite{OECD2018} shows income mobility is higher in Brazil relative to \ac{OECD} countries, which is likely to produce the type of bias described by \cite{Poterba1991}.
 
-\cite{TeixidoVerde2017} show that wealth has the opposite effect. Between two similar families with the same level of income but different levels of wealth, the demand of the more wealthy family is likely to be less elastic to prices due to wealth providing a ``safety net'' in the event of income losses. By omitting this factor, the price-elasticity of demand of the wealthier family will be biased upwards, thus overstating their welfare losses in the case of a price increase. \cite{TeixidoVerde2017} \tdFL{March 1st 2024:  fix capitals in bib entry} thus include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
+\cite{TeixidoVerde2017} show that wealth has the opposite effect. Between two similar families with the same level of income but different levels of wealth, the demand of the more wealthy family is likely to be less elastic to prices due to wealth providing a ``safety net'' in the event of income losses. By omitting this factor, the price-elasticity of demand of the wealthier family will be biased upwards, thus overstating their welfare losses in the case of a price increase. \cite{TeixidoVerde2017} \tdFLY{March 1st 2024:  fix capitals in bib entry} thus include wealth as a measure of ability to pay and find that taxes are more regressive than estimated by \cite{Poterba1991}.
 
-\cite{Sterner2012} \tdFL{Fix bib entry} argues that whether a tax is regressive will vary among countries and in particular that cars in developing countries are luxury goods. The findings in \cite{Carvalho2014} support that argument; however, it must be taken into consideration that fuels have also a large impact on industry costs and output. For example, in Brazil, the transportation of consumer goods is largely made by trucks powered by diesel, so a tax on diesel can increase the prices of all goods. In this case, even if vehicles and fuels are luxuries, the tax may be regressive if the price of goods consumed by low-income families is more sensitive to transportation costs than the price of goods consumed by high-income families.
+\cite{Sterner2012} \tdFLY{Fix bib entry} argues that whether a tax is regressive will vary among countries and in particular that cars in developing countries are luxury goods. The findings in \cite{Carvalho2014} support that argument; however, it must be taken into consideration that fuels have also a large impact on industry costs and output. For example, in Brazil, the transportation of consumer goods is largely made by trucks powered by diesel, so a tax on diesel can increase the prices of all goods. In this case, even if vehicles and fuels are luxuries, the tax may be regressive if the price of goods consumed by low-income families is more sensitive to transportation costs than the price of goods consumed by high-income families.
 
 \tdILR{Could you expand this using similar examples, getting additional references? There might be references within \cite{Sterner2012}. The story below from \cite{FreitasRibeiroSouzaHewings2016} is one good example.}
 
@@ -595,7 +596,7 @@ In 1895, Ernst Engel studies food expenditure patterns in Belgium and finds that
 
 Engel is also responsible for introducing the concept of \textit{adult equivalents} in 1883, following from his investigation of the ``cost of the child''\citep{Stigler1954}. If we determine how children's consumption must be relative to an adult so that they achieve the same level of well-being, it becomes possible to compare households based on the number of adult equivalents \citep[p.~242]{Deaton1997}.
 
-Taking this further and incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor for \tdFLY{NOV 18 2023: is that a real word??? Clara: ``equivalize'', ``equivalised'' and its friends show up in the lit, but I agree it's not pretty, changed it} family income or wealth, so that the transformed values are comparable among families of different compositions \citep{DeatonMuellbauer1980a}.\tdFL{pages missing?}
+Taking this further and incorporating a measure of economies of scale so that additional members require less consumption to reach the same level of well-being yields the number of \textit{effective adult equivalents}. This number can be used as a deflation factor for \tdFLY{NOV 18 2023: is that a real word??? Clara: ``equivalize'', ``equivalised'' and its friends show up in the lit, but I agree it's not pretty, changed it} family income or wealth, so that the transformed values are comparable among families of different compositions  \citep[p.~242]{Deaton1997}.\tdFLY{pages missing?}
 
 Formally, assume that utility is comparable between households, so that it is possible to say that two households at utility level $u$ experience the same level of well-being. Assume also that households with the same characteristics $d$ require the same expenditure to reach any level $u$ of utility, so that the expenditure function of households differs only with respect to $d$. Then the equivalence scale between two households is the ratio $$\frac{m_1}{m_2} = \frac{e(p, \bar{u}, d_1)}{e(p, \bar{u}, d_2)}$$.
 
@@ -718,10 +719,6 @@ Assume that households behave as individuals when it comes to maximizing utility
 
 Assume also that the families allocate their budget into separable commodity groups. Then, applying Roy's identity onto Equation~\ref{eq:quaids_indirect_utility} yields a system of budget share equations. The expenditure share of each commodity group $i$ is given by Equation~\ref{eq:shares}
 
-\begin{equation} \label{eq:quaids_shares}
-w_i = \alpha_i + \sum_{j=1}^{n}\gamma_{ij} \ln p_j + \beta_i \ln \left [ \frac{x}{a(p)} \right ] + \frac{\lambda_i}{b(p)} \left [ \ln \frac{x}{a(p)} \right ]^2
-\end{equation}
-
 \begin{equation}\label{eq:shares}
 w_i = \alpha_i + \sum_{j=1}^{n} \gamma_{ij} \ln p_j + \beta_i (\ln x - \ln a(p)) + \lambda_i \frac{ (\ln x - \ln a(p))^2 }{b(p)} + e_{ih}
 \end{equation}
@@ -776,7 +773,7 @@ Adding-up is enforced on estimation of the \ac{AIDS} and its extensions by dropp
 
 Additionally, families are expected to not have money illusion, which translates into the property of \textit{homogeneity}: changing prices and total expenditure by the same rate should not change quantities demanded. This will be true of the system if Condition~\ref{eq:homogeneity} is satisfied \citep{DeatonMuellbauer1980b}.
 
-\tdILR{Still needs references, and check object capitals for ``Condition'' too}
+\tdILY{Still needs references, and check object capitals for ``Condition'' too}
 
 \begin{equation}\label{eq:homogeneity}
 \sum_{j} \gamma_{ij} = 0
@@ -832,7 +829,7 @@ In the literature, the choice of groups of goods and services also vary. Food is
 
 \tdILY{March 1st 2024: fix the quotation marks throughout}
 
-For the present analysis, the following groups compose the first stage of the budget: fuels, housing and maintenance services, adult goods, services, and other goods. Auto and real estate purchases are excluded to avoid ``spurious volatility'' \citep{Poterba1991}\tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the observations \tdFL{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and the observations of Rothbarth \citep{Ray1983}.
+For the present analysis, the following groups compose the first stage of the budget: fuels, housing and maintenance services, adult goods, services, and other goods. Vehicle and real estate purchases are excluded to avoid ``spurious volatility'' \citep{Poterba1991}\tdFL{NOV 18 2023  expand/explain a bit more}. ``Adult goods'' such as alcohol and cigarettes are its own group, following from the considerations \tdFLY{NOV 18 2023'' use a different term (suggestions? recommendations? since observations are also ``cases'' in a sample}  of \cite{BanksBlundellLewbel1997} and Rothbarth \citep{Ray1983}.
 
 Some authors separate groceries from restaurant expenses, which is likely not applicable for the Brazilian population. The Brazilian government subsidises food programs for workers that often consist in meal vouchers for exclusive use in restaurants.
 
@@ -1715,7 +1712,7 @@ $`hh_vehicle_count'$ of the households surveyed, or $`hh_vehicle_pct'$\%, report
 
 \section{Expenditure patterns on fuel and transportation}
 
-Figure~\ref{fig:exp_shares_gasoline} shows the shares of a households \tdeFL total expenditure spent on gasoline. For households that consumed any gasoline during the period of the survey, the clusters' shapes suggest Engel curves linear on the logarithm of total expenditure, which is expected of goods that are not luxuries.
+Figure~\ref{fig:exp_shares_gasoline} shows the fractions of  households' \tdeFLY total expenditures spent on gasoline. For households that consumed any gasoline during the period of the survey, the clusters' shapes suggest Engel curves linear on the logarithm of total expenditure, which is expected of goods that are not luxuries.
 
 \tdILG{All figures' captions should be short, yes, but explicit enough for us to be able to just look at the graph itself and get a pretty good idea of what the figure shoes, so generic labels like "expenditure and income" will not help us. We need something like "Evolution of expenditure by all Brazilian households between 2000 and 2023. Source: 2023 Brazilian Census (or appropriate citation)."}
 
@@ -2268,7 +2265,7 @@ Aggregate losses to consumers due to the price increase are shown in Figure~\ref
 
 \begin{figure}
     \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_sums.png}
-    \caption{Sum of $EV$s by total expenditure decile.}
+    \caption{Sum of $EV$s by total expenditure decile}
     \label{fig:ev_sums}
 \end{figure}
 
@@ -2278,7 +2275,7 @@ Figure~\ref{fig:ev_rates} shows the mean ratio of $EV$ to total expenditure by t
 
 \begin{figure}
     \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_rates.png}
-    \caption{Mean ratio of $EV$s to total expenditure, by total expenditure decile.}
+    \caption{Mean ratio of $EV$s to total expenditure, by total expenditure decile}
     \label{fig:ev_rates}
 \end{figure}
 
@@ -2291,7 +2288,7 @@ Figure~\ref{fig:ev_gender_type} also shows that $EV$s scaled with the square roo
 
 \begin{figure}
     \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_gender_type_scaled.png}
-    \caption{Mean $EV$ by gender and residence type, by total expenditure decile, scaled with the modified OECD and the square root scales.}
+    \caption{Mean $EV$ by gender and residence type, by total expenditure decile, scaled with the modified OECD and the square root scales}
     \label{fig:ev_gender_type}
 \end{figure}
 
@@ -2302,13 +2299,13 @@ Applying equivalence scales, it is assumed that larger households benefit from e
 
 \begin{figure}
     \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_adults_children.png}
-    \caption{Mean $EV$ by number of children and adults, by total expenditure decile.}
+    \caption{Mean $EV$ by number of children and adults, by total expenditure decile}
     \label{fig:ev_adults_children}
 \end{figure}
 
 \begin{figure}
     \centering   \includegraphics[width=0.9\textwidth]{graphs/ev_adults_children_scaled.png}
-    \caption{Mean $EV$ by number of children and adults, by total expenditure decile, scaled with the modified OECD scale.}
+    \caption{Mean $EV$ by number of children and adults, by total expenditure decile, scaled with the modified OECD scale}
     \label{fig:ev_adults_children_scaled}
 \end{figure}
 
