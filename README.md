@@ -1,5 +1,7 @@
 This project is the research component for my Master of Arts in Economics degree at Memorial University of Newfoundland.
 
+See the output document [here](ClaraMAEssay.pdf).
+
 ## Requirements
 
 I used Stata 17.3. Earlier versions of Stata may work.
