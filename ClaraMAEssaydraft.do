@@ -38,8 +38,8 @@ graph set window fontface "Palatino Linotype"
 %March 2021. A simple trick is added to have the package acronym work with a ``list of abbreviations''
 %March 2021. The option [hidelinks] is added to hyperref for a cleaner look
 
-%\[disable]]todonotes
-\usepackage[colorinlistoftodos,textsize=tiny,textwidth=2.8cm]{todonotes}
+
+\usepackage[disable,colorinlistoftodos,textsize=tiny,textwidth=2.8cm]{todonotes}
 
 \usepackage{tocloft}
 \usepackage{pdfathesis}
@@ -249,8 +249,6 @@ I would not be here without all of you, and I know I stand on the shoulders of g
 
 
 %checking:
-\tr{checking red}
-\to{checking orange}
 \tde
 \tdeFL
 \tdIL{this in line}
@@ -797,7 +795,7 @@ Each element in the matrix is a sum $S_{ij} = \frac{\partial x_i}{\partial p_j} 
 
 If demand satisfies Walras' law and the weak axiom of revealed preferences, the Slutsky matrix will be \textit{negative semidefinite}, which implies that $\forall v \in $R$, v \cdot S(p, x) v \leq 0$ \cite[p.~34]{MWG1995}.
 
-\citet[p.~70]{MWG1995} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the second-derivative matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  (\citealp[p.~50]{DeatonMuellbauer1980a}; \citealp[p.~80]{MWG1995}), which will be used to estimate welfare effects. Symmetry in the requires Condition~\ref{eq:symmetry} \citep{DeatonMuellbauer1980b}.
+\citet[p.~70]{MWG1995} show that the Slutsky substitution matrix is equivalent to the matrix of derivatives of the Hicksian compensated demand, which in turn is equivalent to the second-derivative matrix of the total expenditure function. This implies that the Slutsky matrix should be \textit{symmetrical}, a property necessary for the recovery of the expenditure function  (\citealp[p.~50]{DeatonMuellbauer1980a}; \citealp[p.~80]{MWG1995}), which will be used to estimate welfare effects. Symmetry in the \ac{AIDS} and its extensions requires Condition~\ref{eq:symmetry} \citep{DeatonMuellbauer1980b}.
 
 \begin{equation}\label{eq:symmetry}
 \gamma_{ij} = \gamma_{ji}
